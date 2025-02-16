@@ -1,6 +1,8 @@
 # Rounded Rectangles
 
-A shader graph for generating rounded rectangles solely based on built-in shader graph nodes. It supports
+The "Rounded Rectangles" asset allows the crafting of rounded rectangles using shader graphs solely using built-in nodes. This makes it compatible with PolySpatial and Apple Vision Pro.
+
+Rounded Rectangles supports
 
 - individual corner radii
 - borders with individual border sizes
