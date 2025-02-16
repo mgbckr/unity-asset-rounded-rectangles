@@ -7,46 +7,81 @@ public class CanvasOrderCoordinator : MonoBehaviour
 {
     [Tooltip("The GameObject that the canvases are sorted based on.")]
     public GameObject originGameObject;
-    
+
+    [Tooltip("Find canvases every N frames. 0 means no update.")]
+    public int findCanvasesEveryNFrames = 0;
+
     [Tooltip("Set to true if you want to find all canvases at the start of the game.")]
     public bool findCanvasesOnStart = true;
 
-    [Tooltip("Set to true if you want to update the canvases every frame. Potentially slow.")]
-    public bool resetCanvasesOnUpdate = false;
+    [Tooltip("Update sorting order every N frames. 0 means no update.")]
+    public int updateSortingOrderEveryNFrames = 1;
 
-    public HashSet<Canvas> canvasSet;
+    [Tooltip("Set to true if you want to update the sorting order at the start of the game.")]
+    public bool updateSortingOrderOnStart = true;
+
+    public HashSet<Canvas> canvases;
+
+    private int frameCountFindCanvases = 0;
+
+    private int frameCountUpdateSortingOrder = 0;
 
 
     void Start()
     {
-        canvasSet = new HashSet<Canvas>();
+        canvases = new HashSet<Canvas>();
         if (findCanvasesOnStart)
         {
             Canvas[] existingCanvases = 
                 GameObject.FindObjectsByType<Canvas>(FindObjectsSortMode.None);
-            canvasSet.UnionWith(existingCanvases);
+            canvases.UnionWith(existingCanvases);
+
+            if (updateSortingOrderOnStart)
+            {
+                FindCanvases();
+            }
+
+            if (updateSortingOrderOnStart)
+            {
+                UpdateSortingOrder(canvases);
+            }
         }
     }
 
     void Update()
     {
-        if (resetCanvasesOnUpdate)
+        if (findCanvasesEveryNFrames > 0)
         {
-            FindCanvases();
+            frameCountFindCanvases++;
+            if (frameCountFindCanvases >= findCanvasesEveryNFrames)
+            {
+                frameCountFindCanvases = 0;
+                FindCanvases();
+            }
         }
-        UpdateSortingOrder(canvasSet);
+
+        if (updateSortingOrderEveryNFrames > 0)
+        {
+            frameCountUpdateSortingOrder++;
+            if (frameCountUpdateSortingOrder >= updateSortingOrderEveryNFrames)
+            {
+                frameCountUpdateSortingOrder = 0;
+                UpdateSortingOrder(canvases);
+            }
+        }
     }
 
     // Find all canvases in the scene.
-    void FindCanvases()
+    public Canvas[] FindCanvases()
     {
         Canvas[] existingCanvases = 
             GameObject.FindObjectsByType<Canvas>(FindObjectsSortMode.None);
-        canvasSet = new HashSet<Canvas>(existingCanvases);
+        canvases = new HashSet<Canvas>(existingCanvases);
+        return existingCanvases;
     }
 
     // Update sorting order every frame (or move this to Start() if distances don't change).
-    void UpdateSortingOrder(HashSet<Canvas> canvasSet)
+    public void UpdateSortingOrder(HashSet<Canvas> canvasSet, int startValue = 1)
     {
         if (originGameObject == null)
         {
@@ -63,7 +98,7 @@ public class CanvasOrderCoordinator : MonoBehaviour
 
         // Set sorting order so that the closest canvas gets the highest value.
         // For example, if there are 5 canvases, the closest gets 5, next gets 4, etc.
-        int sortingValue = 1;
+        int sortingValue = startValue;
         foreach (Canvas canvas in enumerator)
         {
             canvas.sortingOrder = sortingValue;
