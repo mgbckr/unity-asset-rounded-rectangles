@@ -69,6 +69,10 @@ public class CanvasOrderCoordinator : MonoBehaviour
                 UpdateSortingOrder(canvases);
             }
         }
+
+        // print player position for debugging
+        Debug.Log($"Player position: {originGameObject.transform.position}");
+        Debug.Log($"Camera position: {Camera.main.transform.position}");
     }
 
     // Find all canvases in the scene.
@@ -98,11 +102,14 @@ public class CanvasOrderCoordinator : MonoBehaviour
 
         // Set sorting order so that the closest canvas gets the highest value.
         // For example, if there are 5 canvases, the closest gets 5, next gets 4, etc.
-        int sortingValue = startValue;
+        Debug.Log("Setting sorting order...");
+        int sortingValue = startValue + canvasSet.Count - 1;
         foreach (Canvas canvas in enumerator)
         {
             canvas.sortingOrder = sortingValue;
-            sortingValue++;
+            Debug.Log($"Canvas {canvas.name} has sorting order {sortingValue}" +
+                $" and distance {Vector3.Distance(canvas.transform.position, originGameObject.transform.position)}");
+            sortingValue--;
         }
     }
 }

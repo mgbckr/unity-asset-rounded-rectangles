@@ -398,7 +398,22 @@
     ],
     "m_StickyNoteDatas": [
         {
-            "m_Id": "0a055772397842b1a806ec975bbc0525"
+            "m_Id": "73d0f0e9d3524c519ffb2fb7ffcbbe85"
+        },
+        {
+            "m_Id": "fafd1341bdc845f18db7f046279fe4bd"
+        },
+        {
+            "m_Id": "72cdceacf60b49da8b522b5bb0ea3ce7"
+        },
+        {
+            "m_Id": "15a26d39553f43e6a9bd95c9829940cf"
+        },
+        {
+            "m_Id": "08f36ce905dc4624a8ef66260ff5f731"
+        },
+        {
+            "m_Id": "84a4f6d482e048d2be20a33d8c171133"
         }
     ],
     "m_Edges": [
@@ -2487,6 +2502,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "08f36ce905dc4624a8ef66260ff5f731",
+    "m_Title": "TEST: Scaling when using a texture.",
+    "m_Content": "",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -1369.5,
+        "y": 705.0,
+        "width": 200.0,
+        "height": 160.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.SubtractNode",
     "m_ObjectId": "0946a3d1b9cf4defba378bb9b911de9a",
     "m_Group": {
@@ -2550,26 +2585,6 @@
         "y": 0.0,
         "z": 0.0,
         "w": 0.0
-    }
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
-    "m_ObjectId": "0a055772397842b1a806ec975bbc0525",
-    "m_Title": "Remove border?",
-    "m_Content": "The border and padding might be redundant. How about just drawing two of these on top of each other? Well at least we learned something :)",
-    "m_TextSize": 0,
-    "m_Theme": 0,
-    "m_Position": {
-        "serializedVersion": "2",
-        "x": -1090.5,
-        "y": 786.5,
-        "width": 200.0,
-        "height": 160.0
-    },
-    "m_Group": {
-        "m_Id": ""
     }
 }
 
@@ -2982,6 +2997,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "15a26d39553f43e6a9bd95c9829940cf",
+    "m_Title": "TEST: Scaling with adjusted border size.",
+    "m_Content": "Write something here",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -1582.0,
+        "y": 704.0,
+        "width": 200.0,
+        "height": 160.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
     "m_ObjectId": "16df3a9be2c64cbaa3cf5bc5a5dc7a07",
     "m_Id": 1,
@@ -3373,6 +3408,12 @@
             "m_Id": "8b53abfb5f414faab2bb5407a259981f"
         },
         {
+            "m_Id": "d0e1b45ae40e4ff994b90939daac9c85"
+        },
+        {
+            "m_Id": "eba0c31176744a27bb914b91b1fa14ff"
+        },
+        {
             "m_Id": "075a9f7c0f494de9bd0fd1f3df271f7a"
         }
     ],
@@ -3393,7 +3434,9 @@
         "e61dad37-4d7c-4937-85a0-5b58b368313c",
         "4d651b81-18f3-4de7-a0d8-3de998fc9562",
         "e96e720c-57b1-4a77-b8f5-137636168115",
-        "f3ef2b90-46bd-4ee8-95a6-20b7ecb5ebcc"
+        "f3ef2b90-46bd-4ee8-95a6-20b7ecb5ebcc",
+        "ec4d6f63-9ee2-4508-8796-28356171ca27",
+        "21ce449b-44b5-4b0e-b1cd-4a8ec5a3325f"
     ],
     "m_PropertyIds": [
         -978026077,
@@ -3403,7 +3446,9 @@
         -884987779,
         -1960171702,
         -1064581581,
-        -959676844
+        -959676844,
+        -1146677657,
+        -1145541030
     ],
     "m_Dropdowns": [],
     "m_DropdownSelectedEntries": []
@@ -5049,7 +5094,7 @@
     "m_Title": "Tiling (Scaling Factor)",
     "m_Position": {
         "x": -2141.5,
-        "y": -900.0
+        "y": -899.9999389648438
     }
 }
 
@@ -5344,6 +5389,21 @@
     "m_ShaderOutputName": "Sampler",
     "m_StageCapability": 3,
     "m_BareResource": false
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "4d5a9e8bd850421eb51d3ac8a51978c6",
+    "m_Id": -1146677657,
+    "m_DisplayName": "Scale Width",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "_Scale_Width",
+    "m_StageCapability": 2,
+    "m_Value": 1.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
 }
 
 {
@@ -6545,7 +6605,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 0.20000000298023225,
+    "m_Value": 0.0,
     "m_FloatType": 0,
     "m_RangeValues": {
         "x": 0.0,
@@ -6777,6 +6837,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "72cdceacf60b49da8b522b5bb0ea3ce7",
+    "m_Title": "FIX: Border size from 0 - 0.5 with padding!",
+    "m_Content": "Currently with two 0.1 borders the max border is 0.7.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -1492.5,
+        "y": 424.0,
+        "width": 200.0,
+        "height": 160.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
     "m_ObjectId": "72eb8e654b9d40f6b7f60357e77e2acf",
     "m_Id": 1,
@@ -6812,6 +6892,26 @@
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "73d0f0e9d3524c519ffb2fb7ffcbbe85",
+    "m_Title": "FEATURE: Add fuzzy border?",
+    "m_Content": "Switch between making border smaller and keeping it the same. Same for border radius actually ... keeping it the same vs making ist smaller / bigger. Probably keeping it the same makes more sense ... at least for my purpuses .... keep both of it the same, I mean.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -1218.0,
+        "y": 268.0,
+        "width": 200.0,
+        "height": 160.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
 }
 
 {
@@ -7299,6 +7399,26 @@
     "m_NormalMapSpace": 0,
     "m_EnableGlobalMipBias": true,
     "m_MipSamplingMode": 0
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "84a4f6d482e048d2be20a33d8c171133",
+    "m_Title": "FIX: Add scaling",
+    "m_Content": "Write something here",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -1492.0,
+        "y": 598.0,
+        "width": 200.0,
+        "height": 160.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
 }
 
 {
@@ -7959,7 +8079,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 0.30000001192092898,
+    "m_Value": 0.10000000149011612,
     "m_FloatType": 0,
     "m_RangeValues": {
         "x": 0.0,
@@ -9176,7 +9296,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 0.20000000298023225,
+    "m_Value": 0.10000000149011612,
     "m_FloatType": 0,
     "m_RangeValues": {
         "x": 0.0,
@@ -9301,8 +9421,8 @@
     "m_ObjectId": "bf7f7f7e63274b9680d0e75037b961fd",
     "m_Title": "Width",
     "m_Position": {
-        "x": -3392.5,
-        "y": -712.5
+        "x": -3392.499755859375,
+        "y": -712.4999389648438
     }
 }
 
@@ -9645,6 +9765,12 @@
             "m_Id": "e7f428c6b84944e695edcb0eceebd6ac"
         },
         {
+            "m_Id": "4d5a9e8bd850421eb51d3ac8a51978c6"
+        },
+        {
+            "m_Id": "d07b9cff657f407482c1231db0bd3836"
+        },
+        {
             "m_Id": "80a71396d9c34afb804d370f6ba40c56"
         }
     ],
@@ -9665,7 +9791,9 @@
         "e61dad37-4d7c-4937-85a0-5b58b368313c",
         "4d651b81-18f3-4de7-a0d8-3de998fc9562",
         "e96e720c-57b1-4a77-b8f5-137636168115",
-        "f3ef2b90-46bd-4ee8-95a6-20b7ecb5ebcc"
+        "f3ef2b90-46bd-4ee8-95a6-20b7ecb5ebcc",
+        "ec4d6f63-9ee2-4508-8796-28356171ca27",
+        "21ce449b-44b5-4b0e-b1cd-4a8ec5a3325f"
     ],
     "m_PropertyIds": [
         -978026077,
@@ -9675,7 +9803,9 @@
         -884987779,
         -1960171702,
         -1064581581,
-        -959676844
+        -959676844,
+        -1146677657,
+        -1145541030
     ],
     "m_Dropdowns": [],
     "m_DropdownSelectedEntries": []
@@ -10150,6 +10280,36 @@
 {
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "d07b9cff657f407482c1231db0bd3836",
+    "m_Id": -1145541030,
+    "m_DisplayName": "Scale Hight",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "_Scale_Hight",
+    "m_StageCapability": 2,
+    "m_Value": 1.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "d0e1b45ae40e4ff994b90939daac9c85",
+    "m_Id": -1146677657,
+    "m_DisplayName": "Scale Width",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "_Scale_Width",
+    "m_StageCapability": 2,
+    "m_Value": 1.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "d13396300dc046529b080643c08e02a4",
     "m_Id": -978026077,
     "m_DisplayName": "Corner Radius - Top Left",
@@ -10218,7 +10378,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 0.20000000298023225,
+    "m_Value": 0.0,
     "m_FloatType": 0,
     "m_RangeValues": {
         "x": 0.0,
@@ -10648,7 +10808,7 @@
     "m_ObjectId": "e23c3353947648bea38556fbc9fc3281",
     "m_Title": "Height",
     "m_Position": {
-        "x": -3416.0,
+        "x": -3415.999755859375,
         "y": 9.0
     }
 }
@@ -11022,6 +11182,21 @@
         "z": 0.0,
         "w": 0.0
     }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "eba0c31176744a27bb914b91b1fa14ff",
+    "m_Id": -1145541030,
+    "m_DisplayName": "Scale Hight",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "_Scale_Hight",
+    "m_StageCapability": 2,
+    "m_Value": 1.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
 }
 
 {
@@ -11661,6 +11836,26 @@
         "m_SerializableColors": []
     },
     "m_SerializedDescriptor": "SurfaceDescription.BaseColor"
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "fafd1341bdc845f18db7f046279fe4bd",
+    "m_Title": "FEATURE: Allow alpha in content and border?",
+    "m_Content": "Switch between making border smaller and keeping it the same. Same for border radius actually ... keeping it the same vs making ist smaller / bigger. Probably keeping it the same makes more sense ... at least for my purpuses .... keep both of it the same, I mean.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -1214.0,
+        "y": 456.0,
+        "width": 200.0,
+        "height": 160.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
 }
 
 {
