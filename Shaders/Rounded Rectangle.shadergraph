@@ -49,9 +49,6 @@
             "m_Id": "c86be4adb4f2448fa5e0f522ff6dab3d"
         },
         {
-            "m_Id": "9dc1bf9b56d342ddb8f9f3e8ee3cae23"
-        },
-        {
             "m_Id": "cd11edcd28ed44a48bae27169d722223"
         },
         {
@@ -5267,7 +5264,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 0.30000001192092898,
+    "m_Value": 0.0,
     "m_FloatType": 0,
     "m_RangeValues": {
         "x": 0.0,
@@ -5558,7 +5555,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 0.10000000149011612,
+    "m_Value": 0.0,
     "m_FloatType": 0,
     "m_RangeValues": {
         "x": 0.0,
@@ -5889,7 +5886,7 @@
     "m_Title": "Inner/outer height ratio",
     "m_Position": {
         "x": -1939.0,
-        "y": 1336.0001220703125
+        "y": 1336.0
     }
 }
 
@@ -6620,7 +6617,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 0.10000000149011612,
+    "m_Value": 0.20000000298023225,
     "m_FloatType": 0,
     "m_RangeValues": {
         "x": 0.0,
@@ -7106,7 +7103,7 @@
     "m_Title": "Outer rectangle",
     "m_Position": {
         "x": -895.0,
-        "y": 298.49993896484377
+        "y": 298.5
     }
 }
 
@@ -7747,10 +7744,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 229.00006103515626,
-            "y": 44.999977111816409,
-            "width": 151.5,
-            "height": 34.000038146972659
+            "x": 173.50001525878907,
+            "y": -16.500009536743165,
+            "width": 151.49998474121095,
+            "height": 34.00001525878906
         }
     },
     "m_Slots": [
@@ -7890,10 +7887,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 421.00006103515627,
-            "y": -19.499990463256837,
-            "width": 208.00006103515626,
-            "height": 360.5
+            "x": 365.5000305175781,
+            "y": -81.00000762939453,
+            "width": 207.99996948242188,
+            "height": 360.4999694824219
         }
     },
     "m_Slots": [
@@ -7948,8 +7945,8 @@
     "m_ObjectId": "444fae7a652c4c53a0a699f15cc3741a",
     "m_Title": "Inner rectangle",
     "m_Position": {
-        "x": -338.49981689453127,
-        "y": 985.5001220703125
+        "x": -338.5,
+        "y": 985.5
     }
 }
 
@@ -8032,7 +8029,7 @@
     "m_Title": "Tiling (Scaling Factor)",
     "m_Position": {
         "x": -2141.5,
-        "y": -900.0000610351563
+        "y": -900.0
     }
 }
 
@@ -9050,7 +9047,7 @@
     "m_Title": "Adjust inner corner radius",
     "m_Position": {
         "x": -1597.5,
-        "y": 923.0000610351563
+        "y": 923.0
     }
 }
 
@@ -9109,7 +9106,7 @@
     "m_Title": "Outer Rectangle Height",
     "m_Position": {
         "x": -2481.5,
-        "y": 1869.5001220703125
+        "y": 1869.5
     }
 }
 
@@ -10151,7 +10148,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 0.30000001192092898,
+    "m_Value": 0.0,
     "m_FloatType": 0,
     "m_RangeValues": {
         "x": 0.0,
@@ -10179,7 +10176,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": true
+    "m_Value": false
 }
 
 {
@@ -10412,7 +10409,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 0.30000001192092898,
+    "m_Value": 1.0,
     "m_FloatType": 0,
     "m_RangeValues": {
         "x": 0.0,
@@ -13079,29 +13076,6 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.BooleanShaderProperty",
-    "m_ObjectId": "9dc1bf9b56d342ddb8f9f3e8ee3cae23",
-    "m_Guid": {
-        "m_GuidSerialized": "61751d19-cbb2-4ac4-85ac-f9a890140200"
-    },
-    "m_Name": "Border - Multiply",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Border - Multiply",
-    "m_DefaultReferenceName": "_Border_Multiply",
-    "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
-    "m_UseCustomSlotLabel": false,
-    "m_CustomSlotLabel": "",
-    "m_DismissedVersion": 0,
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_Value": true
-}
-
-{
-    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
     "m_ObjectId": "9e12d9337b4141aeb94e90b682b9ea9d",
     "m_Id": 2,
@@ -13394,13 +13368,13 @@
     "m_RefNameGeneratedByDisplayName": "Border - Width Reference",
     "m_DefaultReferenceName": "_Border_Width_Reference",
     "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": false,
+    "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
     "m_CustomSlotLabel": "",
     "m_DismissedVersion": 0,
     "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
+    "overrideHLSLDeclaration": true,
+    "hlslDeclarationOverride": 2,
     "m_Hidden": false,
     "m_Value": true
 }
@@ -13942,7 +13916,7 @@
     "m_Title": "Inner Rectangle Width",
     "m_Position": {
         "x": -2493.0,
-        "y": 1060.5001220703125
+        "y": 1060.5
     }
 }
 
@@ -14387,7 +14361,7 @@
     "m_Title": "Inner Rectangle Height",
     "m_Position": {
         "x": -2495.5,
-        "y": 1303.0001220703125
+        "y": 1303.0
     }
 }
 
@@ -14861,7 +14835,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 0.5,
+    "m_Value": 1.0,
     "m_FloatType": 0,
     "m_RangeValues": {
         "x": 0.0,
@@ -14876,7 +14850,7 @@
     "m_Title": "Width",
     "m_Position": {
         "x": -3392.5,
-        "y": -712.5000610351563
+        "y": -712.5
     }
 }
 
@@ -15305,7 +15279,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 0.10000000149011612,
+    "m_Value": 0.0,
     "m_FloatType": 0,
     "m_RangeValues": {
         "x": 0.0,
@@ -15693,7 +15667,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": true
+    "m_Value": false
 }
 
 {
@@ -16077,7 +16051,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 0.20000000298023225,
+    "m_Value": 0.5,
     "m_FloatType": 0,
     "m_RangeValues": {
         "x": 0.0,
@@ -16967,8 +16941,8 @@
     "m_ObjectId": "e23c3353947648bea38556fbc9fc3281",
     "m_Title": "Height",
     "m_Position": {
-        "x": -3415.999755859375,
-        "y": 9.000003814697266
+        "x": -3416.0,
+        "y": 9.0
     }
 }
 
@@ -17435,7 +17409,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 0.10000000149011612,
+    "m_Value": 0.20000000298023225,
     "m_FloatType": 0,
     "m_RangeValues": {
         "x": 0.0,
@@ -17743,7 +17717,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 0.10000000149011612,
+    "m_Value": 0.20000000298023225,
     "m_FloatType": 0,
     "m_RangeValues": {
         "x": 0.0,
@@ -18500,9 +18474,6 @@
         },
         {
             "m_Id": "c59e1e951f3d443f862957c679eac148"
-        },
-        {
-            "m_Id": "9dc1bf9b56d342ddb8f9f3e8ee3cae23"
         },
         {
             "m_Id": "a27b7c59accd4b9a867a43f647cefeb3"

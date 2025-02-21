@@ -2,7 +2,7 @@ using UnityEngine;
 
 
 namespace RoundedRectangles {
-    public class SetContent : MonoBehaviour
+    public class RoundedRectangleContent : MonoBehaviour
     {
         private GameObject plane;
 
