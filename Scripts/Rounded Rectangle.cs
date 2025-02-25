@@ -10,25 +10,39 @@ namespace RoundedRectangles {
         [SerializeField]
         private Color color;
 
+        [SerializeField]
+        private bool keepBorderConstant = true;
+        [SerializeField]
+        private bool keepRadiiConstant = true;
+        [SerializeField]
+        private GameObject scaleReference;
+
         // dimensions
         private Vector2 originalDimensions;
-        private Vector4 border;
-        private Vector4 radius;
+        // border
+        private Vector4 borderSizes;
+        // radius
+        private Vector4 radii;
 
         void Start()
         {
             // save dimensions
-            originalDimensions = gameObject.transform.localScale;
+            if (scaleReference == null)
+            {
+                originalDimensions = gameObject.transform.localScale;
+            }
 
             // save border from material
             Material material = gameObject.GetComponent<Renderer>().material;
-            border = new Vector4(
+            borderSizes = new Vector4(
                 material.GetFloat("_Border_Top"),
                 material.GetFloat("_Border_Bottom"),
                 material.GetFloat("_Border_Left"),
                 material.GetFloat("_Border_Right")
             );
-            radius = new Vector4(
+            
+            // save radii from material
+            radii = new Vector4(
                 material.GetFloat("_Corner_Radius_Top_Left"),
                 material.GetFloat("_Corner_Radius_Top_Right"),
                 material.GetFloat("_Corner_Radius_Bottom_Left"),
@@ -73,7 +87,6 @@ namespace RoundedRectangles {
             UpdateRadiusAndBorder();
         }
 
-
         void UpdateDimensions() {
             if (gameObject != null) {
                 Material material = gameObject.GetComponent<Renderer>().material;
@@ -109,35 +122,39 @@ namespace RoundedRectangles {
                     float ratioHeight = originalDimensions.y / currentDimensions.y ;
                     float ratioWidth = originalDimensions.x / currentDimensions.x;
 
-                    Debug.Log("Ratio height: " + ratioHeight);
-                    
-                    float ratioBorder = 0f;
-                    if (material.GetInt("_Border_Width_Reference") == 1)
+                    if (keepBorderConstant)
                     {
-                        ratioBorder = ratioWidth;
+                        float ratioBorder = 0f;
+                        if (material.GetInt("_Border_Width_Reference") == 1)
+                        {
+                            ratioBorder = ratioWidth;
+                        }
+                        else
+                        {
+                            ratioBorder = ratioHeight;
+                        }
+                        material.SetFloat("_Border_Top",    borderSizes.x * ratioBorder);
+                        material.SetFloat("_Border_Bottom", borderSizes.y * ratioBorder);
+                        material.SetFloat("_Border_Left",   borderSizes.z * ratioBorder);
+                        material.SetFloat("_Border_Right",  borderSizes.w * ratioBorder);
                     }
-                    else
-                    {
-                        ratioBorder = ratioHeight;
-                    }
-                    material.SetFloat("_Border_Top",    border.x * ratioBorder);
-                    material.SetFloat("_Border_Bottom", border.y * ratioBorder);
-                    material.SetFloat("_Border_Left",   border.z * ratioBorder);
-                    material.SetFloat("_Border_Right",  border.w * ratioBorder);
   
-                    float ratioRadius = 0f;
-                    if (material.GetInt("_Corner_Radius_Width_Reference") == 1)
+                    if (keepRadiiConstant) 
                     {
-                        ratioRadius = ratioWidth;
+                        float ratioRadius = 0f;
+                        if (material.GetInt("_Corner_Radius_Width_Reference") == 1)
+                        {
+                            ratioRadius = ratioWidth;
+                        }
+                        else
+                        {
+                            ratioRadius = ratioHeight;
+                        }
+                        material.SetFloat("_Corner_Radius_Top_Left",        radii.x * ratioRadius);
+                        material.SetFloat("_Corner_Radius_Top_Right",       radii.y * ratioRadius);
+                        material.SetFloat("_Corner_Radius_Bottom_Left",     radii.z * ratioRadius);
+                        material.SetFloat("_Corner_Radius_Bottom_Right",    radii.w * ratioRadius);
                     }
-                    else
-                    {
-                        ratioRadius = ratioHeight;
-                    }
-                    material.SetFloat("_Corner_Radius_Top_Left",        radius.x * ratioRadius);
-                    material.SetFloat("_Corner_Radius_Top_Right",       radius.y * ratioRadius);
-                    material.SetFloat("_Corner_Radius_Bottom_Left",     radius.z * ratioRadius);
-                    material.SetFloat("_Corner_Radius_Bottom_Right",    radius.w * ratioRadius);
                 }
             } else {
                 Debug.Log("GameObject is null");
