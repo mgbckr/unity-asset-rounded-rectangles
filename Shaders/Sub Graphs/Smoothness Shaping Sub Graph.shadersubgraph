@@ -62,7 +62,11 @@
         }
     ],
     "m_GroupDatas": [],
-    "m_StickyNoteDatas": [],
+    "m_StickyNoteDatas": [
+        {
+            "m_Id": "6bc42f986d2d400aa021e4513bf7ee8d"
+        }
+    ],
     "m_Edges": [
         {
             "m_OutputSlot": {
@@ -1119,6 +1123,26 @@
         "y": 0.0,
         "z": 0.0,
         "w": 0.0
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "6bc42f986d2d400aa021e4513bf7ee8d",
+    "m_Title": "Formula",
+    "m_Content": "Original formula with shape in one direction for 0 < a < 1  and the other direction for a >1.\ny = (b^x-1) / (b-1)\n\n\nScaling for a to center around 0 and scale indefinitely in both directions.\nb = -a + 1 (for -a >= 0)\nb = 1 / (|a| + 1)",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -631.5,
+        "y": -387.5,
+        "width": 200.0,
+        "height": 160.0
+    },
+    "m_Group": {
+        "m_Id": ""
     }
 }
 
