@@ -25,7 +25,8 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
-  m_InvalidKeywords: []
+  m_InvalidKeywords:
+  - _SURFACE_TYPE_TRANSPARENT
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -37,8 +38,16 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Content_Texture:
+        m_Texture: {fileID: 2800000, guid: a0fc465d6cf04254a2938578735e2383, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 602cb87b6a29443b8636370ea0751574, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -55,29 +64,44 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _AlphaClip: 1
+    - _AlphaToMask: 0
+    - _Blend: 0
     - _Border_Bottom: 0
     - _Border_Left: 0
     - _Border_Right: 0
     - _Border_Top: 0
     - _Border_Width_Reference: 1
+    - _CastShadows: 1
+    - _Content_Use_Color: 0
+    - _Content_Use_object_settings: 0
     - _Corner_Radius_Bottom_Left: 0
     - _Corner_Radius_Bottom_Right: 0
     - _Corner_Radius_Top_Left: 0
     - _Corner_Radius_Top_Right: 0
     - _Corner_Radius_Width_Reference: 1
+    - _Cull: 2
+    - _DstBlend: 10
     - _Height: 0
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _SrcBlend: 5
+    - _Surface: 1
     - _Texture_Align_Bottom: 1
     - _Texture_Align_Inner: 1
     - _Texture_Align_Left: 1
+    - _Texture_Offset_Relative_Reference: 0
     - _Texture_Scale_Height: 1
     - _Texture_Scale_Width: 1
     - _Use_Color: 0
     - _Width: 0
+    - _ZTest: 4
+    - _ZWrite: 0
+    - _ZWriteControl: 0
     m_Colors:
-    - _Border_Color: {r: 0, g: 0, b: 0, a: 0.254902}
+    - _Border_Color: {r: 0, g: 1, b: 0.1510973, a: 0.7019608}
     - _Border_Width: {r: 0.2, g: 0.1, b: 0.1, a: 0.1}
+    - _Content_Color: {r: 0.03579378, g: 0, b: 1, a: 0.5803922}
     - _Corner_Radius: {r: 0.3, g: 0.2, b: 0.1, a: 0.3}
     - _Scale: {r: 1, g: 1, b: 0, a: 0}
     - _Scaling: {r: 0.5, g: 0.5, b: 0, a: 0}
