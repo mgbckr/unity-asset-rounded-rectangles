@@ -219,7 +219,11 @@
             "m_Id": "56f955dfc9cf4b408c0b94800fd959a0"
         }
     ],
-    "m_StickyNoteDatas": [],
+    "m_StickyNoteDatas": [
+        {
+            "m_Id": "27c1a14060d94a79880b6d099e130fd0"
+        }
+    ],
     "m_Edges": [
         {
             "m_OutputSlot": {
@@ -1307,7 +1311,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "_Border_Gradient_smoothstep_linear",
     "m_StageCapability": 2,
-    "m_Value": false,
+    "m_Value": true,
     "m_DefaultValue": false
 }
 
@@ -1942,7 +1946,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "1fd3776da8bc4daf8abaf8d31d4bc16a",
     "m_Id": 0,
-    "m_DisplayName": "Smooth Border Shape (bottom-left, bottom-right, top-left, top-right)",
+    "m_DisplayName": "Border Shape (bottom-left, bottom-right, top-left, top-right)",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -2231,6 +2235,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "27c1a14060d94a79880b6d099e130fd0",
+    "m_Title": "TODO: Propagate new parameters",
+    "m_Content": "Write something here",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": 186.0,
+        "y": 134.0,
+        "width": 200.0,
+        "height": 160.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.SplitNode",
     "m_ObjectId": "28851e63cfe34b03b66b1446e0142055",
     "m_Group": {
@@ -2281,7 +2305,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "2ae5eae95bf54474a83e35469e860c72",
     "m_Id": 0,
-    "m_DisplayName": "Smooth Border Width (left,  right, bottom, top)",
+    "m_DisplayName": "Border Width (left,  right, bottom, top)",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -2733,7 +2757,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "3e3725b300d940e6975d20f08abf26a4",
     "m_Id": 0,
-    "m_DisplayName": "Smooth Border Shape (bottom-left, bottom-right, top-left, top-right)",
+    "m_DisplayName": "Border Shape (bottom-left, bottom-right, top-left, top-right)",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -3100,8 +3124,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -963.5001220703125,
-            "y": 1339.0001220703125,
+            "x": -1034.5001220703125,
+            "y": 1346.0001220703125,
             "width": 263.50006103515627,
             "height": 34.0
         }
@@ -3221,7 +3245,7 @@
     "m_Title": "UV",
     "m_Position": {
         "x": -1280.4998779296875,
-        "y": 30.49993896484375
+        "y": 30.5
     }
 }
 
@@ -4140,10 +4164,10 @@
     "m_Guid": {
         "m_GuidSerialized": "822378fd-1a09-4c07-944a-9ce28d4b4cbf"
     },
-    "m_Name": "Smooth Border Shape (bottom-left, bottom-right, top-left, top-right)",
+    "m_Name": "Border Shape (bottom-left, bottom-right, top-left, top-right)",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Smooth Border Shape (bottom-left, bottom-right, top-left, top-right)",
-    "m_DefaultReferenceName": "_Smooth_Border_Shape_bottom_left_bottom_right_top_left_top_right",
+    "m_RefNameGeneratedByDisplayName": "Border Shape (bottom-left, bottom-right, top-left, top-right)",
+    "m_DefaultReferenceName": "_Border_Shape_bottom_left_bottom_right_top_left_top_right",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -4299,7 +4323,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "_Border_Gradient_smoothstep_linear",
     "m_StageCapability": 2,
-    "m_Value": false,
+    "m_Value": true,
     "m_DefaultValue": false
 }
 
@@ -4360,7 +4384,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "_Border_Gradient_smoothstep_linear",
     "m_StageCapability": 2,
-    "m_Value": false,
+    "m_Value": true,
     "m_DefaultValue": false
 }
 
@@ -4467,7 +4491,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "8fdae5013bc242909d72a7fd6d304248",
     "m_Id": 0,
-    "m_DisplayName": "Smooth Border Width (left,  right, bottom, top)",
+    "m_DisplayName": "Border Width (left,  right, bottom, top)",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -5162,7 +5186,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "b68e9c2c0bb3422794466aec977d2278",
     "m_Id": 0,
-    "m_DisplayName": "Smooth Border Shape (bottom-left, bottom-right, top-left, top-right)",
+    "m_DisplayName": "Border Shape (bottom-left, bottom-right, top-left, top-right)",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -5655,10 +5679,10 @@
     "m_Guid": {
         "m_GuidSerialized": "79e2016f-a8b3-4ba1-96d1-d04657aceccd"
     },
-    "m_Name": "Smooth Border Width (left,  right, bottom, top)",
+    "m_Name": "Border Width (left,  right, bottom, top)",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Smooth Border Width (left,  right, bottom, top)",
-    "m_DefaultReferenceName": "_Smooth_Border_Width_left_right_bottom_top",
+    "m_RefNameGeneratedByDisplayName": "Border Width (left,  right, bottom, top)",
+    "m_DefaultReferenceName": "_Border_Width_left_right_bottom_top",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -5669,10 +5693,10 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "x": 0.20000000298023225,
+        "x": 0.30000001192092898,
         "y": 0.10000000149011612,
-        "z": 0.20000000298023225,
-        "w": 0.20000000298023225
+        "z": 0.30000001192092898,
+        "w": 0.30000001192092898
     }
 }
 
@@ -5883,7 +5907,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "d5062e35aaab47dab412daa1969d228b",
     "m_Id": 0,
-    "m_DisplayName": "Smooth Border Width (left,  right, bottom, top)",
+    "m_DisplayName": "Border Width (left,  right, bottom, top)",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -6285,7 +6309,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": false
+    "m_Value": true
 }
 
 {
@@ -6745,7 +6769,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "f27f2125411b417897eb013bd785f4f0",
     "m_Id": 0,
-    "m_DisplayName": "Smooth Border Width (left,  right, bottom, top)",
+    "m_DisplayName": "Border Width (left,  right, bottom, top)",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -6770,7 +6794,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "f299684d21734a44b0af572ca0c9deec",
     "m_Id": 0,
-    "m_DisplayName": "Smooth Border Shape (bottom-left, bottom-right, top-left, top-right)",
+    "m_DisplayName": "Border Shape (bottom-left, bottom-right, top-left, top-right)",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -6884,7 +6908,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "_Border_Gradient_smoothstep_linear",
     "m_StageCapability": 2,
-    "m_Value": false,
+    "m_Value": true,
     "m_DefaultValue": false
 }
 
