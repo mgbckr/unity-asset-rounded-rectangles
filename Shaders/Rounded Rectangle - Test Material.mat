@@ -73,6 +73,8 @@ Material:
     - _Border_Top: 0
     - _Border_Width_Reference: 1
     - _CastShadows: 1
+    - _Content_Enable_Texture: 1
+    - _Content_From_Object: 0
     - _Content_Use_Color: 0
     - _Content_Use_object_settings: 0
     - _Corner_Radius_Bottom_Left: 0
@@ -93,14 +95,16 @@ Material:
     - _Texture_Offset_Relative_Reference: 0
     - _Texture_Scale_Height: 1
     - _Texture_Scale_Width: 1
+    - _Texture_Zoom: 0
     - _Use_Color: 0
     - _Width: 0
     - _ZTest: 4
     - _ZWrite: 0
     - _ZWriteControl: 0
     m_Colors:
-    - _Border_Color: {r: 0, g: 1, b: 0.1510973, a: 0.7019608}
+    - _Border_Color: {r: 0, g: 1, b: 0.15109727, a: 1}
     - _Border_Width: {r: 0.2, g: 0.1, b: 0.1, a: 0.1}
+    - _Content_Background_Color: {r: 0.8773585, g: 0.004138493, b: 0.73967785, a: 1}
     - _Content_Color: {r: 0.03579378, g: 0, b: 1, a: 0.5803922}
     - _Corner_Radius: {r: 0.3, g: 0.2, b: 0.1, a: 0.3}
     - _Scale: {r: 1, g: 1, b: 0, a: 0}
