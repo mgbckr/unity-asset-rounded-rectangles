@@ -420,6 +420,15 @@
         },
         {
             "m_Id": "beb5fd7de7da45e2a387e724f632039f"
+        },
+        {
+            "m_Id": "c26d36c37b0b4a15b24299c71882fd98"
+        },
+        {
+            "m_Id": "7f25c61c019b40b2919f08442b363236"
+        },
+        {
+            "m_Id": "b230fd3a4cee4c689ac16dfa0eac553b"
         }
     ],
     "m_Edges": [
@@ -3346,7 +3355,7 @@
     "m_Position": {
         "serializedVersion": "2",
         "x": 2456.5,
-        "y": -758.5,
+        "y": -890.0,
         "width": 327.5,
         "height": 100.0
     },
@@ -4044,8 +4053,8 @@
     "m_ObjectId": "5021f610ec4643b3842640f4ac4e5550",
     "m_Title": "Inner Rectangle (fuzzy border)",
     "m_Position": {
-        "x": -970.0,
-        "y": -901.0
+        "x": -970.0001220703125,
+        "y": -900.9999389648438
     }
 }
 
@@ -4534,7 +4543,7 @@
     "m_ObjectId": "5bf6804145204bc2b7162a10d517537c",
     "m_Title": "Border offset",
     "m_Position": {
-        "x": -2723.0,
+        "x": -2722.999755859375,
         "y": 2258.5
     }
 }
@@ -5410,6 +5419,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "7f25c61c019b40b2919f08442b363236",
+    "m_Title": "TODO: Border only",
+    "m_Content": "Write something here",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": 2505.0,
+        "y": -851.0,
+        "width": 327.5,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicValueMaterialSlot",
     "m_ObjectId": "7fd96dd0a0ed45bb8bc5070c70506567",
     "m_Id": 0,
@@ -6023,7 +6052,7 @@
     "m_ObjectId": "91f3ef25411d43b1a89a24518f644d86",
     "m_Title": "Background Color",
     "m_Position": {
-        "x": -314.0,
+        "x": -313.9998779296875,
         "y": -683.0
     }
 }
@@ -7093,6 +7122,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "b230fd3a4cee4c689ac16dfa0eac553b",
+    "m_Title": "TODO: Combine borders",
+    "m_Content": "Write something here",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": 2508.0,
+        "y": -820.0,
+        "width": 327.5,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicValueMaterialSlot",
     "m_ObjectId": "b26a4d16f7ba4c1b8d61d74849b3364a",
     "m_Id": 1,
@@ -7501,8 +7550,8 @@
     "m_ObjectId": "be04c12682714465a5c074f84c17bb6b",
     "m_Title": "Border",
     "m_Position": {
-        "x": -200.5,
-        "y": -1347.0
+        "x": -200.5001220703125,
+        "y": -1346.9998779296875
     }
 }
 
@@ -7541,7 +7590,7 @@
     "m_ObjectId": "be77da2f428343cc9e76ba644c11e761",
     "m_Title": "Texture offset",
     "m_Position": {
-        "x": -2723.0,
+        "x": -2722.999755859375,
         "y": 2318.5
     }
 }
@@ -7689,6 +7738,26 @@
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "c26d36c37b0b4a15b24299c71882fd98",
+    "m_Title": "TODO: dashed border (skip round parts)",
+    "m_Content": "For selection\n",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": 2847.5,
+        "y": 351.0,
+        "width": 437.871826171875,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
 }
 
 {
@@ -9190,7 +9259,7 @@
     "m_ObjectId": "e3c08d3d7f114e33b784c2d30648530e",
     "m_Title": "Inner Rectangle (content)",
     "m_Position": {
-        "x": -983.0,
+        "x": -983.0001220703125,
         "y": -282.0
     }
 }
@@ -9499,7 +9568,7 @@
     "m_ObjectId": "eb71c58b73be4d84b0c85e41ac93bdb5",
     "m_Title": "Outer Rectangle",
     "m_Position": {
-        "x": -982.5,
+        "x": -982.4998779296875,
         "y": -1523.5
     }
 }
@@ -9634,7 +9703,7 @@
     "m_Title": "Normalized scale",
     "m_Position": {
         "x": -4060.5,
-        "y": -1658.0
+        "y": -1657.999755859375
     }
 }
 
