@@ -586,6 +586,20 @@
 }
 
 {
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.BooleanMaterialSlot",
+    "m_ObjectId": "0ca4126a829643d1912b4523e23099e3",
+    "m_Id": 1538397778,
+    "m_DisplayName": "Edge Overlap Multiply (bottom-right) (1)",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "_Edge_Overlap_Multiply_bottom_right_1",
+    "m_StageCapability": 2,
+    "m_Value": false,
+    "m_DefaultValue": false
+}
+
+{
     "m_SGVersion": 1,
     "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
     "m_ObjectId": "0cd8af8a3ef04eaf8c6afb9f071c5e1f",
@@ -618,10 +632,10 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "0db4ba661b214200bcc7103fcf5d8a71",
     "m_Id": 1,
-    "m_DisplayName": "Inner_Mask",
+    "m_DisplayName": "Inner_Rectangle_Mask",
     "m_SlotType": 1,
     "m_Hidden": false,
-    "m_ShaderOutputName": "Inner_Mask",
+    "m_ShaderOutputName": "Inner_Rectangle_Mask",
     "m_StageCapability": 2,
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
@@ -978,6 +992,20 @@
     "m_Property": {
         "m_Id": "cd11edcd28ed44a48bae27169d722223"
     }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.BooleanMaterialSlot",
+    "m_ObjectId": "2fb631886a384753a2eb13d9946672f2",
+    "m_Id": 1834978398,
+    "m_DisplayName": "Edge Overlap Multiply (top-right) (3)",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "_Edge_Overlap_Multiply_top_right_3",
+    "m_StageCapability": 2,
+    "m_Value": false,
+    "m_DefaultValue": false
 }
 
 {
@@ -1393,10 +1421,10 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "43dfded313a143b591f0f79fb4da9a11",
     "m_Id": 2,
-    "m_DisplayName": "Outer_Mask",
+    "m_DisplayName": "Outer_Rectangle_Mask",
     "m_SlotType": 1,
     "m_Hidden": false,
-    "m_ShaderOutputName": "Outer_Mask",
+    "m_ShaderOutputName": "Outer_Rectangle_Mask",
     "m_StageCapability": 2,
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
@@ -1911,6 +1939,31 @@
 }
 
 {
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
+    "m_ObjectId": "6aabcddbcd0a4260a141746c8e4f178e",
+    "m_Id": -388374474,
+    "m_DisplayName": "Smooth Shape (bl, br, tl, tr) (1)",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "_Smooth_Shape_bl_br_tl_tr_1",
+    "m_StageCapability": 2,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "m_Labels": []
+}
+
+{
     "m_SGVersion": 1,
     "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
     "m_ObjectId": "6ad6a22024f144f5ab052c6b3fff4559",
@@ -2190,6 +2243,21 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "8717c62957aa4a05a8372cd104ca7094",
+    "m_Id": 3,
+    "m_DisplayName": "Border_Mask",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Border_Mask",
+    "m_StageCapability": 2,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.SubGraphNode",
     "m_ObjectId": "8f39694593bf4d0a9da767e6ac1d83d2",
     "m_Group": {
@@ -2229,6 +2297,24 @@
             "m_Id": "ba9ea8e0c049479f83e01f30fe5312f9"
         },
         {
+            "m_Id": "6aabcddbcd0a4260a141746c8e4f178e"
+        },
+        {
+            "m_Id": "e78e07a7988d4295999eae019c4d6201"
+        },
+        {
+            "m_Id": "0ca4126a829643d1912b4523e23099e3"
+        },
+        {
+            "m_Id": "bf50474faa914dce8e5feb9ebddf6c6f"
+        },
+        {
+            "m_Id": "2fb631886a384753a2eb13d9946672f2"
+        },
+        {
+            "m_Id": "900f5ee042e648d88eb0e9bb00315d29"
+        },
+        {
             "m_Id": "e17f941b687f4479b17ae435c0a3f4c0"
         },
         {
@@ -2236,6 +2322,9 @@
         },
         {
             "m_Id": "43dfded313a143b591f0f79fb4da9a11"
+        },
+        {
+            "m_Id": "8717c62957aa4a05a8372cd104ca7094"
         }
     ],
     "synonyms": [],
@@ -2254,7 +2343,13 @@
         "9918990a-f3c2-4c4c-a696-219e497e8ad3",
         "a7100141-a615-4892-8d68-f95363d05361",
         "0008cb29-365f-4ae8-a589-4329a09db4c5",
-        "6c56fbbc-0bc2-4660-83b3-1695db7e4988"
+        "6c56fbbc-0bc2-4660-83b3-1695db7e4988",
+        "97261086-41ba-46fa-b3df-c90fb96ecc36",
+        "ef2b71f5-703b-465e-b000-c12bdb8236d6",
+        "d31824e0-740f-4cba-ab5f-4f8a16195f4e",
+        "ffbb85b0-6248-4fc9-9296-8cc9431b84d9",
+        "f7dc2220-b6da-47df-a0e8-424604f01e9b",
+        "5f28e2dc-51d8-410d-b780-739666d41352"
     ],
     "m_PropertyIds": [
         1056327342,
@@ -2263,10 +2358,30 @@
         -1728085465,
         -584572998,
         -1508382349,
-        929643814
+        929643814,
+        -388374474,
+        1417839525,
+        1538397778,
+        -1602590167,
+        1834978398,
+        -632952875
     ],
     "m_Dropdowns": [],
     "m_DropdownSelectedEntries": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.BooleanMaterialSlot",
+    "m_ObjectId": "900f5ee042e648d88eb0e9bb00315d29",
+    "m_Id": -632952875,
+    "m_DisplayName": "Smooth Invert",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "_Smooth_Invert",
+    "m_StageCapability": 2,
+    "m_Value": false,
+    "m_DefaultValue": false
 }
 
 {
@@ -2905,6 +3020,20 @@
         "x": 0.0,
         "y": 1.0
     }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.BooleanMaterialSlot",
+    "m_ObjectId": "bf50474faa914dce8e5feb9ebddf6c6f",
+    "m_Id": -1602590167,
+    "m_DisplayName": "Edge Overlap Multiply (top-left) (2)",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "_Edge_Overlap_Multiply_top_left_2",
+    "m_StageCapability": 2,
+    "m_Value": false,
+    "m_DefaultValue": false
 }
 
 {
@@ -3572,6 +3701,20 @@
     },
     "m_Labels": [],
     "m_Space": 0
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.BooleanMaterialSlot",
+    "m_ObjectId": "e78e07a7988d4295999eae019c4d6201",
+    "m_Id": 1417839525,
+    "m_DisplayName": "Edge Overlap Multiply (bottom-left)",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "_Edge_Overlap_Multiply_bottom_left",
+    "m_StageCapability": 2,
+    "m_Value": false,
+    "m_DefaultValue": false
 }
 
 {
