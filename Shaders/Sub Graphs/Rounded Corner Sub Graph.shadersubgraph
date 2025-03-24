@@ -36,6 +36,9 @@
     "m_CategoryData": [
         {
             "m_Id": "2ca3dc74aa4448e7a284386f37aaa64d"
+        },
+        {
+            "m_Id": "83451ce3d4584aea86a123bf3f476bd2"
         }
     ],
     "m_Nodes": [
@@ -2326,10 +2329,10 @@
     "m_Guid": {
         "m_GuidSerialized": "19ab63e4-c3d8-41f6-904e-792fd663c6be"
     },
-    "m_Name": "Border Curvature Offset",
+    "m_Name": "Gradient Offset",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Border Curvature Offset",
-    "m_DefaultReferenceName": "_Border_Curvature_Offset",
+    "m_RefNameGeneratedByDisplayName": "Gradient Offset",
+    "m_DefaultReferenceName": "_Gradient_Offset",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -2550,10 +2553,10 @@
     "m_Guid": {
         "m_GuidSerialized": "36358e46-a184-42f2-a532-3e8f9c5b6c46"
     },
-    "m_Name": "Border Curvature Shape",
+    "m_Name": "Gradient Shape",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Border Curvature Shape",
-    "m_DefaultReferenceName": "_Border_Curvature_Shape",
+    "m_RefNameGeneratedByDisplayName": "Gradient Shape",
+    "m_DefaultReferenceName": "_Gradient_Shape",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -3408,10 +3411,10 @@
     "m_Guid": {
         "m_GuidSerialized": "ea961962-06c0-4164-8f5f-6bd12cf13497"
     },
-    "m_Name": "Border Gradient (smoothstep / linear)",
+    "m_Name": "Gradient Base (smoothstep / linear)",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Border Gradient (smoothstep / linear)",
-    "m_DefaultReferenceName": "_Border_Gradient_smoothstep_linear",
+    "m_RefNameGeneratedByDisplayName": "Gradient Base (smoothstep / linear)",
+    "m_DefaultReferenceName": "_Gradient_Base_smoothstep_linear",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -3476,21 +3479,6 @@
         },
         {
             "m_Id": "db82a861d1b440c09f8c2055a0a7f79c"
-        },
-        {
-            "m_Id": "e7facb0ec8e444469be8bcf45f94e627"
-        },
-        {
-            "m_Id": "b59cf25b911d41c1845c8f916a7cb158"
-        },
-        {
-            "m_Id": "2911bee55b1b48b688d873fac178dc35"
-        },
-        {
-            "m_Id": "11b50cb479e34ad89aceec4db3073eb7"
-        },
-        {
-            "m_Id": "0cf9c37673f3418a942cfaab954cbca7"
         }
     ]
 }
@@ -6787,6 +6775,30 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.CategoryData",
+    "m_ObjectId": "83451ce3d4584aea86a123bf3f476bd2",
+    "m_Name": "Border",
+    "m_ChildObjectList": [
+        {
+            "m_Id": "e7facb0ec8e444469be8bcf45f94e627"
+        },
+        {
+            "m_Id": "2911bee55b1b48b688d873fac178dc35"
+        },
+        {
+            "m_Id": "11b50cb479e34ad89aceec4db3073eb7"
+        },
+        {
+            "m_Id": "0cf9c37673f3418a942cfaab954cbca7"
+        },
+        {
+            "m_Id": "b59cf25b911d41c1845c8f916a7cb158"
+        }
+    ]
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
     "m_ObjectId": "83afcfd1bb4d41d498910dab847e6893",
     "m_Id": 1,
@@ -8523,10 +8535,10 @@
     "m_Guid": {
         "m_GuidSerialized": "88d12310-1f21-482e-9d95-e8fb7637a55e"
     },
-    "m_Name": "Border Edge Multiply (off / on)",
+    "m_Name": "Edge Multiply (off / on)",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Border Edge Multiply (off / on)",
-    "m_DefaultReferenceName": "_Border_Edge_Multiply_off_on",
+    "m_RefNameGeneratedByDisplayName": "Edge Multiply (off / on)",
+    "m_DefaultReferenceName": "_Edge_Multiply_off_on",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -10725,10 +10737,10 @@
     "m_Guid": {
         "m_GuidSerialized": "c33cb7d5-ffdf-4018-8299-56e6f1ddee8c"
     },
-    "m_Name": "Border Width (right, top)",
+    "m_Name": "Width (right, top)",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Border Width (right, top)",
-    "m_DefaultReferenceName": "_Border_Width_right_top",
+    "m_RefNameGeneratedByDisplayName": "Width (right, top)",
+    "m_DefaultReferenceName": "_Width_right_top",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
