@@ -38,8 +38,20 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Content_Texture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSubGraph_69d1e18ac4644548bc6387a1c6013881_Texture_3820041027_Texture2D:
+        m_Texture: {fileID: 2800000, guid: a0fc465d6cf04254a2938578735e2383, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -66,6 +78,10 @@ Material:
     - _Border_Top: 0.2
     - _Border_Width_Reference: 0
     - _CastShadows: 1
+    - _Content_Enable_Texture: 0
+    - _Content_From_Object: 1
+    - _Content_Use_Color: 0
+    - _Content_Use_object_settings: 0
     - _Corner_Radius_Bottom_Left: 0
     - _Corner_Radius_Bottom_Right: 0.5
     - _Corner_Radius_Top_Left: 0.4
@@ -90,6 +106,7 @@ Material:
     - _Texture_Scale: 1
     - _Texture_Scale_Height: 0
     - _Texture_Scale_Width: 1
+    - _Texture_Zoom: 0
     - _Use_Color: 0
     - _Width: 0
     - _ZTest: 4
@@ -99,7 +116,10 @@ Material:
     - _Border_Color: {r: 0.19932343, g: 0.18640977, b: 0.5566038, a: 0}
     - _Border_Width: {r: 0.1, g: 0.1, b: 0.1, a: 0.1}
     - _Color: {r: 0, g: 0, b: 0, a: 0}
+    - _Content_Background_Color: {r: 0.8773585, g: 0.004138493, b: 0.73967785, a: 1}
+    - _Content_Color: {r: 0, g: 0, b: 0, a: 0}
     - _Corner_Radius: {r: 0.3, g: 0.2, b: 0.1, a: 0.1}
+    - _Padding_left_right_bottom_top: {r: 0, g: 0, b: 0, a: 0}
     - _Scale: {r: 1, g: 0.7, b: 0, a: 0}
     - _Scaling: {r: 0.2, g: 1, b: 0, a: 0}
     - _Texture_Offset: {r: 0, g: -0.4, b: 0, a: 0}
