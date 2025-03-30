@@ -733,6 +733,31 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
+    "m_ObjectId": "3b9b59fc0c0049c4aa6a1c3893cd779f",
+    "m_Id": -46619394,
+    "m_DisplayName": "Outer Corner Radius Fraction",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "_Outer_Corner_Radius_Fraction",
+    "m_StageCapability": 2,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.BlockNode",
     "m_ObjectId": "3e68717f59564a73af38cf70d3a6e10c",
     "m_Group": {
@@ -1345,6 +1370,20 @@
         "w": 0.0
     },
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.BooleanMaterialSlot",
+    "m_ObjectId": "86e1b07dd4de4217832a2b8baaee553e",
+    "m_Id": -1199327229,
+    "m_DisplayName": "Size Rerefence [width / height]",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "_Size_Rerefence_width_height",
+    "m_StageCapability": 2,
+    "m_Value": false,
+    "m_DefaultValue": false
 }
 
 {
@@ -2597,6 +2636,12 @@
             "m_Id": "eca98d62c8e24018b3b2aa6dbb550c1c"
         },
         {
+            "m_Id": "86e1b07dd4de4217832a2b8baaee553e"
+        },
+        {
+            "m_Id": "3b9b59fc0c0049c4aa6a1c3893cd779f"
+        },
+        {
             "m_Id": "045765c54ffe4b5ab0244e41019b9589"
         },
         {
@@ -2699,7 +2744,9 @@
         "d31824e0-740f-4cba-ab5f-4f8a16195f4e",
         "ffbb85b0-6248-4fc9-9296-8cc9431b84d9",
         "f7dc2220-b6da-47df-a0e8-424604f01e9b",
-        "5f28e2dc-51d8-410d-b780-739666d41352"
+        "5f28e2dc-51d8-410d-b780-739666d41352",
+        "7898d6f6-19df-4071-b27d-a8a2980ac222",
+        "96549e8c-367b-459b-bf9a-4156b696b678"
     ],
     "m_PropertyIds": [
         -777369337,
@@ -2728,7 +2775,9 @@
         1538397778,
         -1602590167,
         1834978398,
-        -632952875
+        -632952875,
+        -1199327229,
+        -46619394
     ],
     "m_Dropdowns": [],
     "m_DropdownSelectedEntries": []
