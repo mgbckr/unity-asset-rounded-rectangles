@@ -2186,7 +2186,7 @@
     "m_Title": "Gradient border",
     "m_Position": {
         "x": -1495.0,
-        "y": 841.0004272460938
+        "y": 841.0
     }
 }
 
@@ -2236,11 +2236,11 @@
     "m_Type": "UnityEditor.ShaderGraph.BooleanMaterialSlot",
     "m_ObjectId": "02b39a7acedc4359a9eb5ed4b84b7fef",
     "m_Id": 2140440091,
-    "m_DisplayName": "Edge Merging [min / multiply]  (right-bottom)",
+    "m_DisplayName": "Edge Overlay [min / multiply]  (right-bottom)",
     "m_SlotType": 0,
     "m_Hidden": false,
-    "m_ShaderOutputName": "_Edge_Merging_min_multiply_right_bottom",
-    "m_StageCapability": 2,
+    "m_ShaderOutputName": "_Edge_Overlay_min_multiply_right_bottom",
+    "m_StageCapability": 3,
     "m_Value": false,
     "m_DefaultValue": false
 }
@@ -3187,11 +3187,11 @@
     "m_Type": "UnityEditor.ShaderGraph.BooleanMaterialSlot",
     "m_ObjectId": "19e3bc4c3dc54c2f9c026b88e69886aa",
     "m_Id": 840604347,
-    "m_DisplayName": "Edge Merging [min / multiply]  (right-top)",
+    "m_DisplayName": "Edge Overlay [min / multiply]  (right-top)",
     "m_SlotType": 0,
     "m_Hidden": false,
-    "m_ShaderOutputName": "_Edge_Merging_min_multiply_right_top",
-    "m_StageCapability": 2,
+    "m_ShaderOutputName": "_Edge_Overlay_min_multiply_right_top",
+    "m_StageCapability": 3,
     "m_Value": false,
     "m_DefaultValue": false
 }
@@ -3392,11 +3392,11 @@
     "m_Type": "UnityEditor.ShaderGraph.BooleanMaterialSlot",
     "m_ObjectId": "1f4e197600ce4bcd9ffb5e5aa20f0570",
     "m_Id": 681800813,
-    "m_DisplayName": "Edge Merging [min / multiply]  (left-top)",
+    "m_DisplayName": "Edge Overlay [min / multiply]  (left-top)",
     "m_SlotType": 0,
     "m_Hidden": false,
-    "m_ShaderOutputName": "_Edge_Merging_min_multiply_left_top",
-    "m_StageCapability": 2,
+    "m_ShaderOutputName": "_Edge_Overlay_min_multiply_left_top",
+    "m_StageCapability": 3,
     "m_Value": false,
     "m_DefaultValue": false
 }
@@ -3799,6 +3799,20 @@
         "z": 0.0,
         "w": 0.0
     }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.BooleanMaterialSlot",
+    "m_ObjectId": "254d43f9df0c4d029d80f13c01a13cfc",
+    "m_Id": -1378899709,
+    "m_DisplayName": "Edge Interaction [overwrite / overlay] (left-top)",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "_Edge_Interaction_overwrite_overlay_left_top",
+    "m_StageCapability": 3,
+    "m_Value": false,
+    "m_DefaultValue": false
 }
 
 {
@@ -4327,6 +4341,18 @@
             "m_Id": "08412d66a2054e70921f4641b403c22f"
         },
         {
+            "m_Id": "c208afc94ea046f8ab23a14c304f3661"
+        },
+        {
+            "m_Id": "254d43f9df0c4d029d80f13c01a13cfc"
+        },
+        {
+            "m_Id": "781a74bc1cad49c38a9a4243fd0e1a4c"
+        },
+        {
+            "m_Id": "b88112574e9749648e7e077294997659"
+        },
+        {
             "m_Id": "eb3c9b752bb2463799f3f1a82f4f0300"
         },
         {
@@ -4369,7 +4395,11 @@
         "5def0837-9d16-47c0-bb58-52be013b40ed",
         "3831df85-af3c-450d-92c6-f16846c26e3d",
         "72260485-3be6-4951-8c23-f50af49a164e",
-        "30d44851-b29c-4739-a304-0354d564f411"
+        "30d44851-b29c-4739-a304-0354d564f411",
+        "e584a320-7ba2-47ab-a240-d3cce2461bd5",
+        "ae25c81c-29bf-4ef0-8b06-81cc2b4e9b81",
+        "a14e6d54-3924-4337-b492-148a27d754b5",
+        "085734de-65de-4112-b489-eee63507cffb"
     ],
     "m_PropertyIds": [
         -369546437,
@@ -4389,7 +4419,11 @@
         1228797595,
         681800813,
         2140440091,
-        840604347
+        840604347,
+        -1142432062,
+        -1378899709,
+        -583462429,
+        1415896961
     ],
     "m_Dropdowns": [],
     "m_DropdownSelectedEntries": []
@@ -5793,8 +5827,8 @@
     "m_ObjectId": "545108a865004d598f20d914454d1370",
     "m_Title": "Inner Rectangle (content)",
     "m_Position": {
-        "x": 599.0001831054688,
-        "y": 214.00021362304688
+        "x": 599.0,
+        "y": 214.0
     }
 }
 
@@ -6323,7 +6357,7 @@
     "m_SlotType": 0,
     "m_Hidden": false,
     "m_ShaderOutputName": "_Gradient_Shape_smoothstep_linear_top",
-    "m_StageCapability": 2,
+    "m_StageCapability": 3,
     "m_Value": false,
     "m_DefaultValue": false
 }
@@ -7252,6 +7286,20 @@
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_Value": false,
+    "m_DefaultValue": false
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.BooleanMaterialSlot",
+    "m_ObjectId": "781a74bc1cad49c38a9a4243fd0e1a4c",
+    "m_Id": -583462429,
+    "m_DisplayName": "Edge Interaction [overwrite / overlay] (right-bottom)",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "_Edge_Interaction_overwrite_overlay_right_bottom",
     "m_StageCapability": 3,
     "m_Value": false,
     "m_DefaultValue": false
@@ -8996,7 +9044,7 @@
     "m_SlotType": 0,
     "m_Hidden": false,
     "m_ShaderOutputName": "_Corner_Style_right_bottom",
-    "m_StageCapability": 2,
+    "m_StageCapability": 3,
     "m_Value": false,
     "m_DefaultValue": false
 }
@@ -9746,7 +9794,7 @@
     "m_SlotType": 0,
     "m_Hidden": false,
     "m_ShaderOutputName": "_Gradient_Shape_smoothstep_linear_right",
-    "m_StageCapability": 2,
+    "m_StageCapability": 3,
     "m_Value": false,
     "m_DefaultValue": false
 }
@@ -10344,6 +10392,20 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.BooleanMaterialSlot",
+    "m_ObjectId": "b88112574e9749648e7e077294997659",
+    "m_Id": 1415896961,
+    "m_DisplayName": "Edge Interaction [overwrite / overlay] (right-top)",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "_Edge_Interaction_overwrite_overlay_right_top",
+    "m_StageCapability": 3,
+    "m_Value": false,
+    "m_DefaultValue": false
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "b88deb9357b845edb536d09c24c1c027",
     "m_Id": 0,
@@ -10401,7 +10463,7 @@
     "m_SlotType": 0,
     "m_Hidden": false,
     "m_ShaderOutputName": "_UV",
-    "m_StageCapability": 2,
+    "m_StageCapability": 3,
     "m_Value": {
         "x": 0.0,
         "y": 0.0
@@ -10550,6 +10612,20 @@
         "z": 0.0,
         "w": 0.0
     }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.BooleanMaterialSlot",
+    "m_ObjectId": "c208afc94ea046f8ab23a14c304f3661",
+    "m_Id": -1142432062,
+    "m_DisplayName": "Edge Interaction [overwrite / overlay] (left-bottom)",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "_Edge_Interaction_overwrite_overlay_left_bottom",
+    "m_StageCapability": 3,
+    "m_Value": true,
+    "m_DefaultValue": false
 }
 
 {
@@ -11693,7 +11769,7 @@
     "m_Title": "Color",
     "m_Position": {
         "x": 1778.0,
-        "y": 622.50048828125
+        "y": 622.5
     }
 }
 
@@ -11994,10 +12070,10 @@
     "m_Type": "UnityEditor.ShaderGraph.BooleanMaterialSlot",
     "m_ObjectId": "eb3c9b752bb2463799f3f1a82f4f0300",
     "m_Id": 1228797595,
-    "m_DisplayName": "Edge Merging [min / multiply] (left-bottom)",
+    "m_DisplayName": "Edge Overlay [min / multiply] (left-bottom)",
     "m_SlotType": 0,
     "m_Hidden": false,
-    "m_ShaderOutputName": "_Edge_Merging_min_multiply_left_bottom",
+    "m_ShaderOutputName": "_Edge_Overlay_min_multiply_left_bottom",
     "m_StageCapability": 2,
     "m_Value": false,
     "m_DefaultValue": false
@@ -12545,7 +12621,7 @@
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "OutVector1",
-    "m_StageCapability": 2,
+    "m_StageCapability": 3,
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
     "m_Labels": []
@@ -12635,7 +12711,7 @@
     "m_SlotType": 0,
     "m_Hidden": false,
     "m_ShaderOutputName": "_Corner_Style_right_top",
-    "m_StageCapability": 2,
+    "m_StageCapability": 3,
     "m_Value": false,
     "m_DefaultValue": false
 }
@@ -12649,7 +12725,7 @@
     "m_SlotType": 0,
     "m_Hidden": false,
     "m_ShaderOutputName": "_Corner_Style_left_top",
-    "m_StageCapability": 2,
+    "m_StageCapability": 3,
     "m_Value": false,
     "m_DefaultValue": false
 }
