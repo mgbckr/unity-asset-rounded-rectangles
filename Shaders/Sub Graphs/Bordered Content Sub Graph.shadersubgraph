@@ -2517,7 +2517,7 @@
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Content_Padding",
-    "m_StageCapability": 2,
+    "m_StageCapability": 3,
     "m_Value": {
         "x": 0.0,
         "y": 0.0,
@@ -4179,7 +4179,7 @@
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Content_Mask",
-    "m_StageCapability": 2,
+    "m_StageCapability": 3,
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
     "m_Labels": []
@@ -4442,10 +4442,10 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "a7f0642bc2544045822b671580ace575",
     "m_Id": -2136003565,
-    "m_DisplayName": "Corner Radius (bl, br, tl, tr)",
+    "m_DisplayName": "Corner Radius (lb, lt, rb, rt)",
     "m_SlotType": 0,
     "m_Hidden": false,
-    "m_ShaderOutputName": "_Corner_Radius_bl_br_tl_tr",
+    "m_ShaderOutputName": "_Corner_Radius_lb_lt_rb_rt",
     "m_StageCapability": 2,
     "m_Value": {
         "x": 0.6000000238418579,
