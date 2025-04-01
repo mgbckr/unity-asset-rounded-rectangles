@@ -1406,6 +1406,20 @@
                 "m_Node": {
                     "m_Id": "c21d33e971664a529308aac1c897f68f"
                 },
+                "m_SlotId": 1
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "ed26942d1f184772b4744c3f18529dca"
+                },
+                "m_SlotId": 1
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "c21d33e971664a529308aac1c897f68f"
+                },
                 "m_SlotId": 4
             },
             "m_InputSlot": {
@@ -1427,6 +1441,20 @@
                     "m_Id": "d4ff5d73a4324130b57965f3c66c63c4"
                 },
                 "m_SlotId": 929643814
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "c21d33e971664a529308aac1c897f68f"
+                },
+                "m_SlotId": 5
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "ed26942d1f184772b4744c3f18529dca"
+                },
+                "m_SlotId": 2
             }
         },
         {
@@ -2059,8 +2087,8 @@
     "m_ObjectId": "0955a08cbb84459388d540b8bc9e0688",
     "m_Title": "Border width of outer lining",
     "m_Position": {
-        "x": -1569.4998779296875,
-        "y": -1948.9998779296875
+        "x": -1569.5,
+        "y": -1949.0
     }
 }
 
@@ -2382,7 +2410,7 @@
     "m_SlotType": 0,
     "m_Hidden": false,
     "m_ShaderOutputName": "Content_Mask",
-    "m_StageCapability": 3,
+    "m_StageCapability": 2,
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
     "m_Labels": []
@@ -2644,7 +2672,7 @@
     "m_Title": "Inner lining",
     "m_Position": {
         "x": 2809.0,
-        "y": -936.9999389648438
+        "y": -937.0
     }
 }
 
@@ -2719,7 +2747,7 @@
     "m_Title": "Outer lining",
     "m_Position": {
         "x": 165.5,
-        "y": -458.9999694824219
+        "y": -459.0
     }
 }
 
@@ -3466,7 +3494,7 @@
     "m_SlotType": 0,
     "m_Hidden": false,
     "m_ShaderOutputName": "Content_Padding",
-    "m_StageCapability": 3,
+    "m_StageCapability": 2,
     "m_Value": {
         "x": 0.0,
         "y": 0.0,
@@ -5237,7 +5265,7 @@
     "m_ObjectId": "596d814d5fe44a34a78c94c62bd2af8a",
     "m_Title": "Border width of inner lining",
     "m_Position": {
-        "x": -1561.9998779296875,
+        "x": -1562.0,
         "y": -2409.0
     }
 }
@@ -6816,8 +6844,8 @@
     "m_ObjectId": "84915abe17324d38ac4c93bc90b99379",
     "m_Title": "Debugging Alpha",
     "m_Position": {
-        "x": 5077.49951171875,
-        "y": 68.00001525878906
+        "x": 5077.5,
+        "y": 68.0
     }
 }
 
@@ -7010,8 +7038,8 @@
     "m_ObjectId": "8b71c7d3d72344e88dcb46fe2dc407f8",
     "m_Title": "Main",
     "m_Position": {
-        "x": 1282.4998779296875,
-        "y": -528.9999389648438
+        "x": 1282.5,
+        "y": -529.0
     }
 }
 
@@ -8299,8 +8327,8 @@
     "m_ObjectId": "abee5da759be45249125ec044877020a",
     "m_Title": "Border width of outer shadow",
     "m_Position": {
-        "x": -1930.9998779296875,
-        "y": -1714.5001220703125
+        "x": -1931.0,
+        "y": -1714.5
     }
 }
 
@@ -8815,7 +8843,7 @@
     "m_ObjectId": "b9169c9156104b3ba11debfa925af04b",
     "m_Title": "Outer shadow",
     "m_Position": {
-        "x": -1248.4998779296875,
+        "x": -1248.5,
         "y": -855.0
     }
 }
@@ -8869,7 +8897,7 @@
     "m_ObjectId": "baeb46a8653c415f92d9a1d17256a9de",
     "m_Title": "Overall border width of main rectangle",
     "m_Position": {
-        "x": -2975.999755859375,
+        "x": -2976.0,
         "y": -2218.0
     }
 }
@@ -9247,7 +9275,7 @@
     "m_ObjectId": "cda85d9d1c9f4b55867a46a7b97ed6ef",
     "m_Title": "Size reference",
     "m_Position": {
-        "x": -3541.499755859375,
+        "x": -3541.5,
         "y": -2282.0
     }
 }
@@ -9258,7 +9286,7 @@
     "m_ObjectId": "ce2a5bf901e540ab9aa1b8474070f801",
     "m_Title": "Inner shadow",
     "m_Position": {
-        "x": 3996.999755859375,
+        "x": 3997.0,
         "y": -826.5
     }
 }
@@ -9501,8 +9529,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 5298.5,
-            "y": 234.49998474121095,
+            "x": 5297.5,
+            "y": 230.0,
             "width": 208.0,
             "height": 302.0
         }
@@ -10018,8 +10046,8 @@
     "m_ObjectId": "e6f1d17e173f4bfaaee958a9510b3153",
     "m_Title": "Corner width of main border",
     "m_Position": {
-        "x": -1931.5001220703125,
-        "y": -1396.5001220703125
+        "x": -1931.5,
+        "y": -1396.5
     }
 }
 
@@ -10854,7 +10882,7 @@
     "m_Title": "Border width of inner shadow",
     "m_Position": {
         "x": -244.0,
-        "y": -2757.499755859375
+        "y": -2757.5
     }
 }
 
@@ -10990,7 +11018,7 @@
     "m_ObjectId": "ff079d9e5ba043d3b94939ac9519078b",
     "m_Title": "Remaining border width of main rectangle",
     "m_Position": {
-        "x": -766.0001220703125,
+        "x": -766.0,
         "y": -2105.5
     }
 }
