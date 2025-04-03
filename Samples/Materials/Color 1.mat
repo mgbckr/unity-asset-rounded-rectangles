@@ -68,6 +68,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Align_Bottom: 1
+    - _Align_Left: 1
+    - _Align_Offset_Relative_Reference: 1
     - _AlphaClip: 1
     - _AlphaToMask: 0
     - _Blend: 0
@@ -89,6 +92,8 @@ Material:
     - _Corner_Radius_Width_Reference: 1
     - _Cull: 2
     - _DstBlend: 10
+    - _Fit_Height_to_Padding: 1
+    - _Fit_Width_to_Padding: 1
     - _Height: 0.8
     - _Padding_Bottom: 0
     - _Padding_Left: 0
@@ -96,6 +101,9 @@ Material:
     - _Padding_Top: 0
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _Scale_Reference_relative_absolute: 0
+    - _Scale_Use_object_scale_off_on: 0
+    - _Size_Rerefence_width_height: 0
     - _SrcBlend: 5
     - _Surface: 1
     - _Texture_Align_Bottom: 1
@@ -112,12 +120,40 @@ Material:
     - _ZTest: 4
     - _ZWrite: 0
     - _ZWriteControl: 0
+    - _Zoom: 1
     m_Colors:
+    - _Align_Offset: {r: 0, g: 0, b: 0, a: 0}
     - _Border_Color: {r: 0.29744035, g: 0.5568628, b: 0.18823528, a: 0}
     - _Border_Width: {r: 0.1, g: 0.1, b: 0.1, a: 0.1}
     - _Content_Background_Color: {r: 0.8773585, g: 0.004138493, b: 0.73967785, a: 1}
     - _Content_Color: {r: 0, g: 0, b: 0, a: 0}
     - _Corner_Radius: {r: 0.3, g: 0.2, b: 0.1, a: 0.1}
+    - _Corner_Radius_bl_br_tl_tr: {r: 1, g: 0, b: 0, a: 0}
+    - _Inner_Lining_Color: {r: 0.004716992, g: 0.7882094, b: 1, a: 0.7882353}
+    - _Inner_Lining_Width_left_right_bottom_top: {r: 0, g: 0, b: 0, a: 0}
+    - _Inner_Shadow_Color: {r: 0.8862745, g: 0, b: 0, a: 1}
+    - _Inner_Shadow_Corner_Style_cutout_gradient_lb_lt_rb_rt: {r: 0.1, g: 0.2, b: 0.3, a: 0.4}
+    - _Inner_Shadow_Edge_Blend_Mode_min_multiply_lb_lt_rb_rt: {r: 0.1, g: 0.2, b: 0.3, a: 0.4}
+    - _Inner_Shadow_Edge_Blend_overwrite_blend_lb_lt_rb_rt: {r: 0.1, g: 0.2, b: 0.3, a: 0.4}
+    - _Inner_Shadow_Edge_Priority_lb_lt_rb_rt: {r: 0.1, g: 0.2, b: 0.3, a: 0.4}
+    - _Inner_Shadow_Gradient_Offset_left_right_bottom_top: {r: 0, g: 0, b: 0, a: 0}
+    - _Inner_Shadow_Gradient_Shape_smoothstep_linear_left_right_bottom_top: {r: 0.1, g: 0.2, b: 0.3, a: 0.4}
+    - _Inner_Shadow_Gradient_Transform_left_right_bottom_top: {r: 0, g: 0, b: 0, a: 0}
+    - _Inner_Shadow_Width_left_right_bottom_top: {r: 0.1, g: 0.1, b: 0.1, a: 0.1}
+    - _Main_Color: {r: 1, g: 0, b: 0.16760436, a: 0.5019608}
+    - _Main_Width_left_right_bottom_top: {r: 0.1, g: 0.1, b: 0.1, a: 0.1}
+    - _Outer_Corner_Radius_Fraction: {r: 0, g: 0, b: 0, a: 0}
+    - _Outer_Lining_Color: {r: 0.9755855, g: 1, b: 0, a: 1}
+    - _Outer_Lining_Width_left_right_bottom_top: {r: 0, g: 0, b: 0, a: 0}
+    - _Outer_Shadow_Color: {r: 0.8773585, g: 0.0455233, b: 0.0455233, a: 1}
+    - _Outer_Shadow_Corner_Style_cutout_gradient_lb_lt_rb_rt: {r: 0.1, g: 0.2, b: 0.3, a: 0.4}
+    - _Outer_Shadow_Edge_Blend_Mode_min_multiply_lb_lt_rb_rt: {r: 0.1, g: 0.2, b: 0.3, a: 0.4}
+    - _Outer_Shadow_Edge_Blend_overwrite_blend_lb_lt_rb_rt: {r: 0.1, g: 0.2, b: 0.3, a: 0.4}
+    - _Outer_Shadow_Edge_Priority_lb_lt_rb_rt: {r: 0.1, g: 0.2, b: 0.3, a: 0.4}
+    - _Outer_Shadow_Gradient_Offset_left_right_bottom_top: {r: 0, g: 0, b: 0, a: 0}
+    - _Outer_Shadow_Gradient_Shape_smoothstep_linear_left_right_bottom_top: {r: 0.1, g: 0.2, b: 0.3, a: 0.4}
+    - _Outer_Shadow_Gradient_Transform_left_right_bottom_top: {r: 0, g: 0, b: 0, a: 0}
+    - _Outer_Shadow_Width_left_right_bottom_top: {r: 0.2, g: 0.2, b: 0.2, a: 0.2}
     - _Padding_left_right_bottom_top: {r: 0, g: 0, b: 0, a: 0}
     - _Scale: {r: 1, g: 0.7, b: 0, a: 0}
     - _Scaling: {r: 0.2, g: 1, b: 0, a: 0}
