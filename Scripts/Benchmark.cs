@@ -4,7 +4,8 @@ public class Benchmark : MonoBehaviour
 {
     public int numberOfDuplicates = 10; // Number of duplicates you want
     public Vector3 offset = new Vector3(0.001f, 0, 0.001f ); // Offset between objects to avoid overlap
-
+    public string colorAttribute = "_Color";
+    
     void Start()
     {
         // get quad component
@@ -32,12 +33,12 @@ public class Benchmark : MonoBehaviour
                     //         0.05f+ 0.01f * (i + 1), 
                     //         0.05f+ 0.01f * (i + 1), 
                     //         0.05f+ 0.01f * (i + 1)) );
-                    material.SetColor("_Color", 
+                    material.SetColor(colorAttribute, 
                         new Color(
                             1f - 1f/numberOfDuplicates * (i + 1),
                             0f,
                             0f,
-                            0.1f));
+                            1f));
                     
                     // set 
                 }
