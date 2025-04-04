@@ -255,20 +255,6 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
-                    "m_Id": "0f94049451434a258558ab95baa99349"
-                },
-                "m_SlotId": 0
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "216ab80b1a974247a52d0d42a3421962"
-                },
-                "m_SlotId": 0
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
                     "m_Id": "216ab80b1a974247a52d0d42a3421962"
                 },
                 "m_SlotId": 1
@@ -474,6 +460,20 @@
                     "m_Id": "dcc342f497844889986359fb0e797bd4"
                 },
                 "m_SlotId": -2136003565
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "659e818e68e543f18f10f8f37f2b7593"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "216ab80b1a974247a52d0d42a3421962"
+                },
+                "m_SlotId": 0
             }
         },
         {
@@ -1650,7 +1650,7 @@
     "m_Title": "UV",
     "m_Position": {
         "x": 2937.0,
-        "y": -1472.4998779296875
+        "y": -1472.5
     }
 }
 
@@ -2762,7 +2762,7 @@
     "m_Group": {
         "m_Id": ""
     },
-    "m_Name": "Texture Sub Graph",
+    "m_Name": "Texture with Flexible Settings",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {
@@ -5097,7 +5097,7 @@
     "m_Group": {
         "m_Id": ""
     },
-    "m_Name": "Simple Border Sub Graph",
+    "m_Name": "Frame with Triple Borders",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {

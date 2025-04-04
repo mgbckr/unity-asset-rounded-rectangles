@@ -32,12 +32,12 @@ public class Benchmark : MonoBehaviour
                     //         0.05f+ 0.01f * (i + 1), 
                     //         0.05f+ 0.01f * (i + 1), 
                     //         0.05f+ 0.01f * (i + 1)) );
-                    material.SetColor("_Main_Color", 
+                    material.SetColor("_Color", 
                         new Color(
                             1f - 1f/numberOfDuplicates * (i + 1),
                             0f,
                             0f,
-                            1f));
+                            0.1f));
                     
                     // set 
                 }
