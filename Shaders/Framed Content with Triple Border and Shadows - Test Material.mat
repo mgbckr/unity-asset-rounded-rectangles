@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Rounded Rectangle - Test Material
+  m_Name: Framed Content with Triple Border and Shadows - Test Material
   m_Shader: {fileID: -6465566751694194690, guid: ea12c3a0e289a432cb7b42bc1c84cc24, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -121,7 +121,7 @@ Material:
     - _Content_Background_Color: {r: 0.8773585, g: 0.004138493, b: 0.73967785, a: 1}
     - _Content_Color: {r: 0.03579378, g: 0, b: 1, a: 0.5803922}
     - _Corner_Radius: {r: 0.1, g: 0.1, b: 0.1, a: 0.1}
-    - _Corner_Radius_bl_br_tl_tr: {r: 1, g: 1, b: 1, a: 1}
+    - _Corner_Radius_bl_br_tl_tr: {r: 0.05, g: 0.05, b: 0.05, a: 0.05}
     - _Inner_Lining_Color: {r: 0.004716992, g: 0.7882094, b: 1, a: 0.7882353}
     - _Inner_Lining_Width_left_right_bottom_top: {r: 0, g: 0, b: 0, a: 0}
     - _Inner_Shadow_Color: {r: 0.8862745, g: 0, b: 0, a: 1}
@@ -133,8 +133,8 @@ Material:
     - _Inner_Shadow_Gradient_Shape_smoothstep_linear_left_right_bottom_top: {r: 0.1, g: 0.2, b: 0.3, a: 0.4}
     - _Inner_Shadow_Gradient_Transform_left_right_bottom_top: {r: 0, g: 0, b: 0, a: 0}
     - _Inner_Shadow_Width_left_right_bottom_top: {r: 0, g: 0, b: 0, a: 0}
-    - _Main_Color: {r: 1, g: 0, b: 0.16760436, a: 0.5019608}
-    - _Main_Width_left_right_bottom_top: {r: 0.1, g: 0.1, b: 0.1, a: 0.1}
+    - _Main_Color: {r: 0, g: 0, b: 0, a: 1}
+    - _Main_Width_left_right_bottom_top: {r: 0.01, g: 0.01, b: 0.01, a: 0.01}
     - _Outer_Corner_Radius_Fraction: {r: 0, g: 0, b: 0, a: 0}
     - _Outer_Lining_Color: {r: 0.9755855, g: 1, b: 0, a: 1}
     - _Outer_Lining_Width_left_right_bottom_top: {r: 0, g: 0, b: 0, a: 0}
@@ -147,7 +147,7 @@ Material:
     - _Outer_Shadow_Gradient_Shape_smoothstep_linear_left_right_bottom_top: {r: 0, g: 0, b: 0, a: 0}
     - _Outer_Shadow_Gradient_Transform_left_right_bottom_top: {r: 0, g: 0, b: 0, a: 0}
     - _Outer_Shadow_Width_left_right_bottom_top: {r: 0, g: 0, b: 0, a: 0}
-    - _Padding_left_right_bottom_top: {r: 0.333, g: 0.333, b: 0.333, a: 0.333}
+    - _Padding_left_right_bottom_top: {r: 0.01, g: 0.01, b: 0.01, a: 0.01}
     - _Scale: {r: 1, g: 1, b: 0, a: 0}
     - _Scaling: {r: 0.5, g: 0.5, b: 0, a: 0}
     - _Texture_Offset: {r: 0, g: 0, b: 0, a: 0}
