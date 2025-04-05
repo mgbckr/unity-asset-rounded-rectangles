@@ -121,9 +121,6 @@
             "m_Id": "9749d03d41ab488e8e1bf50bf27b9270"
         },
         {
-            "m_Id": "6b5f56a9a2354c6ea27bf39ddefe09df"
-        },
-        {
             "m_Id": "2b17100cd1c44db091bcf86137db14ee"
         },
         {
@@ -138,9 +135,6 @@
     "m_StickyNoteDatas": [
         {
             "m_Id": "c16f8f7404d6453a901fbf197cb866a8"
-        },
-        {
-            "m_Id": "fc5469ef1ddd43c6afb9bfed8eede0a2"
         }
     ],
     "m_Edges": [
@@ -377,7 +371,7 @@
             },
             "m_InputSlot": {
                 "m_Node": {
-                    "m_Id": "6b5f56a9a2354c6ea27bf39ddefe09df"
+                    "m_Id": "9749d03d41ab488e8e1bf50bf27b9270"
                 },
                 "m_SlotId": 0
             }
@@ -420,20 +414,6 @@
             "m_InputSlot": {
                 "m_Node": {
                     "m_Id": "a599aaead4c94be88bebd560474fc984"
-                },
-                "m_SlotId": 0
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
-                    "m_Id": "6b5f56a9a2354c6ea27bf39ddefe09df"
-                },
-                "m_SlotId": 2
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "9749d03d41ab488e8e1bf50bf27b9270"
                 },
                 "m_SlotId": 0
             }
@@ -1101,30 +1081,6 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
-    "m_ObjectId": "1fbc41c0373c48978991e7c4db04f76d",
-    "m_Id": 1,
-    "m_DisplayName": "B",
-    "m_SlotType": 0,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "B",
-    "m_StageCapability": 3,
-    "m_Value": {
-        "x": 0.004999999888241291,
-        "y": 0.0,
-        "z": 0.0,
-        "w": 0.0
-    },
-    "m_DefaultValue": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0,
-        "w": 0.0
-    }
-}
-
-{
-    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector2MaterialSlot",
     "m_ObjectId": "20874eefc14347b2a30292843bcf7bcc",
     "m_Id": 1,
@@ -1551,8 +1507,8 @@
     "m_ObjectId": "36a1fdc54c6c4286bf099382f15fa725",
     "m_Title": "Debugging",
     "m_Position": {
-        "x": -1632.500244140625,
-        "y": -29.499977111816408
+        "x": -1632.5,
+        "y": -29.499996185302736
     }
 }
 
@@ -2144,8 +2100,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -33.5,
-            "y": 601.5,
+            "x": 231.5,
+            "y": 533.5,
             "width": 139.5,
             "height": 34.0
         }
@@ -2378,49 +2334,6 @@
         "y": 0.0,
         "z": 0.0,
         "w": 0.0
-    }
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.AddNode",
-    "m_ObjectId": "6b5f56a9a2354c6ea27bf39ddefe09df",
-    "m_Group": {
-        "m_Id": ""
-    },
-    "m_Name": "Add",
-    "m_DrawState": {
-        "m_Expanded": true,
-        "m_Position": {
-            "serializedVersion": "2",
-            "x": 177.5,
-            "y": 572.75,
-            "width": 126.0,
-            "height": 118.0
-        }
-    },
-    "m_Slots": [
-        {
-            "m_Id": "8bd6eee278534033b9c8922cbc6f1e72"
-        },
-        {
-            "m_Id": "1fbc41c0373c48978991e7c4db04f76d"
-        },
-        {
-            "m_Id": "ccbba4a91fb84ffaa2b82d318155b20c"
-        }
-    ],
-    "synonyms": [
-        "addition",
-        "sum",
-        "plus"
-    ],
-    "m_Precision": 0,
-    "m_PreviewExpanded": false,
-    "m_DismissedVersion": 0,
-    "m_PreviewMode": 0,
-    "m_CustomColors": {
-        "m_SerializableColors": []
     }
 }
 
@@ -3118,30 +3031,6 @@
 {
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
-    "m_ObjectId": "8bd6eee278534033b9c8922cbc6f1e72",
-    "m_Id": 0,
-    "m_DisplayName": "A",
-    "m_SlotType": 0,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "A",
-    "m_StageCapability": 3,
-    "m_Value": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0,
-        "w": 0.0
-    },
-    "m_DefaultValue": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0,
-        "w": 0.0
-    }
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
     "m_ObjectId": "8ecb56386e084cfebc1569b76d166ed5",
     "m_Id": 0,
     "m_DisplayName": "In",
@@ -3779,30 +3668,6 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
-    "m_ObjectId": "ccbba4a91fb84ffaa2b82d318155b20c",
-    "m_Id": 2,
-    "m_DisplayName": "Out",
-    "m_SlotType": 1,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "Out",
-    "m_StageCapability": 3,
-    "m_Value": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0,
-        "w": 0.0
-    },
-    "m_DefaultValue": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0,
-        "w": 0.0
-    }
-}
-
-{
-    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.EllipseNode",
     "m_ObjectId": "cd2581baf6484dab9d7689fe346c1eae",
     "m_Group": {
@@ -4206,26 +4071,6 @@
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
     "m_Labels": []
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
-    "m_ObjectId": "fc5469ef1ddd43c6afb9bfed8eede0a2",
-    "m_Title": "Inner circle adjustment",
-    "m_Content": "Since we are subtracting circles, and there is a bit of a smoothing around the edges, the ring is a bit too thick towards the center. I assume the smoothing is around 0.005 which is why we have to subtract that here. But the ellipse shader is a bit trickier ... anyway ... it works.",
-    "m_TextSize": 0,
-    "m_Theme": 0,
-    "m_Position": {
-        "serializedVersion": "2",
-        "x": 118.5,
-        "y": 387.5,
-        "width": 200.0,
-        "height": 178.0
-    },
-    "m_Group": {
-        "m_Id": ""
-    }
 }
 
 {
