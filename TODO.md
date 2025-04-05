@@ -4,8 +4,9 @@
 
 ### Animation / controls
 
-- [ ] Allow rounded corners for pill and make vertical pill (efficiency difference?)
-- [ ] Make fraction of rounded rectangle in a single shader graph
+- [x] Make vertical pill (efficiency difference?)
+- [x] Make fraction of rounded rectangle fraction in a single shader graph
+- [ ] Add rounded corners to rounded rectangle fraction
 - [ ] Create script to find corner fraction points based on scale, border width, corner radius, etc.
 
 ### Image with content

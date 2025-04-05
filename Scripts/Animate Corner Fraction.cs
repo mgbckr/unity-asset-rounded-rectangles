@@ -13,7 +13,7 @@ public class AnimateCornerFraction : MonoBehaviour
 
 
 
-        float pulse = Mathf.PingPong(Time.time * 3, 1f);
+        float pulse = Mathf.PingPong(Time.time * 1, 1f);
         float scale = Mathf.Lerp(0f, 1f, pulse);
 
         // animate the "End" property of the underlying shader
