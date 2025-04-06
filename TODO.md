@@ -7,7 +7,12 @@
 - [x] Make vertical pill (efficiency difference?)
 - [x] Make fraction of rounded rectangle fraction in a single shader graph
 - [ ] Add rounded corners to rounded rectangle fraction
+    - [ ] give out coordinates
+        - [ ] corner fraction
+        - [ ] coordinate rectangle
+    - [x] output step function for parts from cascade to switch between coordinates
 - [ ] Create script to find corner fraction points based on scale, border width, corner radius, etc.
+- [ ] Fix gaps between corners and edges ... tricky I think
 
 ### Image with content
 
