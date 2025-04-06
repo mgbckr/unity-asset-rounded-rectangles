@@ -496,20 +496,6 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
-                    "m_Id": "b5d6a8633fea414bbc00b5e051d9252a"
-                },
-                "m_SlotId": 0
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "fc8fd32279904b8087114ff17659099a"
-                },
-                "m_SlotId": 0
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
                     "m_Id": "c1e8132f6d2c4cfeb880b50014dda328"
                 },
                 "m_SlotId": 2
@@ -603,6 +589,20 @@
                     "m_Id": "ae2d3feaaaef43b18a93423d2e743675"
                 },
                 "m_SlotId": 388044744
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "fce4038392ca455ab8d91baf4e184215"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "fc8fd32279904b8087114ff17659099a"
+                },
+                "m_SlotId": 0
             }
         },
         {
@@ -2276,8 +2276,8 @@
     "m_ObjectId": "7f003debe0e845d7940e063bcf137243",
     "m_Title": "Circle Diameter",
     "m_Position": {
-        "x": -2387.500244140625,
-        "y": 1727.5001220703125
+        "x": -2387.499755859375,
+        "y": 1727.5
     }
 }
 
@@ -3098,8 +3098,8 @@
     "m_ObjectId": "b6a661029c1e4b27b84fcd6311fa7fca",
     "m_Title": "Distance to Center",
     "m_Position": {
-        "x": -2403.0,
-        "y": 1507.5
+        "x": -2402.999755859375,
+        "y": 1507.4998779296875
     }
 }
 
@@ -3112,7 +3112,7 @@
     "m_SlotType": 0,
     "m_Hidden": false,
     "m_ShaderOutputName": "_UV",
-    "m_StageCapability": 2,
+    "m_StageCapability": 3,
     "m_Value": {
         "x": 0.0,
         "y": 0.0
@@ -3459,8 +3459,8 @@
     "m_ObjectId": "dda13679841841a49f384cbf6f6d0e1b",
     "m_Title": "Debugging",
     "m_Position": {
-        "x": -2030.0,
-        "y": 954.0
+        "x": -2029.9998779296875,
+        "y": 953.9999389648438
     }
 }
 
@@ -3570,7 +3570,7 @@
     "m_SlotType": 0,
     "m_Hidden": false,
     "m_ShaderOutputName": "_UV",
-    "m_StageCapability": 2,
+    "m_StageCapability": 3,
     "m_Value": {
         "x": 0.0,
         "y": 0.0

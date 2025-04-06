@@ -39,12 +39,13 @@ Material:
     m_Ints: []
     m_Floats:
     - _Border_Width: 0.01
-    - _End: 1
-    - _Origin: 0
+    - _End: 0.9
+    - _Origin: 0.5
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Start: 0
+    - _Start: 0.8
     m_Colors:
+    - _Border_Color: {r: 0.20216265, g: 0.35670346, b: 0.7264151, a: 0.7450981}
     - _Color: {r: 0.20216265, g: 0.35670346, b: 0.7264151, a: 0.7450981}
     - _Corner_Radius_lb_lt_rb_rt: {r: 0.05, g: 0.05, b: 0.05, a: 0.05}
     - _Padding_left_right_bottom_top: {r: 0.01, g: 0.01, b: 0.01, a: 0.01}

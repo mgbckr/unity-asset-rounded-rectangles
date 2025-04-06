@@ -7,10 +7,12 @@
 - [x] Make vertical pill (efficiency difference?)
 - [x] Make fraction of rounded rectangle fraction in a single shader graph
 - [ ] Add rounded corners to rounded rectangle fraction
-    - [ ] give out coordinates
-        - [ ] corner fraction
-        - [ ] coordinate rectangle
+    - [x] give out coordinates
+        - [x] corner fraction
+        - [x] coordinate rectangle
     - [x] output step function for parts from cascade to switch between coordinates
+    - [x] combine and animate (a tiny bit laggy, damn)
+    - [ ] fix random dot 
 - [ ] Create script to find corner fraction points based on scale, border width, corner radius, etc.
 - [ ] Fix gaps between corners and edges ... tricky I think
 
@@ -30,6 +32,7 @@
     - [ ] Make controls usable
     - [ ] Animate controls
 - [ ] Pan / Zooming
+- [ ] Test whether reusing controls between images is more efficient
 
 ## Backlog
 
@@ -59,4 +62,5 @@ I'll add those when I need them.
 ### Optimization
 
 - [ ] For stacked border test whether chaining makes a difference
+- [ ] Can we optimize the Rounded Rectangle Fraction ... I think it is too inefficient
 
