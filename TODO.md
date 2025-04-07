@@ -13,8 +13,10 @@
     - [x] output step function for parts from cascade to switch between coordinates
     - [x] combine and animate (a tiny bit laggy, damn)
     - [x] fix random dots
+- [x] Fix gaps between corners and edges 
+    - tricky I think
+    - nah, just used step functions instead of built-in rectangle
 - [ ] Create script to find corner fraction points based on scale, border width, corner radius, etc.
-- [ ] Fix gaps between corners and edges ... tricky I think
 
 ### Image with content
 
