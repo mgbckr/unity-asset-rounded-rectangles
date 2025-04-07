@@ -16,7 +16,9 @@
 - [x] Fix gaps between corners and edges 
     - tricky I think
     - nah, just used step functions instead of built-in rectangle
-- [ ] Create script to find corner fraction points based on scale, border width, corner radius, etc.
+- [x] Create script to find corner fraction points based on scale, border width, corner radius, etc.
+- [ ] move lots of logic outside of shader and see whether that makes a difference
+- [ ] some clean-up and renaming please!!!
 
 ### Image with content
 
