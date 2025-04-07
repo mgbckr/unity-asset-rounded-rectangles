@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class AnimateCornerFraction : MonoBehaviour
 {
+
+    public float speed = 1f;
+
     void Start()
     {
 
@@ -11,20 +14,12 @@ public class AnimateCornerFraction : MonoBehaviour
     void Update()
     {
 
-
-
-        float pulse = Mathf.PingPong(Time.time * 0.3f, 1f);
-        float scale = Mathf.Lerp(0f, 1f, pulse);
-
-        float pulse2 = Mathf.PingPong((Time.time + 0.3f) * 0.3f, 1f);
-        float scale2 = Mathf.Lerp(0f, 1f, pulse2);
-
-        
+        float pulse = Mathf.PingPong(Time.time * speed, 1f);
+        float sawtooth = (Time.time % (1/speed)) / (1/speed);
 
         // animate the "End" property of the underlying shader
         Material material = GetComponent<Renderer>().material;
-        material.SetFloat("_Start", scale);
-        material.SetFloat("_End", scale2);
+        material.SetFloat("_Origin", sawtooth);
 
 
 
