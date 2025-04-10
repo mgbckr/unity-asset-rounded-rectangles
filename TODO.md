@@ -19,10 +19,11 @@
 - [x] Create script to find corner fraction points based on scale, border width, corner radius, etc.
 - [x] move lots of logic outside of shader and see whether that makes a difference
     - it does! About twice as fast ...
-- [ ] fix offset for segment based positioning
+- [x] fix offset for segment based positioning
+- [ ] ensure corner radius is at least the size of the border
 - [ ] move segment based positioning into extra function not into a class per se
 - [ ] some clean-up and renaming please!!!
-- [ ] translate code to shader code and see whether that is faster
+- [ ] translate code to shader code and see whether that is slower/faster
 
 ### Image with content
 

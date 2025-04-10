@@ -35,7 +35,7 @@ public class FrameFraction : MonoBehaviour
         float speed = 1f;
         float pulse = Mathf.PingPong(Time.time * speed, 1f);
         float sawtooth = (Time.time % (1/speed)) / (1/speed);
-        relativeOffset = sawtooth;
+        // relativeOffset = sawtooth;
 
         FormatShape(transform.localScale, padding, cornerRadius, borderWidth);
 
@@ -459,8 +459,11 @@ public class FrameFraction : MonoBehaviour
     float RampUp(float value)
     {
         if (value > 1f | value < 0f) {
-            value = value % 1f;
+            Debug.Log($"value: {value}");
+            value = ((value % 1f) + 1f) % 1f;
+            Debug.Log($"value % 1: {value}");
             value = IsClose(value, 0f) ? 1f : value;
+            Debug.Log($"value == 0: {value}");
         }
         return Mathf.Clamp01(value);
     }
