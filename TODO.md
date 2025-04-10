@@ -17,8 +17,12 @@
     - tricky I think
     - nah, just used step functions instead of built-in rectangle
 - [x] Create script to find corner fraction points based on scale, border width, corner radius, etc.
-- [ ] move lots of logic outside of shader and see whether that makes a difference
+- [x] move lots of logic outside of shader and see whether that makes a difference
+    - it does! About twice as fast ...
+- [ ] fix offset for segment based positioning
+- [ ] move segment based positioning into extra function not into a class per se
 - [ ] some clean-up and renaming please!!!
+- [ ] translate code to shader code and see whether that is faster
 
 ### Image with content
 
