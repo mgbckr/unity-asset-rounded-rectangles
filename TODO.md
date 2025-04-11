@@ -24,7 +24,7 @@
 - [x] fix segment scaling
 - [ ] move segment based positioning into extra function not into a class per se
     - so we can animate things later
-- [ ] some clean-up and renaming please (e.g., move into utility class)!!!
+- [ ] some clean-up and renaming please (e.g., move into utility class`)!!!
 - [ ] translate code to shader code and see whether that is slower/faster
 
 ### Image with content
@@ -63,6 +63,7 @@ I'll add those when I need them.
 - [ ] Shadows
     - [ ] Try simple inverse lerp / smoothstep shadow (no conditions)
     - [ ] Enable some inner and outer shadows
+    - [ ] can this be more efficient if we use same border radius? (see optimization)
 
 - [ ] Bloom / glow for neon effect?
 - [ ] Border gradients
@@ -74,4 +75,9 @@ I'll add those when I need them.
 
 - [ ] For stacked border test whether chaining makes a difference
 - [ ] Can we optimize the Rounded Rectangle Fraction ... I think it is too inefficient
+    - [x] optimize by moving code out of shader ... helps a lot
+    - [ ] maybe try something with equal corner radius?
+- [ ] for full frames maybe use simple rounded rectangle for further optimization
+- [ ] for shadows can we build more efficient shadows if we use equal corner radii?
+    - see simple rounded rectangle (generated shader code)
 

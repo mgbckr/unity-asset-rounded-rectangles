@@ -34,7 +34,7 @@ public class FrameFraction : MonoBehaviour
         float speed = 1f;
         float pulse = Mathf.PingPong(Time.time * speed, 1f);
         float sawtooth = (Time.time % (1/speed)) / (1/speed);
-        // relativeOffset = sawtooth;
+        relativeOffset = sawtooth;
 
         // ensure corner radius to be at least border width
         Vector4 adjustedCornerRadius = new Vector4(
@@ -65,7 +65,7 @@ public class FrameFraction : MonoBehaviour
             padding,
             adjustedCornerRadius,
             borderWidth,
-            
+
             edgeLengths,
             cornerLengths,
             edgeCumLengths,
