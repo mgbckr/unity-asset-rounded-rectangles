@@ -25,7 +25,6 @@ public class FrameFraction : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -37,11 +36,19 @@ public class FrameFraction : MonoBehaviour
         float sawtooth = (Time.time % (1/speed)) / (1/speed);
         // relativeOffset = sawtooth;
 
-        FormatShape(transform.localScale, padding, cornerRadius, borderWidth);
+        // ensure corner radius to be at least border width
+        Vector4 adjustedCornerRadius = new Vector4(
+            Mathf.Max(cornerRadius.x, borderWidth),
+            Mathf.Max(cornerRadius.y, borderWidth),
+            Mathf.Max(cornerRadius.z, borderWidth),
+            Mathf.Max(cornerRadius.w, borderWidth)
+        );
+
+        FormatShape(transform.localScale, padding, adjustedCornerRadius, borderWidth);
 
         // prepare segment information
         Vector4[] segmentInfos = PrepareSegments(
-            transform.localScale, padding, cornerRadius, borderWidth);
+            transform.localScale, padding, adjustedCornerRadius, borderWidth);
         edgeLengths = segmentInfos[0];
         cornerLengths = segmentInfos[1];
         edgeCumLengths = segmentInfos[2];
@@ -54,6 +61,11 @@ public class FrameFraction : MonoBehaviour
             relativeEnd, 
             relativeOffset,
             circumference,
+
+            padding,
+            adjustedCornerRadius,
+            borderWidth,
+            
             edgeLengths,
             cornerLengths,
             edgeCumLengths,
@@ -168,7 +180,12 @@ public class FrameFraction : MonoBehaviour
         float relativeStart, 
         float relativeEnd, 
         float relativeOffset, 
-        float circumference, 
+        float circumference,
+
+        Vector4 padding,
+        Vector4 cornerRadius,
+        float borderWidth,
+
         Vector4 edgeLengths, 
         Vector4 cornerLengths,
         Vector4 edgeCumLengths,

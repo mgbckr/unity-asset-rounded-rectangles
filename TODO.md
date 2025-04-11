@@ -20,9 +20,11 @@
 - [x] move lots of logic outside of shader and see whether that makes a difference
     - it does! About twice as fast ...
 - [x] fix offset for segment based positioning
-- [ ] ensure corner radius is at least the size of the border
+- [x] ensure corner radius is at least the size of the border
+- [x] fix segment scaling
 - [ ] move segment based positioning into extra function not into a class per se
-- [ ] some clean-up and renaming please!!!
+    - so we can animate things later
+- [ ] some clean-up and renaming please (e.g., move into utility class)!!!
 - [ ] translate code to shader code and see whether that is slower/faster
 
 ### Image with content
