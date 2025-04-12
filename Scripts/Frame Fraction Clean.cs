@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FrameFraction : MonoBehaviour
+public class FrameFractionClean : MonoBehaviour
 {
 
     // left right bottom top
@@ -10,197 +10,237 @@ public class FrameFraction : MonoBehaviour
     public float borderWidth = 0.05f;
     public float relativeOffset = 0f;
     public float relativeStart = 0f;
-    public float relativeEnd = 0f;
+    public float relativeEnd = 1f;
 
-    // left, right, bottom, top
-    Vector4 edgeLengths;
-    // left-bottom, left-top, right-bottom, right-top
-    Vector4 cornerLengths;
-    // left, right, bottom, top
-    Vector4 edgeCumLengths;
-    // left-bottom, left-top, right-bottom, right-top
-    Vector4 cornerCumLengths;
-    float circumference;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
     }
 
-    // Update is called once per frame
-    void Update()
-    {        
+    void Update() {
         // animate offset
         float speed = 1f;
         float pulse = Mathf.PingPong(Time.time * speed, 1f);
         float sawtooth = (Time.time % (1/speed)) / (1/speed);
-        relativeOffset = sawtooth;
+        // relativeOffset = sawtooth;
 
-        // ensure corner radius to be at least border width
-        Vector4 adjustedCornerRadius = new Vector4(
-            Mathf.Max(cornerRadius.x, borderWidth),
-            Mathf.Max(cornerRadius.y, borderWidth),
-            Mathf.Max(cornerRadius.z, borderWidth),
-            Mathf.Max(cornerRadius.w, borderWidth)
+        Debug.Log($"Update");
+        Layout(
+            transform.localScale, 
+            padding, 
+            cornerRadius, 
+            borderWidth,
+            relativeStart, 
+            relativeEnd, 
+            relativeOffset
         );
-
-        FormatShape(transform.localScale, padding, adjustedCornerRadius, borderWidth);
-
-        // // prepare segment information
-        Vector4[] segmentInfos = PrepareSegments(
-            transform.localScale, padding, adjustedCornerRadius, borderWidth);
-        edgeLengths = segmentInfos[0];
-        cornerLengths = segmentInfos[1];
-        edgeCumLengths = segmentInfos[2];
-        cornerCumLengths = segmentInfos[3];
-        
-        circumference = cornerCumLengths[1];
-
-        // FormatSegments(
-        //     relativeStart, 
-        //     relativeEnd, 
-        //     relativeOffset,
-        //     circumference,
-
-        //     padding,
-        //     adjustedCornerRadius,
-        //     borderWidth,
-
-        //     edgeLengths,
-        //     cornerLengths,
-        //     edgeCumLengths,
-        //     cornerCumLengths,
-        //     transform.localScale
-        // );
-        
     }
 
-    protected void FormatShape(
-        Vector2 scale, 
-        Vector4 padding, 
-        Vector4 cornerRadius, 
-        float borderWidth)
-    {
+    // Update is called once per frame
+    void Layout(
+        Vector2 scale,
+        Vector4 worldPadding,
+        Vector4 worldCornerRadius,
+        float   worldBorderWidth,
 
-        // Get scale
-        float maxScale = Mathf.Max(scale.x, scale.y);
-        Vector2 relativeScale = new Vector2(scale.x / maxScale, scale.y / maxScale);
-        Vector4 scalePadding = new Vector4(
-            0f,
-            1 - relativeScale.x,
-            0f,
-            1 - relativeScale.y
+        float relativeStart, 
+        float relativeEnd, 
+        float relativeOffset
+    )
+    {        
+
+        var shaderShape = DeriveShaderShapeParameters(
+            scale, 
+            worldPadding, 
+            worldCornerRadius, 
+            worldBorderWidth);
+
+        // prepare segment information
+        // which does not change if the shape is static
+        var segmentInfos = DeriveStaticSegmentProperties(
+            shaderShape.padding, 
+            shaderShape.cornerRadius, 
+            shaderShape.borderWidth);
+        
+        var segmentParameters = DeriveSegmentParameters(
+            relativeStart,
+            relativeEnd,
+            relativeOffset,
+
+            shaderShape.padding,
+            shaderShape.cornerRadius,
+            shaderShape.borderWidth,
+
+            segmentInfos.edgeLengths,
+            segmentInfos.cornerLengths,
+            segmentInfos.edgeCumLengths,
+            segmentInfos.cornerCumLengths
         );
 
-        // Get the material from the renderer
+        // set shader properties
+
+        // get the material from the renderer
         Material material = GetComponent<Renderer>().material;
 
         // Set the basic properties of the material
-        material.SetVector("_Tiling", relativeScale);
-        material.SetVector("_Padding_left_right_bottom_top", scalePadding + padding / maxScale);
-        material.SetVector("_Corner_Radius_lb_lt_rb_rt", cornerRadius / maxScale);
-        material.SetFloat("_Border_Width", borderWidth / maxScale);
+        material.SetVector("_Tiling", shaderShape.tiling);
+        material.SetVector("_Padding_left_right_bottom_top", shaderShape.padding);
+        material.SetVector("_Corner_Radius_lb_lt_rb_rt", shaderShape.cornerRadius);
+        material.SetFloat("_Border_Width", shaderShape.borderWidth);
 
+
+        // // first frame
+        material.SetVector("_First_Start_Offset_left_right_bottom_top", segmentParameters.firstStartOffset);
+        material.SetVector("_First_Start_Fraction_lb_lt_rb_rt", segmentParameters.firstStartFraction);
+
+        material.SetVector("_First_End_Offset_left_right_bottom_top", segmentParameters.firstEndOffset);
+        material.SetVector("_First_End_Fraction_lb_lt_rb_rt", segmentParameters.firstEndFraction);
+
+        // // second frame
+        material.SetVector("_Second_Start_Offset_left_right_bottom_top", segmentParameters.secondStartOffset);
+        material.SetVector("_Second_Start_Fraction_lb_lt_rb_rt", segmentParameters.secondStartFraction);
+
+        material.SetVector("_Second_End_Offset_left_right_bottom_top", segmentParameters.secondEndOffset);
+        material.SetVector("_Second_End_Fraction_lb_lt_rb_rt", segmentParameters.secondEndFraction);
+
+        // // circles
+        material.SetVector("_Center_1", segmentParameters.startCoordinates);
+        material.SetVector("_Center_2", segmentParameters.endCoordinates);
+        
     }
 
-    protected Vector4[] PrepareSegments(
-        Vector2 scale,
-        Vector4 padding, 
-        Vector4 cornerRadius, 
-        float borderWidth)
+    protected (
+            Vector2 tiling, 
+            Vector4 padding, 
+            Vector4 cornerRadius, 
+            float borderWidth)
+        DeriveShaderShapeParameters(
+            Vector2 scale,
+            Vector4 worldPadding,
+            Vector4 worldCornerRadius,
+            float worldBorderWidth)
+    {
+
+        // calculate scaling parameters
+        float maxScale = Mathf.Max(scale.x, scale.y);
+        Vector2 shaderScale = new Vector2(scale.x / maxScale, scale.y / maxScale);
+
+        // derive padding for accounting for scale
+        Vector4 scalePadding = new Vector4(
+            0f,
+            1 - shaderScale.x,
+            0f,
+            1 - shaderScale.y
+        );
+
+        // finalize shape parameters in shader coordinates
+        Vector2 tiling = shaderScale;
+        Vector4 shaderPadding = scalePadding + worldPadding / maxScale;
+        Vector4 shaderCornerRadius = worldCornerRadius / maxScale;
+        float shaderBorderWidth = worldBorderWidth / maxScale;
+
+        // ensure corner radius to be at least border width
+        shaderCornerRadius = new Vector4(
+            Mathf.Max(shaderCornerRadius.x, shaderBorderWidth),
+            Mathf.Max(shaderCornerRadius.y, shaderBorderWidth),
+            Mathf.Max(shaderCornerRadius.z, shaderBorderWidth),
+            Mathf.Max(shaderCornerRadius.w, shaderBorderWidth)
+        );
+
+        return (tiling, shaderPadding, shaderCornerRadius, shaderBorderWidth);
+    }
+
+    protected (
+            Vector4 edgeLengths, 
+            Vector4 cornerLengths, 
+            Vector4 edgeCumLengths, 
+            Vector4 cornerCumLengths) 
+        DeriveStaticSegmentProperties(
+            Vector4 shaderPadding, 
+            Vector4 shaderCornerRadius,
+            float shaderBorderWidth)
     {
 
         // left, right, bottom, top edge
-        edgeLengths = 
-            new Vector4(padding.z, padding.z, padding.x, padding.x)
-            + new Vector4(padding.w, padding.w, padding.y, padding.y)
-            + new Vector4(cornerRadius.x, cornerRadius.z, cornerRadius.x, cornerRadius.y)
-            + new Vector4(cornerRadius.y, cornerRadius.w, cornerRadius.z, cornerRadius.w);
-        edgeLengths = new Vector4(scale.y, scale.y, scale.x, scale.x) - edgeLengths;
+        var edgeLengths = 
+            new Vector4(shaderPadding.z, shaderPadding.z, shaderPadding.x, shaderPadding.x)
+            + new Vector4(shaderPadding.w, shaderPadding.w, shaderPadding.y, shaderPadding.y)
+            + new Vector4(shaderCornerRadius.x, shaderCornerRadius.z, shaderCornerRadius.x, shaderCornerRadius.y)
+            + new Vector4(shaderCornerRadius.y, shaderCornerRadius.w, shaderCornerRadius.z, shaderCornerRadius.w);
+        edgeLengths = Vector4.one - edgeLengths;
 
         // left-bottom, left-top, right-bottom, right-top corner (quarter circumference)
         // For the radii we subtract half the border width.
         // Formula: 2 * pi * r / 4
-        float half = borderWidth / 2f;
+        float half = shaderBorderWidth / 2f;
         Vector4 halfBorder = new Vector4(half, half, half, half);
-        cornerLengths = (cornerRadius - halfBorder) * Mathf.PI / 2f;
+        var cornerLengths = (shaderCornerRadius - halfBorder) * Mathf.PI / 2f;
 
         // calculate cumulative lengths
-        edgeCumLengths = Vector4.zero;
-        cornerCumLengths = Vector4.zero;
+        var edgeCumLengths = Vector4.zero;
+        var cornerCumLengths = Vector4.zero;
 
         Vector4 edgeLengthsClockwise = LeftRightBottomTopToClockwise(edgeLengths);
         Vector4 cornerLengthsClockwise = LbLtRbRtToClockwise(cornerLengths);
         
-        // Debug.Log($"edgeLengths:            {edgeLengths}");
-        // Debug.Log($"edgeLengthsClockwise:   {edgeLengthsClockwise}");
-        // Debug.Log($"cornerLengths:          {cornerLengths}");
-        // Debug.Log($"cornerLengthsClockwise: {cornerLengthsClockwise}");
-
         float sum = 0;
 
         edgeCumLengths.x    = sum += edgeLengthsClockwise.x;
-        // Debug.Log($"sum '+ {edgeLengthsClockwise.x} = {sum}");
         cornerCumLengths.x  = sum += cornerLengthsClockwise.x;
-        // Debug.Log($"sum '+ {cornerLengthsClockwise.x} = {sum}");
 
         edgeCumLengths.y    = sum += edgeLengthsClockwise.y;
-        // Debug.Log($"sum '+ {edgeLengthsClockwise.y} = {sum}");
         cornerCumLengths.y  = sum += cornerLengthsClockwise.y;
-        // Debug.Log($"sum '+ {cornerLengthsClockwise.y} = {sum}");        
 
         edgeCumLengths.z    = sum += edgeLengthsClockwise.z;
-        // Debug.Log($"sum '+ {edgeLengthsClockwise.z} = {sum}");
         cornerCumLengths.z  = sum += cornerLengthsClockwise.z;
-        // Debug.Log($"sum '+ {cornerLengthsClockwise.z} = {sum}");
 
         edgeCumLengths.w    = sum += edgeLengthsClockwise.w;
-        // Debug.Log($"sum '+ {edgeLengthsClockwise.w} = {sum}");
         cornerCumLengths.w  = sum += cornerLengthsClockwise.w;
-        // Debug.Log($"sum '+ {cornerLengthsClockwise.w} = {sum}");
-
-        // Debug.Log($"edgeCumLengthsClockwise:    {edgeCumLengths}");
-        // Debug.Log($"cornerCumLengthsClockwise:  {cornerCumLengths}");
 
         edgeCumLengths = ClockwiseToLeftRightBottomTop(edgeCumLengths);
         cornerCumLengths = ClockwiseToLbLtRbRt(cornerCumLengths);
 
-        // Debug.Log($"edgeCumLengths:             {edgeCumLengths}");
-        // Debug.Log($"cornerCumLengths:           {cornerCumLengths}");
-
-        return new Vector4[] {
+        return (
             edgeLengths,
             cornerLengths,
             edgeCumLengths,
             cornerCumLengths
-        };
+        );
     }
 
-    protected void FormatSegments(
-        float relativeStart, 
-        float relativeEnd, 
-        float relativeOffset, 
-        float circumference,
+    protected (
+        Vector4 firstStartOffset,
+        Vector4 firstStartFraction,
+        Vector4 firstEndOffset,
+        Vector4 firstEndFraction,
+        Vector4 secondStartOffset,
+        Vector4 secondStartFraction,
+        Vector4 secondEndOffset,
+        Vector4 secondEndFraction,
+        Vector2 startCoordinates,
+        Vector2 endCoordinates
+    ) 
+    DeriveSegmentParameters(
+        float relativeStart,
+        float relativeEnd,
+        float relativeOffset,
 
         Vector4 padding,
         Vector4 cornerRadius,
         float borderWidth,
 
-        Vector4 edgeLengths, 
+        Vector4 edgeLengths,
         Vector4 cornerLengths,
         Vector4 edgeCumLengths,
-        Vector4 cornerCumLengths, 
-        Vector2 scale
+        Vector4 cornerCumLengths
     )
     {
-
-        Debug.Log($"Start");
-        Debug.Log($"relativeStart: {relativeStart}");
-        Debug.Log($"relativeEnd: {relativeEnd}");
 
         // Normalize the relative start and end values
         if (IsClose(relativeEnd - relativeStart, 1f))
         {
+            // TODO: Do we still need this with current RampUp implementation?
             relativeStart = 0f;
             relativeEnd = 1f;
         }
@@ -210,17 +250,9 @@ public class FrameFraction : MonoBehaviour
             relativeEnd = RampUp(relativeEnd + relativeOffset);
         }
 
-        Debug.Log($"relativeStart: {relativeStart}");
-        Debug.Log($"relativeEnd: {relativeEnd}");
-
-        float maxScale = Mathf.Max(scale.x, scale.y);
-
-        // Get the material from the renderer
-        Material material = GetComponent<Renderer>().material;
-
         // frames
-        
-        Vector4[] firstFrame = Frame(
+        float circumference = cornerCumLengths.y;
+        Vector4[] firstFrame = CalculateSegmentOffsets(
             relativeStart,
             relativeEnd < relativeStart ? 1 : relativeEnd,
             circumference,
@@ -230,7 +262,7 @@ public class FrameFraction : MonoBehaviour
             cornerCumLengths
         );
 
-        Vector4[] secondFrame = Frame(
+        Vector4[] secondFrame = CalculateSegmentOffsets(
             0f,
             relativeEnd < relativeStart ? relativeEnd : 0f,
             circumference,
@@ -241,11 +273,11 @@ public class FrameFraction : MonoBehaviour
         );
 
         Vector4 outerCoordinates = 
-            new Vector4(0f, 1f * scale.x, 0f, 1f * scale.y) 
+            new Vector4(0f, 1f, 0f, 1f)
             + Multiply4(new Vector4(1f, -1f, 1f, -1f), padding);
         Vector4 innerPadding = AddScalar4(padding, borderWidth / 2f);
         Vector4 innerCoordinates = 
-            new Vector4(0f, scale.x, 0f, scale.y) 
+            new Vector4(0f, 1f, 0f, 1f) 
             + Multiply4(new Vector4(1f, -1f, 1f, -1f), innerPadding);
 
         // start coordinates for edges
@@ -379,31 +411,79 @@ public class FrameFraction : MonoBehaviour
         endCoordinates += (pos >= cornerCumLengths.w & pos < edgeCumLengths.w) ? endTopCoordinates            : Vector2.zero;
         endCoordinates += (pos >= edgeCumLengths.w & pos <= cornerCumLengths.y) ? endLeftTopCoordinates        : Vector2.zero;
 
-        material.SetVector("_First_Start_Offset_left_right_bottom_top", firstFrame[0] / maxScale);
-        material.SetVector("_First_Start_Fraction_lb_lt_rb_rt", firstFrame[1]);
-        // Debug.Log($"firstFrame[0]: {firstFrame[0]}");
-        // Debug.Log($"firstFrame[1]: {firstFrame[1]}");
 
-        material.SetVector("_First_End_Offset_left_right_bottom_top", firstFrame[2] / maxScale);
-        material.SetVector("_First_End_Fraction_lb_lt_rb_rt", firstFrame[3]);
-        // Debug.Log($"firstFrame[2]: {firstFrame[2]}");
-        // Debug.Log($"firstFrame[3]: {firstFrame[3]}");
+        return (
+            firstFrame[0],
+            firstFrame[1],
+            firstFrame[2],
+            firstFrame[3],
+            secondFrame[0],
+            secondFrame[1],
+            secondFrame[2],
+            secondFrame[3],
+            startCoordinates,
+            endCoordinates
+        );
 
-        // second frame
-
-
-
-        material.SetVector("_Second_Start_Offset_left_right_bottom_top", secondFrame[0] / maxScale);
-        material.SetVector("_Second_Start_Fraction_lb_lt_rb_rt", secondFrame[1]);
-
-        material.SetVector("_Second_End_Offset_left_right_bottom_top", secondFrame[2] / maxScale);
-        material.SetVector("_Second_End_Fraction_lb_lt_rb_rt", secondFrame[3]);
-
-        // circles
-        material.SetVector("_Center_1", startCoordinates / maxScale);
-        material.SetVector("_Center_2", endCoordinates / maxScale);
+    }
 
 
+    Vector4[] CalculateSegmentOffsets(
+        float relativeStart,
+        float relativeEnd,
+        float circumference,
+        Vector4 edgeLengths,
+        Vector4 cornerLengths,
+        Vector4 edgeCumLengths,
+        Vector4 cornerCumLengths)
+    {
+
+        // start
+        edgeLengths = LeftRightBottomTopToClockwise(edgeLengths);
+        cornerLengths = LbLtRbRtToClockwise(cornerLengths);
+        edgeCumLengths = LeftRightBottomTopToClockwise(edgeCumLengths);
+        cornerCumLengths = LbLtRbRtToClockwise(cornerCumLengths);
+
+        Vector4 edgeStartActivation = new Vector4(
+            SegmentActivation(relativeStart, circumference, edgeLengths.x, 0f),
+            SegmentActivation(relativeStart, circumference, edgeLengths.y, cornerCumLengths.x),
+            SegmentActivation(relativeStart, circumference, edgeLengths.z, cornerCumLengths.y),
+            SegmentActivation(relativeStart, circumference, edgeLengths.w, cornerCumLengths.z)
+        );
+        Vector4 cornerStartActivation = new Vector4(
+            SegmentActivation(relativeStart, circumference, cornerLengths.x, edgeCumLengths.x),
+            SegmentActivation(relativeStart, circumference, cornerLengths.y, edgeCumLengths.y),
+            SegmentActivation(relativeStart, circumference, cornerLengths.z, edgeCumLengths.z),
+            SegmentActivation(relativeStart, circumference, cornerLengths.w, edgeCumLengths.w)
+        );
+
+        // end activation
+        Vector4 edgeEndActivation = new Vector4(
+            SegmentActivation(relativeEnd, circumference, edgeLengths.x, 0),
+            SegmentActivation(relativeEnd, circumference, edgeLengths.y, cornerCumLengths.x),
+            SegmentActivation(relativeEnd, circumference, edgeLengths.z, cornerCumLengths.y),
+            SegmentActivation(relativeEnd, circumference, edgeLengths.w, cornerCumLengths.z)
+        );
+        Vector4 cornerEndActivation = new Vector4(
+            SegmentActivation(relativeEnd, circumference, cornerLengths.x, edgeCumLengths.x),
+            SegmentActivation(relativeEnd, circumference, cornerLengths.y, edgeCumLengths.y),
+            SegmentActivation(relativeEnd, circumference, cornerLengths.z, edgeCumLengths.z),
+            SegmentActivation(relativeEnd, circumference, cornerLengths.w, edgeCumLengths.w)
+        );
+
+        // scale
+        Vector4 edgeStartOffset = Multiply4(edgeStartActivation, edgeLengths);
+        Vector4 cornerStartOffset = cornerStartActivation * 0.25f;
+
+        Vector4 edgeEndOffset = Multiply4(Vector4.one - edgeEndActivation, edgeLengths);
+        Vector4 cornerEndOffset = cornerEndActivation * 0.25f;
+
+        return new Vector4[] {
+            ClockwiseToLeftRightBottomTop(edgeStartOffset),
+            ClockwiseToLbLtRbRt(cornerStartOffset),
+            ClockwiseToLeftRightBottomTop(edgeEndOffset),
+            ClockwiseToLbLtRbRt(cornerEndOffset)
+        };
     }
 
     Vector2 ringCoordinates(
@@ -485,68 +565,6 @@ public class FrameFraction : MonoBehaviour
         return Mathf.Clamp01(value);
     }
 
-
-    Vector4[] Frame(
-        float relativeStart, 
-        float relativeEnd, 
-        float circumference, 
-        Vector4 edgeLengths,
-        Vector4 cornerLengths, 
-        Vector4 edgeCumLengths,
-        Vector4 cornerCumLengths)
-    {
-
-        // start
-        edgeLengths = LeftRightBottomTopToClockwise(edgeLengths);
-        cornerLengths = LbLtRbRtToClockwise(cornerLengths);
-        edgeCumLengths = LeftRightBottomTopToClockwise(edgeCumLengths);
-        cornerCumLengths = LbLtRbRtToClockwise(cornerCumLengths);
-
-        Vector4 edgeStartActivation = new Vector4(
-            SegmentActivation(relativeStart, circumference, edgeLengths.x, 0f),
-            SegmentActivation(relativeStart, circumference, edgeLengths.y, cornerCumLengths.x),
-            SegmentActivation(relativeStart, circumference, edgeLengths.z, cornerCumLengths.y),
-            SegmentActivation(relativeStart, circumference, edgeLengths.w, cornerCumLengths.z)
-        );
-        Vector4 cornerStartActivation = new Vector4(
-            SegmentActivation(relativeStart, circumference, cornerLengths.x, edgeCumLengths.x),
-            SegmentActivation(relativeStart, circumference, cornerLengths.y, edgeCumLengths.y),
-            SegmentActivation(relativeStart, circumference, cornerLengths.z, edgeCumLengths.z),
-            SegmentActivation(relativeStart, circumference, cornerLengths.w, edgeCumLengths.w)
-        );
-
-        // end activation
-        Vector4 edgeEndActivation = new Vector4(
-            SegmentActivation(relativeEnd, circumference, edgeLengths.x, 0),
-            SegmentActivation(relativeEnd, circumference, edgeLengths.y, cornerCumLengths.x),
-            SegmentActivation(relativeEnd, circumference, edgeLengths.z, cornerCumLengths.y),
-            SegmentActivation(relativeEnd, circumference, edgeLengths.w, cornerCumLengths.z)
-        );
-        Vector4 cornerEndActivation = new Vector4(
-            SegmentActivation(relativeEnd, circumference, cornerLengths.x, edgeCumLengths.x),
-            SegmentActivation(relativeEnd, circumference, cornerLengths.y, edgeCumLengths.y),
-            SegmentActivation(relativeEnd, circumference, cornerLengths.z, edgeCumLengths.z),
-            SegmentActivation(relativeEnd, circumference, cornerLengths.w, edgeCumLengths.w)
-        );
-
-        // Debug.Log($"Activations:");
-        // Debug.Log($"edgeStartActivation:    {edgeStartActivation}");
-        // Debug.Log($"cornerStartActivation:  {cornerStartActivation}");
-
-        // scale
-        Vector4 edgeStartOffset = Multiply4(edgeStartActivation, edgeLengths);
-        Vector4 cornerStartOffset = cornerStartActivation * 0.25f;
-
-        Vector4 edgeEndOffset = Multiply4(Vector4.one - edgeEndActivation, edgeLengths);
-        Vector4 cornerEndOffset = cornerEndActivation * 0.25f;
-
-        return new Vector4[] {
-            ClockwiseToLeftRightBottomTop(edgeStartOffset),
-            ClockwiseToLbLtRbRt(cornerStartOffset),
-            ClockwiseToLeftRightBottomTop(edgeEndOffset),
-            ClockwiseToLbLtRbRt(cornerEndOffset)
-        };
-    }
     bool IsClose(float a, float b, float tolerance = 0.0001f)
     {
         return Mathf.Abs(a - b) < tolerance;

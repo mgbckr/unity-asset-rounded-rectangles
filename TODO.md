@@ -77,6 +77,12 @@ I'll add those when I need them.
 - [ ] Can we optimize the Rounded Rectangle Fraction ... I think it is too inefficient
     - [x] optimize by moving code out of shader ... helps a lot
     - [ ] maybe try something with equal corner radius?
+    - [ ] another thing could be to try to get rid of the subtraction for corners ... mh
+    - mhm, think about different border widths, too, though
+- [ ] generally, can we make borders without subtraction? ... probably not actually
+- [ ] I think, with the optimizations below we can make shadow fractions easily
+- [ ] for corners, I could use the same approach as the built in rounded rectangle uses!
+    - [x] can we use this for shadow corners as well? YES THAT WORKS!!! NICE!!! :D
 - [ ] for full frames maybe use simple rounded rectangle for further optimization
 - [ ] for shadows can we build more efficient shadows if we use equal corner radii?
     - see simple rounded rectangle (generated shader code)
