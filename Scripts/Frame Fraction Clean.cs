@@ -92,7 +92,9 @@ public class FrameFractionClean : MonoBehaviour
 
         // // first frame
         material.SetVector("_First_Start_Offset_left_right_bottom_top", segmentParameters.firstStartOffset);
+        Debug.Log($"firstStartOffset: {segmentParameters.firstStartOffset}");
         material.SetVector("_First_Start_Fraction_lb_lt_rb_rt", segmentParameters.firstStartFraction);
+        Debug.Log($"firstStartFraction: {segmentParameters.firstStartFraction}");
 
         material.SetVector("_First_End_Offset_left_right_bottom_top", segmentParameters.firstEndOffset);
         material.SetVector("_First_End_Fraction_lb_lt_rb_rt", segmentParameters.firstEndFraction);
@@ -250,22 +252,23 @@ public class FrameFractionClean : MonoBehaviour
             relativeEnd = RampUp(relativeEnd + relativeOffset);
         }
 
-        // frames
+        // circumference
         float circumference = cornerCumLengths.y;
-        Vector4[] firstFrame = CalculateSegmentOffsets(
+        Debug.Log($"circumference: {circumference}");
+
+        // frames
+        var firstFrame = CalculateSegmentOffsets(
             relativeStart,
             relativeEnd < relativeStart ? 1 : relativeEnd,
-            circumference,
             edgeLengths,
             cornerLengths,
             edgeCumLengths,
             cornerCumLengths
         );
 
-        Vector4[] secondFrame = CalculateSegmentOffsets(
+        var secondFrame = CalculateSegmentOffsets(
             0f,
             relativeEnd < relativeStart ? relativeEnd : 0f,
-            circumference,
             edgeLengths,
             cornerLengths,
             edgeCumLengths,
@@ -294,8 +297,8 @@ public class FrameFractionClean : MonoBehaviour
             innerCoordinates.z,
             innerCoordinates.w);
 
-        Vector4 startOffsetX = new Vector4(  0f,                0f,                 firstFrame[0].z, - firstFrame[0].w);
-        Vector4 startOffsetY = new Vector4(- firstFrame[0].x,   firstFrame[0].y,    0f,                0f);
+        Vector4 startOffsetX = new Vector4(  0f,                0f,                 firstFrame.edgeStartOffset.z, - firstFrame.edgeStartOffset.w);
+        Vector4 startOffsetY = new Vector4(- firstFrame.edgeStartOffset.x,   firstFrame.edgeStartOffset.y,    0f,                0f);
 
         Vector4 cornerCoordinatesX = new Vector4(
                 outerCoordinates.x + cornerRadius.x, 
@@ -313,10 +316,10 @@ public class FrameFractionClean : MonoBehaviour
                 cornerRadius.z - borderWidth / 2f,
                 cornerRadius.w - borderWidth / 2f);
         Vector4 startAngle = new Vector4(
-              0f + firstFrame[1].x * 360f,
-            270f + firstFrame[1].y * 360f,
-             90f + firstFrame[1].z * 360f,
-            180f + firstFrame[1].w * 360f);
+              0f + firstFrame.cornerStartOffset.x * 360f,
+            270f + firstFrame.cornerStartOffset.y * 360f,
+             90f + firstFrame.cornerStartOffset.z * 360f,
+            180f + firstFrame.cornerStartOffset.w * 360f);
 
         Vector2 startLeftCoordinates = new Vector2(
             startEdgeCoordinatesX.x + startOffsetX.x, 
@@ -350,19 +353,19 @@ public class FrameFractionClean : MonoBehaviour
 
         float pos = relativeStart * circumference;
         Vector2 startCoordinates = Vector2.zero;
-        startCoordinates += (pos >= 0f                 & pos < edgeCumLengths.x) ? startLeftCoordinates : Vector2.zero;
-        startCoordinates += (pos >= edgeCumLengths.x & pos < cornerCumLengths.x) ? startLeftBottomCoordinates : Vector2.zero;
-        startCoordinates += (pos >= cornerCumLengths.x & pos < edgeCumLengths.z) ? startBottomCoordinates : Vector2.zero;
-        startCoordinates += (pos >= edgeCumLengths.z & pos < cornerCumLengths.z) ? startRightBottomCoordinates : Vector2.zero;
-        startCoordinates += (pos >= cornerCumLengths.z & pos < edgeCumLengths.y) ? startRightCoordinates : Vector2.zero;
-        startCoordinates += (pos >= edgeCumLengths.y & pos < cornerCumLengths.w) ? startRightTopCoordinates : Vector2.zero;
-        startCoordinates += (pos >= cornerCumLengths.w & pos < edgeCumLengths.w) ? startTopCoordinates : Vector2.zero;
-        startCoordinates += (pos >= edgeCumLengths.w & pos <= cornerCumLengths.y) ? startLeftTopCoordinates : Vector2.zero;
+        startCoordinates += (pos >= 0f                 & pos < edgeCumLengths.x) ? startLeftCoordinates :           Vector2.zero;
+        startCoordinates += (pos >= edgeCumLengths.x & pos < cornerCumLengths.x) ? startLeftBottomCoordinates :     Vector2.zero;
+        startCoordinates += (pos >= cornerCumLengths.x & pos < edgeCumLengths.z) ? startBottomCoordinates :         Vector2.zero;
+        startCoordinates += (pos >= edgeCumLengths.z & pos < cornerCumLengths.z) ? startRightBottomCoordinates :    Vector2.zero;
+        startCoordinates += (pos >= cornerCumLengths.z & pos < edgeCumLengths.y) ? startRightCoordinates :          Vector2.zero;
+        startCoordinates += (pos >= edgeCumLengths.y & pos < cornerCumLengths.w) ? startRightTopCoordinates :       Vector2.zero;
+        startCoordinates += (pos >= cornerCumLengths.w & pos < edgeCumLengths.w) ? startTopCoordinates :            Vector2.zero;
+        startCoordinates += (pos >= edgeCumLengths.w & pos <= cornerCumLengths.y) ? startLeftTopCoordinates :       Vector2.zero;
 
-        Vector4[] endFrame = relativeEnd < relativeStart ? secondFrame : firstFrame;
+        var endFrame = relativeEnd < relativeStart ? secondFrame : firstFrame;
 
-        Vector4 endOffsetX = new Vector4(0f,              0f,            - endFrame[2].z, endFrame[2].w);
-        Vector4 endOffsetY = new Vector4(endFrame[2].x, - endFrame[2].y, 0f,                0f);
+        Vector4 endOffsetX = new Vector4(0f,              0f,            - endFrame.edgeEndOffset.z, endFrame.edgeEndOffset.w);
+        Vector4 endOffsetY = new Vector4(endFrame.edgeEndOffset.x, - endFrame.edgeEndOffset.y, 0f,                0f);
 
         Vector2 endLeftCoordinates = new Vector2(
             startEdgeCoordinatesX.x + endOffsetX.x, 
@@ -378,10 +381,10 @@ public class FrameFractionClean : MonoBehaviour
             startEdgeCoordinatesY.w + endOffsetY.w);
 
         Vector4 endAngle = new Vector4(
-              0f + endFrame[3].x * 360f,
-            270f + endFrame[3].y * 360f,
-             90f + endFrame[3].z * 360f,
-            180f + endFrame[3].w * 360f);
+              0f + endFrame.cornerEndOffset.x * 360f,
+            270f + endFrame.cornerEndOffset.y * 360f,
+             90f + endFrame.cornerEndOffset.z * 360f,
+            180f + endFrame.cornerEndOffset.w * 360f);
 
         Vector2 endLeftBottomCoordinates = ringCoordinates(
             new Vector2(cornerCoordinatesX.x, cornerCoordinatesY.x),
@@ -409,82 +412,127 @@ public class FrameFractionClean : MonoBehaviour
         endCoordinates += (pos >= cornerCumLengths.z & pos < edgeCumLengths.y) ? endRightCoordinates          : Vector2.zero;
         endCoordinates += (pos >= edgeCumLengths.y & pos < cornerCumLengths.w) ? endRightTopCoordinates       : Vector2.zero;
         endCoordinates += (pos >= cornerCumLengths.w & pos < edgeCumLengths.w) ? endTopCoordinates            : Vector2.zero;
-        endCoordinates += (pos >= edgeCumLengths.w & pos <= cornerCumLengths.y) ? endLeftTopCoordinates        : Vector2.zero;
+        endCoordinates += (pos >= edgeCumLengths.w & pos <= cornerCumLengths.y) ? endLeftTopCoordinates       : Vector2.zero;
 
 
         return (
-            firstFrame[0],
-            firstFrame[1],
-            firstFrame[2],
-            firstFrame[3],
-            secondFrame[0],
-            secondFrame[1],
-            secondFrame[2],
-            secondFrame[3],
+            firstFrame.edgeStartOffset,
+            firstFrame.cornerStartOffset,
+            firstFrame.edgeEndOffset,
+            firstFrame.cornerEndOffset,
+            secondFrame.edgeStartOffset,
+            secondFrame.cornerStartOffset,
+            secondFrame.edgeEndOffset,
+            secondFrame.cornerEndOffset,
             startCoordinates,
             endCoordinates
         );
-
     }
 
 
-    Vector4[] CalculateSegmentOffsets(
+    (
+        Vector4 edgeStartOffset,
+        Vector4 cornerStartOffset,
+        Vector4 edgeEndOffset,
+        Vector4 cornerEndOffset) 
+    CalculateSegmentOffsets(
         float relativeStart,
         float relativeEnd,
-        float circumference,
         Vector4 edgeLengths,
         Vector4 cornerLengths,
         Vector4 edgeCumLengths,
         Vector4 cornerCumLengths)
     {
 
-        // start
-        edgeLengths = LeftRightBottomTopToClockwise(edgeLengths);
-        cornerLengths = LbLtRbRtToClockwise(cornerLengths);
-        edgeCumLengths = LeftRightBottomTopToClockwise(edgeCumLengths);
-        cornerCumLengths = LbLtRbRtToClockwise(cornerCumLengths);
-
-        Vector4 edgeStartActivation = new Vector4(
-            SegmentActivation(relativeStart, circumference, edgeLengths.x, 0f),
-            SegmentActivation(relativeStart, circumference, edgeLengths.y, cornerCumLengths.x),
-            SegmentActivation(relativeStart, circumference, edgeLengths.z, cornerCumLengths.y),
-            SegmentActivation(relativeStart, circumference, edgeLengths.w, cornerCumLengths.z)
-        );
-        Vector4 cornerStartActivation = new Vector4(
-            SegmentActivation(relativeStart, circumference, cornerLengths.x, edgeCumLengths.x),
-            SegmentActivation(relativeStart, circumference, cornerLengths.y, edgeCumLengths.y),
-            SegmentActivation(relativeStart, circumference, cornerLengths.z, edgeCumLengths.z),
-            SegmentActivation(relativeStart, circumference, cornerLengths.w, edgeCumLengths.w)
+        var startActivation = CalculateSegmentActivation(
+            relativeStart,
+            edgeLengths,
+            cornerLengths,
+            edgeCumLengths,
+            cornerCumLengths
         );
 
-        // end activation
-        Vector4 edgeEndActivation = new Vector4(
-            SegmentActivation(relativeEnd, circumference, edgeLengths.x, 0),
-            SegmentActivation(relativeEnd, circumference, edgeLengths.y, cornerCumLengths.x),
-            SegmentActivation(relativeEnd, circumference, edgeLengths.z, cornerCumLengths.y),
-            SegmentActivation(relativeEnd, circumference, edgeLengths.w, cornerCumLengths.z)
-        );
-        Vector4 cornerEndActivation = new Vector4(
-            SegmentActivation(relativeEnd, circumference, cornerLengths.x, edgeCumLengths.x),
-            SegmentActivation(relativeEnd, circumference, cornerLengths.y, edgeCumLengths.y),
-            SegmentActivation(relativeEnd, circumference, cornerLengths.z, edgeCumLengths.z),
-            SegmentActivation(relativeEnd, circumference, cornerLengths.w, edgeCumLengths.w)
+        var endActivation = CalculateSegmentActivation(
+            relativeEnd,
+            edgeLengths,
+            cornerLengths,
+            edgeCumLengths,
+            cornerCumLengths
         );
 
         // scale
-        Vector4 edgeStartOffset = Multiply4(edgeStartActivation, edgeLengths);
-        Vector4 cornerStartOffset = cornerStartActivation * 0.25f;
+        Vector4 edgeStartOffset = Multiply4(
+            startActivation.edgeActivation, 
+            edgeLengths);
+        Vector4 cornerStartOffset = startActivation.cornerActivation * 0.25f;
 
-        Vector4 edgeEndOffset = Multiply4(Vector4.one - edgeEndActivation, edgeLengths);
-        Vector4 cornerEndOffset = cornerEndActivation * 0.25f;
+        Vector4 edgeEndOffset = Multiply4(
+            Vector4.one - endActivation.edgeActivation, 
+            edgeLengths);
+        Vector4 cornerEndOffset = endActivation.cornerActivation * 0.25f;
 
-        return new Vector4[] {
-            ClockwiseToLeftRightBottomTop(edgeStartOffset),
-            ClockwiseToLbLtRbRt(cornerStartOffset),
-            ClockwiseToLeftRightBottomTop(edgeEndOffset),
-            ClockwiseToLbLtRbRt(cornerEndOffset)
-        };
+        return (
+            edgeStartOffset,
+            cornerStartOffset,
+            edgeEndOffset,
+            cornerEndOffset);
     }
+
+
+    protected (
+        Vector4 edgeActivation,
+        Vector4 cornerActivation
+    ) 
+    CalculateSegmentActivation(
+        float position,
+        Vector4 edgeLengths,
+        Vector4 cornerLengths,
+        Vector4 edgeCumLengths,
+        Vector4 cornerCumLengths)
+    {
+
+        // circumference
+        float circumference =   cornerCumLengths.y;
+
+        // sort values in clockwise order for better readability
+        edgeLengths =       LeftRightBottomTopToClockwise(edgeLengths);
+        cornerLengths =     LbLtRbRtToClockwise(cornerLengths);
+        edgeCumLengths =    LeftRightBottomTopToClockwise(edgeCumLengths);
+        cornerCumLengths =  LbLtRbRtToClockwise(cornerCumLengths);
+
+        // get circumference
+        Debug.Log($"position: {position}");
+        Debug.Log($"circumference: {circumference}");
+        float pos =             position * circumference;
+        Debug.Log($"pos: {pos}");
+
+        Vector4 edgeActivation = new Vector4(
+            SegmentActivation(pos, edgeLengths.x, 0f),
+            SegmentActivation(pos, edgeLengths.y, cornerCumLengths.x),
+            SegmentActivation(pos, edgeLengths.z, cornerCumLengths.y),
+            SegmentActivation(pos, edgeLengths.w, cornerCumLengths.z)
+        );
+        Vector4 cornerActivation = new Vector4(
+            SegmentActivation(pos, cornerLengths.x, edgeCumLengths.x),
+            SegmentActivation(pos, cornerLengths.y, edgeCumLengths.y),
+            SegmentActivation(pos, cornerLengths.z, edgeCumLengths.z),
+            SegmentActivation(pos, cornerLengths.w, edgeCumLengths.w)
+        );
+
+        // sort values back to original order
+        edgeActivation =    ClockwiseToLeftRightBottomTop(edgeActivation);
+        cornerActivation =  ClockwiseToLbLtRbRt(cornerActivation);
+
+        Debug.Log($"edgeActivation: {edgeActivation}");
+        Debug.Log($"cornerActivation: {cornerActivation}");
+
+        // return
+        return (
+            edgeActivation,
+            cornerActivation
+        );
+    }
+
 
     Vector2 ringCoordinates(
         Vector2 center,
@@ -543,13 +591,12 @@ public class FrameFractionClean : MonoBehaviour
 
     float SegmentActivation(
         float position, 
-        float circumference, 
         float segmentLength,
         float segmentStart
     )
     {   
         return Mathf.Clamp01(
-            (position * circumference - segmentStart) 
+            (position - segmentStart) 
             / segmentLength);
     }
 
