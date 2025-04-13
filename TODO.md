@@ -22,9 +22,10 @@
 - [x] fix offset for segment based positioning
 - [x] ensure corner radius is at least the size of the border
 - [x] fix segment scaling
+- [x] some clean-up and renaming please
+- [ ] move things into a utility class
 - [ ] move segment based positioning into extra function not into a class per se
     - so we can animate things later
-- [ ] some clean-up and renaming please (e.g., move into utility class`)!!!
 - [ ] translate code to shader code and see whether that is slower/faster
 
 ### Image with content
@@ -38,19 +39,19 @@
 ### Interactive
 
 - [ ] Add dummy controls
+- [ ] See how things look and optimize!
+
+- [ ] set up interaction framework
+- [ ] make controls react to focus/hover (resize, color, etc.)
+    - [ ] simple hover effect
+    - [ ] animate corners
 - [ ] Move / Close
 - [ ] Resize
-    - [ ] Make controls usable
-    - [ ] Animate controls
 - [ ] Pan / Zooming
-- [ ] Test whether reusing controls between images is more efficient
+- [ ] Test whether reusing shader based controls between images is more efficient
+- [ ] Crop and copy
 
 ## Backlog
-
-### Interactive
-
-- [ ] Crop and copy
-- [ ] Hover animation
 
 ### Image content
 
