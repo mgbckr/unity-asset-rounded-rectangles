@@ -1,44 +1,12 @@
 using UnityEngine;
 
-public class FrameFractionClean : MonoBehaviour
+public class FrameFractionUtils
 {
 
-    // left right bottom top
-    public Vector4 padding = new Vector4(0f, 0f, 0f, 0f);
-    // left-bottom, left-top, right-bottom, right-top
-    public Vector4 cornerRadius = new Vector4(0f, 0f, 0f, 0f);
-    public float borderWidth = 0.05f;
-    public float relativeOffset = 0f;
-    public float relativeStart = 0f;
-    public float relativeEnd = 1f;
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-    }
-
-    void Update() {
-        // animate offset
-        float speed = 1f;
-        float pulse = Mathf.PingPong(Time.time * speed, 1f);
-        float sawtooth = (Time.time % (1/speed)) / (1/speed);
-        // relativeOffset = sawtooth;
-
-        Debug.Log($"Update");
-        Layout(
-            transform.localScale, 
-            padding, 
-            cornerRadius, 
-            borderWidth,
-            relativeStart, 
-            relativeEnd, 
-            relativeOffset
-        );
-    }
-
     // Update is called once per frame
-    void Layout(
+    public static void UpdateShader(
+        Material material,
+
         Vector2 scale,
         Vector4 worldPadding,
         Vector4 worldCornerRadius,
@@ -80,8 +48,91 @@ public class FrameFractionClean : MonoBehaviour
 
         // set shader properties
 
-        // get the material from the renderer
-        Material material = GetComponent<Renderer>().material;
+        // Set the basic properties of the material
+        material.SetVector("_Tiling", shaderShape.tiling);
+        material.SetVector("_Padding_left_right_bottom_top", shaderShape.padding);
+        material.SetVector("_Corner_Radius_lb_lt_rb_rt", shaderShape.cornerRadius);
+        material.SetFloat("_Border_Width", shaderShape.borderWidth);
+
+
+        // // first frame
+        material.SetVector("_First_Start_Offset_left_right_bottom_top", segmentParameters.firstStartOffset);
+        material.SetVector("_First_Start_Fraction_lb_lt_rb_rt", segmentParameters.firstStartFraction);
+
+        material.SetVector("_First_End_Offset_left_right_bottom_top", segmentParameters.firstEndOffset);
+        material.SetVector("_First_End_Fraction_lb_lt_rb_rt", segmentParameters.firstEndFraction);
+
+        // // second frame
+        material.SetVector("_Second_Start_Offset_left_right_bottom_top", segmentParameters.secondStartOffset);
+        material.SetVector("_Second_Start_Fraction_lb_lt_rb_rt", segmentParameters.secondStartFraction);
+
+        material.SetVector("_Second_End_Offset_left_right_bottom_top", segmentParameters.secondEndOffset);
+        material.SetVector("_Second_End_Fraction_lb_lt_rb_rt", segmentParameters.secondEndFraction);
+
+        // // circles
+        material.SetVector("_Center_1", segmentParameters.startCoordinates);
+        material.SetVector("_Center_2", segmentParameters.endCoordinates);
+        
+    }
+
+
+    // Update is called once per frame
+    public static void UpdateShader(
+        Material material,
+
+        Vector2 scale,
+        Vector4 worldPadding,
+        Vector4 worldCornerRadius,
+        float   worldBorderWidth,
+
+        int segment, 
+        float segmentPosition, 
+        float startOffset,
+        float endOffset
+    )
+    {        
+
+        var shaderShape = DeriveShaderShapeParameters(
+            scale, 
+            worldPadding, 
+            worldCornerRadius, 
+            worldBorderWidth);
+
+        // prepare segment information
+        // which does not change if the shape is static
+        var segmentInfos = DeriveStaticSegmentProperties(
+            shaderShape.padding, 
+            shaderShape.cornerRadius, 
+            shaderShape.borderWidth);
+        
+        float relativeStartLength = RelativeStartLength(
+            segmentInfos.edgeLengths,
+            segmentInfos.cornerLengths,
+            segmentInfos.edgeCumLengths,
+            segmentInfos.cornerCumLengths,
+
+            segment,
+            segmentPosition
+        );
+
+        float circumference = segmentInfos.cornerCumLengths.y;
+        float maxScale = Mathf.Max(scale.x, scale.y);
+        var segmentParameters = DeriveSegmentParameters(
+            startOffset / maxScale / circumference,
+            endOffset / maxScale / circumference,
+            relativeStartLength,
+
+            shaderShape.padding,
+            shaderShape.cornerRadius,
+            shaderShape.borderWidth,
+
+            segmentInfos.edgeLengths,
+            segmentInfos.cornerLengths,
+            segmentInfos.edgeCumLengths,
+            segmentInfos.cornerCumLengths
+        );
+
+        // set shader properties
 
         // Set the basic properties of the material
         material.SetVector("_Tiling", shaderShape.tiling);
@@ -110,7 +161,33 @@ public class FrameFractionClean : MonoBehaviour
         
     }
 
-    protected (
+    static float RelativeStartLength(
+        Vector4 edgeLengths,
+        Vector4 cornerLengths,
+        Vector4 edgeCumLengths,
+        Vector4 cornerCumLengths,
+
+        float segment,
+        float segmentPosition
+    )
+    {
+
+        // calculate relative start and end positions
+        float startLength = 0f;
+        startLength += segment == 0 ? 0f                    + segmentPosition * edgeLengths.x   : 0f;
+        startLength += segment == 1 ? edgeCumLengths.x      + segmentPosition * cornerLengths.x : 0f;
+        startLength += segment == 2 ? cornerCumLengths.x    + segmentPosition * edgeLengths.z   : 0f;
+        startLength += segment == 3 ? edgeCumLengths.z      + segmentPosition * cornerLengths.z : 0f;
+        startLength += segment == 4 ? cornerCumLengths.z    + segmentPosition * edgeLengths.y   : 0f;
+        startLength += segment == 5 ? edgeCumLengths.y      + segmentPosition * cornerLengths.w : 0f;
+        startLength += segment == 6 ? cornerCumLengths.w    + segmentPosition * edgeLengths.w   : 0f;
+        startLength += segment == 7 ? edgeCumLengths.w      + segmentPosition * cornerLengths.y : 0f;
+
+        float circumference = cornerCumLengths.y;
+        return startLength / circumference;
+    }
+
+    protected static (
             Vector2 tiling, 
             Vector4 padding, 
             Vector4 cornerRadius, 
@@ -151,7 +228,7 @@ public class FrameFractionClean : MonoBehaviour
         return (tiling, shaderPadding, shaderCornerRadius, shaderBorderWidth);
     }
 
-    protected (
+    protected static (
             Vector4 edgeLengths, 
             Vector4 cornerLengths, 
             Vector4 edgeCumLengths, 
@@ -209,7 +286,7 @@ public class FrameFractionClean : MonoBehaviour
         );
     }
 
-    protected (
+    protected static (
         Vector4 firstStartOffset,
         Vector4 firstStartFraction,
         Vector4 firstEndOffset,
@@ -339,7 +416,7 @@ public class FrameFractionClean : MonoBehaviour
         );
     }
 
-    protected
+    protected static
     (
         Vector4 edgeStartOffset,
         Vector4 cornerStartOffset,
@@ -389,7 +466,7 @@ public class FrameFractionClean : MonoBehaviour
     }
 
 
-    protected (
+    protected static (
         Vector4 edgeActivation,
         Vector4 cornerActivation
     ) 
@@ -444,7 +521,7 @@ public class FrameFractionClean : MonoBehaviour
         );
     }
 
-    protected Vector2 GapCoordinates(
+    protected static Vector2 GapCoordinates(
         Vector4 outerCoordinates,
         Vector4 cornerCenterX,
         Vector4 cornerCenterY,
@@ -553,7 +630,7 @@ public class FrameFractionClean : MonoBehaviour
 
     }
 
-    Vector2 RingCoordinates(
+    static Vector2 RingCoordinates(
         Vector2 center,
         float radius,
         float degrees)
@@ -564,7 +641,7 @@ public class FrameFractionClean : MonoBehaviour
         return new Vector2(x, y);
     }
 
-    Vector4 Multiply4(
+    static Vector4 Multiply4(
         Vector4 a, 
         Vector4 b)
     {
@@ -576,7 +653,7 @@ public class FrameFractionClean : MonoBehaviour
         );
     }
 
-    Vector4 AddScalar4(
+    static Vector4 AddScalar4(
         Vector4 a, 
         float scalar)
     {
@@ -588,7 +665,7 @@ public class FrameFractionClean : MonoBehaviour
         );
     }
 
-    Vector4 Add4(
+    static Vector4 Add4(
         Vector4 a, 
         Vector4 b)
     {
@@ -600,27 +677,27 @@ public class FrameFractionClean : MonoBehaviour
         );
     }
 
-    Vector4 LeftRightBottomTopToClockwise(Vector4 edges)
+    static Vector4 LeftRightBottomTopToClockwise(Vector4 edges)
     {
         return new Vector4(edges.x, edges.z, edges.y, edges.w);
     }
 
-    Vector4 LbLtRbRtToClockwise(Vector4 corners)
+    static Vector4 LbLtRbRtToClockwise(Vector4 corners)
     {
         return new Vector4(corners.x, corners.z, corners.w, corners.y);
     }
 
-    Vector4 ClockwiseToLeftRightBottomTop(Vector4 edges)
+    static Vector4 ClockwiseToLeftRightBottomTop(Vector4 edges)
     {
         return new Vector4(edges.x, edges.z, edges.y, edges.w);
     }
 
-    Vector4 ClockwiseToLbLtRbRt(Vector4 corners)
+    static Vector4 ClockwiseToLbLtRbRt(Vector4 corners)
     {
         return new Vector4(corners.x, corners.w, corners.y, corners.z);
     }
 
-    float SegmentActivation(
+    static float SegmentActivation(
         float position, 
         float segmentLength,
         float segmentStart
@@ -631,7 +708,7 @@ public class FrameFractionClean : MonoBehaviour
             / segmentLength);
     }
 
-    float RampUp(float value)
+    static float RampUp(float value)
     {
         if (value > 1f | value < 0f) {
             value = ((value % 1f) + 1f) % 1f;
@@ -640,7 +717,7 @@ public class FrameFractionClean : MonoBehaviour
         return Mathf.Clamp01(value);
     }
 
-    bool IsClose(float a, float b, float tolerance = 0.0001f)
+    static bool IsClose(float a, float b, float tolerance = 0.0001f)
     {
         return Mathf.Abs(a - b) < tolerance;
     }

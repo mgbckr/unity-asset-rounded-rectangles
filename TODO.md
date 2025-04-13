@@ -23,8 +23,8 @@
 - [x] ensure corner radius is at least the size of the border
 - [x] fix segment scaling
 - [x] some clean-up and renaming please
-- [ ] move things into a utility class
-- [ ] move segment based positioning into extra function not into a class per se
+- [x] move things into a utility class
+- [x] move segment based positioning into extra function not into a class per se
     - so we can animate things later
 - [ ] translate code to shader code and see whether that is slower/faster
 
