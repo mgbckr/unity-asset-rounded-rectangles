@@ -597,10 +597,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1596.4998779296875,
-            "y": -864.9998168945313,
-            "width": 151.5001220703125,
-            "height": 33.99993896484375
+            "x": -1481.9998779296875,
+            "y": -826.9999389648438,
+            "width": 136.0,
+            "height": 34.0
         }
     },
     "m_Slots": [
@@ -758,10 +758,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -2149.000244140625,
-            "y": -1385.000244140625,
-            "width": 152.5,
-            "height": 173.0001220703125
+            "x": -1788.0001220703125,
+            "y": -1308.0001220703125,
+            "width": 152.5001220703125,
+            "height": 173.0
         }
     },
     "m_Slots": [
@@ -956,10 +956,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1596.60205078125,
-            "y": -935.3943481445313,
-            "width": 0.0,
-            "height": 0.0
+            "x": -1468.0,
+            "y": -901.500244140625,
+            "width": 122.0,
+            "height": 34.00018310546875
         }
     },
     "m_Slots": [
@@ -1560,10 +1560,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1296.4998779296875,
-            "y": -1221.4998779296875,
+            "x": -1168.0,
+            "y": -1187.5,
             "width": 357.0,
-            "height": 541.9999389648438
+            "height": 542.0
         }
     },
     "m_Slots": [
@@ -1643,7 +1643,7 @@
     "m_FunctionName": "Frame_Fraction",
     "m_FunctionSource": "",
     "m_FunctionSourceUsePragmas": true,
-    "m_FunctionBody": "/**\n * Notes:\n * - Using `$precision` gave me warnings in the shader graph and I am getting an error \n *   message when I am trying to use `half`. So I am using `float` now.\n */\n\n// // INPUT\n// float2 Scale;\n// float2 World_Padding;\n// float4 World_Corner_Radius;\n// float World_Border_Width;\n\n// float Segment;\n// float Segment_Position;\n// float World_Start_Offset;\n// float World_End_Offset;\n\n// // OUTPUT\n// float2 Tiling;\n// float4 Padding;\n// float4 Corner_Radius;\n// float Border_Width;\n\n// Tiling = float2(1, 1);\n// Padding = float4(0, 0, 0, 0);\n// Corner_Radius = float4(0.1, 0.1, 0.1, 0.1);\n// Border_Width = float(0.1);\n\n// START CODE\n\nfloat maxScale = max(Scale.x, Scale.y);\nfloat2 shaderScale = float2(Scale.x / maxScale, Scale.y / maxScale);\n\nfloat4 scalePadding = float4(\n    float(0), \n    float(1) - shaderScale.x,\n    float(0),\n    float(1) - shaderScale.y);\n\n// finalize shape parameters in shader coordinates\nTiling = shaderScale;\nPadding = scalePadding + World_Padding / maxScale;\nCorner_Radius = World_Corner_Radius / maxScale;\nBorder_Width = World_Border_Width / maxScale;\n\n// ensure corner radius to be at least border width\nCorner_Radius = max(Corner_Radius, Border_Width);\n\n// DERIVE STATIC SEGMENT PROPERTIES\n\nfloat4 edgeLengths = \n    Padding.zzxx + Padding.wwyy + Corner_Radius.xzxy + Corner_Radius.ywzw;\nedgeLengths = 1 - edgeLengths;\n\nfloat4 cornerLengths = (Corner_Radius - 0.5 * Border_Width) * 3.14159265359 / 2;\n\nfloat4 edgeCumLengths = float4(0, 0, 0, 0);\nfloat4 cornerCumLengths = float4(0, 0, 0, 0);\n\nfloat sum = 0;\n\n// left\nsum += edgeLengths.x;\nedgeCumLengths.x = sum;\n\n// left-bottom\nsum += cornerLengths.x;\ncornerCumLengths.x = sum;\n\n// bottom\nsum += edgeLengths.z;\nedgeCumLengths.z = sum;\n\n// right-bottom\nsum += cornerLengths.z;\ncornerCumLengths.z = sum;\n\n// right\nsum += edgeLengths.y;\nedgeCumLengths.y = sum;\n\n// right-top\nsum += cornerLengths.w;\ncornerCumLengths.w = sum;\n\n// top\nsum += edgeLengths.w;\nedgeCumLengths.w = sum;\n\n// left-top\nsum += cornerLengths.y;\ncornerCumLengths.y = sum;\n\nfloat circumference = cornerCumLengths.y;\n\n// calculate relative start and end positions\nfloat startLength = 0.0;\nstartLength += (Segment == 0) * (0.0                   + Segment_Position * edgeLengths.x  );\nstartLength += (Segment == 1) * (edgeCumLengths.x      + Segment_Position * cornerLengths.x);\nstartLength += (Segment == 2) * (cornerCumLengths.x    + Segment_Position * edgeLengths.z  );\nstartLength += (Segment == 3) * (edgeCumLengths.z      + Segment_Position * cornerLengths.z);\nstartLength += (Segment == 4) * (cornerCumLengths.z    + Segment_Position * edgeLengths.y  );\nstartLength += (Segment == 5) * (edgeCumLengths.y      + Segment_Position * cornerLengths.w);\nstartLength += (Segment == 6) * (cornerCumLengths.w    + Segment_Position * edgeLengths.w  );\nstartLength += (Segment == 7) * (edgeCumLengths.w      + Segment_Position * cornerLengths.y);\nstartLength /= circumference;\n\nfloat relativeStart = World_Start_Offset / maxScale / circumference + startLength;\nfloat relativeEnd = World_End_Offset / maxScale / circumference + startLength;\n\n// wrap around relative start and end\n\nfloat t = 1e-3;\nfloat tmp;\ntmp = frac(relativeStart);\nfloat Start = (tmp < t && abs(relativeStart) > t) ? 1.0 : tmp;\ntmp = frac(relativeEnd);\nfloat End = (tmp < t && abs(relativeEnd) > t) ? 1.0 : tmp;\n\n// calculate offsets\n\nfloat position;\nfloat pos;\nfloat4 edgeActivation;\nfloat4 cornerActivation;\n\nposition = Start;\npos = position * circumference;\n\nedgeActivation = float4(\n    saturate((pos                     ) / edgeLengths.x),  // left \n    saturate((pos - cornerCumLengths.z) / edgeLengths.y),  // right\n    saturate((pos - cornerCumLengths.x) / edgeLengths.z),  // bottom\n    saturate((pos - cornerCumLengths.w) / edgeLengths.w)); // top\n\ncornerActivation = float4(\n    saturate((pos - edgeCumLengths.x) / cornerLengths.x),\n    saturate((pos - edgeCumLengths.w) / cornerLengths.y),\n    saturate((pos - edgeCumLengths.z) / cornerLengths.z),\n    saturate((pos - edgeCumLengths.y) / cornerLengths.w));\n\nfloat4 startEdgeActivation = edgeActivation;\nfloat4 startCornerActivation = cornerActivation;\n\nposition = End < Start ? 1 : End;\npos = position * circumference;\n\nedgeActivation = float4(\n    saturate((pos                     ) / edgeLengths.x),  // left \n    saturate((pos - cornerCumLengths.z) / edgeLengths.y),  // right\n    saturate((pos - cornerCumLengths.x) / edgeLengths.z),  // bottom\n    saturate((pos - cornerCumLengths.w) / edgeLengths.w)); // top\n\ncornerActivation = float4(\n    saturate((pos - edgeCumLengths.x) / cornerLengths.x),\n    saturate((pos - edgeCumLengths.w) / cornerLengths.y),\n    saturate((pos - edgeCumLengths.z) / cornerLengths.z),\n    saturate((pos - edgeCumLengths.y) / cornerLengths.w));\n\nfloat4 endEdgeActivation = 1.0 - edgeActivation;\nfloat4 endCornerActivation = cornerActivation;\n\nposition = End < Start ? End : 0.0;\npos = position * circumference;\n\nedgeActivation = float4(\n    saturate((pos                     ) / edgeLengths.x),  // left \n    saturate((pos - cornerCumLengths.z) / edgeLengths.y),  // right\n    saturate((pos - cornerCumLengths.x) / edgeLengths.z),  // bottom\n    saturate((pos - cornerCumLengths.w) / edgeLengths.w)); // top\n\ncornerActivation = float4(\n    saturate((pos - edgeCumLengths.x) / cornerLengths.x),\n    saturate((pos - edgeCumLengths.w) / cornerLengths.y),\n    saturate((pos - edgeCumLengths.z) / cornerLengths.z),\n    saturate((pos - edgeCumLengths.y) / cornerLengths.w));\n\nfloat4 tailEdgeActivation = 1.0 - edgeActivation;\nfloat4 tailCornerActivation = cornerActivation;\n\n// calculate offsets\n\nFirst_Edge_Start_Offset =   startEdgeActivation * edgeLengths;\nFirst_Edge_End_Offset =     endEdgeActivation * edgeLengths;\n\nFirst_Corner_Start_Offset = startCornerActivation * 0.25;\nFirst_Corner_End_Offset =   endCornerActivation * 0.25;\n\nSecond_Edge_End_Offset =   tailEdgeActivation * edgeLengths;\nSecond_Corner_End_Offset = tailCornerActivation * 0.25;\n\n\n\n// calculate circle coordinates\n\nfloat4 outerCoordinates = \n    float4(0.0, 1.0, 0.0, 1.0) \n    + float4(1.0, -1.0, 1.0, -1.0) * Padding;\n\nfloat4 cornerCenterX = outerCoordinates.xxyy + float4(1.0, 1.0, -1.0, -1.0) * Corner_Radius;\nfloat4 cornerCenterY = outerCoordinates.zwzw + float4(1.0, -1.0, 1.0, -1.0) * Corner_Radius;\n\nfloat4 halfRadius = Corner_Radius - 0.5 * Border_Width;\n\nfloat4 edgeCoordinatesX;\nfloat4 edgeCoordinatesY;\nfloat2 leftCoordinates;\nfloat2 rightCoordinates;\nfloat2 bottomCoordinates;\nfloat2 topCoordinates;\nfloat2 leftBottomCoordinates;\nfloat2 leftTopCoordinates;\nfloat2 rightBottomCoordinates;\nfloat2 rightTopCoordinates;\nfloat radians;\nfloat2 coordinates;\nfloat4 cornerOffset;\nfloat4 edgeOffset;\n\n// start circle\n\nedgeOffset = First_Edge_Start_Offset;\ncornerOffset = First_Corner_Start_Offset;\n\n// add edge offsets to the start coordinates\nedgeCoordinatesX = outerCoordinates.xyxy + float4(\n      Border_Width / 2.0,\n    - Border_Width / 2.0,\n      Corner_Radius.x       + edgeOffset.z,\n    - Corner_Radius.w       - edgeOffset.w\n);\nedgeCoordinatesY = outerCoordinates.wzzw + float4(\n    - Corner_Radius.y      - edgeOffset.x,\n      Corner_Radius.z      + edgeOffset.y,\n      Border_Width / 2.0,\n    - Border_Width / 2.0\n);\n\nleftCoordinates =   float2(edgeCoordinatesX.x, edgeCoordinatesY.x);\nrightCoordinates =  float2(edgeCoordinatesX.y, edgeCoordinatesY.y);\nbottomCoordinates = float2(edgeCoordinatesX.z, edgeCoordinatesY.z);\ntopCoordinates =    float2(edgeCoordinatesX.w, edgeCoordinatesY.w);\n\nradians = (0.0 + cornerOffset.x * 360.0 + 180.0) * (3.14159265 / 180.0);\nleftBottomCoordinates = float2(\n    cornerCenterX.x + halfRadius.x * cos(radians),\n    cornerCenterY.x + halfRadius.x * sin(radians)\n);\n\nradians = (270.0 + cornerOffset.y * 360.0 + 180.0) * (3.14159265 / 180.0);\nleftTopCoordinates = float2(\n    cornerCenterX.y + halfRadius.y * cos(radians),\n    cornerCenterY.y + halfRadius.y * sin(radians)\n);\n\nradians = (90.0 + cornerOffset.z * 360.0 + 180.0) * (3.14159265 / 180.0);\nrightBottomCoordinates = float2(\n    cornerCenterX.z + halfRadius.z * cos(radians),\n    cornerCenterY.z + halfRadius.z * sin(radians)\n);\n\nradians = (180.0 + cornerOffset.w * 360.0 + 180.0) * (3.14159265 / 180.0);\nrightTopCoordinates = float2(\n    cornerCenterX.w + halfRadius.w * cos(radians),\n    cornerCenterY.w + halfRadius.w * sin(radians)\n);\n\npos = Start * circumference;\ncoordinates = float2(0.0, 0.0);\ncoordinates += (pos >= 0.0                & pos < edgeCumLengths.x)    * leftCoordinates       ;\ncoordinates += (pos >= edgeCumLengths.x   & pos < cornerCumLengths.x)  * leftBottomCoordinates ;\ncoordinates += (pos >= cornerCumLengths.x & pos < edgeCumLengths.z)    * bottomCoordinates     ;\ncoordinates += (pos >= edgeCumLengths.z   & pos < cornerCumLengths.z)  * rightBottomCoordinates;\ncoordinates += (pos >= cornerCumLengths.z & pos < edgeCumLengths.y)    * rightCoordinates      ;\ncoordinates += (pos >= edgeCumLengths.y   & pos < cornerCumLengths.w)  * rightTopCoordinates   ;\ncoordinates += (pos >= cornerCumLengths.w & pos < edgeCumLengths.w)    * topCoordinates        ;\ncoordinates += (pos >= edgeCumLengths.w   & pos <= cornerCumLengths.y) * leftTopCoordinates    ;\n\nStart_Coordinates = coordinates;\n\n\n// end circle\n\nedgeOffset = End < Start ? Second_Edge_End_Offset : First_Edge_End_Offset;\ncornerOffset = End < Start ? Second_Corner_End_Offset : First_Corner_End_Offset;\n\n// add edge offsets to the coordinates\nedgeCoordinatesX = outerCoordinates.xyyx + float4(\n    + Border_Width / 2.0,\n    - Border_Width / 2.0,\n    - Corner_Radius.z       - edgeOffset.z,\n    + Corner_Radius.y       + edgeOffset.w\n);\nedgeCoordinatesY = outerCoordinates.zwzw + float4(\n    + Corner_Radius.x      + edgeOffset.x,\n    - Corner_Radius.w      - edgeOffset.y,\n    + Border_Width / 2.0,\n    - Border_Width / 2.0\n);\n\nleftCoordinates =   float2(edgeCoordinatesX.x, edgeCoordinatesY.x);\nrightCoordinates =  float2(edgeCoordinatesX.y, edgeCoordinatesY.y);\nbottomCoordinates = float2(edgeCoordinatesX.z, edgeCoordinatesY.z);\ntopCoordinates =    float2(edgeCoordinatesX.w, edgeCoordinatesY.w);\n\nradians = (0.0 + cornerOffset.x * 360.0 + 180.0) * (3.14159265 / 180.0);\nleftBottomCoordinates = float2(\n    cornerCenterX.x + halfRadius.x * cos(radians),\n    cornerCenterY.x + halfRadius.x * sin(radians)\n);\n\nradians = (270.0 + cornerOffset.y * 360.0 + 180.0) * (3.14159265 / 180.0);\nleftTopCoordinates = float2(\n    cornerCenterX.y + halfRadius.y * cos(radians),\n    cornerCenterY.y + halfRadius.y * sin(radians)\n);\n\nradians = (90.0 + cornerOffset.z * 360.0 + 180.0) * (3.14159265 / 180.0);\nrightBottomCoordinates = float2(\n    cornerCenterX.z + halfRadius.z * cos(radians),\n    cornerCenterY.z + halfRadius.z * sin(radians)\n);\n\nradians = (180.0 + cornerOffset.w * 360.0 + 180.0) * (3.14159265 / 180.0);\nrightTopCoordinates = float2(\n    cornerCenterX.w + halfRadius.w * cos(radians),\n    cornerCenterY.w + halfRadius.w * sin(radians)\n);\n\npos = End * circumference;\ncoordinates = float2(0.0, 0.0);\ncoordinates += (pos >= 0.0                & pos < edgeCumLengths.x)    * leftCoordinates       ;\ncoordinates += (pos >= edgeCumLengths.x   & pos < cornerCumLengths.x)  * leftBottomCoordinates ;\ncoordinates += (pos >= cornerCumLengths.x & pos < edgeCumLengths.z)    * bottomCoordinates     ;\ncoordinates += (pos >= edgeCumLengths.z   & pos < cornerCumLengths.z)  * rightBottomCoordinates;\ncoordinates += (pos >= cornerCumLengths.z & pos < edgeCumLengths.y)    * rightCoordinates      ;\ncoordinates += (pos >= edgeCumLengths.y   & pos < cornerCumLengths.w)  * rightTopCoordinates   ;\ncoordinates += (pos >= cornerCumLengths.w & pos < edgeCumLengths.w)    * topCoordinates        ;\ncoordinates += (pos >= edgeCumLengths.w   & pos <= cornerCumLengths.y) * leftTopCoordinates    ;\n\nEnd_Coordinates = coordinates;\n"
+    "m_FunctionBody": "/**\n * Notes:\n * - Using `$precision` gave me warnings in the shader graph and I am getting an error \n *   message when I am trying to use `half`. So I am using `float` now.\n */\n\n// // INPUT\n// float2 Scale;\n// float2 World_Padding;\n// float4 World_Corner_Radius;\n// float World_Border_Width;\n\n// float Segment;\n// float Segment_Position;\n// float World_Start_Offset;\n// float World_End_Offset;\n\n// // OUTPUT\n// float2 Tiling;\n// float4 Padding;\n// float4 Corner_Radius;\n// float Border_Width;\n\n// Tiling = float2(1, 1);\n// Padding = float4(0, 0, 0, 0);\n// Corner_Radius = float4(0.1, 0.1, 0.1, 0.1);\n// Border_Width = float(0.1);\n\n// START CODE\n\nfloat maxScale = max(Scale.x, Scale.y);\nfloat2 shaderScale = float2(Scale.x / maxScale, Scale.y / maxScale);\n\nfloat4 scalePadding = float4(\n    float(0), \n    float(1) - shaderScale.x,\n    float(0),\n    float(1) - shaderScale.y);\n\n// finalize shape parameters in shader coordinates\nTiling = shaderScale;\nPadding = scalePadding + World_Padding / maxScale;\nCorner_Radius = World_Corner_Radius / maxScale;\nBorder_Width = World_Border_Width / maxScale;\n\n// ensure corner radius to be at least border width\nCorner_Radius = max(Corner_Radius, Border_Width);\n\n// DERIVE STATIC SEGMENT PROPERTIES\n\nfloat4 edgeLengths = \n    Padding.zzxx + Padding.wwyy + Corner_Radius.xzxy + Corner_Radius.ywzw;\nedgeLengths = 1 - edgeLengths;\n\nfloat4 cornerLengths = (Corner_Radius - 0.5 * Border_Width) * 3.14159265359 / 2;\n\nfloat4 edgeCumLengths = float4(0, 0, 0, 0);\nfloat4 cornerCumLengths = float4(0, 0, 0, 0);\n\nfloat sum = 0;\n\n// left\nsum += edgeLengths.x;\nedgeCumLengths.x = sum;\n\n// left-bottom\nsum += cornerLengths.x;\ncornerCumLengths.x = sum;\n\n// bottom\nsum += edgeLengths.z;\nedgeCumLengths.z = sum;\n\n// right-bottom\nsum += cornerLengths.z;\ncornerCumLengths.z = sum;\n\n// right\nsum += edgeLengths.y;\nedgeCumLengths.y = sum;\n\n// right-top\nsum += cornerLengths.w;\ncornerCumLengths.w = sum;\n\n// top\nsum += edgeLengths.w;\nedgeCumLengths.w = sum;\n\n// left-top\nsum += cornerLengths.y;\ncornerCumLengths.y = sum;\n\nfloat circumference = cornerCumLengths.y;\n\n// calculate relative start and end positions\nfloat startLength = 0.0;\nstartLength += (Segment == 0) * (0.0                   + Segment_Position * edgeLengths.x  );\nstartLength += (Segment == 1) * (edgeCumLengths.x      + Segment_Position * cornerLengths.x);\nstartLength += (Segment == 2) * (cornerCumLengths.x    + Segment_Position * edgeLengths.z  );\nstartLength += (Segment == 3) * (edgeCumLengths.z      + Segment_Position * cornerLengths.z);\nstartLength += (Segment == 4) * (cornerCumLengths.z    + Segment_Position * edgeLengths.y  );\nstartLength += (Segment == 5) * (edgeCumLengths.y      + Segment_Position * cornerLengths.w);\nstartLength += (Segment == 6) * (cornerCumLengths.w    + Segment_Position * edgeLengths.w  );\nstartLength += (Segment == 7) * (edgeCumLengths.w      + Segment_Position * cornerLengths.y);\nstartLength /= circumference;\n\nfloat relativeStart = World_Start_Offset / maxScale / circumference + startLength;\nfloat relativeEnd = World_End_Offset / maxScale / circumference + startLength;\n\n// wrap around relative start and end\n\nfloat t = 1e-3;\nfloat tmp;\ntmp = frac(relativeStart);\nfloat Start = (tmp < t && abs(relativeStart) > t) ? 1.0 : tmp;\ntmp = frac(relativeEnd);\nfloat End = (tmp < t && abs(relativeEnd) > t) ? 1.0 : tmp;\n\n// calculate offsets\n\nfloat position;\nfloat pos;\nfloat4 edgeActivation;\nfloat4 cornerActivation;\n\nposition = Start;\npos = position * circumference;\n\nedgeActivation = float4(\n    saturate((pos                     ) / edgeLengths.x),  // left \n    saturate((pos - cornerCumLengths.z) / edgeLengths.y),  // right\n    saturate((pos - cornerCumLengths.x) / edgeLengths.z),  // bottom\n    saturate((pos - cornerCumLengths.w) / edgeLengths.w)); // top\n\ncornerActivation = float4(\n    saturate((pos - edgeCumLengths.x) / cornerLengths.x),\n    saturate((pos - edgeCumLengths.w) / cornerLengths.y),\n    saturate((pos - edgeCumLengths.z) / cornerLengths.z),\n    saturate((pos - edgeCumLengths.y) / cornerLengths.w));\n\nfloat4 startEdgeActivation = edgeActivation;\nfloat4 startCornerActivation = cornerActivation;\n\nposition = End < Start ? 1 : End;\npos = position * circumference;\n\nedgeActivation = float4(\n    saturate((pos                     ) / edgeLengths.x),  // left \n    saturate((pos - cornerCumLengths.z) / edgeLengths.y),  // right\n    saturate((pos - cornerCumLengths.x) / edgeLengths.z),  // bottom\n    saturate((pos - cornerCumLengths.w) / edgeLengths.w)); // top\n\ncornerActivation = float4(\n    saturate((pos - edgeCumLengths.x) / cornerLengths.x),\n    saturate((pos - edgeCumLengths.w) / cornerLengths.y),\n    saturate((pos - edgeCumLengths.z) / cornerLengths.z),\n    saturate((pos - edgeCumLengths.y) / cornerLengths.w));\n\nfloat4 endEdgeActivation = 1.0 - edgeActivation;\nfloat4 endCornerActivation = cornerActivation;\n\nposition = End < Start ? End : 0.0;\npos = position * circumference;\n\nedgeActivation = float4(\n    saturate((pos                     ) / edgeLengths.x),  // left \n    saturate((pos - cornerCumLengths.z) / edgeLengths.y),  // right\n    saturate((pos - cornerCumLengths.x) / edgeLengths.z),  // bottom\n    saturate((pos - cornerCumLengths.w) / edgeLengths.w)); // top\n\ncornerActivation = float4(\n    saturate((pos - edgeCumLengths.x) / cornerLengths.x),\n    saturate((pos - edgeCumLengths.w) / cornerLengths.y),\n    saturate((pos - edgeCumLengths.z) / cornerLengths.z),\n    saturate((pos - edgeCumLengths.y) / cornerLengths.w));\n\nfloat4 tailEdgeActivation = 1.0 - edgeActivation;\nfloat4 tailCornerActivation = cornerActivation;\n\n// calculate offsets\n\nFirst_Edge_Start_Offset =   startEdgeActivation * edgeLengths;\nFirst_Edge_End_Offset =     endEdgeActivation * edgeLengths;\n\nFirst_Corner_Start_Offset = startCornerActivation * 0.25;\nFirst_Corner_End_Offset =   endCornerActivation * 0.25;\n\nSecond_Edge_End_Offset =   tailEdgeActivation * edgeLengths;\nSecond_Corner_End_Offset = tailCornerActivation * 0.25;\n\n\n\n// calculate circle coordinates\n\nfloat4 outerCoordinates = \n    float4(0.0, 1.0, 0.0, 1.0) \n    + float4(1.0, -1.0, 1.0, -1.0) * Padding;\n\nfloat4 cornerCenterX = outerCoordinates.xxyy + float4(1.0, 1.0, -1.0, -1.0) * Corner_Radius;\nfloat4 cornerCenterY = outerCoordinates.zwzw + float4(1.0, -1.0, 1.0, -1.0) * Corner_Radius;\n\nfloat4 halfRadius = Corner_Radius - 0.5 * Border_Width;\n\nfloat4 edgeCoordinatesX;\nfloat4 edgeCoordinatesY;\nfloat2 leftCoordinates;\nfloat2 rightCoordinates;\nfloat2 bottomCoordinates;\nfloat2 topCoordinates;\nfloat2 leftBottomCoordinates;\nfloat2 leftTopCoordinates;\nfloat2 rightBottomCoordinates;\nfloat2 rightTopCoordinates;\nfloat radians;\nfloat2 coordinates;\nfloat4 cornerOffset;\nfloat4 edgeOffset;\n\n// start circle\n\nedgeOffset = First_Edge_Start_Offset;\ncornerOffset = First_Corner_Start_Offset;\n\n// add edge offsets to the start coordinates\nedgeCoordinatesX = outerCoordinates.xyxy + float4(\n      Border_Width / 2.0,\n    - Border_Width / 2.0,\n      Corner_Radius.x       + edgeOffset.z,\n    - Corner_Radius.w       - edgeOffset.w\n);\nedgeCoordinatesY = outerCoordinates.wzzw + float4(\n    - Corner_Radius.y      - edgeOffset.x,\n      Corner_Radius.z      + edgeOffset.y,\n      Border_Width / 2.0,\n    - Border_Width / 2.0\n);\n\nleftCoordinates =   float2(edgeCoordinatesX.x, edgeCoordinatesY.x);\nrightCoordinates =  float2(edgeCoordinatesX.y, edgeCoordinatesY.y);\nbottomCoordinates = float2(edgeCoordinatesX.z, edgeCoordinatesY.z);\ntopCoordinates =    float2(edgeCoordinatesX.w, edgeCoordinatesY.w);\n\nradians = (0.0 + cornerOffset.x * 360.0 + 180.0) * (3.14159265 / 180.0);\nleftBottomCoordinates = float2(\n    cornerCenterX.x + halfRadius.x * cos(radians),\n    cornerCenterY.x + halfRadius.x * sin(radians)\n);\n\nradians = (270.0 + cornerOffset.y * 360.0 + 180.0) * (3.14159265 / 180.0);\nleftTopCoordinates = float2(\n    cornerCenterX.y + halfRadius.y * cos(radians),\n    cornerCenterY.y + halfRadius.y * sin(radians)\n);\n\nradians = (90.0 + cornerOffset.z * 360.0 + 180.0) * (3.14159265 / 180.0);\nrightBottomCoordinates = float2(\n    cornerCenterX.z + halfRadius.z * cos(radians),\n    cornerCenterY.z + halfRadius.z * sin(radians)\n);\n\nradians = (180.0 + cornerOffset.w * 360.0 + 180.0) * (3.14159265 / 180.0);\nrightTopCoordinates = float2(\n    cornerCenterX.w + halfRadius.w * cos(radians),\n    cornerCenterY.w + halfRadius.w * sin(radians)\n);\n\npos = Start * circumference;\ncoordinates = float2(0.0, 0.0);\ncoordinates += (pos >= 0.0                && pos < edgeCumLengths.x)    * leftCoordinates       ;\ncoordinates += (pos >= edgeCumLengths.x   && pos < cornerCumLengths.x)  * leftBottomCoordinates ;\ncoordinates += (pos >= cornerCumLengths.x && pos < edgeCumLengths.z)    * bottomCoordinates     ;\ncoordinates += (pos >= edgeCumLengths.z   && pos < cornerCumLengths.z)  * rightBottomCoordinates;\ncoordinates += (pos >= cornerCumLengths.z && pos < edgeCumLengths.y)    * rightCoordinates      ;\ncoordinates += (pos >= edgeCumLengths.y   && pos < cornerCumLengths.w)  * rightTopCoordinates   ;\ncoordinates += (pos >= cornerCumLengths.w && pos < edgeCumLengths.w)    * topCoordinates        ;\ncoordinates += (pos >= edgeCumLengths.w   && pos <= cornerCumLengths.y) * leftTopCoordinates    ;\n\nStart_Coordinates = coordinates;\n\n\n// end circle\n\nedgeOffset = End < Start ? Second_Edge_End_Offset : First_Edge_End_Offset;\ncornerOffset = End < Start ? Second_Corner_End_Offset : First_Corner_End_Offset;\n\n// add edge offsets to the coordinates\nedgeCoordinatesX = outerCoordinates.xyyx + float4(\n    + Border_Width / 2.0,\n    - Border_Width / 2.0,\n    - Corner_Radius.z       - edgeOffset.z,\n    + Corner_Radius.y       + edgeOffset.w\n);\nedgeCoordinatesY = outerCoordinates.zwzw + float4(\n    + Corner_Radius.x      + edgeOffset.x,\n    - Corner_Radius.w      - edgeOffset.y,\n    + Border_Width / 2.0,\n    - Border_Width / 2.0\n);\n\nleftCoordinates =   float2(edgeCoordinatesX.x, edgeCoordinatesY.x);\nrightCoordinates =  float2(edgeCoordinatesX.y, edgeCoordinatesY.y);\nbottomCoordinates = float2(edgeCoordinatesX.z, edgeCoordinatesY.z);\ntopCoordinates =    float2(edgeCoordinatesX.w, edgeCoordinatesY.w);\n\nradians = (0.0 + cornerOffset.x * 360.0 + 180.0) * (3.14159265 / 180.0);\nleftBottomCoordinates = float2(\n    cornerCenterX.x + halfRadius.x * cos(radians),\n    cornerCenterY.x + halfRadius.x * sin(radians)\n);\n\nradians = (270.0 + cornerOffset.y * 360.0 + 180.0) * (3.14159265 / 180.0);\nleftTopCoordinates = float2(\n    cornerCenterX.y + halfRadius.y * cos(radians),\n    cornerCenterY.y + halfRadius.y * sin(radians)\n);\n\nradians = (90.0 + cornerOffset.z * 360.0 + 180.0) * (3.14159265 / 180.0);\nrightBottomCoordinates = float2(\n    cornerCenterX.z + halfRadius.z * cos(radians),\n    cornerCenterY.z + halfRadius.z * sin(radians)\n);\n\nradians = (180.0 + cornerOffset.w * 360.0 + 180.0) * (3.14159265 / 180.0);\nrightTopCoordinates = float2(\n    cornerCenterX.w + halfRadius.w * cos(radians),\n    cornerCenterY.w + halfRadius.w * sin(radians)\n);\n\npos = End * circumference;\ncoordinates = float2(0.0, 0.0);\ncoordinates += (pos >= 0.0                && pos < edgeCumLengths.x)    * leftCoordinates       ;\ncoordinates += (pos >= edgeCumLengths.x   && pos < cornerCumLengths.x)  * leftBottomCoordinates ;\ncoordinates += (pos >= cornerCumLengths.x && pos < edgeCumLengths.z)    * bottomCoordinates     ;\ncoordinates += (pos >= edgeCumLengths.z   && pos < cornerCumLengths.z)  * rightBottomCoordinates;\ncoordinates += (pos >= cornerCumLengths.z && pos < edgeCumLengths.y)    * rightCoordinates      ;\ncoordinates += (pos >= edgeCumLengths.y   && pos < cornerCumLengths.w)  * rightTopCoordinates   ;\ncoordinates += (pos >= cornerCumLengths.w && pos < edgeCumLengths.w)    * topCoordinates        ;\ncoordinates += (pos >= edgeCumLengths.w   && pos <= cornerCumLengths.y) * leftTopCoordinates    ;\n\nEnd_Coordinates = coordinates;\n"
 }
 
 {
@@ -1703,9 +1703,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1805.5001220703125,
-            "y": -1361.0001220703125,
-            "width": 126.9998779296875,
+            "x": -1444.5,
+            "y": -1284.0001220703125,
+            "width": 127.0,
             "height": 101.0
         }
     },
@@ -1791,10 +1791,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1805.5001220703125,
-            "y": -1115.5001220703125,
-            "width": 143.9998779296875,
-            "height": 34.0
+            "x": -1444.5,
+            "y": -1043.0,
+            "width": 144.0001220703125,
+            "height": 33.9998779296875
         }
     },
     "m_Slots": [
@@ -1888,9 +1888,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1955.000244140625,
-            "y": -1361.0001220703125,
-            "width": 119.0,
+            "x": -1594.0,
+            "y": -1284.0001220703125,
+            "width": 118.9998779296875,
             "height": 149.0
         }
     },
@@ -1952,10 +1952,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1906.500244140625,
-            "y": -1194.5001220703125,
-            "width": 245.0,
-            "height": 34.0
+            "x": -1545.5,
+            "y": -1122.000244140625,
+            "width": 245.0001220703125,
+            "height": 34.0001220703125
         }
     },
     "m_Slots": [
@@ -2352,10 +2352,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1877.000244140625,
-            "y": -1149.5001220703125,
-            "width": 215.5,
-            "height": 34.0
+            "x": -1516.0,
+            "y": -1077.000244140625,
+            "width": 215.5001220703125,
+            "height": 34.000244140625
         }
     },
     "m_Slots": [
@@ -2413,10 +2413,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1571.778564453125,
-            "y": -827.0736694335938,
-            "width": 0.0,
-            "height": 0.0
+            "x": -1474.9998779296875,
+            "y": -792.9999389648438,
+            "width": 130.5,
+            "height": 34.0
         }
     },
     "m_Slots": [
@@ -2783,10 +2783,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1596.4998779296875,
-            "y": -898.9998779296875,
-            "width": 139.5,
-            "height": 34.00006103515625
+            "x": -1512.4998779296875,
+            "y": -867.4999389648438,
+            "width": 166.5,
+            "height": 34.0
         }
     },
     "m_Slots": [
