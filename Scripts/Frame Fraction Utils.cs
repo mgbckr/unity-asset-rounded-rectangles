@@ -489,10 +489,7 @@ public class FrameFractionUtils
         cornerCumLengths =  LbLtRbRtToClockwise(cornerCumLengths);
 
         // get circumference
-        Debug.Log($"position: {position}");
-        Debug.Log($"circumference: {circumference}");
         float pos =             position * circumference;
-        Debug.Log($"pos: {pos}");
 
         Vector4 edgeActivation = new Vector4(
             SegmentActivation(pos, edgeLengths.x, 0f),
@@ -711,7 +708,7 @@ public class FrameFractionUtils
     static float RampUp(float value)
     {
         if (value > 1f | value < 0f) {
-            value = ((value % 1f) + 1f) % 1f;
+            value = ((value % 1f) + 1f) % 1f; // to allow for negative values: -0.2 % 1 = 0.8
             value = IsClose(value, 0f) ? 1f : value;
         }
         return Mathf.Clamp01(value);

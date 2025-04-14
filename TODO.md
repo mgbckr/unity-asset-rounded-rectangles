@@ -26,6 +26,9 @@
 - [x] move things into a utility class
 - [x] move segment based positioning into extra function not into a class per se
     - so we can animate things later
+- [ ] translate FrameFractionUtils code to shader code
+    - [x] shader code
+    - [ ] see whether that is slower/faster
 - [ ] clean up and organize shader graph files
 
 ### Image with content
@@ -87,6 +90,5 @@ I'll add those when I need them.
 - [ ] for full frames maybe use simple rounded rectangle for further optimization
 - [ ] for shadows can we build more efficient shadows if we use equal corner radii?
     - see simple rounded rectangle (generated shader code)
-- [ ] translate FrameFractionUtils code to shader code and see whether that is slower/faster
 - [ ] check if [MaterialPropertyBlock](https://docs.unity3d.com/ScriptReference/MaterialPropertyBlock.html) does anything to help us
 
