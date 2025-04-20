@@ -37,9 +37,19 @@
     - [x] shader code
     - [ ] see whether that is slower/faster
 - [ ] clean up and organize shader graph files
-    - [ ] think about which base shapes make sense with regard to efficiency
-        - probably: only set corner width, same border width, ... something like that
     - [ ] add simple optimized sub graphs where it is easy and takes no time
+        - [ ] Round Corner Gradient Overall Borders
+        - [ ] Round Corner Step
+        - [ ] Round Rectangle Gradient Individual Corners Overall Borders Composite
+        - [ ] Round Rectangle Step Individual Corners Composite
+        - [ ] clean up composites where not needed
+    - [ ] add shader gallery
+        - [ ] basic elements
+            - [x] first draft with animations
+            - [ ] make sure all sub graphs are represented
+        - [ ] composite elements
+        - [ ] scaling
+        - [ ] final shaders
 
 ### Image with content
 

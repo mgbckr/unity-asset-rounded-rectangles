@@ -615,10 +615,10 @@
     "m_Guid": {
         "m_GuidSerialized": "a2af33fa-f2b9-4d27-b954-23fb1e90a10b"
     },
-    "m_Name": "Padding (left, right, top, bottom)",
+    "m_Name": "Padding (left, right, bottom, top)",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Padding (left, right, top, bottom)",
-    "m_DefaultReferenceName": "_Padding_left_right_top_bottom",
+    "m_RefNameGeneratedByDisplayName": "Padding (left, right, bottom, top)",
+    "m_DefaultReferenceName": "_Padding_left_right_bottom_top",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -762,7 +762,7 @@
     "m_Title": "Padding offset",
     "m_Position": {
         "x": 1108.0,
-        "y": -651.5001220703125
+        "y": -651.4999389648438
     }
 }
 
@@ -1429,7 +1429,7 @@
     "m_Title": "Debugging",
     "m_Position": {
         "x": 2140.999755859375,
-        "y": -1162.0001220703125
+        "y": -1161.9998779296875
     }
 }
 
@@ -1439,8 +1439,8 @@
     "m_ObjectId": "6c74bcff93e34cea8bd16b44ce97ccab",
     "m_Title": "Convert scaling to tiling",
     "m_Position": {
-        "x": 1751.5001220703125,
-        "y": -942.5001220703125
+        "x": 1751.4998779296875,
+        "y": -942.4999389648438
     }
 }
 
@@ -1451,7 +1451,7 @@
     "m_Title": "Offset conversion into tiled space",
     "m_Position": {
         "x": 2067.5,
-        "y": -709.5001220703125
+        "y": -709.4998779296875
     }
 }
 
@@ -1965,7 +1965,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "9a163d9278bb41b89c5664b00c6f93f6",
     "m_Id": 0,
-    "m_DisplayName": "Padding (left, right, top, bottom)",
+    "m_DisplayName": "Padding (left, right, bottom, top)",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
