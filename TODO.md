@@ -28,10 +28,16 @@
     - so we can animate things later
 - [x] shadows with different border sizes; THIS WAS MATH HEAVY
     - can we do this in a simpler way?
+    - [ ] check corner cases
+        - [x] corner radius == 0
+        - [ ] border width == 0 (this is an issue ... how to solve?)
+    - [ ] check smoothness at borders
 - [ ] translate FrameFractionUtils code to shader code
     - [x] shader code
     - [ ] see whether that is slower/faster
 - [ ] clean up and organize shader graph files
+    - [ ] think about which base shapes make sense with regard to efficiency
+        - probably: only set corner width, same border width, ... something like that
     - [ ] add simple optimized sub graphs where it is easy and takes no time
 
 ### Image with content
