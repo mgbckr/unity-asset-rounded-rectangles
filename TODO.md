@@ -26,10 +26,13 @@
 - [x] move things into a utility class
 - [x] move segment based positioning into extra function not into a class per se
     - so we can animate things later
+- [x] shadows with different border sizes; THIS WAS MATH HEAVY
+    - can we do this in a simpler way?
 - [ ] translate FrameFractionUtils code to shader code
     - [x] shader code
     - [ ] see whether that is slower/faster
 - [ ] clean up and organize shader graph files
+    - [ ] add simple optimized sub graphs where it is easy and takes no time
 
 ### Image with content
 
@@ -91,4 +94,5 @@ I'll add those when I need them.
 - [ ] for shadows can we build more efficient shadows if we use equal corner radii?
     - see simple rounded rectangle (generated shader code)
 - [ ] check if [MaterialPropertyBlock](https://docs.unity3d.com/ScriptReference/MaterialPropertyBlock.html) does anything to help us
+- [ ] optimize rounded corner shadow (variables inside custom nodes can be reused)
 
