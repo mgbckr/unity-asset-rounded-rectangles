@@ -31,7 +31,8 @@
     - [ ] check corner cases
         - [x] corner radius == 0
         - [ ] border width == 0 (this is an issue ... how to solve?)
-    - [ ] check smoothness at borders
+    - [ ] check smoothness at border
+        - maybe solve by using this gradient thing (see Rectangle node code)
 - [ ] translate FrameFractionUtils code to shader code
     - [x] shader code
     - [ ] see whether that is slower/faster
