@@ -245,6 +245,12 @@
         },
         {
             "m_Id": "043b92bd1f544fab8b8ce8fc367181b6"
+        },
+        {
+            "m_Id": "8533d1780a47415cbbafaf1e2be4234a"
+        },
+        {
+            "m_Id": "978ba3ee4de04c0ebb6a142967591f87"
         }
     ],
     "m_Edges": [
@@ -1394,9 +1400,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -250.0,
-            "y": 2505.000244140625,
-            "width": 56.0,
+            "x": -227.50001525878907,
+            "y": 2851.0,
+            "width": 56.00001525878906,
             "height": 24.0
         }
     },
@@ -1446,7 +1452,7 @@
     "m_Group": {
         "m_Id": "40c87244ee4d4024beee0a64a5320fbb"
     },
-    "m_Name": "Round Rectangle Gradient Individual Corners Overall Borders Composite",
+    "m_Name": "Round Rectangle Gradient Individual Corners Uniform Borders Composite",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {
@@ -1552,8 +1558,8 @@
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
     "m_ObjectId": "043b92bd1f544fab8b8ce8fc367181b6",
-    "m_Title": "Round Rectangle",
-    "m_Content": "",
+    "m_Title": "Rounded Rectangle Gradient Individual Corners Individual Borders Composite",
+    "m_Content": "A rounded rectangle with gradient border allowing for individual corners and individual borders. This is a highly flexible implementation based on composing four corners. The flexibility might make it less efficient but that needs to be tested. Generally, this thing involved some, guess simple, linear algebra which was nevertheless fun to tinker with.\n",
     "m_TextSize": 0,
     "m_Theme": 0,
     "m_Position": {
@@ -1561,7 +1567,7 @@
         "x": 2344.0,
         "y": 1641.0,
         "width": 206.0,
-        "height": 232.5
+        "height": 251.5
     },
     "m_Group": {
         "m_Id": "40c87244ee4d4024beee0a64a5320fbb"
@@ -1611,7 +1617,7 @@
     "m_Group": {
         "m_Id": "e0784b7ec22444e7b36b6d309db76f15"
     },
-    "m_Name": "Round Corner Gradient Individual Borders Composit",
+    "m_Name": "Round Corner Gradient Individual Borders Composite",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {
@@ -1823,10 +1829,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 329.5000305175781,
-            "y": 2024.5,
+            "x": 329.4999084472656,
+            "y": 2016.4998779296875,
             "width": 342.4999694824219,
-            "height": 327.0
+            "height": 326.9998779296875
         }
     },
     "m_Slots": [
@@ -2387,8 +2393,8 @@
     "m_Theme": 0,
     "m_Position": {
         "serializedVersion": "2",
-        "x": 1447.0,
-        "y": 2595.0,
+        "x": 1456.5,
+        "y": 2953.0,
         "width": 200.0,
         "height": 160.0
     },
@@ -3372,7 +3378,7 @@
     "m_Group": {
         "m_Id": "e0784b7ec22444e7b36b6d309db76f15"
     },
-    "m_Name": "Round Corner Gradient Overall Borders",
+    "m_Name": "Round Corner Gradient Uniform Borders",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {
@@ -3581,8 +3587,8 @@
     "m_ObjectId": "40c87244ee4d4024beee0a64a5320fbb",
     "m_Title": "Rectangles",
     "m_Position": {
-        "x": -153.00003051757813,
-        "y": 1515.4998779296875
+        "x": -152.99998474121095,
+        "y": 1515.5
     }
 }
 
@@ -3658,9 +3664,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 987.0001220703125,
-            "y": 2517.000244140625,
-            "width": 55.9998779296875,
+            "x": 996.5,
+            "y": 2875.0,
+            "width": 56.0,
             "height": 24.0
         }
     },
@@ -4119,9 +4125,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -126.5,
-            "y": 2779.000244140625,
-            "width": 127.5000228881836,
+            "x": -116.99998474121094,
+            "y": 3137.0,
+            "width": 127.49993896484375,
             "height": 94.0
         }
     },
@@ -4157,9 +4163,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -126.5,
-            "y": 2873.000244140625,
-            "width": 125.99999237060547,
+            "x": -116.99998474121094,
+            "y": 3231.0,
+            "width": 125.9999771118164,
             "height": 118.0
         }
     },
@@ -4200,9 +4206,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 1097.5,
-            "y": 2591.500244140625,
-            "width": 338.0,
+            "x": 1107.0,
+            "y": 2949.5,
+            "width": 337.9998779296875,
             "height": 495.0
         }
     },
@@ -4310,9 +4316,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -127.49999237060547,
-            "y": 2591.500244140625,
-            "width": 123.5,
+            "x": -118.00003051757813,
+            "y": 2949.5,
+            "width": 123.50006103515625,
             "height": 173.0
         }
     },
@@ -4608,7 +4614,7 @@
     "m_Group": {
         "m_Id": "40c87244ee4d4024beee0a64a5320fbb"
     },
-    "m_Name": "Round Rectangle Gradient Overall Corners Overall Borders",
+    "m_Name": "Round Rectangle Gradient Uniform Corners Uniform Borders",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {
@@ -5150,9 +5156,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 241.00003051757813,
-            "y": 2591.500244140625,
-            "width": 336.0000305175781,
+            "x": 250.49996948242188,
+            "y": 2949.5,
+            "width": 336.0000915527344,
             "height": 375.0
         }
     },
@@ -5268,16 +5274,16 @@
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
     "m_ObjectId": "6f92733e8b1042cab09f717b86f3a14d",
-    "m_Title": "Round Rectangle",
-    "m_Content": "",
+    "m_Title": "Rounded Rectangle Step Individual Corners Composite",
+    "m_Content": "Rounded rectangle based on overlapping for corners. This allows arbitrary corner radii and thus more flexible shapes as demonstrated here. It might be less efficient than the simple rounded rectangle with uniform corners but that needs to be tested.\n\n",
     "m_TextSize": 0,
     "m_Theme": 0,
     "m_Position": {
         "serializedVersion": "2",
-        "x": 684.5,
-        "y": 2034.5,
-        "width": 206.0,
-        "height": 216.5
+        "x": 678.5,
+        "y": 1993.5,
+        "width": 223.0,
+        "height": 181.5
     },
     "m_Group": {
         "m_Id": "40c87244ee4d4024beee0a64a5320fbb"
@@ -5810,8 +5816,8 @@
     "m_ObjectId": "7f31ce48e9804ec584f49cf027920866",
     "m_Title": "Texture",
     "m_Position": {
-        "x": -152.50006103515626,
-        "y": 2458.5
+        "x": -143.0000457763672,
+        "y": 2816.5
     }
 }
 
@@ -5907,6 +5913,26 @@
         "y": 0.0
     },
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "8533d1780a47415cbbafaf1e2be4234a",
+    "m_Title": "TODO: Rounded Rectangle Step Individual Corners",
+    "m_Content": "Rounded rectangle based on a single shader. This allows arbitrary corner radii but they are limited to the quadrant they are located in. This might be more efficient than its composite alternative but that needs to be tested.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": 682.0,
+        "y": 2424.0,
+        "width": 223.0,
+        "height": 174.4384765625
+    },
+    "m_Group": {
+        "m_Id": "40c87244ee4d4024beee0a64a5320fbb"
+    }
 }
 
 {
@@ -6436,6 +6462,26 @@
 {
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "978ba3ee4de04c0ebb6a142967591f87",
+    "m_Title": "TODO: Rounded Rectangle Gradient Individual Corners Uniform Borders",
+    "m_Content": "A rounded rectangle with a gradient border that allows individual corner radii but only uniform borders. It is based on a single shader. Corner radii are limited to their respective quadrant, making the resulting shapes less flexible. This might be more efficient than its composite alternative but that needs to be tested.",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": 1522.5,
+        "y": 2433.0,
+        "width": 206.0,
+        "height": 240.5
+    },
+    "m_Group": {
+        "m_Id": "40c87244ee4d4024beee0a64a5320fbb"
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
     "m_ObjectId": "98484d93b67e4f34a5819f7702494325",
     "m_Title": "Round Corner Gradient Overall Border",
     "m_Content": "Very simple rounded corner with a uniform gradient border. This is a lot simpler than the round corner with individual border widths. This should make it more efficient. But it comes with restrictions: The border width is restricted to the corner radius ... and well ... only unform borders are possible.",
@@ -6720,8 +6766,8 @@
     "m_Theme": 0,
     "m_Position": {
         "serializedVersion": "2",
-        "x": 589.0,
-        "y": 2593.5,
+        "x": 598.5,
+        "y": 2951.5,
         "width": 200.0,
         "height": 160.0
     },
@@ -6795,16 +6841,16 @@
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
     "m_ObjectId": "ab3b3f6f42bc4e4cb87cf754d08a5677",
-    "m_Title": "Round Rectangle",
-    "m_Content": "",
+    "m_Title": "Rounded Rectangle Gradient Uniform Corners Uniform Borders",
+    "m_Content": "This is a all-in-one shader for a rounded rectangle with gradient borders that only supports uniform corners and uniform borders. This should be pretty efficient but is less flexible to its counter part with flexible corners and borders.",
     "m_TextSize": 0,
     "m_Theme": 0,
     "m_Position": {
         "serializedVersion": "2",
-        "x": 1441.5,
-        "y": 1691.0,
+        "x": 1449.5,
+        "y": 1687.5,
         "width": 206.0,
-        "height": 216.5
+        "height": 199.5
     },
     "m_Group": {
         "m_Id": "40c87244ee4d4024beee0a64a5320fbb"
@@ -7027,9 +7073,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 128.50001525878907,
-            "y": 2517.000244140625,
-            "width": 56.0,
+            "x": 138.0,
+            "y": 2875.0,
+            "width": 55.999969482421878,
             "height": 24.0
         }
     },
@@ -7248,16 +7294,16 @@
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
     "m_ObjectId": "c16e6e84ed0046dab1a409a1fe2384f4",
-    "m_Title": "Round Rectangle",
-    "m_Content": "",
+    "m_Title": "Rounded Rectangle Step Uniform Corners",
+    "m_Content": "Simple rounded rectangle. Based on the built in RoundedRectangle node but defined using padding.",
     "m_TextSize": 0,
     "m_Theme": 0,
     "m_Position": {
         "serializedVersion": "2",
-        "x": 694.0,
-        "y": 1691.0,
-        "width": 206.0,
-        "height": 216.5
+        "x": 673.0,
+        "y": 1693.5,
+        "width": 224.69512939453126,
+        "height": 133.092041015625
     },
     "m_Group": {
         "m_Id": "40c87244ee4d4024beee0a64a5320fbb"
@@ -8003,7 +8049,7 @@
     "m_Group": {
         "m_Id": "40c87244ee4d4024beee0a64a5320fbb"
     },
-    "m_Name": "Round Rectangle Gradient Individual Corners Individual Borders Composit",
+    "m_Name": "Round Rectangle Gradient Individual Corners Individual Borders Composite",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {
@@ -8149,8 +8195,8 @@
     "m_ObjectId": "e0784b7ec22444e7b36b6d309db76f15",
     "m_Title": "Corners",
     "m_Position": {
-        "x": -113.0000228881836,
-        "y": 529.4999389648438
+        "x": -113.0,
+        "y": 529.5
     }
 }
 
@@ -8295,7 +8341,7 @@
     "m_Group": {
         "m_Id": "40c87244ee4d4024beee0a64a5320fbb"
     },
-    "m_Name": "Round Rectangle Step Overall Corners",
+    "m_Name": "Round Rectangle Step Uniform Corners",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {
@@ -8398,8 +8444,8 @@
     "m_ObjectId": "e5c4bf60f6724069aa8ba086e2e04341",
     "m_Title": "Basic shapes",
     "m_Position": {
-        "x": -102.50001525878906,
-        "y": -865.5001220703125
+        "x": -102.5,
+        "y": -865.5
     }
 }
 
@@ -8704,8 +8750,8 @@
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
     "m_ObjectId": "f2841417a27d49b795f08deeccd48d73",
-    "m_Title": "Round Rectangle",
-    "m_Content": "",
+    "m_Title": "Rounded Rectangle Gradient Individual Corners Uniform Borders Composite",
+    "m_Content": "A rounded rectangle with a gradient border that allows individual corner radii but only uniform borders. It is composed by combining four corners allowing for flexible shapes as demonstrated here.",
     "m_TextSize": 0,
     "m_Theme": 0,
     "m_Position": {
