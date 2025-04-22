@@ -35,6 +35,7 @@ void Unity_RoundedRectangle_half(
     float d = length(max(0, uv)) / diameter;
 
     // used for smoothing
+    // TODO: inefficient to add this?
     float fwd = 1 / max(fwidth(d), 1e-5);
 
     // border width or smoothing factors

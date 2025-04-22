@@ -68,6 +68,9 @@
         },
         {
             "m_Id": "56b49adebefe4e17a3a1c3124a81a8cc"
+        },
+        {
+            "m_Id": "e6468873d6a941ceb4d0580cccd81ec4"
         }
     ],
     "m_GroupDatas": [],
@@ -97,20 +100,6 @@
             "m_InputSlot": {
                 "m_Node": {
                     "m_Id": "57a2e902e99e4cd68194e9747d2d7b77"
-                },
-                "m_SlotId": 0
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
-                    "m_Id": "148dfc91ce4243b191c4911c0ba3c66a"
-                },
-                "m_SlotId": 0
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "f080e6b782c7449188eb57f95a227aa9"
                 },
                 "m_SlotId": 0
             }
@@ -309,6 +298,34 @@
                     "m_Id": "29e834ae94a34068ad45e85fb52df638"
                 },
                 "m_SlotId": 3
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "c1395740aab24f0d9af09500cc8c2f02"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "f080e6b782c7449188eb57f95a227aa9"
+                },
+                "m_SlotId": 0
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "e6468873d6a941ceb4d0580cccd81ec4"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "29e834ae94a34068ad45e85fb52df638"
+                },
+                "m_SlotId": 5
             }
         },
         {
@@ -650,7 +667,7 @@
     "m_FunctionName": "Round_Rectangle_Step_Individual_Corners",
     "m_FunctionSource": "",
     "m_FunctionSourceUsePragmas": true,
-    "m_FunctionBody": "    // radii can be maximally half the width and half the height\n    Radius = max(\n        min(\n            min(\n                abs(Size.x / 2),\n                abs(Size.y / 2)\n            ), \n            abs(Radius)\n        ), \n        1e-5);\n\n    // border width can not be larger than the minimum border radius\n    Border_Width = min(\n        Border_Width,\n        min(\n            min(Radius.x, Radius.y),\n            min(Radius.z, Radius.w)));\n\n    // set radius per quadrant / corner\n    float r = UV.x < 0.5 \n        ? (UV.y < 0.5 ? Radius.x : Radius.y) \n        : (UV.y < 0.5 ? Radius.z : Radius.w);\n    float diameter = r * 2;\n\n    // set UV based on size and diameters\n    float2 uv = abs(UV * 2 - 1) - Size + diameter;\n\n    // signed distance field to rounded rectangle\n    float d = length(max(0, uv)) / diameter;\n\n    // used for smoothing\n    float fwd = 1 / max(fwidth(d), 1e-5);\n\n    // border width or smoothing factors\n    float b = min(r / Border_Width, fwd);\n\n    // final rectangle\n    Out = saturate((1 - d) * b);"
+    "m_FunctionBody": "    // radii can be maximally half the width and half the height\n    Radius = max(\n        min(\n            min(\n                abs(Size.x / 2),\n                abs(Size.y / 2)\n            ), \n            abs(Radius)\n        ), \n        1e-5);\n\n    // border width can not be larger than the minimum border radius\n    Border_Width = min(\n        Border_Width,\n        min(\n            min(Radius.x, Radius.y),\n            min(Radius.z, Radius.w)));\n\n    // set radius per quadrant / corner\n    float r = UV.x < 0.5 \n        ? (UV.y < 0.5 ? Radius.x : Radius.y) \n        : (UV.y < 0.5 ? Radius.z : Radius.w);\n    float diameter = r * 2;\n\n    // set UV based on size and diameters\n    float2 uv = abs(UV * 2 - 1) - Size + diameter;\n\n    // signed distance field to rounded rectangle\n    float d = length(max(0, uv)) / diameter;\n\n    // used for smoothing\n    // TODO: inefficient to add this?\n    float fwd = 1 / max(fwidth(d), 1e-5);\n\n    // border width or smoothing factors\n    float b = min(r / Border_Width, fwd);\n\n    // final rectangle\n    Out = saturate((1 - d) * b);"
 }
 
 {
@@ -1379,6 +1396,21 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "8103e5ac49da468192870b8421050c72",
+    "m_Id": 0,
+    "m_DisplayName": "Border Width",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
     "m_ObjectId": "8964ac6c65ac4de2877b12ebb5d7a507",
     "m_Id": 0,
@@ -1814,6 +1846,42 @@
         "y": 0.0,
         "z": 0.0,
         "w": 0.0
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
+    "m_ObjectId": "e6468873d6a941ceb4d0580cccd81ec4",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "Property",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -47.500022888183597,
+            "y": 707.4999389648438,
+            "width": 144.0000457763672,
+            "height": 34.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "8103e5ac49da468192870b8421050c72"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_Property": {
+        "m_Id": "c3ba35ffb79047e5a1183898217df7ba"
     }
 }
 
