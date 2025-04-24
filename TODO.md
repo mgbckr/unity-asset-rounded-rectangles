@@ -37,7 +37,9 @@
             - [x] first draft with animations
             - [x] make sure all sub graphs are represented
         - [ ] composite elements
-        - [ ] scaling
+            - [x] implement composite elements
+            - [ ] document elements
+        - [ ] scaling (?)
         - [ ] final shaders
     - [ ] benchmark shaders on vision pro
         - [ ] implement benchmarks
