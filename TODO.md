@@ -26,30 +26,42 @@
 - [x] move things into a utility class
 - [x] move segment based positioning into extra function not into a class per se
     - so we can animate things later
-- [x] shadows with different border sizes; THIS WAS MATH HEAVY
-    - can we do this in a simpler way?
+- [ ] clean up and organize shader graph files
+    - [x] add simple optimized sub graphs where it is easy and takes no time
+        - [x] Round Corner Gradient Overall Borders
+        - [x] Round Corner Step
+        - [x] Round Rectangle Gradient Individual Corners Uniform Borders Composite
+        - [x] Round Rectangle Step Individual Corners Composite
+    - [ ] add shader gallery
+        - [ ] basic elements
+            - [x] first draft with animations
+            - [x] make sure all sub graphs are represented
+        - [ ] composite elements
+        - [ ] scaling
+        - [ ] final shaders
+    - [ ] benchmark shaders on vision pro
+        - [ ] implement benchmarks
+        - [ ] run on vision pro
+        - [ ] run on Meta Quest?
+        - [ ] deprecate/archive where no performance difference is observed
+        - [ ] update shader gallery and move deprecated ones to extra galleries
+- [ ] translate FrameFractionUtils code to shader code
+    - [x] shader code
+    - [ ] see whether that is slower/faster
+        - [x] implement benchmarking tools
+            - [x] setup scenes
+            - [x] write scripts
+        - [ ] benchmark on vision pro
+        - [ ] OPTIONAL: benchmark on meta quest
+            - [ ] make shaders look good on meta quest
+- [ ] shadows with different border sizes; THIS WAS MATH HEAVY
+    - [x] implement with some linear algebra :)
     - [ ] check corner cases
         - [x] corner radius == 0
         - [ ] border width == 0 (this is an issue ... how to solve?)
     - [ ] check smoothness at border
         - maybe solve by using this gradient thing (see Rectangle node code)
-- [ ] translate FrameFractionUtils code to shader code
-    - [x] shader code
-    - [ ] see whether that is slower/faster
-- [ ] clean up and organize shader graph files
-    - [ ] add simple optimized sub graphs where it is easy and takes no time
-        - [ ] Round Corner Gradient Overall Borders
-        - [ ] Round Corner Step
-        - [ ] Round Rectangle Gradient Individual Corners Overall Borders Composite
-        - [ ] Round Rectangle Step Individual Corners Composite
-        - [ ] clean up composites where not needed
-    - [ ] add shader gallery
-        - [ ] basic elements
-            - [x] first draft with animations
-            - [ ] make sure all sub graphs are represented
-        - [ ] composite elements
-        - [ ] scaling
-        - [ ] final shaders
+    - [ ] maybe don't solve and document limitations of individual shaders
 
 ### Image with content
 
