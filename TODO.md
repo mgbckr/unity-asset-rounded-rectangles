@@ -42,7 +42,8 @@
     - [ ] benchmark shaders on vision pro
         - [ ] implement benchmarks
         - [ ] run on vision pro
-        - [ ] run on Meta Quest?
+        - [ ] OPTIONAL: run on Meta Quest?
+            - [ ] make shaders look nice on meta quest
         - [ ] deprecate/archive where no performance difference is observed
         - [ ] update shader gallery and move deprecated ones to extra galleries
 - [ ] translate FrameFractionUtils code to shader code
@@ -53,7 +54,6 @@
             - [x] write scripts
         - [ ] benchmark on vision pro
         - [ ] OPTIONAL: benchmark on meta quest
-            - [ ] make shaders look good on meta quest
 - [ ] shadows with different border sizes; THIS WAS MATH HEAVY
     - [x] implement with some linear algebra :)
     - [ ] check corner cases
@@ -70,6 +70,8 @@
 - [ ] Make three or four windows
 - [ ] Account for texture size when scaling
 - [ ] Test many borders with images ... oh oh!!
+- [ ] allow non 1x1 texture size
+- [ ] allow non 1x1 objects
 
 ### Interactive
 
