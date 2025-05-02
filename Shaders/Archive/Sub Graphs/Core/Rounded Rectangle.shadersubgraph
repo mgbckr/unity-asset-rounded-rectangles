@@ -291,6 +291,20 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
+                    "m_Id": "596ea823dae94cc9a1d82cc91eb293e8"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "b2093c0d0fbf409b82b9f5a96a1253fb"
+                },
+                "m_SlotId": 0
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
                     "m_Id": "757179f6518c4258a15a8d99c0ce4644"
                 },
                 "m_SlotId": 0
@@ -539,20 +553,6 @@
                 },
                 "m_SlotId": 1405595110
             }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
-                    "m_Id": "ebcbf304f06f44d1a9fe4685c4e845cc"
-                },
-                "m_SlotId": 0
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "b2093c0d0fbf409b82b9f5a96a1253fb"
-                },
-                "m_SlotId": 0
-            }
         }
     ],
     "m_VertexContext": {
@@ -638,7 +638,7 @@
     "m_Group": {
         "m_Id": ""
     },
-    "m_Name": "Round Corner Composit",
+    "m_Name": "Rounded Corner - Style Step - Impelemtation Composite",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {
@@ -652,9 +652,6 @@
     "m_Slots": [
         {
             "m_Id": "912205f732f443cb8718d9b5e48f5e05"
-        },
-        {
-            "m_Id": "d9d6434bb0864440afe49a5bd982f064"
         },
         {
             "m_Id": "a6e2f97d907f456b91e35384db198273"
@@ -925,21 +922,6 @@
 {
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
-    "m_ObjectId": "1ea246c5a3cb4326a43b3e9a5f7bfd77",
-    "m_Id": 2084641916,
-    "m_DisplayName": "Rotation",
-    "m_SlotType": 0,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "_Rotation",
-    "m_StageCapability": 2,
-    "m_Value": 90.0,
-    "m_DefaultValue": 0.0,
-    "m_Labels": []
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "209b848f643c4c3fbd324d3cc3d185a2",
     "m_Id": 574443874,
     "m_DisplayName": "Corner Radius",
@@ -1038,7 +1020,7 @@
     "m_Group": {
         "m_Id": ""
     },
-    "m_Name": "Round Corner Composit",
+    "m_Name": "Rounded Corner - Style Step - Impelemtation Composite",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {
@@ -1052,9 +1034,6 @@
     "m_Slots": [
         {
             "m_Id": "838e0c227a03423ba525b4472fcd4a6b"
-        },
-        {
-            "m_Id": "1ea246c5a3cb4326a43b3e9a5f7bfd77"
         },
         {
             "m_Id": "c3a0356efcea4b879ce2e4f5c76133cd"
@@ -1472,7 +1451,7 @@
     "m_Group": {
         "m_Id": ""
     },
-    "m_Name": "Round Corner Composit",
+    "m_Name": "Rounded Corner - Style Step - Impelemtation Composite",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {
@@ -1486,9 +1465,6 @@
     "m_Slots": [
         {
             "m_Id": "a92364dff92f47c1b253711a60b2620b"
-        },
-        {
-            "m_Id": "5b8efc003c4d47d1ab553083e73b0d39"
         },
         {
             "m_Id": "f80e8e0ef4594131b500043674bc430b"
@@ -1843,21 +1819,6 @@
 {
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
-    "m_ObjectId": "5b8efc003c4d47d1ab553083e73b0d39",
-    "m_Id": 2084641916,
-    "m_DisplayName": "Rotation",
-    "m_SlotType": 0,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "_Rotation",
-    "m_StageCapability": 2,
-    "m_Value": 180.0,
-    "m_DefaultValue": 0.0,
-    "m_Labels": []
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "5c84a268760a47b58892a37f653d0550",
     "m_Id": 848464683,
     "m_DisplayName": "Padding (top)",
@@ -2060,7 +2021,7 @@
     "m_Group": {
         "m_Id": ""
     },
-    "m_Name": "Round Corner Composit",
+    "m_Name": "Rounded Corner - Style Step - Impelemtation Composite",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {
@@ -2074,9 +2035,6 @@
     "m_Slots": [
         {
             "m_Id": "e54a4271ca844a328c7b7bf7ee933c82"
-        },
-        {
-            "m_Id": "fb7e9d74263c4aabb58735faa480b951"
         },
         {
             "m_Id": "193763eb34b84008b43afea7c998250b"
@@ -3044,21 +3002,6 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
-    "m_ObjectId": "d9d6434bb0864440afe49a5bd982f064",
-    "m_Id": 2084641916,
-    "m_DisplayName": "Rotation",
-    "m_SlotType": 0,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "_Rotation",
-    "m_StageCapability": 2,
-    "m_Value": 270.0,
-    "m_DefaultValue": 0.0,
-    "m_Labels": []
-}
-
-{
-    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.SplitNode",
     "m_ObjectId": "dcb37985ec334750a6e02602849569cb",
     "m_Group": {
@@ -3422,21 +3365,6 @@
         "z": 0.0,
         "w": 0.0
     }
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
-    "m_ObjectId": "fb7e9d74263c4aabb58735faa480b951",
-    "m_Id": 2084641916,
-    "m_DisplayName": "Rotation",
-    "m_SlotType": 0,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "_Rotation",
-    "m_StageCapability": 2,
-    "m_Value": 0.0,
-    "m_DefaultValue": 0.0,
-    "m_Labels": []
 }
 
 {

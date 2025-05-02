@@ -508,8 +508,8 @@ public class FrameFractionUtils
         edgeActivation =    ClockwiseToLeftRightBottomTop(edgeActivation);
         cornerActivation =  ClockwiseToLbLtRbRt(cornerActivation);
 
-        Debug.Log($"edgeActivation: {edgeActivation}");
-        Debug.Log($"cornerActivation: {cornerActivation}");
+        // Debug.Log($"edgeActivation: {edgeActivation}");
+        // Debug.Log($"cornerActivation: {cornerActivation}");
 
         // return
         return (

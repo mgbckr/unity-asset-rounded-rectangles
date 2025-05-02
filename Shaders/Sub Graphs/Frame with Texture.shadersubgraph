@@ -897,7 +897,7 @@
     "m_SlotType": 0,
     "m_Hidden": false,
     "m_ShaderOutputName": "_UV",
-    "m_StageCapability": 3,
+    "m_StageCapability": 2,
     "m_Value": {
         "x": 0.0,
         "y": 0.0
@@ -2924,10 +2924,10 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "b081c1f30c7c457488081ec593f50063",
     "m_Id": 520750564,
-    "m_DisplayName": "Padding (left, right, top, bottom)",
+    "m_DisplayName": "Padding (left, right, bottom, top)",
     "m_SlotType": 0,
     "m_Hidden": false,
-    "m_ShaderOutputName": "_Padding_left_right_top_bottom",
+    "m_ShaderOutputName": "_Padding_left_right_bottom_top",
     "m_StageCapability": 2,
     "m_Value": {
         "x": 0.0,
@@ -3456,8 +3456,8 @@
     "m_ObjectId": "d30535ee7c8d4150a6516f5d0f6fbd71",
     "m_Title": "Debugging",
     "m_Position": {
-        "x": -967.4999389648438,
-        "y": -115.00000762939453
+        "x": -967.5,
+        "y": -115.0
     }
 }
 

@@ -1381,7 +1381,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1470961910
 Transform:
   m_ObjectHideFlags: 0
@@ -1410,8 +1410,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ac77f9de634b40e59a6fab7bb544c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 0
-  replicates: 0
+  rotationSpeed: 90
+  replicates: 100
   offset: 0.01
 --- !u!1 &1519333710
 GameObject:
@@ -1460,18 +1460,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1519333710}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 935455300c91146f381572bbf61bc36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   burnInStart: 15
   burnInBenchmark: 3
-  measuringRounds: 3
-  measuringRoundTime: 3
+  measuringRounds: 10
+  measuringRoundTime: 30
   benchmarkNames:
-  - Rounded Corner Gradient Individual Borders 100x
-  - Rounded Corner Step 100x
+  - Dual Frame with Round Gap
+  - Dual Frame with Round Gap Manual
   rotationSpeed: 360
 --- !u!1 &1607151559
 GameObject:
@@ -1566,8 +1566,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ac77f9de634b40e59a6fab7bb544c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 0
-  replicates: 0
+  rotationSpeed: 90
+  replicates: 100
   offset: 0.01
 --- !u!1 &1799299454
 GameObject:

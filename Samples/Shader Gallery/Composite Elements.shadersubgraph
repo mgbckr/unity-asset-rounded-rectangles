@@ -52,7 +52,20 @@
         }
     ],
     "m_GroupDatas": [],
-    "m_StickyNoteDatas": [],
+    "m_StickyNoteDatas": [
+        {
+            "m_Id": "310fb9ff57ab419796d7e29a90f050bf"
+        },
+        {
+            "m_Id": "532af06b33c842fb9a691f0f8349541f"
+        },
+        {
+            "m_Id": "33e4ca95a14c44eab79a6f76f13a3638"
+        },
+        {
+            "m_Id": "372415a0de5d426d8e4f13f994de7dde"
+        }
+    ],
     "m_Edges": [
         {
             "m_OutputSlot": {
@@ -1080,6 +1093,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "310fb9ff57ab419796d7e29a90f050bf",
+    "m_Title": "Ring Fraction",
+    "m_Content": "Write something here",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": 573.0,
+        "y": 5.0,
+        "width": 200.0,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "331c166fcbe8414381b608032ec6f65d",
     "m_Id": -554800086,
@@ -1130,6 +1163,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "33e4ca95a14c44eab79a6f76f13a3638",
+    "m_Title": "Dynamic Frame",
+    "m_Content": "Write something here",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": 585.5,
+        "y": 1072.5,
+        "width": 200.0,
+        "height": 68.21142578125
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "3691845ec1294c15a9037fdae206b856",
     "m_Id": -1846772872,
@@ -1141,6 +1194,26 @@
     "m_Value": 0.20000000298023225,
     "m_DefaultValue": 0.0,
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "372415a0de5d426d8e4f13f994de7dde",
+    "m_Title": "Dynamic Frame with Rounded Gaps",
+    "m_Content": "Write something here",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": 579.0,
+        "y": 1660.0,
+        "width": 217.651611328125,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
 }
 
 {
@@ -1175,7 +1248,7 @@
     "m_Group": {
         "m_Id": ""
     },
-    "m_Name": "Dual Frame with Round Gap",
+    "m_Name": "Dynamic Frame - Gap Rounded - Control Manual",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {
@@ -1464,6 +1537,26 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "532af06b33c842fb9a691f0f8349541f",
+    "m_Title": "Dynamic Frame Base",
+    "m_Content": "This is the base for dynamic frames.\n",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": 583.5,
+        "y": 518.0,
+        "width": 265.0,
+        "height": 100.0
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector2MaterialSlot",
     "m_ObjectId": "57307b91afec4bc698f00bbd5ee6ca04",
     "m_Id": 3,
@@ -1610,7 +1703,7 @@
     "m_Group": {
         "m_Id": ""
     },
-    "m_Name": "Dual Frame",
+    "m_Name": "Dynamic Frame - Gap Flat - Control Manual",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {
@@ -2129,7 +2222,7 @@
     "m_Group": {
         "m_Id": ""
     },
-    "m_Name": "Frame Fraction Control",
+    "m_Name": "Dynamic Frame Fraction Control",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {
@@ -2823,7 +2916,7 @@
     "m_Group": {
         "m_Id": ""
     },
-    "m_Name": "Frame",
+    "m_Name": "Dynamic Frame Base",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {
@@ -3014,7 +3107,7 @@
     "m_Group": {
         "m_Id": ""
     },
-    "m_Name": "Ring Fraction with Round Gap",
+    "m_Name": "Ring Fraction - Gap Rounded",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {

@@ -32,30 +32,22 @@
         - [x] Round Corner Step
         - [x] Round Rectangle Gradient Individual Corners Uniform Borders Composite
         - [x] Round Rectangle Step Individual Corners Composite
-    - [ ] add shader gallery
-        - [ ] basic elements
+    - [x] add shader gallery
+        - [x] basic elements
             - [x] first draft with animations
             - [x] make sure all sub graphs are represented
-        - [ ] composite elements
+        - [x] composite elements
             - [x] implement composite elements
-            - [ ] document elements
-        - [ ] scaling (?)
-        - [ ] final shaders
-    - [ ] benchmark shaders on vision pro
-        - [ ] implement benchmarks
-        - [ ] run on vision pro
-        - [ ] OPTIONAL: run on Meta Quest?
-            - [ ] make shaders look nice on meta quest
-        - [ ] deprecate/archive where no performance difference is observed
-        - [ ] update shader gallery and move deprecated ones to extra galleries
-- [ ] translate FrameFractionUtils code to shader code
+            - [x] document elements
+- [x] translate FrameFractionUtils code to shader code
     - [x] shader code
-    - [ ] see whether that is slower/faster
+    - [x] see whether that is slower/faster
         - [x] implement benchmarking tools
             - [x] setup scenes
             - [x] write scripts
-        - [ ] benchmark on vision pro
-        - [ ] OPTIONAL: benchmark on meta quest
+        - [x] benchmark on vision pro
+            - no difference ... WTF? Well, we will see in practice
+
 - [ ] shadows with different border sizes; THIS WAS MATH HEAVY
     - [x] implement with some linear algebra :)
     - [ ] check corner cases
@@ -64,6 +56,30 @@
     - [ ] check smoothness at border
         - maybe solve by using this gradient thing (see Rectangle node code)
     - [ ] maybe don't solve and document limitations of individual shaders
+
+- [ ] implement production shaders
+    - [ ] implement using most flexible/convenient shaders first
+        - [ ] animated colored dynamic frame
+            - [ ] direct control
+            - [ ] indirect
+        - [ ] colored rounded rectangle
+        - [ ] colored frame
+            - [ ] content: color
+            - [ ] content: texture
+        - [ ] colored triple frame with shadows
+            - [ ] content: color
+            - [ ] content: texture
+    - [ ] implement optimized variants and benchmark
+        - [ ] step function no frills frame with content
+
+- [ ] benchmark shaders
+    - [x] implement benchmarks
+    - [x] run on vision pro
+        - there is nearly NO difference ... WTF ... we will see in practice
+    - [ ] OPTIONAL: run on Meta Quest?
+        - [ ] make shaders look nice on meta quest
+    - [ ] deprecate/archive where no performance difference is observed
+    - [ ] update shader gallery and move deprecated ones to extra galleries
 
 ### Image with content
 
@@ -128,4 +144,4 @@ I'll add those when I need them.
     - see simple rounded rectangle (generated shader code)
 - [ ] check if [MaterialPropertyBlock](https://docs.unity3d.com/ScriptReference/MaterialPropertyBlock.html) does anything to help us
 - [ ] optimize rounded corner shadow (variables inside custom nodes can be reused)
-
+- [ ] run benchmarks on Meta Quest
