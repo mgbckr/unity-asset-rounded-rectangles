@@ -50,12 +50,11 @@
 
 - [ ] shadows with different border sizes; THIS WAS MATH HEAVY
     - [x] implement with some linear algebra :)
-    - [ ] check corner cases
+    - [x] check corner cases
         - [x] corner radius == 0
-        - [ ] border width == 0 (this is an issue ... how to solve?)
-    - [ ] check smoothness at border
+        - [x] border width == 0 (this is an issue ... how to solve?)
+    - [x] check smoothness at border
         - maybe solve by using this gradient thing (see Rectangle node code)
-    - [ ] maybe don't solve and document limitations of individual shaders
 
 - [ ] implement production shaders
     - [ ] implement using most flexible/convenient shaders first
