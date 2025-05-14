@@ -6,7 +6,7 @@
 
 - [x] Make vertical pill (efficiency difference?)
 - [x] Make fraction of rounded rectangle fraction in a single shader graph
-- [ ] Add rounded corners to rounded rectangle fraction
+- [x] Add rounded corners to rounded rectangle fraction
     - [x] give out coordinates
         - [x] corner fraction
         - [x] coordinate rectangle
@@ -48,7 +48,7 @@
         - [x] benchmark on vision pro
             - no difference ... WTF? Well, we will see in practice
 
-- [ ] shadows with different border sizes; THIS WAS MATH HEAVY
+- [x] shadows with different border sizes; THIS WAS MATH HEAVY
     - [x] implement with some linear algebra :)
     - [x] check corner cases
         - [x] corner radius == 0
