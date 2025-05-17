@@ -70,6 +70,7 @@
             - [ ] content: texture
     - [ ] implement optimized variants and benchmark
         - [ ] step function no frills frame with content
+        - [ ] maybe test a development atomic version just for the heck of it
 
 - [ ] benchmark shaders
     - [x] implement benchmarks
