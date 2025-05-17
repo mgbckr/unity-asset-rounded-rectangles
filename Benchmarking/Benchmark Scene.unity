@@ -1085,7 +1085,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 405505c07ed9d44a9aae7806598cb5be, type: 2}
+  - {fileID: 2100000, guid: f8aecb250e5184e6393bb370b42741f4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1316,7 +1316,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8ecf0d94c2b7c438dbc5b95c223a699f, type: 2}
+  - {fileID: 2100000, guid: 38ef405f379464153bd810eadecbb833, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1376,12 +1376,12 @@ GameObject:
   - component: {fileID: 1470961910}
   - component: {fileID: 1470961911}
   m_Layer: 0
-  m_Name: Dual Frame with Round Gap Manual
+  m_Name: Frame Fraction Manual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1470961910
 Transform:
   m_ObjectHideFlags: 0
@@ -1410,8 +1410,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ac77f9de634b40e59a6fab7bb544c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 90
-  replicates: 100
+  rotationSpeed: 0
+  replicates: 10
   offset: 0.01
 --- !u!1 &1519333710
 GameObject:
@@ -1460,7 +1460,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1519333710}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 935455300c91146f381572bbf61bc36f, type: 3}
   m_Name: 
@@ -1532,7 +1532,7 @@ GameObject:
   - component: {fileID: 1688043845}
   - component: {fileID: 1688043846}
   m_Layer: 0
-  m_Name: Dual Frame with Round Gap
+  m_Name: Frame Fraction Convenient
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1567,7 +1567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 90
-  replicates: 100
+  replicates: 0
   offset: 0.01
 --- !u!1 &1799299454
 GameObject:

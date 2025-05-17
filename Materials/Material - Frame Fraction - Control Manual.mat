@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Frame Fraction - Test Material
+  m_Name: Material - Frame Fraction - Control Manual
   m_Shader: {fileID: -6465566751694194690, guid: 716af36e4eeb1424bbfc2fbf6c1a8e6d, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -46,23 +46,19 @@ Material:
     - _Center_2: {r: 0.5, g: 0.5, b: 0, a: 0}
     - _Color: {r: 1, g: 0.9345836, b: 0.004716992, a: 0.7294118}
     - _Corner_Radius_lb_lt_rb_rt: {r: 0.1, g: 0.2, b: 0.3, a: 0.4}
-    - _End_Fraction_lb_lt_rb_rt: {r: 0.25, g: 0.25, b: 0.25, a: 0.25}
-    - _End_Offset_left_right_bottom_top: {r: 0, g: 0, b: 0, a: 0}
-    - _First_End_Fraction_lb_lt_rb_rt: {r: 0.25, g: 0.25, b: 0.25, a: 0.25}
+    - _First_End_Fraction_lb_lt_rb_rt: {r: 0.1, g: 0.2, b: 0.2, a: 0.2}
     - _First_End_Offset_left_right_bottom_top: {r: 0, g: 0, b: 0, a: 0}
-    - _First_Start_Fraction_lb_lt_rb_rt: {r: 0, g: 0, b: 0, a: 0}
+    - _First_Start_Fraction_lb_lt_rb_rt: {r: 0.05, g: 0, b: 0, a: 0}
     - _First_Start_Offset_left_right_bottom_top: {r: 0, g: 0, b: 0, a: 0}
     - _Padding_left_right_bottom_top: {r: 0.1, g: 0.1, b: 0.1, a: 0.1}
-    - _Second_End_Fraction_lb_lt_rb_rt: {r: 0.25, g: 0.25, b: 0.25, a: 0.25}
-    - _Second_End_Offset_left_right_bottom_top: {r: 0, g: 0, b: 0, a: 0}
+    - _Second_End_Fraction_lb_lt_rb_rt: {r: 0, g: 0, b: 0, a: 0}
+    - _Second_End_Offset_left_right_bottom_top: {r: 1, g: 1, b: 1, a: 1}
     - _Second_Start_Fraction_lb_lt_rb_rt: {r: 0, g: 0, b: 0, a: 0}
-    - _Second_Start_Offset_left_right_bottom_top: {r: 0, g: 0, b: 0, a: 0}
-    - _Start_Fraction_lb_lt_rb_rt: {r: 0, g: 0, b: 0, a: 0}
-    - _Start_Offset_left_right_bottom_top: {r: 0, g: 0, b: 0, a: 0}
+    - _Second_Start_Offset_left_right_bottom_top: {r: 1, g: 1, b: 1, a: 1}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &2620853645569714965
+--- !u!114 &4366093767811693180
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
