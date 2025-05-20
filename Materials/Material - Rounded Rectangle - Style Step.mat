@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-1546318188175671534
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 9
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -20,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Material - Frame Fraction - Control Convenient
-  m_Shader: {fileID: -6465566751694194690, guid: 069ad00c1c61c4e20acec1a2c8be7fd1, type: 3}
+  m_Name: Material - Rounded Rectangle - Style Step
+  m_Shader: {fileID: -6465566751694194690, guid: d412d153cde304086889dcdf0f8e6fa4, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -51,16 +38,25 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Border_Width: 0.006
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Segment: 1
-    - _Segment_Position: 0.5
-    - _World_End_Offsert: 0.015
-    - _World_Start_Offset: -0.015
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 0.7294118}
-    - _Corner_Radius_lb_lt_rb_rt: {r: 0.03, g: 0.03, b: 0.03, a: 0.03}
-    - _Padding_left_right_bottom_top: {r: 0, g: 0, b: 0, a: 0}
+    - _Border_Width_left_right_bottom_top: {r: 0.1, g: 0.1, b: 0.1, a: 0.3}
+    - _Color: {r: 1, g: 0.9345836, b: 0.004716992, a: 0.7294118}
+    - _Corner_Radius_lb_lt_rb_rt: {r: 0.1, g: 0.2, b: 0.3, a: 0.4}
+    - _Padding_left_right_bottom_top: {r: 0.01, g: 0.01, b: 0.01, a: 0.01}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
+--- !u!114 &3245185395176691565
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 9

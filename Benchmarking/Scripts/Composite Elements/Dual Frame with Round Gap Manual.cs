@@ -28,7 +28,7 @@ public class DualFrameWithRoundGapManual : MonoBehaviour
         // animate offset
         // animate shader property "Segment_Position"
         float time = Time.time;
-        float speed = 1f;
+        float speed = 0.3f;
         float segmentPosition = Mathf.PingPong(time * speed, 1.0f);
 
         FrameFractionUtils.UpdateShader(

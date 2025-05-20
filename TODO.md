@@ -58,9 +58,9 @@
 
 - [ ] implement production shaders
     - [ ] implement using most flexible/convenient shaders first
-        - [ ] animated colored dynamic frame
-            - [ ] direct control
-            - [ ] indirect
+        - [x] animated colored dynamic frame
+            - [x] direct control
+            - [x] indirect
         - [ ] colored rounded rectangle
         - [ ] colored frame
             - [ ] content: color
