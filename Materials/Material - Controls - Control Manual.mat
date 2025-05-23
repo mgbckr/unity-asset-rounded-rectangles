@@ -51,25 +51,25 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Border_Width: 0.02
+    - _Border_Width: 0.026
     - _Dot_Cross_Border: 0.005
     - _Dot_Cross_Strength: 0
-    - _Dot_Radius: 0.02
+    - _Dot_Radius: 0.036
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Center_1: {r: 0.4, g: 0.01, b: 0, a: 0}
-    - _Center_2: {r: 0.6, g: 0.01, b: 0, a: 0}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Center_1: {r: 0.35, g: 0.018, b: 0, a: 0}
+    - _Center_2: {r: 0.65, g: 0.018, b: 0, a: 0}
+    - _Color: {r: 1, g: 1, b: 1, a: 0.39215687}
     - _Corner_Radius_lb_lt_rb_rt: {r: 0.1, g: 0.1, b: 0.1, a: 0.1}
-    - _Dot_Center: {r: 0.37, g: 0.01, b: 0, a: 0}
-    - _Dot_Circle_Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Dot_Center: {r: 0.26, g: 0.018, b: 0, a: 0}
+    - _Dot_Circle_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
     - _Dot_Cross_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
     - _First_End_Fraction_lb_lt_rb_rt: {r: 0, g: 0, b: 0, a: 0}
-    - _First_End_Offset_left_right_bottom_top: {r: 1, g: 1, b: 0.3, a: 1}
+    - _First_End_Offset_left_right_bottom_top: {r: 1, g: 1, b: 0.25, a: 1}
     - _First_Start_Fraction_lb_lt_rb_rt: {r: 0, g: 0, b: 0, a: 0}
-    - _First_Start_Offset_left_right_bottom_top: {r: 0, g: 0, b: 0.3, a: 0}
-    - _Padding_left_right_bottom_top: {r: 0, g: 0, b: 0, a: 0}
+    - _First_Start_Offset_left_right_bottom_top: {r: 0, g: 0, b: 0.25, a: 0}
+    - _Padding_left_right_bottom_top: {r: 0, g: 0, b: 0.005, a: 0}
     - _Second_End_Fraction_lb_lt_rb_rt: {r: 0, g: 0, b: 0, a: 0}
     - _Second_End_Offset_left_right_bottom_top: {r: 1, g: 1, b: 1, a: 1}
     - _Second_Start_Fraction_lb_lt_rb_rt: {r: 0, g: 0, b: 0, a: 0}
