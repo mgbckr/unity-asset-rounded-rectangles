@@ -56,34 +56,23 @@
     - [x] check smoothness at border
         - maybe solve by using this gradient thing (see Rectangle node code)
 
-- [ ] implement production shaders
-    - [ ] implement using most flexible/convenient shaders first
+- [x] implement production shaders
+    - [x] implement using most flexible/convenient shaders first
         - [x] animated colored dynamic frame
             - [x] direct control
             - [x] indirect
-        - [ ] colored rounded rectangle
-        - [ ] colored frame
-            - [ ] content: color
-            - [ ] content: texture
-        - [ ] colored triple frame with shadows
-            - [ ] content: color
-            - [ ] content: texture
-    - [ ] implement optimized variants and benchmark
-        - [ ] step function no frills frame with content
-        - [ ] maybe test a development atomic version just for the heck of it
-
-- [ ] benchmark shaders
-    - [x] implement benchmarks
-    - [x] run on vision pro
-        - there is nearly NO difference ... WTF ... we will see in practice
-    - [ ] OPTIONAL: run on Meta Quest?
-        - [ ] make shaders look nice on meta quest
-    - [ ] deprecate/archive where no performance difference is observed
-    - [ ] update shader gallery and move deprecated ones to extra galleries
+        - [x] colored triple frame with shadows
+            - [x] content: color
+            - [x] content: texture
 
 ### Image with content
 
-- [ ] Make simple, single border image
+- [x] Make simple, single border image
+    - [ ] add controls
+        - [ ] test close button animation with looking at it
+        - [x] fix issue with dynamic border
+        - [x] add relative start/end offset (in hindsight probably useless)
+        - [ ] animate corner
 - [ ] Load images from URL?
 - [ ] Make three or four windows
 - [ ] Account for texture size when scaling
@@ -145,3 +134,11 @@ I'll add those when I need them.
 - [ ] check if [MaterialPropertyBlock](https://docs.unity3d.com/ScriptReference/MaterialPropertyBlock.html) does anything to help us
 - [ ] optimize rounded corner shadow (variables inside custom nodes can be reused)
 - [ ] run benchmarks on Meta Quest
+- [ ] benchmark shaders
+    - [x] implement benchmarks
+    - [x] run on vision pro
+        - there is nearly NO difference ... WTF ... we will see in practice
+    - [ ] OPTIONAL: run on Meta Quest?
+        - [ ] make shaders look nice on meta quest
+    - [ ] deprecate/archive where no performance difference is observed
+    - [ ] update shader gallery and move deprecated ones to extra galleries

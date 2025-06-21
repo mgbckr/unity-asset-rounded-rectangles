@@ -1306,13 +1306,16 @@
             "m_Id": "b1366427e4e24d6aa278567a74f398ef"
         },
         {
+            "m_Id": "77da7b33a3c347efb90f75d526c2682b"
+        },
+        {
             "m_Id": "dc351027c6a24a6f96197b6316841c53"
         },
         {
-            "m_Id": "90d18831e5fe4c0d9c333b60b7a8ab61"
+            "m_Id": "84ab508441bf487bbf0c280ae24602d8"
         },
         {
-            "m_Id": "84ab508441bf487bbf0c280ae24602d8"
+            "m_Id": "90d18831e5fe4c0d9c333b60b7a8ab61"
         },
         {
             "m_Id": "c986ced20a6442d294f07e131acef721"
@@ -1322,9 +1325,6 @@
         },
         {
             "m_Id": "d32244084ada414e911b48489e887b3f"
-        },
-        {
-            "m_Id": "77da7b33a3c347efb90f75d526c2682b"
         }
     ]
 }
@@ -1471,7 +1471,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "7354e614c9b4489abf3fbc7a5e97916b",
     "m_Id": 0,
-    "m_DisplayName": "Strength",
+    "m_DisplayName": "Cross Strength",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -1951,10 +1951,10 @@
     "m_Guid": {
         "m_GuidSerialized": "1e0195a9-53b9-4bd0-b068-ea870a8830c1"
     },
-    "m_Name": "Border Width",
+    "m_Name": "Cross Border Width",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Border Width",
-    "m_DefaultReferenceName": "_Border_Width",
+    "m_RefNameGeneratedByDisplayName": "Cross Border Width",
+    "m_DefaultReferenceName": "_Cross_Border_Width",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -1979,10 +1979,10 @@
     "m_Guid": {
         "m_GuidSerialized": "f8d9a73d-aff3-455c-b245-019fbac22b03"
     },
-    "m_Name": "Strength",
+    "m_Name": "Cross Strength",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Strength",
-    "m_DefaultReferenceName": "_Strength",
+    "m_RefNameGeneratedByDisplayName": "Cross Strength",
+    "m_DefaultReferenceName": "_Cross_Strength",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -2240,7 +2240,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "aa8148ecb68949aab01d6f4104ec36f8",
     "m_Id": 0,
-    "m_DisplayName": "Rotation",
+    "m_DisplayName": "Cross Rotation",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -2602,7 +2602,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "ca9f41e0cf544f5ab7d8a68d28b1c61b",
     "m_Id": 0,
-    "m_DisplayName": "Diameter",
+    "m_DisplayName": "Circle Diameter",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -2684,10 +2684,10 @@
     "m_Guid": {
         "m_GuidSerialized": "08ed2616-fb9b-4783-9bf5-20de2842b860"
     },
-    "m_Name": "Rotation",
+    "m_Name": "Cross Rotation",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Rotation",
-    "m_DefaultReferenceName": "_Rotation",
+    "m_RefNameGeneratedByDisplayName": "Cross Rotation",
+    "m_DefaultReferenceName": "_Cross_Rotation",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -2815,10 +2815,10 @@
     "m_Guid": {
         "m_GuidSerialized": "7e0e9cb9-cfab-435f-86d6-0af006827892"
     },
-    "m_Name": "Diameter",
+    "m_Name": "Circle Diameter",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Diameter",
-    "m_DefaultReferenceName": "_Diameter",
+    "m_RefNameGeneratedByDisplayName": "Circle Diameter",
+    "m_DefaultReferenceName": "_Circle_Diameter",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -2886,8 +2886,8 @@
     "m_ObjectId": "dda13679841841a49f384cbf6f6d0e1b",
     "m_Title": "Debugging",
     "m_Position": {
-        "x": -2351.500244140625,
-        "y": 1113.5
+        "x": -2351.499755859375,
+        "y": 1113.4998779296875
     }
 }
 
@@ -3121,7 +3121,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "ea26676eb5a44c898e21cb6b522ed21f",
     "m_Id": 0,
-    "m_DisplayName": "Border Width",
+    "m_DisplayName": "Cross Border Width",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",

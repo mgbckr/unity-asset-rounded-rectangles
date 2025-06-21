@@ -4,6 +4,7 @@
  *   TODO: I am not sure which is more efficient, yet.
  * - Using `$precision` gave me warnings in the shader graph and I am getting an error 
  *   message when I am trying to use `half`. So I am using `float` now.
+ * - TODO: fix edge case where edge overlaps corner when corner is max size
  */
 
 // // INPUT
@@ -14,8 +15,10 @@
 
 // float Segment;
 // float Segment_Position;
-// float World_Start_Offset;
-// float World_End_Offset;
+// float Start_Offset;
+// float End_Offset;
+// float Offset_Type_World; // true=world, false=relative to circumference
+
 
 // // OUTPUT
 // float2 Tiling;
@@ -52,7 +55,11 @@ Corner_Radius = max(Corner_Radius, Border_Width);
 
 float4 edgeLengths = 
     Padding.zzxx + Padding.wwyy + Corner_Radius.xzxy + Corner_Radius.ywzw;
+
 edgeLengths = 1 - edgeLengths;
+// ensure that edge lengths are never negative
+// TODO: should this be caught differently somehow?
+edgeLengths = max(edgeLengths, 0.0);
 
 float4 cornerLengths = (Corner_Radius - 0.5 * Border_Width) * 3.14159265359 / 2;
 
@@ -107,13 +114,18 @@ startLength += (Segment == 6) * (cornerCumLengths.w    + Segment_Position * edge
 startLength += (Segment == 7) * (edgeCumLengths.w      + Segment_Position * cornerLengths.y);
 startLength /= circumference;
 
-float relativeStart = World_Start_Offset / maxScale / circumference + startLength;
-float relativeEnd = World_End_Offset / maxScale / circumference + startLength;
+float relativeStart = Offset_Type_World ? 
+    Start_Offset / maxScale / circumference + startLength :
+    Start_Offset + startLength;
+float relativeEnd = Offset_Type_World ? 
+    End_Offset / maxScale / circumference + startLength :
+    End_Offset + startLength;
 
 // wrap around relative start and end
 
 float t = 1e-3;
 float tmp;
+
 tmp = frac(relativeStart);
 float Start = (tmp < t && abs(relativeStart) > t) ? 1.0 : tmp;
 tmp = frac(relativeEnd);
@@ -172,13 +184,16 @@ edgeActivation = float4(
     saturate((pos - cornerCumLengths.w) / edgeLengths.w)); // top
 
 cornerActivation = float4(
-    saturate((pos - edgeCumLengths.x) / cornerLengths.x),
+    saturate((pos - edgeCumLengths.x) / cornerLengths.x), // TODO: Here is an issue!
     saturate((pos - edgeCumLengths.w) / cornerLengths.y),
     saturate((pos - edgeCumLengths.z) / cornerLengths.z),
     saturate((pos - edgeCumLengths.y) / cornerLengths.w));
 
 float4 tailEdgeActivation = 1.0 - edgeActivation;
 float4 tailCornerActivation = cornerActivation;
+// float4 tailCornerActivation = float4(0, cornerActivation.y, cornerActivation.z, cornerActivation.w);
+
+Debug = float(edgeLengths.x < 0);
 
 // calculate offsets
 
@@ -192,8 +207,9 @@ Second_Edge_End_Offset =   tailEdgeActivation * edgeLengths;
 Second_Corner_End_Offset = tailCornerActivation * 0.25;
 
 
-
+///////
 // calculate circle coordinates
+///////
 
 float4 outerCoordinates = 
     float4(0.0, 1.0, 0.0, 1.0) 
