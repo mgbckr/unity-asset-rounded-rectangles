@@ -39,19 +39,20 @@ Material:
     m_Ints: []
     m_Floats:
     - _Border_Width: 0.1
-    - _Circle_Diameter: 0.5
+    - _Circle_Diameter: 0.2
     - _Circle_Diameter_Hover: 1
-    - _Cross_Border: 0.99
+    - _Cross_Border: 0.19
     - _Cross_Border_Hover: 0.2
     - _Cross_Strength: 0.04
     - _Cross_Strength_Hover: 0.08
+    - _Lock_Active: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Rotation: 45
     - _Rotation_Hover: 45
     m_Colors:
     - _Center: {r: 0.5, g: 0.5, b: 0, a: 0}
-    - _Circle_Color: {r: 1, g: 1, b: 1, a: 0.5686275}
+    - _Circle_Color: {r: 0.50980395, g: 0.50980395, b: 0.50980395, a: 0.5686275}
     - _Circle_Color_Hover: {r: 1, g: 1, b: 1, a: 1}
     - _Cross_Color: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 1}
     - _Cross_Color_Hover: {r: 0.16981125, g: 0.16981125, b: 0.16981125, a: 1}

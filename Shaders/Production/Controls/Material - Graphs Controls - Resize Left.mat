@@ -38,13 +38,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Border_Width: 0.008
-    - _End: 0.02
-    - _End_Hover: 0.01
+    - _Border_Width: 0.006
+    - _End: 0.1
+    - _End_Hover: 0.02
+    - _Lock_Active: 0
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Start: -0.02
-    - _Start_Hover: 0.01
+    - _Start: 0.01
+    - _Start_Hover: -0.02
     m_Colors:
     - _Center_1: {r: 0.4, g: 0.15, b: 0, a: 0}
     - _Center_2: {r: 0.85, g: 0.5, b: 0, a: 0}
