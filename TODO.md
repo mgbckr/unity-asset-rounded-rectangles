@@ -77,9 +77,8 @@
         - [x] add right resize control
         - [ ] resizing
             - [x] implement controls
-            - [x] fix border change
             - [ ] fix resizing issues
-                - [ ] out of control corners
+                - [x] out of control corners and window sizes
                 - [ ] border width when change in ratio
             - [ ] scale image in resizing (for now)
             - [ ] make controls stay same size
