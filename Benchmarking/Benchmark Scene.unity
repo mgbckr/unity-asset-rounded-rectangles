@@ -1899,7 +1899,6 @@ GameObject:
   - component: {fileID: 1075956700}
   - component: {fileID: 1075956699}
   - component: {fileID: 1075956698}
-  - component: {fileID: 1075956697}
   - component: {fileID: 1075956701}
   m_Layer: 0
   m_Name: Frame
@@ -1923,25 +1922,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1497117886}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1075956697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1075956695}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8720572f132db431fbabeaf0f857dfbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  padding: {x: 0, y: 0, z: 0, w: 0}
-  cornerRadius: {x: 0.05, y: 0.05, z: 0.05, w: 0.05}
-  borderWidth: 0.01
-  segment: 0
-  segmentPosition: 0.5
-  startOffset: -0.03
-  endOffset: 0.03
 --- !u!64 &1075956698
 MeshCollider:
   m_ObjectHideFlags: 0

@@ -75,9 +75,14 @@
         - [x] animate corner
         - [x] allow moving
         - [x] add right resize control
-        - [ ] allow resizing
-        - [ ] fix resizing issues
-        - [ ] make controls stay same size
+        - [ ] resizing
+            - [x] implement controls
+            - [x] fix border change
+            - [ ] fix resizing issues
+                - [ ] out of control corners
+                - [ ] border width when change in ratio
+            - [ ] scale image in resizing (for now)
+            - [ ] make controls stay same size
         - [ ] keep window oriented towards gaze
 - [ ] Load images from URL?
 - [ ] Make three or four windows
@@ -88,7 +93,7 @@
 
 ### Interactive
 
-- [ ] Pan / Zooming
+- [ ] Pan / Zooming (this is a bit tricky because I don't know how controls should work)
 
 
 ### Functionality (browser)

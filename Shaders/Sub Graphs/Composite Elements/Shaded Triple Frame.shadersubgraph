@@ -359,6 +359,20 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
+                    "m_Id": "2a8e84cd1b5049afbc93c64885d506b7"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "75228c970087475fba3c5080c778d4de"
+                },
+                "m_SlotId": 0
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
                     "m_Id": "2bb33fcaf3764ea58da1abfb18e5e901"
                 },
                 "m_SlotId": 1
@@ -1297,20 +1311,6 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
-                    "m_Id": "e478f6bcd7fe4d6198b75ce839c26702"
-                },
-                "m_SlotId": 0
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "75228c970087475fba3c5080c778d4de"
-                },
-                "m_SlotId": 0
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
                     "m_Id": "e6c208b897db4e19b25fb6c00ffbc1fb"
                 },
                 "m_SlotId": 0
@@ -1629,7 +1629,7 @@
     "m_ObjectId": "0450cf96b444468f85fabef2aa04cf88",
     "m_Title": "Inner shadow padding",
     "m_Position": {
-        "x": 322.000244140625,
+        "x": 322.0,
         "y": 1092.0
     }
 }
@@ -2738,7 +2738,7 @@
     "m_Title": "Main padding",
     "m_Position": {
         "x": -205.5,
-        "y": 7.499996185302734
+        "y": 7.5
     }
 }
 
@@ -3138,7 +3138,7 @@
     "m_ObjectId": "48d3703a992f46aaad9c7eb76e9c1fa8",
     "m_Title": "Inner edge padding",
     "m_Position": {
-        "x": 190.000244140625,
+        "x": 190.0,
         "y": 537.0
     }
 }
@@ -7442,8 +7442,8 @@
     "m_ObjectId": "f7d01f55f6d74395b14e045c3dbc0c5c",
     "m_Title": "Outer edge padding",
     "m_Position": {
-        "x": -781.49951171875,
-        "y": -562.4998779296875
+        "x": -781.5,
+        "y": -562.5
     }
 }
 
