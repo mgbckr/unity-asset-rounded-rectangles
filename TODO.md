@@ -69,10 +69,16 @@
 
 - [x] Make simple, single border image
     - [ ] add controls
-        - [ ] test close button animation with looking at it
+        - [x] test close button animation with looking at it
         - [x] fix issue with dynamic border
         - [x] add relative start/end offset (in hindsight probably useless)
-        - [ ] animate corner
+        - [x] animate corner
+        - [x] allow moving
+        - [x] add right resize control
+        - [ ] allow resizing
+        - [ ] fix resizing issues
+        - [ ] make controls stay same size
+        - [ ] keep window oriented towards gaze
 - [ ] Load images from URL?
 - [ ] Make three or four windows
 - [ ] Account for texture size when scaling
@@ -82,18 +88,36 @@
 
 ### Interactive
 
-- [ ] Add dummy controls
-- [ ] See how things look and optimize!
-
-- [ ] set up interaction framework
-- [ ] make controls react to focus/hover (resize, color, etc.)
-    - [ ] simple hover effect
-    - [ ] animate corners
-- [ ] Move / Close
-- [ ] Resize
 - [ ] Pan / Zooming
-- [ ] Test whether reusing shader based controls between images is more efficient
-- [ ] Crop and copy
+
+
+### Functionality (browser)
+
+- [ ] sync windows with browser
+- [ ] sync tab groups
+
+### Visuals
+
+- [ ] add antialiasing to image border 
+
+### MVP 1 (transitional browser)
+
+- [ ] add browser window
+- [ ] switch between image and browser window seamlessly
+- [ ] celebrate!!!
+
+### MVP 1.1 (user management)
+
+- [ ] login etc :( not fun
+
+### MVP 2 (mind mapping)
+
+- [ ] Crop and copy!!!
+- [ ] allow cropping from browser window
+- [ ] attach URL / source to windows
+- [ ] allow text nodes
+- [ ] add voice controls?
+- [ ] figure out how to distinguish between crops and actual browser windows
 
 ## Backlog
 
@@ -116,8 +140,14 @@ I'll add those when I need them.
 - [ ] Support text somehow?
 - [ ] Support some icons?
 
+### Interaction
+
+- [ ] experiment with different interaction framework
+    - [ ] move as default not with extra control?
+
 ### Optimization
 
+- [ ] Test whether reusing shader based controls between images is more efficient
 - [ ] For stacked border test whether chaining makes a difference
 - [ ] Can we optimize the Rounded Rectangle Fraction ... I think it is too inefficient
     - [x] optimize by moving code out of shader ... helps a lot
