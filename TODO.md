@@ -80,7 +80,7 @@
             - [ ] fix resizing issues
                 - [x] out of control corners and window sizes
                 - [ ] border width when change in ratio
-            - [ ] scale image in resizing (for now)
+            - [ ] scale image when resizing (for now; see "Interactive" section)
             - [ ] make controls stay same size
         - [ ] keep window oriented towards gaze
 - [ ] Load images from URL?
@@ -97,12 +97,10 @@
 
 ### Functionality (browser)
 
-- [ ] sync windows with browser
+- [ ] sync windows with browser (this is going to be a complicated one)
 - [ ] sync tab groups
-
-### Visuals
-
-- [ ] add antialiasing to image border 
+- [ ] implement closing window
+- [ ] allow undo of closing window
 
 ### MVP 1 (transitional browser)
 
@@ -110,9 +108,17 @@
 - [ ] switch between image and browser window seamlessly
 - [ ] celebrate!!!
 
-### MVP 1.1 (user management)
+### MVP 1.1 (visuals)
+
+- [ ] add antialiasing to image border 
+- [ ] make moving smoother 
+- [ ] make resizing smoother
+
+### MVP 1.2 (user management)
 
 - [ ] login etc :( not fun
+- [ ] THIS IS A FINAL PRODUCT!!!
+
 
 ### MVP 2 (mind mapping)
 
