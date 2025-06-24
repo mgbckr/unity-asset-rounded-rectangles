@@ -83,14 +83,16 @@
                 - [x] corner size when change ratio
                 - [ ] test with goggles on
             - [ ] scale image when resizing (for now; see "Interactive" section)
-            - [ ] make controls stay same size
+            - [ ] make controls stay the same size
+                - [ ] don't scale at all at first and only move them
+                - [ ] try changing size based on distance
         - [ ] keep window oriented towards gaze
 - [ ] Load images from URL?
+- [ ] Set image ratio automatically
+- [ ] allow non 1x1 texture size (should be covered by auto ratio above)
+- [ ] allow non 1x1 objects (quads)
 - [ ] Make three or four windows
-- [ ] Account for texture size when scaling
 - [ ] Test many borders with images ... oh oh!!
-- [ ] allow non 1x1 texture size
-- [ ] allow non 1x1 objects
 
 ### Interactive
 
