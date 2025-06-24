@@ -79,7 +79,9 @@
             - [x] implement controls
             - [ ] fix resizing issues
                 - [x] out of control corners and window sizes
-                - [ ] border width when change in ratio
+                - [x] border width when change in ratio
+                - [x] corner size when change ratio
+                - [ ] test with goggles on
             - [ ] scale image when resizing (for now; see "Interactive" section)
             - [ ] make controls stay same size
         - [ ] keep window oriented towards gaze
