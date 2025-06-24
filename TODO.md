@@ -75,18 +75,25 @@
         - [x] animate corner
         - [x] allow moving
         - [x] add right resize control
-        - [ ] resizing
+        - [x] resizing
             - [x] implement controls
-            - [ ] fix resizing issues
+            - [x] fix resizing issues
                 - [x] out of control corners and window sizes
                 - [x] border width when change in ratio
                 - [x] corner size when change ratio
-                - [ ] test with goggles on
-            - [ ] scale image when resizing (for now; see "Interactive" section)
-            - [ ] make controls stay the same size
-                - [ ] don't scale at all at first and only move them
-                - [ ] try changing size based on distance
+                - [x] test with goggles on
+            - [x] scale image when resizing (for now; see "Interactive" section)
         - [ ] keep window oriented towards gaze
+            - [x] try VisionOSBillboard: 
+                I can turn this on and off but when I turn it off the rotation resets
+                which is not what we want ... we will have to see what immersive mode means
+            - [ ] use (unbounded mode)[https://docs.unity3d.com/Packages/com.unity.polyspatial.visionos@2.3/manual/FAQ.html#q-objects-that-are-supposed-to-face-the-camera-transformlookat-are-not-working]
+                - [x] initial spike
+                - [ ] fix tracking hand instead of head ... wtf
+                - [ ] fix turn around of billboard!?
+        - [ ] make controls stay the same size
+            - [ ] don't scale at all at first and only move them
+            - [ ] try changing size based on distance
 - [ ] Load images from URL?
 - [ ] Set image ratio automatically
 - [ ] allow non 1x1 texture size (should be covered by auto ratio above)

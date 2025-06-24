@@ -4,9 +4,11 @@ using UnityEngine.InputSystem.EnhancedTouch;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 using UnityEngine.InputSystem.LowLevel;
+using Unity.PolySpatial;
 
 public class InputManager : MonoBehaviour
 {
+    public Transform cameraTransform;
 
     private GameObject selectedObject;
     private Vector3 lastPosition;
@@ -18,7 +20,6 @@ public class InputManager : MonoBehaviour
 
     void Start()
     {
-
     }
 
     void Update()
@@ -46,6 +47,12 @@ public class InputManager : MonoBehaviour
                             Vector3 deltaPosition = touchData.interactionPosition - lastPosition;
                             selectedObject.transform.position += deltaPosition;
                             lastPosition = touchData.interactionPosition;
+                            // look at camera transform
+                            selectedObject.transform.LookAt(cameraTransform);
+
+                        }
+                        else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
+                        {
                         }
                     }
 
@@ -60,7 +67,17 @@ public class InputManager : MonoBehaviour
                         else if (touch.phase == TouchPhase.Moved && selectedObject != null)
                         {
                             Vector3 deltaPosition = touchData.interactionPosition - lastPosition;
-                            selectedObject.transform.localScale += new Vector3(deltaPosition.x, deltaPosition.y, 0); // Resize only in the X and Y direction
+
+                            // Combine X and Y for uniform scaling
+                            // float scale = deltaPosition.x - deltaPosition.y;
+                            float scale =
+                                 Mathf.Sqrt(
+                                     Mathf.Pow(deltaPosition.x, 2)
+                                     + Mathf.Pow(deltaPosition.y, 2))
+                                 * Mathf.Sign(deltaPosition.x - deltaPosition.y);
+
+                            // Resize only in the X and Y direction
+                            selectedObject.transform.localScale += new Vector3(scale, scale, 0);
 
                             // // We need tp update the position as well
                             // if (touchData.targetObject.name == "Resize Left")
@@ -88,6 +105,7 @@ public class InputManager : MonoBehaviour
         if (Touch.activeTouches.Count == 0 && selectedObject != null)
         {
             selectedObject = null; // Deselect the object when no touches are active
+
         }
     }
 }
