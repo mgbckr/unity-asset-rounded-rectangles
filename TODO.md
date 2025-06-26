@@ -83,17 +83,25 @@
                 - [x] corner size when change ratio
                 - [x] test with goggles on
             - [x] scale image when resizing (for now; see "Interactive" section)
-        - [ ] keep window oriented towards gaze
+        - [x] keep window oriented towards gaze
             - [x] try VisionOSBillboard: 
                 I can turn this on and off but when I turn it off the rotation resets
                 which is not what we want ... we will have to see what immersive mode means
-            - [ ] use (unbounded mode)[https://docs.unity3d.com/Packages/com.unity.polyspatial.visionos@2.3/manual/FAQ.html#q-objects-that-are-supposed-to-face-the-camera-transformlookat-are-not-working]
+            - [x] use (unbounded mode)[https://docs.unity3d.com/Packages/com.unity.polyspatial.visionos@2.3/manual/FAQ.html#q-objects-that-are-supposed-to-face-the-camera-transformlookat-are-not-working]
                 - [x] initial spike
-                - [ ] fix tracking hand instead of head ... wtf
-                - [ ] fix turn around of billboard!?
+                - [x] fix tracking hand instead of head ... wtf
+                    - had to add an XR Origin and use the Main Camera as a tracking target
+                    - probably simply could have used any object with a `TrackedPoseDriver (Input System)` component on it (with the right configuration), but did not test this
+                    - note I had to reset the `Camera Offset`'s position as well as the `Camera Y Offset` on the `XR Origin` to zero, otherwise there was an offset in what was tracked
+                - [x] fix turn around of billboard!?
+                    - turns out Quads are just facing away from the user with their front UV .. fixed via rotation
         - [ ] make controls stay the same size
-            - [ ] don't scale at all at first and only move them
-            - [ ] try changing size based on distance
+            - [x] move window behavior implementation from `Input Manager` to `Window`
+            - [ ] test `Window`
+            - [ ] placement on scaling
+            - [ ] change size based on distance
+        - [ ] fix movement distortions when starting very far to the left ... need to scale movement distance based on distance from hand
+        - [ ] maybe also improve resizing feeling?
 - [ ] Load images from URL?
 - [ ] Set image ratio automatically
 - [ ] allow non 1x1 texture size (should be covered by auto ratio above)
