@@ -46,7 +46,7 @@ public class InputManager : MonoBehaviour
                             lastPosition = touchData.interactionPosition;
 
                             // Set the lookAtTarget to the selected object
-                            selectedObject.GetComponent<Window>().SetLookAtCamera(true);
+                            selectedObject.GetComponent<Window>().FollowCamera(true);
                         }
                         else if (touch.phase == TouchPhase.Moved && selectedObject != null)
                         {
@@ -56,7 +56,7 @@ public class InputManager : MonoBehaviour
                         }
                         else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
                         {
-                            selectedObject.GetComponent<Window>().SetLookAtCamera(false);
+                            selectedObject.GetComponent<Window>().FollowCamera(false);
                             selectedObject = null; // Deselect the object when the touch ends
                         }
                     }
@@ -74,16 +74,8 @@ public class InputManager : MonoBehaviour
                         {
                             Vector3 deltaPosition = touchData.interactionPosition - lastPosition;
 
-                            // Combine X and Y for uniform scaling
-                            // float scale = deltaPosition.x - deltaPosition.y;
-                            float deltaScale =
-                                 Mathf.Sqrt(
-                                     Mathf.Pow(deltaPosition.x, 2)
-                                     + Mathf.Pow(deltaPosition.y, 2))
-                                 * Mathf.Sign(deltaPosition.x - deltaPosition.y);
-
                             // Resize only in the X and Y direction
-                            selectedObject.GetComponent<Window>().ChangeScale(deltaScale);
+                            selectedObject.GetComponent<Window>().ChangeScale(deltaPosition.x, deltaPosition.y);
 
                             lastPosition = touchData.interactionPosition;
                         }

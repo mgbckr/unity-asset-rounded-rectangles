@@ -5,7 +5,7 @@ public class Window : MonoBehaviour
 
     private Transform cameraTransform;
 
-    private bool lookAtCamera = false;
+    private bool followCamera = false;
 
     private GameObject frame;
     private GameObject controls;
@@ -37,11 +37,14 @@ public class Window : MonoBehaviour
 
     void Update()
     {
+        // Update the controls position based on the frame size
+        UpdateControls();
+
         // Check if the lookAtTarget is assigned
         if (cameraTransform != null)
         {
             // track target
-            if (lookAtCamera)
+            if (followCamera)
             {
                 // Make the frame look at the lookAtTarget
                 transform.LookAt(cameraTransform);
@@ -54,39 +57,58 @@ public class Window : MonoBehaviour
         }
     }
 
-    public void SetLookAtCamera(bool track)
+    public void FollowCamera(bool track)
     {
-        lookAtCamera = track;
+        followCamera = track;
     }
 
-    public bool GetLookAtCamera()
+
+
+    public void ChangeScale(float deltaX, float deltaY)
     {
-        return lookAtCamera;
+        frame.transform.localScale = new Vector3(
+            transform.localScale.x + deltaX,
+            transform.localScale.y + deltaY,
+            transform.localScale.z);
     }
 
-    public void ChangeScale(float deltaScale)
+    private void UpdateControls()
     {
+        controls.transform.localPosition = new Vector3(
+            0,
+            -frame.transform.localScale.y / 2,
+            0
+        );
 
-        transform.localScale += new Vector3(deltaScale, deltaScale, 0);
+        controls_move.transform.localPosition = new Vector3(
+            0,
+            -controls_move.transform.localScale.y / 2,
+            0
+        );
 
-        // // Change the scale of the frame
-        // Vector3 newScale = frame.transform.localScale + new Vector3(scaleDifference, scaleDifference, 0);
-        // // Ensure the scale does not go below a certain threshold
-        // newScale.x = Mathf.Max(newScale.x, 0.1f);
-        // newScale.y = Mathf.Max(newScale.y, 0.1f);
-        // frame.transform.localScale = newScale;
+        controls_close.transform.localPosition = new Vector3(
+            -(controls_move.transform.localScale.x / 2 + controls_close.transform.localScale.x / 2 * 1.1f),
+            -controls_close.transform.localScale.y / 2,
+            0
+        );
 
-        // Update the controls' positions based on the new scale
-        // TODO
-        // if (controls != null)
-        // {
-        //     controls.transform.localPosition = new Vector3(newScale.x / 2 + 0.1f, newScale.y / 2 + 0.1f, 0);
-        //     controls_move.transform.localPosition = new Vector3(0, newScale.y / 2 + 0.1f, 0);
-        //     controls_left.transform.localPosition = new Vector3(-newScale.x / 2 - 0.1f, 0, 0);
-        //     controls_right.transform.localPosition = new Vector3(newScale.x / 2 + 0.1f, 0, 0);
-        //     controls_close.transform.localPosition = new Vector3(0, -newScale.y / 2 - 0.1f, 0);
-        // }
-
+        controls_left.transform.localPosition = new Vector3(
+            - (
+                frame.transform.localScale.x / 2
+                - controls_left.transform.localScale.x / 2
+                + controls_left.transform.localScale.y / 2),
+            0,
+            0
+        );
+        
+        controls_right.transform.localPosition = new Vector3(
+            + (
+                frame.transform.localScale.x / 2
+                - controls_right.transform.localScale.x / 2
+                + controls_right.transform.localScale.y / 2),
+            0,
+            0
+        );
     }
 
 }
