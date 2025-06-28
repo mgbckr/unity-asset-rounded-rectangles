@@ -105,9 +105,9 @@
                 - [x] fix corners
                     - [x] make `Dynamic Frame Fraction Control` relative
             - [ ] change size of corners when resizing
+            - [ ] fix minimum/maximum (?) size (see what Vision OS Windows do)
             - [ ] make size change similar to Vision OS (there seems to be some scaling)
                 - mhm, this is kind of difficult because they scale the frame funnily
-            - [ ] fix minimum/maximum (?) size (see what Vision OS Windows do)
         - [ ] fix movement distortions when starting very far to the left ... need to scale movement distance based on distance from hand
         - [ ] scale Z movement based on distance from avatar
         - [ ] maybe also improve resizing feeling?
