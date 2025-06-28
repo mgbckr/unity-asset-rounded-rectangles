@@ -8,34 +8,48 @@
  */
 
 // // INPUT
-// float4 Padding;
-
-// float4 Corner_Radius;
-// float Border_Width;
-// bool Size_Reference; // true=width, false=height
+// float2 Scale;
+// float2 World_Padding;
+// float4 World_Corner_Radius;
+// float World_Border_Width;
 
 // float Segment;
 // float Segment_Position;
 // float Start_Offset;
 // float End_Offset;
-// bool Offset_Reference; // true=segment, false=circumference
+// bool Offset_Type_World; // true=world, false=relative to segment
 
 
 // // OUTPUT
-// TODO
+// float2 Tiling;
+// float4 Padding;
+// float4 Corner_Radius;
+// float Border_Width;
+
+// Tiling = float2(1, 1);
+// Padding = float4(0, 0, 0, 0);
+// Corner_Radius = float4(0.1, 0.1, 0.1, 0.1);
+// Border_Width = float(0.1);
 
 // START CODE
 
-float width = 1 - (Padding.x + Padding.y);
-float height = 1 - (Padding.z + Padding.w);
-float sizeReference = Size_Reference ? width : height;
+float maxScale = max(Scale.x, Scale.y);
+float2 shaderScale = float2(Scale.x / maxScale, Scale.y / maxScale);
+
+float4 scalePadding = float4(
+    float(0), 
+    float(1) - shaderScale.x,
+    float(0),
+    float(1) - shaderScale.y);
+
+// finalize shape parameters in shader coordinates
+Tiling = shaderScale;
+Padding = scalePadding + World_Padding / maxScale;
+Corner_Radius = World_Corner_Radius / maxScale;
+Border_Width = World_Border_Width / maxScale;
 
 // ensure corner radius to be at least border width
 Corner_Radius = max(Corner_Radius, Border_Width);
-
-// set output parameters
-Corner_Radius_Out = Corner_Radius;
-// Border_Width_Out = Border_Width;
 
 // DERIVE STATIC SEGMENT PROPERTIES
 
@@ -47,7 +61,7 @@ edgeLengths = 1 - edgeLengths;
 // TODO: should this be caught differently somehow?
 edgeLengths = max(edgeLengths, 0.0);
 
-float4 cornerLengths = (Corner_Radius) * 3.14159265359 / 2;
+float4 cornerLengths = (Corner_Radius - 0.5 * Border_Width) * 3.14159265359 / 2;
 
 float4 edgeCumLengths = float4(0, 0, 0, 0);
 float4 cornerCumLengths = float4(0, 0, 0, 0);
@@ -111,13 +125,15 @@ segmentLength += (Segment == 6) * edgeLengths.w;
 segmentLength += (Segment == 7) * cornerLengths.y;
 segmentLength /= circumference;
 
-float relativeStart = Offset_Reference ? 
-    startLength + Start_Offset * segmentLength :
-    startLength + Start_Offset; 
-float relativeEnd = Offset_Reference ? 
-    startLength + End_Offset * segmentLength :    
-    startLength + End_Offset;               
-    
+float relativeStart = Offset_Type_World ? 
+    Start_Offset / maxScale / circumference + startLength :  // offset in world length
+    Start_Offset * segmentLength + startLength;             // offset in segment length
+    // Start_Offset + startLength;                              // offset in relative length
+float relativeEnd = Offset_Type_World ? 
+    End_Offset / maxScale / circumference + startLength :    // offset in world length
+    End_Offset * segmentLength + startLength;               // offset in segment length
+    // End_Offset + startLength;                                // offset in relative length
+
 // wrap around relative start and end
 
 float t = 1e-3;

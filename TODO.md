@@ -97,13 +97,24 @@
                     - turns out Quads are just facing away from the user with their front UV .. fixed via rotation
         - [ ] make controls stay the same size
             - [x] move window behavior implementation from `Input Manager` to `Window`
-            - [ ] test `Window`
-            - [ ] placement on scaling
-            - [ ] change size based on distance
+            - [x] test `Window`
+            - [x] placement on scaling
+            - [x] fix corner position / alignment with center
+            - [x] change size based on distance
+                - [x] initial version
+                - [x] fix corners
+                    - [x] make `Dynamic Frame Fraction Control` relative
+            - [ ] change size of corners when resizing
+            - [ ] make size change similar to Vision OS (there seems to be some scaling)
+                - mhm, this is kind of difficult because they scale the frame funnily
+            - [ ] fix minimum/maximum (?) size (see what Vision OS Windows do)
         - [ ] fix movement distortions when starting very far to the left ... need to scale movement distance based on distance from hand
+        - [ ] scale Z movement based on distance from avatar
         - [ ] maybe also improve resizing feeling?
 - [ ] Load images from URL?
-- [ ] Set image ratio automatically
+    - [ ] allow setting any texture image
+    - [ ] allow loading from URL
+    - [ ] Set image ratio automatically
 - [ ] allow non 1x1 texture size (should be covered by auto ratio above)
 - [ ] allow non 1x1 objects (quads)
 - [ ] Make three or four windows

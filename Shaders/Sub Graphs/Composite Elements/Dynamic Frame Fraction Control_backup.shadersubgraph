@@ -4,6 +4,9 @@
     "m_ObjectId": "5405347d2ee94da38e3d1696b9bfde5e",
     "m_Properties": [
         {
+            "m_Id": "127124c2942a453690553cc1ad78bb49"
+        },
+        {
             "m_Id": "e6463a61932a4ebc97d4c5f1c0d94f95"
         },
         {
@@ -23,9 +26,6 @@
         },
         {
             "m_Id": "22b659dc8aa041ea9fa6093454b5fd50"
-        },
-        {
-            "m_Id": "6c68589040ea4ae880df2af0e506b8d0"
         },
         {
             "m_Id": "946ab5f1c8904f71a20ec828f2f31c4d"
@@ -67,6 +67,9 @@
             "m_Id": "36bb758dca1645698fe25c6c506e8d6d"
         },
         {
+            "m_Id": "7870fb2c9afd49239e5d57edcbf4502a"
+        },
+        {
             "m_Id": "1fa6941deed14a3f9a09b98f0c6fc202"
         },
         {
@@ -77,9 +80,6 @@
         },
         {
             "m_Id": "898d7ef8c1e940edb3b9d5b788b074a2"
-        },
-        {
-            "m_Id": "200a4eb2c9194e0b87d3f5596a3c74b5"
         }
     ],
     "m_GroupDatas": [
@@ -110,34 +110,6 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
-                    "m_Id": "200a4eb2c9194e0b87d3f5596a3c74b5"
-                },
-                "m_SlotId": 0
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "559d8f3333bc4b22b4f1b9b8da236a55"
-                },
-                "m_SlotId": 22
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
-                    "m_Id": "36bb758dca1645698fe25c6c506e8d6d"
-                },
-                "m_SlotId": 0
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "02546692bb6148a6a89d5d2d33ae1237"
-                },
-                "m_SlotId": 15
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
                     "m_Id": "36bb758dca1645698fe25c6c506e8d6d"
                 },
                 "m_SlotId": 0
@@ -147,20 +119,6 @@
                     "m_Id": "559d8f3333bc4b22b4f1b9b8da236a55"
                 },
                 "m_SlotId": 1
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
-                    "m_Id": "36bb758dca1645698fe25c6c506e8d6d"
-                },
-                "m_SlotId": 0
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "fc397b41fc47439b83af087361e4ca08"
-                },
-                "m_SlotId": 2021473045
             }
         },
         {
@@ -186,20 +144,6 @@
             },
             "m_InputSlot": {
                 "m_Node": {
-                    "m_Id": "02546692bb6148a6a89d5d2d33ae1237"
-                },
-                "m_SlotId": 14
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
-                    "m_Id": "554bd3d844574f7a8b4f3a0f25029481"
-                },
-                "m_SlotId": 0
-            },
-            "m_InputSlot": {
-                "m_Node": {
                     "m_Id": "559d8f3333bc4b22b4f1b9b8da236a55"
                 },
                 "m_SlotId": 3
@@ -208,9 +152,93 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
-                    "m_Id": "554bd3d844574f7a8b4f3a0f25029481"
+                    "m_Id": "559d8f3333bc4b22b4f1b9b8da236a55"
                 },
-                "m_SlotId": 0
+                "m_SlotId": 4
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "02546692bb6148a6a89d5d2d33ae1237"
+                },
+                "m_SlotId": 1
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "559d8f3333bc4b22b4f1b9b8da236a55"
+                },
+                "m_SlotId": 5
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "02546692bb6148a6a89d5d2d33ae1237"
+                },
+                "m_SlotId": 2
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "559d8f3333bc4b22b4f1b9b8da236a55"
+                },
+                "m_SlotId": 5
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "fc397b41fc47439b83af087361e4ca08"
+                },
+                "m_SlotId": 2021473045
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "559d8f3333bc4b22b4f1b9b8da236a55"
+                },
+                "m_SlotId": 6
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "02546692bb6148a6a89d5d2d33ae1237"
+                },
+                "m_SlotId": 3
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "559d8f3333bc4b22b4f1b9b8da236a55"
+                },
+                "m_SlotId": 6
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "fc397b41fc47439b83af087361e4ca08"
+                },
+                "m_SlotId": 344298916
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "559d8f3333bc4b22b4f1b9b8da236a55"
+                },
+                "m_SlotId": 7
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "02546692bb6148a6a89d5d2d33ae1237"
+                },
+                "m_SlotId": 4
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "559d8f3333bc4b22b4f1b9b8da236a55"
+                },
+                "m_SlotId": 7
             },
             "m_InputSlot": {
                 "m_Node": {
@@ -460,34 +488,6 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
-                    "m_Id": "559d8f3333bc4b22b4f1b9b8da236a55"
-                },
-                "m_SlotId": 23
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "02546692bb6148a6a89d5d2d33ae1237"
-                },
-                "m_SlotId": 13
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
-                    "m_Id": "559d8f3333bc4b22b4f1b9b8da236a55"
-                },
-                "m_SlotId": 23
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "fc397b41fc47439b83af087361e4ca08"
-                },
-                "m_SlotId": 344298916
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
                     "m_Id": "60475cd4e22f4a7d8ed9c512fd36fb63"
                 },
                 "m_SlotId": 0
@@ -497,6 +497,20 @@
                     "m_Id": "559d8f3333bc4b22b4f1b9b8da236a55"
                 },
                 "m_SlotId": 2
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "7870fb2c9afd49239e5d57edcbf4502a"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "559d8f3333bc4b22b4f1b9b8da236a55"
+                },
+                "m_SlotId": 0
             }
         },
         {
@@ -639,6 +653,21 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "0122aa6410cc434688c38eefab8c48d6",
+    "m_Id": 4,
+    "m_DisplayName": "Border_Width",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Border_Width",
+    "m_StageCapability": 3,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.SubGraphOutputNode",
     "m_ObjectId": "02546692bb6148a6a89d5d2d33ae1237",
     "m_Group": {
@@ -649,21 +678,24 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 255.99998474121095,
-            "y": -326.50006103515627,
-            "width": 197.00001525878907,
-            "height": 245.00006103515626
+            "x": 256.0000305175781,
+            "y": -353.5,
+            "width": 119.99990844726563,
+            "height": 77.0
         }
     },
     "m_Slots": [
         {
-            "m_Id": "e73c539426c64cfe848dfc9b80dba3ac"
+            "m_Id": "2d0f01156e1f402a97eb9123d7926a62"
         },
         {
-            "m_Id": "d526260e526a4e93b88eb70821f5512f"
+            "m_Id": "c7bb5f950c5144cfa38f9b5acce90eb0"
         },
         {
-            "m_Id": "b996be6696c04bbaa93d360e1dda6798"
+            "m_Id": "8c8eb2cae70b4f7daa2b238604e0354b"
+        },
+        {
+            "m_Id": "0122aa6410cc434688c38eefab8c48d6"
         },
         {
             "m_Id": "0113c3477d9c41de996628ced6ad5219"
@@ -782,6 +814,34 @@
 }
 
 {
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector2ShaderProperty",
+    "m_ObjectId": "127124c2942a453690553cc1ad78bb49",
+    "m_Guid": {
+        "m_GuidSerialized": "0037f61e-63ba-4fb1-b3a7-19cc9dc9b115"
+    },
+    "m_Name": "Scale",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "Scale",
+    "m_DefaultReferenceName": "_Scale",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_DismissedVersion": 0,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 0.0,
+        "w": 0.0
+    }
+}
+
+{
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "15821c0633544a82a72cc41e4f122a88",
@@ -824,6 +884,31 @@
 {
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
+    "m_ObjectId": "16947bac5a894f618e5ca6988633ffa0",
+    "m_Id": 2,
+    "m_DisplayName": "World_Corner_Radius",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "World_Corner_Radius",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "19ba9fe285b34e898cd61dbf84ee670c",
     "m_Id": 344298916,
     "m_DisplayName": "Corner Radius (lb, lt, rb, rt)",
@@ -833,9 +918,9 @@
     "m_StageCapability": 2,
     "m_Value": {
         "x": 0.10000000149011612,
-        "y": 0.10000000149011612,
-        "z": 0.5,
-        "w": 0.10000000149011612
+        "y": 0.20000000298023225,
+        "z": 0.30000001192092898,
+        "w": 0.4000000059604645
     },
     "m_DefaultValue": {
         "x": 0.0,
@@ -858,10 +943,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 40.50007629394531,
-            "y": -1090.5,
-            "width": 144.99996948242188,
-            "height": 128.5
+            "x": -33.00003433227539,
+            "y": -1171.5001220703125,
+            "width": 208.0,
+            "height": 312.5
         }
     },
     "m_Slots": [
@@ -875,49 +960,13 @@
         "coordinates"
     ],
     "m_Precision": 0,
-    "m_PreviewExpanded": false,
-    "m_DismissedVersion": 0,
-    "m_PreviewMode": 0,
-    "m_CustomColors": {
-        "m_SerializableColors": []
-    },
-    "m_OutputChannel": 0
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
-    "m_ObjectId": "200a4eb2c9194e0b87d3f5596a3c74b5",
-    "m_Group": {
-        "m_Id": ""
-    },
-    "m_Name": "Property",
-    "m_DrawState": {
-        "m_Expanded": true,
-        "m_Position": {
-            "serializedVersion": "2",
-            "x": -848.5000610351563,
-            "y": -115.50005340576172,
-            "width": 232.0,
-            "height": 34.000030517578128
-        }
-    },
-    "m_Slots": [
-        {
-            "m_Id": "9c4ae39b865a4d4685f9ccf0d87c4100"
-        }
-    ],
-    "synonyms": [],
-    "m_Precision": 0,
     "m_PreviewExpanded": true,
     "m_DismissedVersion": 0,
     "m_PreviewMode": 0,
     "m_CustomColors": {
         "m_SerializableColors": []
     },
-    "m_Property": {
-        "m_Id": "6c68589040ea4ae880df2af0e506b8d0"
-    }
+    "m_OutputChannel": 0
 }
 
 {
@@ -951,6 +1000,31 @@
 {
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
+    "m_ObjectId": "2b86b6c5352b481fbe51bb7e3284b223",
+    "m_Id": 5,
+    "m_DisplayName": "Padding",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Padding",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "2bdd5de172b041af90d04342de3b3041",
     "m_Id": 10,
     "m_DisplayName": "Second_Corner_End_Offset",
@@ -969,6 +1043,27 @@
         "y": 0.0,
         "z": 0.0,
         "w": 0.0
+    },
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector2MaterialSlot",
+    "m_ObjectId": "2d0f01156e1f402a97eb9123d7926a62",
+    "m_Id": 1,
+    "m_DisplayName": "Tiling",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Tiling",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0
     },
     "m_Labels": []
 }
@@ -1042,6 +1137,27 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector2MaterialSlot",
+    "m_ObjectId": "3657d58d3a204b18af72c27166eb095a",
+    "m_Id": 0,
+    "m_DisplayName": "Scale",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0
+    },
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
     "m_ObjectId": "36bb758dca1645698fe25c6c506e8d6d",
     "m_Group": {
@@ -1052,9 +1168,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -746.9998168945313,
-            "y": -387.5000305175781,
-            "width": 119.99993896484375,
+            "x": -822.0,
+            "y": -270.0,
+            "width": 153.0,
             "height": 34.0
         }
     },
@@ -1124,6 +1240,27 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector2MaterialSlot",
+    "m_ObjectId": "3fb649fed47f4b1883218f31af3b27b4",
+    "m_Id": 0,
+    "m_DisplayName": "Scale",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Scale",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0
+    },
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "40833ae9d94d484c9215472010e5605f",
     "m_Id": 6,
@@ -1152,7 +1289,7 @@
     "m_Type": "UnityEditor.ShaderGraph.BooleanMaterialSlot",
     "m_ObjectId": "419ce149cbb8430a83d8a87ace4a5c17",
     "m_Id": 0,
-    "m_DisplayName": "Offset Reference (segment/circumference)",
+    "m_DisplayName": "Offset Type (world/relative)",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -1163,25 +1300,10 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
-    "m_ObjectId": "4203d4cb546946e39e2162cfe4858a90",
-    "m_Id": 3,
-    "m_DisplayName": "Border_Width",
-    "m_SlotType": 0,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "Border_Width",
-    "m_StageCapability": 3,
-    "m_Value": 0.0,
-    "m_DefaultValue": 0.0,
-    "m_Labels": []
-}
-
-{
-    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "426ec08f9f954edba5dfe85c15430d37",
     "m_Id": 0,
-    "m_DisplayName": "Corner Radius",
+    "m_DisplayName": "World Corner Radius",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -1199,6 +1321,20 @@
         "w": 0.0
     },
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.BooleanMaterialSlot",
+    "m_ObjectId": "444482cda4304002b28fa3104d884119",
+    "m_Id": 21,
+    "m_DisplayName": "Offset_Type_World",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Offset_Type_World",
+    "m_StageCapability": 3,
+    "m_Value": false,
+    "m_DefaultValue": false
 }
 
 {
@@ -1221,7 +1357,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 2.0,
+    "m_Value": 1.0,
     "m_FloatType": 0,
     "m_RangeValues": {
         "x": 0.0,
@@ -1265,10 +1401,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -746.9998168945313,
-            "y": -251.49998474121095,
-            "width": 172.99993896484376,
-            "height": 33.999969482421878
+            "x": -822.0,
+            "y": -134.0,
+            "width": 173.0,
+            "height": 33.99998474121094
         }
     },
     "m_Slots": [
@@ -1326,10 +1462,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -746.9999389648438,
-            "y": -319.5000305175781,
-            "width": 144.0,
-            "height": 34.0001220703125
+            "x": -822.0,
+            "y": -202.00001525878907,
+            "width": 177.0,
+            "height": 34.000030517578128
         }
     },
     "m_Slots": [
@@ -1362,21 +1498,24 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -412.5,
-            "y": -245.00001525878907,
-            "width": 342.5,
-            "height": 494.0
+            "x": -388.5,
+            "y": -353.4999694824219,
+            "width": 355.49993896484377,
+            "height": 565.9999389648438
         }
     },
     "m_Slots": [
         {
-            "m_Id": "c418f4bacc444e059747a137e7827624"
+            "m_Id": "3fb649fed47f4b1883218f31af3b27b4"
         },
         {
-            "m_Id": "c217c203aad94f059e94fe371aab672f"
+            "m_Id": "5e2cfcce58fe46fab59687ebf6d34799"
         },
         {
-            "m_Id": "4203d4cb546946e39e2162cfe4858a90"
+            "m_Id": "16947bac5a894f618e5ca6988633ffa0"
+        },
+        {
+            "m_Id": "906b8c26e8894f858e7cb3cd7a113e80"
         },
         {
             "m_Id": "d880b58e34504d03aff9107f9e7aa7b6"
@@ -1391,13 +1530,19 @@
             "m_Id": "a51ba93ff45e4e9981197ee1a7e83d8b"
         },
         {
-            "m_Id": "e9c756f96e1745a1b41406f48a142d10"
+            "m_Id": "444482cda4304002b28fa3104d884119"
         },
         {
-            "m_Id": "5f4ae6e0bb504700b2f4f4b48a554747"
+            "m_Id": "b95c9c5aa8ea4ca5b2cb7dbf9131762e"
         },
         {
-            "m_Id": "fc891397f4ca4fc09e157d6612df8d3e"
+            "m_Id": "2b86b6c5352b481fbe51bb7e3284b223"
+        },
+        {
+            "m_Id": "a1939e2be02c4e55b8408894eb9e675f"
+        },
+        {
+            "m_Id": "77cb98fcf8154ad2883041d9d0a69013"
         },
         {
             "m_Id": "00b448f874b24b46a0c8def7934fa0db"
@@ -1442,7 +1587,7 @@
     "m_FunctionName": "Dynamic_Frame_Fraction_Control",
     "m_FunctionSource": "",
     "m_FunctionSourceUsePragmas": true,
-    "m_FunctionBody": "/**\n * Notes:\n * - This is the shader variant. There is also a version in Unity script.\n *   TODO: I am not sure which is more efficient, yet.\n * - Using `$precision` gave me warnings in the shader graph and I am getting an error \n *   message when I am trying to use `half`. So I am using `float` now.\n * - TODO: fix edge case where edge overlaps corner when corner is max size\n */\n\n// // INPUT\n// float4 Padding;\n\n// float4 Corner_Radius;\n// float Border_Width;\n// bool Size_Reference; // true=width, false=height\n\n// float Segment;\n// float Segment_Position;\n// float Start_Offset;\n// float End_Offset;\n// bool Offset_Reference; // true=segment, false=circumference\n\n\n// // OUTPUT\n// TODO\n\n// START CODE\n\nfloat width = 1 - (Padding.x + Padding.y);\nfloat height = 1 - (Padding.z + Padding.w);\nfloat sizeReference = Size_Reference ? width : height;\n\n// ensure corner radius to be at least border width\nCorner_Radius = max(Corner_Radius, Border_Width);\n\n// set output parameters\nCorner_Radius_Out = Corner_Radius;\n// Border_Width_Out = Border_Width;\n\n// DERIVE STATIC SEGMENT PROPERTIES\n\nfloat4 edgeLengths = \n    Padding.zzxx + Padding.wwyy + Corner_Radius.xzxy + Corner_Radius.ywzw;\n\nedgeLengths = 1 - edgeLengths;\n// ensure that edge lengths are never negative\n// TODO: should this be caught differently somehow?\nedgeLengths = max(edgeLengths, 0.0);\n\nfloat4 cornerLengths = (Corner_Radius) * 3.14159265359 / 2;\n\nfloat4 edgeCumLengths = float4(0, 0, 0, 0);\nfloat4 cornerCumLengths = float4(0, 0, 0, 0);\n\nfloat sum = 0;\n\n// left\nsum += edgeLengths.x;\nedgeCumLengths.x = sum;\n\n// left-bottom\nsum += cornerLengths.x;\ncornerCumLengths.x = sum;\n\n// bottom\nsum += edgeLengths.z;\nedgeCumLengths.z = sum;\n\n// right-bottom\nsum += cornerLengths.z;\ncornerCumLengths.z = sum;\n\n// right\nsum += edgeLengths.y;\nedgeCumLengths.y = sum;\n\n// right-top\nsum += cornerLengths.w;\ncornerCumLengths.w = sum;\n\n// top\nsum += edgeLengths.w;\nedgeCumLengths.w = sum;\n\n// left-top\nsum += cornerLengths.y;\ncornerCumLengths.y = sum;\n\nfloat circumference = cornerCumLengths.y;\n\n// calculate relative start and end positions\nfloat startLength = 0.0;\nstartLength += (Segment == 0) * (0.0                   + Segment_Position * edgeLengths.x  );\nstartLength += (Segment == 1) * (edgeCumLengths.x      + Segment_Position * cornerLengths.x);\nstartLength += (Segment == 2) * (cornerCumLengths.x    + Segment_Position * edgeLengths.z  );\nstartLength += (Segment == 3) * (edgeCumLengths.z      + Segment_Position * cornerLengths.z);\nstartLength += (Segment == 4) * (cornerCumLengths.z    + Segment_Position * edgeLengths.y  );\nstartLength += (Segment == 5) * (edgeCumLengths.y      + Segment_Position * cornerLengths.w);\nstartLength += (Segment == 6) * (cornerCumLengths.w    + Segment_Position * edgeLengths.w  );\nstartLength += (Segment == 7) * (edgeCumLengths.w      + Segment_Position * cornerLengths.y);\nstartLength /= circumference;\n\nfloat segmentLength = 0.0;\nsegmentLength += (Segment == 0) * edgeLengths.x;\nsegmentLength += (Segment == 1) * cornerLengths.x;\nsegmentLength += (Segment == 2) * edgeLengths.z;\nsegmentLength += (Segment == 3) * cornerLengths.z;\nsegmentLength += (Segment == 4) * edgeLengths.y;\nsegmentLength += (Segment == 5) * cornerLengths.w;\nsegmentLength += (Segment == 6) * edgeLengths.w;\nsegmentLength += (Segment == 7) * cornerLengths.y;\nsegmentLength /= circumference;\n\nfloat relativeStart = Offset_Reference ? \n    startLength + Start_Offset * segmentLength :\n    startLength + Start_Offset; \nfloat relativeEnd = Offset_Reference ? \n    startLength + End_Offset * segmentLength :    \n    startLength + End_Offset;               \n    \n// wrap around relative start and end\n\nfloat t = 1e-3;\nfloat tmp;\n\ntmp = frac(relativeStart);\nfloat Start = (tmp < t && abs(relativeStart) > t) ? 1.0 : tmp;\ntmp = frac(relativeEnd);\nfloat End = (tmp < t && abs(relativeEnd) > t) ? 1.0 : tmp;\n\n// calculate offsets\n\nfloat position;\nfloat pos;\nfloat4 edgeActivation;\nfloat4 cornerActivation;\n\nposition = Start;\npos = position * circumference;\n\nedgeActivation = float4(\n    saturate((pos                     ) / edgeLengths.x),  // left \n    saturate((pos - cornerCumLengths.z) / edgeLengths.y),  // right\n    saturate((pos - cornerCumLengths.x) / edgeLengths.z),  // bottom\n    saturate((pos - cornerCumLengths.w) / edgeLengths.w)); // top\n\ncornerActivation = float4(\n    saturate((pos - edgeCumLengths.x) / cornerLengths.x),\n    saturate((pos - edgeCumLengths.w) / cornerLengths.y),\n    saturate((pos - edgeCumLengths.z) / cornerLengths.z),\n    saturate((pos - edgeCumLengths.y) / cornerLengths.w));\n\nfloat4 startEdgeActivation = edgeActivation;\nfloat4 startCornerActivation = cornerActivation;\n\nposition = End < Start ? 1 : End;\npos = position * circumference;\n\nedgeActivation = float4(\n    saturate((pos                     ) / edgeLengths.x),  // left \n    saturate((pos - cornerCumLengths.z) / edgeLengths.y),  // right\n    saturate((pos - cornerCumLengths.x) / edgeLengths.z),  // bottom\n    saturate((pos - cornerCumLengths.w) / edgeLengths.w)); // top\n\ncornerActivation = float4(\n    saturate((pos - edgeCumLengths.x) / cornerLengths.x),\n    saturate((pos - edgeCumLengths.w) / cornerLengths.y),\n    saturate((pos - edgeCumLengths.z) / cornerLengths.z),\n    saturate((pos - edgeCumLengths.y) / cornerLengths.w));\n\nfloat4 endEdgeActivation = 1.0 - edgeActivation;\nfloat4 endCornerActivation = cornerActivation;\n\nposition = End < Start ? End : 0.0;\npos = position * circumference;\n\nedgeActivation = float4(\n    saturate((pos                     ) / edgeLengths.x),  // left \n    saturate((pos - cornerCumLengths.z) / edgeLengths.y),  // right\n    saturate((pos - cornerCumLengths.x) / edgeLengths.z),  // bottom\n    saturate((pos - cornerCumLengths.w) / edgeLengths.w)); // top\n\ncornerActivation = float4(\n    saturate((pos - edgeCumLengths.x) / cornerLengths.x), // TODO: Here is an issue!\n    saturate((pos - edgeCumLengths.w) / cornerLengths.y),\n    saturate((pos - edgeCumLengths.z) / cornerLengths.z),\n    saturate((pos - edgeCumLengths.y) / cornerLengths.w));\n\nfloat4 tailEdgeActivation = 1.0 - edgeActivation;\nfloat4 tailCornerActivation = cornerActivation;\n// float4 tailCornerActivation = float4(0, cornerActivation.y, cornerActivation.z, cornerActivation.w);\n\nDebug = float(edgeLengths.x < 0);\n\n// calculate offsets\n\nFirst_Edge_Start_Offset =   startEdgeActivation * edgeLengths;\nFirst_Edge_End_Offset =     endEdgeActivation * edgeLengths;\n\nFirst_Corner_Start_Offset = startCornerActivation * 0.25;\nFirst_Corner_End_Offset =   endCornerActivation * 0.25;\n\nSecond_Edge_End_Offset =   tailEdgeActivation * edgeLengths;\nSecond_Corner_End_Offset = tailCornerActivation * 0.25;\n\n\n///////\n// calculate circle coordinates\n///////\n\nfloat4 outerCoordinates = \n    float4(0.0, 1.0, 0.0, 1.0) \n    + float4(1.0, -1.0, 1.0, -1.0) * Padding;\n\nfloat4 cornerCenterX = outerCoordinates.xxyy + float4(1.0, 1.0, -1.0, -1.0) * Corner_Radius;\nfloat4 cornerCenterY = outerCoordinates.zwzw + float4(1.0, -1.0, 1.0, -1.0) * Corner_Radius;\n\nfloat4 halfRadius = Corner_Radius - 0.5 * Border_Width;\n\nfloat4 edgeCoordinatesX;\nfloat4 edgeCoordinatesY;\nfloat2 leftCoordinates;\nfloat2 rightCoordinates;\nfloat2 bottomCoordinates;\nfloat2 topCoordinates;\nfloat2 leftBottomCoordinates;\nfloat2 leftTopCoordinates;\nfloat2 rightBottomCoordinates;\nfloat2 rightTopCoordinates;\nfloat radians;\nfloat2 coordinates;\nfloat4 cornerOffset;\nfloat4 edgeOffset;\n\n// start circle\n\nedgeOffset = First_Edge_Start_Offset;\ncornerOffset = First_Corner_Start_Offset;\n\n// add edge offsets to the start coordinates\nedgeCoordinatesX = outerCoordinates.xyxy + float4(\n      Border_Width / 2.0,\n    - Border_Width / 2.0,\n      Corner_Radius.x       + edgeOffset.z,\n    - Corner_Radius.w       - edgeOffset.w\n);\nedgeCoordinatesY = outerCoordinates.wzzw + float4(\n    - Corner_Radius.y      - edgeOffset.x,\n      Corner_Radius.z      + edgeOffset.y,\n      Border_Width / 2.0,\n    - Border_Width / 2.0\n);\n\nleftCoordinates =   float2(edgeCoordinatesX.x, edgeCoordinatesY.x);\nrightCoordinates =  float2(edgeCoordinatesX.y, edgeCoordinatesY.y);\nbottomCoordinates = float2(edgeCoordinatesX.z, edgeCoordinatesY.z);\ntopCoordinates =    float2(edgeCoordinatesX.w, edgeCoordinatesY.w);\n\nradians = (0.0 + cornerOffset.x * 360.0 + 180.0) * (3.14159265 / 180.0);\nleftBottomCoordinates = float2(\n    cornerCenterX.x + halfRadius.x * cos(radians),\n    cornerCenterY.x + halfRadius.x * sin(radians)\n);\n\nradians = (270.0 + cornerOffset.y * 360.0 + 180.0) * (3.14159265 / 180.0);\nleftTopCoordinates = float2(\n    cornerCenterX.y + halfRadius.y * cos(radians),\n    cornerCenterY.y + halfRadius.y * sin(radians)\n);\n\nradians = (90.0 + cornerOffset.z * 360.0 + 180.0) * (3.14159265 / 180.0);\nrightBottomCoordinates = float2(\n    cornerCenterX.z + halfRadius.z * cos(radians),\n    cornerCenterY.z + halfRadius.z * sin(radians)\n);\n\nradians = (180.0 + cornerOffset.w * 360.0 + 180.0) * (3.14159265 / 180.0);\nrightTopCoordinates = float2(\n    cornerCenterX.w + halfRadius.w * cos(radians),\n    cornerCenterY.w + halfRadius.w * sin(radians)\n);\n\npos = Start * circumference;\ncoordinates = float2(0.0, 0.0);\ncoordinates += (pos >= 0.0                && pos < edgeCumLengths.x)    * leftCoordinates       ;\ncoordinates += (pos >= edgeCumLengths.x   && pos < cornerCumLengths.x)  * leftBottomCoordinates ;\ncoordinates += (pos >= cornerCumLengths.x && pos < edgeCumLengths.z)    * bottomCoordinates     ;\ncoordinates += (pos >= edgeCumLengths.z   && pos < cornerCumLengths.z)  * rightBottomCoordinates;\ncoordinates += (pos >= cornerCumLengths.z && pos < edgeCumLengths.y)    * rightCoordinates      ;\ncoordinates += (pos >= edgeCumLengths.y   && pos < cornerCumLengths.w)  * rightTopCoordinates   ;\ncoordinates += (pos >= cornerCumLengths.w && pos < edgeCumLengths.w)    * topCoordinates        ;\ncoordinates += (pos >= edgeCumLengths.w   && pos <= cornerCumLengths.y) * leftTopCoordinates    ;\n\nStart_Coordinates = coordinates;\n\n\n// end circle\n\nedgeOffset = End < Start ? Second_Edge_End_Offset : First_Edge_End_Offset;\ncornerOffset = End < Start ? Second_Corner_End_Offset : First_Corner_End_Offset;\n\n// add edge offsets to the coordinates\nedgeCoordinatesX = outerCoordinates.xyyx + float4(\n    + Border_Width / 2.0,\n    - Border_Width / 2.0,\n    - Corner_Radius.z       - edgeOffset.z,\n    + Corner_Radius.y       + edgeOffset.w\n);\nedgeCoordinatesY = outerCoordinates.zwzw + float4(\n    + Corner_Radius.x      + edgeOffset.x,\n    - Corner_Radius.w      - edgeOffset.y,\n    + Border_Width / 2.0,\n    - Border_Width / 2.0\n);\n\nleftCoordinates =   float2(edgeCoordinatesX.x, edgeCoordinatesY.x);\nrightCoordinates =  float2(edgeCoordinatesX.y, edgeCoordinatesY.y);\nbottomCoordinates = float2(edgeCoordinatesX.z, edgeCoordinatesY.z);\ntopCoordinates =    float2(edgeCoordinatesX.w, edgeCoordinatesY.w);\n\nradians = (0.0 + cornerOffset.x * 360.0 + 180.0) * (3.14159265 / 180.0);\nleftBottomCoordinates = float2(\n    cornerCenterX.x + halfRadius.x * cos(radians),\n    cornerCenterY.x + halfRadius.x * sin(radians)\n);\n\nradians = (270.0 + cornerOffset.y * 360.0 + 180.0) * (3.14159265 / 180.0);\nleftTopCoordinates = float2(\n    cornerCenterX.y + halfRadius.y * cos(radians),\n    cornerCenterY.y + halfRadius.y * sin(radians)\n);\n\nradians = (90.0 + cornerOffset.z * 360.0 + 180.0) * (3.14159265 / 180.0);\nrightBottomCoordinates = float2(\n    cornerCenterX.z + halfRadius.z * cos(radians),\n    cornerCenterY.z + halfRadius.z * sin(radians)\n);\n\nradians = (180.0 + cornerOffset.w * 360.0 + 180.0) * (3.14159265 / 180.0);\nrightTopCoordinates = float2(\n    cornerCenterX.w + halfRadius.w * cos(radians),\n    cornerCenterY.w + halfRadius.w * sin(radians)\n);\n\npos = End * circumference;\ncoordinates = float2(0.0, 0.0);\ncoordinates += (pos >= 0.0                && pos < edgeCumLengths.x)    * leftCoordinates       ;\ncoordinates += (pos >= edgeCumLengths.x   && pos < cornerCumLengths.x)  * leftBottomCoordinates ;\ncoordinates += (pos >= cornerCumLengths.x && pos < edgeCumLengths.z)    * bottomCoordinates     ;\ncoordinates += (pos >= edgeCumLengths.z   && pos < cornerCumLengths.z)  * rightBottomCoordinates;\ncoordinates += (pos >= cornerCumLengths.z && pos < edgeCumLengths.y)    * rightCoordinates      ;\ncoordinates += (pos >= edgeCumLengths.y   && pos < cornerCumLengths.w)  * rightTopCoordinates   ;\ncoordinates += (pos >= cornerCumLengths.w && pos < edgeCumLengths.w)    * topCoordinates        ;\ncoordinates += (pos >= edgeCumLengths.w   && pos <= cornerCumLengths.y) * leftTopCoordinates    ;\n\nEnd_Coordinates = coordinates;\n"
+    "m_FunctionBody": "/**\n * Notes:\n * - This is the shader variant. There is also a version in Unity script.\n *   TODO: I am not sure which is more efficient, yet.\n * - Using `$precision` gave me warnings in the shader graph and I am getting an error \n *   message when I am trying to use `half`. So I am using `float` now.\n * - TODO: fix edge case where edge overlaps corner when corner is max size\n */\n\n// // INPUT\n// float2 Scale;\n// float2 World_Padding;\n// float4 World_Corner_Radius;\n// float World_Border_Width;\n\n// float Segment;\n// float Segment_Position;\n// float Start_Offset;\n// float End_Offset;\n// bool Offset_Type_World; // true=world, false=relative to segment\n\n\n// // OUTPUT\n// float2 Tiling;\n// float4 Padding;\n// float4 Corner_Radius;\n// float Border_Width;\n\n// Tiling = float2(1, 1);\n// Padding = float4(0, 0, 0, 0);\n// Corner_Radius = float4(0.1, 0.1, 0.1, 0.1);\n// Border_Width = float(0.1);\n\n// START CODE\n\nfloat maxScale = max(Scale.x, Scale.y);\nfloat2 shaderScale = float2(Scale.x / maxScale, Scale.y / maxScale);\n\nfloat4 scalePadding = float4(\n    float(0), \n    float(1) - shaderScale.x,\n    float(0),\n    float(1) - shaderScale.y);\n\n// finalize shape parameters in shader coordinates\nTiling = shaderScale;\nPadding = scalePadding + World_Padding / maxScale;\nCorner_Radius = World_Corner_Radius / maxScale;\nBorder_Width = World_Border_Width / maxScale;\n\n// ensure corner radius to be at least border width\nCorner_Radius = max(Corner_Radius, Border_Width);\n\n// DERIVE STATIC SEGMENT PROPERTIES\n\nfloat4 edgeLengths = \n    Padding.zzxx + Padding.wwyy + Corner_Radius.xzxy + Corner_Radius.ywzw;\n\nedgeLengths = 1 - edgeLengths;\n// ensure that edge lengths are never negative\n// TODO: should this be caught differently somehow?\nedgeLengths = max(edgeLengths, 0.0);\n\nfloat4 cornerLengths = (Corner_Radius - 0.5 * Border_Width) * 3.14159265359 / 2;\n\nfloat4 edgeCumLengths = float4(0, 0, 0, 0);\nfloat4 cornerCumLengths = float4(0, 0, 0, 0);\n\nfloat sum = 0;\n\n// left\nsum += edgeLengths.x;\nedgeCumLengths.x = sum;\n\n// left-bottom\nsum += cornerLengths.x;\ncornerCumLengths.x = sum;\n\n// bottom\nsum += edgeLengths.z;\nedgeCumLengths.z = sum;\n\n// right-bottom\nsum += cornerLengths.z;\ncornerCumLengths.z = sum;\n\n// right\nsum += edgeLengths.y;\nedgeCumLengths.y = sum;\n\n// right-top\nsum += cornerLengths.w;\ncornerCumLengths.w = sum;\n\n// top\nsum += edgeLengths.w;\nedgeCumLengths.w = sum;\n\n// left-top\nsum += cornerLengths.y;\ncornerCumLengths.y = sum;\n\nfloat circumference = cornerCumLengths.y;\n\n// calculate relative start and end positions\nfloat startLength = 0.0;\nstartLength += (Segment == 0) * (0.0                   + Segment_Position * edgeLengths.x  );\nstartLength += (Segment == 1) * (edgeCumLengths.x      + Segment_Position * cornerLengths.x);\nstartLength += (Segment == 2) * (cornerCumLengths.x    + Segment_Position * edgeLengths.z  );\nstartLength += (Segment == 3) * (edgeCumLengths.z      + Segment_Position * cornerLengths.z);\nstartLength += (Segment == 4) * (cornerCumLengths.z    + Segment_Position * edgeLengths.y  );\nstartLength += (Segment == 5) * (edgeCumLengths.y      + Segment_Position * cornerLengths.w);\nstartLength += (Segment == 6) * (cornerCumLengths.w    + Segment_Position * edgeLengths.w  );\nstartLength += (Segment == 7) * (edgeCumLengths.w      + Segment_Position * cornerLengths.y);\nstartLength /= circumference;\n\nfloat segmentLength = 0.0;\nsegmentLength += (Segment == 0) * edgeLengths.x;\nsegmentLength += (Segment == 1) * cornerLengths.x;\nsegmentLength += (Segment == 2) * edgeLengths.z;\nsegmentLength += (Segment == 3) * cornerLengths.z;\nsegmentLength += (Segment == 4) * edgeLengths.y;\nsegmentLength += (Segment == 5) * cornerLengths.w;\nsegmentLength += (Segment == 6) * edgeLengths.w;\nsegmentLength += (Segment == 7) * cornerLengths.y;\nsegmentLength /= circumference;\n\nfloat relativeStart = Offset_Type_World ? \n    Start_Offset / maxScale / circumference + startLength :  // offset in world length\n    Start_Offset * segmentLength + startLength;             // offset in segment length\n    // Start_Offset + startLength;                              // offset in relative length\nfloat relativeEnd = Offset_Type_World ? \n    End_Offset / maxScale / circumference + startLength :    // offset in world length\n    End_Offset * segmentLength + startLength;               // offset in segment length\n    // End_Offset + startLength;                                // offset in relative length\n\n// wrap around relative start and end\n\nfloat t = 1e-3;\nfloat tmp;\n\ntmp = frac(relativeStart);\nfloat Start = (tmp < t && abs(relativeStart) > t) ? 1.0 : tmp;\ntmp = frac(relativeEnd);\nfloat End = (tmp < t && abs(relativeEnd) > t) ? 1.0 : tmp;\n\n// calculate offsets\n\nfloat position;\nfloat pos;\nfloat4 edgeActivation;\nfloat4 cornerActivation;\n\nposition = Start;\npos = position * circumference;\n\nedgeActivation = float4(\n    saturate((pos                     ) / edgeLengths.x),  // left \n    saturate((pos - cornerCumLengths.z) / edgeLengths.y),  // right\n    saturate((pos - cornerCumLengths.x) / edgeLengths.z),  // bottom\n    saturate((pos - cornerCumLengths.w) / edgeLengths.w)); // top\n\ncornerActivation = float4(\n    saturate((pos - edgeCumLengths.x) / cornerLengths.x),\n    saturate((pos - edgeCumLengths.w) / cornerLengths.y),\n    saturate((pos - edgeCumLengths.z) / cornerLengths.z),\n    saturate((pos - edgeCumLengths.y) / cornerLengths.w));\n\nfloat4 startEdgeActivation = edgeActivation;\nfloat4 startCornerActivation = cornerActivation;\n\nposition = End < Start ? 1 : End;\npos = position * circumference;\n\nedgeActivation = float4(\n    saturate((pos                     ) / edgeLengths.x),  // left \n    saturate((pos - cornerCumLengths.z) / edgeLengths.y),  // right\n    saturate((pos - cornerCumLengths.x) / edgeLengths.z),  // bottom\n    saturate((pos - cornerCumLengths.w) / edgeLengths.w)); // top\n\ncornerActivation = float4(\n    saturate((pos - edgeCumLengths.x) / cornerLengths.x),\n    saturate((pos - edgeCumLengths.w) / cornerLengths.y),\n    saturate((pos - edgeCumLengths.z) / cornerLengths.z),\n    saturate((pos - edgeCumLengths.y) / cornerLengths.w));\n\nfloat4 endEdgeActivation = 1.0 - edgeActivation;\nfloat4 endCornerActivation = cornerActivation;\n\nposition = End < Start ? End : 0.0;\npos = position * circumference;\n\nedgeActivation = float4(\n    saturate((pos                     ) / edgeLengths.x),  // left \n    saturate((pos - cornerCumLengths.z) / edgeLengths.y),  // right\n    saturate((pos - cornerCumLengths.x) / edgeLengths.z),  // bottom\n    saturate((pos - cornerCumLengths.w) / edgeLengths.w)); // top\n\ncornerActivation = float4(\n    saturate((pos - edgeCumLengths.x) / cornerLengths.x), // TODO: Here is an issue!\n    saturate((pos - edgeCumLengths.w) / cornerLengths.y),\n    saturate((pos - edgeCumLengths.z) / cornerLengths.z),\n    saturate((pos - edgeCumLengths.y) / cornerLengths.w));\n\nfloat4 tailEdgeActivation = 1.0 - edgeActivation;\nfloat4 tailCornerActivation = cornerActivation;\n// float4 tailCornerActivation = float4(0, cornerActivation.y, cornerActivation.z, cornerActivation.w);\n\nDebug = float(edgeLengths.x < 0);\n\n// calculate offsets\n\nFirst_Edge_Start_Offset =   startEdgeActivation * edgeLengths;\nFirst_Edge_End_Offset =     endEdgeActivation * edgeLengths;\n\nFirst_Corner_Start_Offset = startCornerActivation * 0.25;\nFirst_Corner_End_Offset =   endCornerActivation * 0.25;\n\nSecond_Edge_End_Offset =   tailEdgeActivation * edgeLengths;\nSecond_Corner_End_Offset = tailCornerActivation * 0.25;\n\n\n///////\n// calculate circle coordinates\n///////\n\nfloat4 outerCoordinates = \n    float4(0.0, 1.0, 0.0, 1.0) \n    + float4(1.0, -1.0, 1.0, -1.0) * Padding;\n\nfloat4 cornerCenterX = outerCoordinates.xxyy + float4(1.0, 1.0, -1.0, -1.0) * Corner_Radius;\nfloat4 cornerCenterY = outerCoordinates.zwzw + float4(1.0, -1.0, 1.0, -1.0) * Corner_Radius;\n\nfloat4 halfRadius = Corner_Radius - 0.5 * Border_Width;\n\nfloat4 edgeCoordinatesX;\nfloat4 edgeCoordinatesY;\nfloat2 leftCoordinates;\nfloat2 rightCoordinates;\nfloat2 bottomCoordinates;\nfloat2 topCoordinates;\nfloat2 leftBottomCoordinates;\nfloat2 leftTopCoordinates;\nfloat2 rightBottomCoordinates;\nfloat2 rightTopCoordinates;\nfloat radians;\nfloat2 coordinates;\nfloat4 cornerOffset;\nfloat4 edgeOffset;\n\n// start circle\n\nedgeOffset = First_Edge_Start_Offset;\ncornerOffset = First_Corner_Start_Offset;\n\n// add edge offsets to the start coordinates\nedgeCoordinatesX = outerCoordinates.xyxy + float4(\n      Border_Width / 2.0,\n    - Border_Width / 2.0,\n      Corner_Radius.x       + edgeOffset.z,\n    - Corner_Radius.w       - edgeOffset.w\n);\nedgeCoordinatesY = outerCoordinates.wzzw + float4(\n    - Corner_Radius.y      - edgeOffset.x,\n      Corner_Radius.z      + edgeOffset.y,\n      Border_Width / 2.0,\n    - Border_Width / 2.0\n);\n\nleftCoordinates =   float2(edgeCoordinatesX.x, edgeCoordinatesY.x);\nrightCoordinates =  float2(edgeCoordinatesX.y, edgeCoordinatesY.y);\nbottomCoordinates = float2(edgeCoordinatesX.z, edgeCoordinatesY.z);\ntopCoordinates =    float2(edgeCoordinatesX.w, edgeCoordinatesY.w);\n\nradians = (0.0 + cornerOffset.x * 360.0 + 180.0) * (3.14159265 / 180.0);\nleftBottomCoordinates = float2(\n    cornerCenterX.x + halfRadius.x * cos(radians),\n    cornerCenterY.x + halfRadius.x * sin(radians)\n);\n\nradians = (270.0 + cornerOffset.y * 360.0 + 180.0) * (3.14159265 / 180.0);\nleftTopCoordinates = float2(\n    cornerCenterX.y + halfRadius.y * cos(radians),\n    cornerCenterY.y + halfRadius.y * sin(radians)\n);\n\nradians = (90.0 + cornerOffset.z * 360.0 + 180.0) * (3.14159265 / 180.0);\nrightBottomCoordinates = float2(\n    cornerCenterX.z + halfRadius.z * cos(radians),\n    cornerCenterY.z + halfRadius.z * sin(radians)\n);\n\nradians = (180.0 + cornerOffset.w * 360.0 + 180.0) * (3.14159265 / 180.0);\nrightTopCoordinates = float2(\n    cornerCenterX.w + halfRadius.w * cos(radians),\n    cornerCenterY.w + halfRadius.w * sin(radians)\n);\n\npos = Start * circumference;\ncoordinates = float2(0.0, 0.0);\ncoordinates += (pos >= 0.0                && pos < edgeCumLengths.x)    * leftCoordinates       ;\ncoordinates += (pos >= edgeCumLengths.x   && pos < cornerCumLengths.x)  * leftBottomCoordinates ;\ncoordinates += (pos >= cornerCumLengths.x && pos < edgeCumLengths.z)    * bottomCoordinates     ;\ncoordinates += (pos >= edgeCumLengths.z   && pos < cornerCumLengths.z)  * rightBottomCoordinates;\ncoordinates += (pos >= cornerCumLengths.z && pos < edgeCumLengths.y)    * rightCoordinates      ;\ncoordinates += (pos >= edgeCumLengths.y   && pos < cornerCumLengths.w)  * rightTopCoordinates   ;\ncoordinates += (pos >= cornerCumLengths.w && pos < edgeCumLengths.w)    * topCoordinates        ;\ncoordinates += (pos >= edgeCumLengths.w   && pos <= cornerCumLengths.y) * leftTopCoordinates    ;\n\nStart_Coordinates = coordinates;\n\n\n// end circle\n\nedgeOffset = End < Start ? Second_Edge_End_Offset : First_Edge_End_Offset;\ncornerOffset = End < Start ? Second_Corner_End_Offset : First_Corner_End_Offset;\n\n// add edge offsets to the coordinates\nedgeCoordinatesX = outerCoordinates.xyyx + float4(\n    + Border_Width / 2.0,\n    - Border_Width / 2.0,\n    - Corner_Radius.z       - edgeOffset.z,\n    + Corner_Radius.y       + edgeOffset.w\n);\nedgeCoordinatesY = outerCoordinates.zwzw + float4(\n    + Corner_Radius.x      + edgeOffset.x,\n    - Corner_Radius.w      - edgeOffset.y,\n    + Border_Width / 2.0,\n    - Border_Width / 2.0\n);\n\nleftCoordinates =   float2(edgeCoordinatesX.x, edgeCoordinatesY.x);\nrightCoordinates =  float2(edgeCoordinatesX.y, edgeCoordinatesY.y);\nbottomCoordinates = float2(edgeCoordinatesX.z, edgeCoordinatesY.z);\ntopCoordinates =    float2(edgeCoordinatesX.w, edgeCoordinatesY.w);\n\nradians = (0.0 + cornerOffset.x * 360.0 + 180.0) * (3.14159265 / 180.0);\nleftBottomCoordinates = float2(\n    cornerCenterX.x + halfRadius.x * cos(radians),\n    cornerCenterY.x + halfRadius.x * sin(radians)\n);\n\nradians = (270.0 + cornerOffset.y * 360.0 + 180.0) * (3.14159265 / 180.0);\nleftTopCoordinates = float2(\n    cornerCenterX.y + halfRadius.y * cos(radians),\n    cornerCenterY.y + halfRadius.y * sin(radians)\n);\n\nradians = (90.0 + cornerOffset.z * 360.0 + 180.0) * (3.14159265 / 180.0);\nrightBottomCoordinates = float2(\n    cornerCenterX.z + halfRadius.z * cos(radians),\n    cornerCenterY.z + halfRadius.z * sin(radians)\n);\n\nradians = (180.0 + cornerOffset.w * 360.0 + 180.0) * (3.14159265 / 180.0);\nrightTopCoordinates = float2(\n    cornerCenterX.w + halfRadius.w * cos(radians),\n    cornerCenterY.w + halfRadius.w * sin(radians)\n);\n\npos = End * circumference;\ncoordinates = float2(0.0, 0.0);\ncoordinates += (pos >= 0.0                && pos < edgeCumLengths.x)    * leftCoordinates       ;\ncoordinates += (pos >= edgeCumLengths.x   && pos < cornerCumLengths.x)  * leftBottomCoordinates ;\ncoordinates += (pos >= cornerCumLengths.x && pos < edgeCumLengths.z)    * bottomCoordinates     ;\ncoordinates += (pos >= edgeCumLengths.z   && pos < cornerCumLengths.z)  * rightBottomCoordinates;\ncoordinates += (pos >= cornerCumLengths.z && pos < edgeCumLengths.y)    * rightCoordinates      ;\ncoordinates += (pos >= edgeCumLengths.y   && pos < cornerCumLengths.w)  * rightTopCoordinates   ;\ncoordinates += (pos >= cornerCumLengths.w && pos < edgeCumLengths.w)    * topCoordinates        ;\ncoordinates += (pos >= edgeCumLengths.w   && pos <= cornerCumLengths.y) * leftTopCoordinates    ;\n\nEnd_Coordinates = coordinates;\n"
 }
 
 {
@@ -1487,16 +1632,27 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.BooleanMaterialSlot",
-    "m_ObjectId": "5f4ae6e0bb504700b2f4f4b48a554747",
-    "m_Id": 22,
-    "m_DisplayName": "Size_Reference",
+    "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
+    "m_ObjectId": "5e2cfcce58fe46fab59687ebf6d34799",
+    "m_Id": 1,
+    "m_DisplayName": "World_Padding",
     "m_SlotType": 0,
     "m_Hidden": false,
-    "m_ShaderOutputName": "Size_Reference",
+    "m_ShaderOutputName": "World_Padding",
     "m_StageCapability": 3,
-    "m_Value": false,
-    "m_DefaultValue": false
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "m_Labels": []
 }
 
 {
@@ -1511,10 +1667,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -746.9998168945313,
-            "y": -353.5000305175781,
-            "width": 150.99993896484376,
-            "height": 33.999969482421878
+            "x": -822.0,
+            "y": -236.0,
+            "width": 184.0,
+            "height": 33.99998474121094
         }
     },
     "m_Slots": [
@@ -1578,10 +1734,10 @@
     "m_Guid": {
         "m_GuidSerialized": "cb9f8365-4ddb-43e7-84c6-8714d9e70318"
     },
-    "m_Name": "Padding",
+    "m_Name": "World Padding",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Padding",
-    "m_DefaultReferenceName": "_Padding",
+    "m_RefNameGeneratedByDisplayName": "World Padding",
+    "m_DefaultReferenceName": "_World_Padding",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -1606,6 +1762,9 @@
     "m_Name": "",
     "m_ChildObjectList": [
         {
+            "m_Id": "127124c2942a453690553cc1ad78bb49"
+        },
+        {
             "m_Id": "69695a1ad32148359a3a04d4e9bc9dda"
         },
         {
@@ -1628,34 +1787,8 @@
         },
         {
             "m_Id": "946ab5f1c8904f71a20ec828f2f31c4d"
-        },
-        {
-            "m_Id": "6c68589040ea4ae880df2af0e506b8d0"
         }
     ]
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.BooleanShaderProperty",
-    "m_ObjectId": "6c68589040ea4ae880df2af0e506b8d0",
-    "m_Guid": {
-        "m_GuidSerialized": "428f8e99-9110-4122-9c4f-a35380fb1096"
-    },
-    "m_Name": "Size Reference (width/height)",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Size Reference (width/height)",
-    "m_DefaultReferenceName": "_Size_Reference_width_height",
-    "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
-    "m_UseCustomSlotLabel": false,
-    "m_CustomSlotLabel": "",
-    "m_DismissedVersion": 0,
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_Value": false
 }
 
 {
@@ -1671,6 +1804,57 @@
     "m_Value": -0.6000000238418579,
     "m_DefaultValue": 0.0,
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "77cb98fcf8154ad2883041d9d0a69013",
+    "m_Id": 7,
+    "m_DisplayName": "Border_Width",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Border_Width",
+    "m_StageCapability": 3,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
+    "m_ObjectId": "7870fb2c9afd49239e5d57edcbf4502a",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "Property",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -822.0,
+            "y": -304.0,
+            "width": 105.0,
+            "height": 34.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "3657d58d3a204b18af72c27166eb095a"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_Property": {
+        "m_Id": "127124c2942a453690553cc1ad78bb49"
+    }
 }
 
 {
@@ -1710,9 +1894,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -746.9998168945313,
-            "y": -217.50001525878907,
-            "width": 136.5,
+            "x": -822.0,
+            "y": -100.00001525878906,
+            "width": 169.0,
             "height": 33.99998474121094
         }
     },
@@ -1746,10 +1930,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -910.5,
-            "y": -149.5000762939453,
-            "width": 300.0,
-            "height": 34.000022888183597
+            "x": -911.5000610351563,
+            "y": -29.500019073486329,
+            "width": 220.00006103515626,
+            "height": 33.999969482421878
         }
     },
     "m_Slots": [
@@ -1798,6 +1982,31 @@
 {
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
+    "m_ObjectId": "8c8eb2cae70b4f7daa2b238604e0354b",
+    "m_Id": 3,
+    "m_DisplayName": "Corner_Radius",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Corner_Radius",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "8cc5541793de4af08f0466217dc61302",
     "m_Id": 16,
     "m_DisplayName": "Second_Corner_End_Offset",
@@ -1822,15 +2031,30 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "906b8c26e8894f858e7cb3cd7a113e80",
+    "m_Id": 3,
+    "m_DisplayName": "World_Border_Width",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "World_Border_Width",
+    "m_StageCapability": 3,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Internal.BooleanShaderProperty",
     "m_ObjectId": "946ab5f1c8904f71a20ec828f2f31c4d",
     "m_Guid": {
         "m_GuidSerialized": "6cf6db5a-92b9-4e85-a403-305fbea580f9"
     },
-    "m_Name": "Offset Reference (segment/circumference)",
+    "m_Name": "Offset Type (world/relative)",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Offset Reference (segment/circumference)",
-    "m_DefaultReferenceName": "_Offset_Reference_segment_circumference",
+    "m_RefNameGeneratedByDisplayName": "Offset Type (world/relative)",
+    "m_DefaultReferenceName": "_Offset_Type_world_relative",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -1840,7 +2064,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": true
+    "m_Value": false
 }
 
 {
@@ -1938,20 +2162,6 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.BooleanMaterialSlot",
-    "m_ObjectId": "9c4ae39b865a4d4685f9ccf0d87c4100",
-    "m_Id": 0,
-    "m_DisplayName": "Size Reference (width/height)",
-    "m_SlotType": 1,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "Out",
-    "m_StageCapability": 3,
-    "m_Value": false,
-    "m_DefaultValue": false
-}
-
-{
-    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.PreviewNode",
     "m_ObjectId": "9faa717ac57e491ebcfb437257b7608f",
     "m_Group": {
@@ -1962,9 +2172,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 255.99998474121095,
-            "y": 2.000009298324585,
-            "width": 208.00013732910157,
+            "x": 245.99998474121095,
+            "y": 2.0000410079956056,
+            "width": 208.0000457763672,
             "height": 278.0
         }
     },
@@ -1998,6 +2208,31 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "_Second_End_Fraction_lb_lt_rb_rt",
     "m_StageCapability": 2,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
+    "m_ObjectId": "a1939e2be02c4e55b8408894eb9e675f",
+    "m_Id": 6,
+    "m_DisplayName": "Corner_Radius",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Corner_Radius",
+    "m_StageCapability": 3,
     "m_Value": {
         "x": 0.0,
         "y": 0.0,
@@ -2078,7 +2313,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "ae261dca0f5940a18bed92635aa66c5b",
     "m_Id": 0,
-    "m_DisplayName": "Padding",
+    "m_DisplayName": "World Padding",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -2158,10 +2393,10 @@
     "m_Guid": {
         "m_GuidSerialized": "cb18825f-561f-4643-878c-6b7e228db425"
     },
-    "m_Name": "Border Width",
+    "m_Name": "World Border Width",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Border Width",
-    "m_DefaultReferenceName": "_Border_Width",
+    "m_RefNameGeneratedByDisplayName": "World Border Width",
+    "m_DefaultReferenceName": "_World_Border_Width",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -2191,9 +2426,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -746.9998168945313,
-            "y": -285.4999694824219,
-            "width": 121.99993896484375,
+            "x": -822.0,
+            "y": -167.99998474121095,
+            "width": 122.0,
             "height": 33.99998474121094
         }
     },
@@ -2217,16 +2452,22 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
-    "m_ObjectId": "b996be6696c04bbaa93d360e1dda6798",
-    "m_Id": 14,
-    "m_DisplayName": "Border_Width",
-    "m_SlotType": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector2MaterialSlot",
+    "m_ObjectId": "b95c9c5aa8ea4ca5b2cb7dbf9131762e",
+    "m_Id": 4,
+    "m_DisplayName": "Tiling",
+    "m_SlotType": 1,
     "m_Hidden": false,
-    "m_ShaderOutputName": "Border_Width",
+    "m_ShaderOutputName": "Tiling",
     "m_StageCapability": 3,
-    "m_Value": 0.0,
-    "m_DefaultValue": 0.0,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0
+    },
     "m_Labels": []
 }
 
@@ -2258,33 +2499,8 @@
 {
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
-    "m_ObjectId": "c217c203aad94f059e94fe371aab672f",
+    "m_ObjectId": "c7bb5f950c5144cfa38f9b5acce90eb0",
     "m_Id": 2,
-    "m_DisplayName": "Corner_Radius",
-    "m_SlotType": 0,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "Corner_Radius",
-    "m_StageCapability": 3,
-    "m_Value": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0,
-        "w": 0.0
-    },
-    "m_DefaultValue": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0,
-        "w": 0.0
-    },
-    "m_Labels": []
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
-    "m_ObjectId": "c418f4bacc444e059747a137e7827624",
-    "m_Id": 1,
     "m_DisplayName": "Padding",
     "m_SlotType": 0,
     "m_Hidden": false,
@@ -2311,8 +2527,8 @@
     "m_ObjectId": "ca8435734cdf41a7a0f51afaf79c87c0",
     "m_Title": "Debugging",
     "m_Position": {
-        "x": 15.5,
-        "y": -1149.0001220703125
+        "x": -58.0,
+        "y": -1230.0
     }
 }
 
@@ -2325,31 +2541,6 @@
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Second_Edge_End_Offset",
-    "m_StageCapability": 3,
-    "m_Value": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0,
-        "w": 0.0
-    },
-    "m_DefaultValue": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0,
-        "w": 0.0
-    },
-    "m_Labels": []
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
-    "m_ObjectId": "d526260e526a4e93b88eb70821f5512f",
-    "m_Id": 13,
-    "m_DisplayName": "Corner_Radius",
-    "m_SlotType": 0,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "Corner_Radius",
     "m_StageCapability": 3,
     "m_Value": {
         "x": 0.0,
@@ -2414,10 +2605,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -746.9998168945313,
-            "y": -183.50003051757813,
-            "width": 130.49993896484376,
-            "height": 33.999969482421878
+            "x": -822.0,
+            "y": -66.00003051757813,
+            "width": 163.5,
+            "height": 34.000038146972659
         }
     },
     "m_Slots": [
@@ -2470,10 +2661,10 @@
     "m_Guid": {
         "m_GuidSerialized": "3d59f69d-c1d9-4166-9500-b3eaf7da2009"
     },
-    "m_Name": "Corner Radius",
+    "m_Name": "World Corner Radius",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Corner Radius",
-    "m_DefaultReferenceName": "_Corner_Radius",
+    "m_RefNameGeneratedByDisplayName": "World Corner Radius",
+    "m_DefaultReferenceName": "_World_Corner_Radius",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -2484,50 +2675,11 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "x": 0.0,
+        "x": 1.0,
         "y": 0.0,
-        "z": 0.4000000059604645,
+        "z": 0.0,
         "w": 0.0
     }
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
-    "m_ObjectId": "e73c539426c64cfe848dfc9b80dba3ac",
-    "m_Id": 15,
-    "m_DisplayName": "Padding",
-    "m_SlotType": 0,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "Padding",
-    "m_StageCapability": 3,
-    "m_Value": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0,
-        "w": 0.0
-    },
-    "m_DefaultValue": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0,
-        "w": 0.0
-    },
-    "m_Labels": []
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.BooleanMaterialSlot",
-    "m_ObjectId": "e9c756f96e1745a1b41406f48a142d10",
-    "m_Id": 21,
-    "m_DisplayName": "Offset_Reference",
-    "m_SlotType": 0,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "Offset_Reference",
-    "m_StageCapability": 3,
-    "m_Value": false,
-    "m_DefaultValue": false
 }
 
 {
@@ -2555,7 +2707,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "eb9ad11d04864069a9f912d072431d9c",
     "m_Id": 0,
-    "m_DisplayName": "Border Width",
+    "m_DisplayName": "World Border Width",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -2749,30 +2901,5 @@
     ],
     "m_Dropdowns": [],
     "m_DropdownSelectedEntries": []
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
-    "m_ObjectId": "fc891397f4ca4fc09e157d6612df8d3e",
-    "m_Id": 23,
-    "m_DisplayName": "Corner_Radius_Out",
-    "m_SlotType": 1,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "Corner_Radius_Out",
-    "m_StageCapability": 3,
-    "m_Value": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0,
-        "w": 0.0
-    },
-    "m_DefaultValue": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0,
-        "w": 0.0
-    },
-    "m_Labels": []
 }
 

@@ -584,10 +584,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 194.50001525878907,
-            "y": -1653.9998779296875,
-            "width": 207.9999542236328,
-            "height": 399.0
+            "x": 216.0,
+            "y": -1653.999755859375,
+            "width": 280.4999694824219,
+            "height": 423.0
         }
     },
     "m_Slots": [
@@ -1300,6 +1300,12 @@
             "m_Id": "6abef9529a0447d385b5a80a50be9651"
         },
         {
+            "m_Id": "b1ca11b065424f6e898c0ef51980a701"
+        },
+        {
+            "m_Id": "70fe904c356940b49d7c2c7ba149b0c4"
+        },
+        {
             "m_Id": "acc86bfd641546778ce2b8c67cdb84b2"
         },
         {
@@ -1318,12 +1324,16 @@
     "m_PropertyGuids": [
         "911e2a9e-4e25-46ee-9788-52bd24e18185",
         "90222fc3-3057-4459-a6b7-516477512f8c",
-        "7eab6fb3-9723-4cba-a708-eabd42c58b57"
+        "7eab6fb3-9723-4cba-a708-eabd42c58b57",
+        "8c49d547-26e3-40b7-941d-539c1ec4f54b",
+        "9049e463-d2cb-4aa7-a5d9-425b1adea596"
     ],
     "m_PropertyIds": [
         -282915576,
         1007024453,
-        -663734923
+        -663734923,
+        458762798,
+        386478359
     ],
     "m_Dropdowns": [],
     "m_DropdownSelectedEntries": []
@@ -1492,6 +1502,20 @@
     },
     "isMainColor": false,
     "m_ColorMode": 0
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.BooleanMaterialSlot",
+    "m_ObjectId": "70fe904c356940b49d7c2c7ba149b0c4",
+    "m_Id": 386478359,
+    "m_DisplayName": "Reference (width/height)",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "_Reference_width_height",
+    "m_StageCapability": 3,
+    "m_Value": false,
+    "m_DefaultValue": false
 }
 
 {
@@ -2013,6 +2037,20 @@
         "m_SerializableColors": []
     },
     "m_OutputChannel": 0
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.BooleanMaterialSlot",
+    "m_ObjectId": "b1ca11b065424f6e898c0ef51980a701",
+    "m_Id": 458762798,
+    "m_DisplayName": "Scaling (constant/reference)",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "_Scaling_constant_reference",
+    "m_StageCapability": 3,
+    "m_Value": false,
+    "m_DefaultValue": false
 }
 
 {

@@ -14,6 +14,8 @@ public class Window : MonoBehaviour
     private GameObject controls_right;
     private GameObject controls_close;
 
+    private float lastDistanceScaleFactor = 1f;
+
     void Start()
     {
 
@@ -33,11 +35,12 @@ public class Window : MonoBehaviour
         controls_left = controls.transform.Find("Resize Left").gameObject;
         controls_right = controls.transform.Find("Resize Right").gameObject;
         controls_close = controls.transform.Find("Close").gameObject;
+
     }
 
     void Update()
     {
-        // Update the controls position based on the frame size
+
         UpdateControls();
 
         // Check if the lookAtTarget is assigned
@@ -63,17 +66,40 @@ public class Window : MonoBehaviour
     }
 
 
-
     public void ChangeScale(float deltaX, float deltaY)
     {
-        frame.transform.localScale = new Vector3(
-            transform.localScale.x + deltaX,
-            transform.localScale.y + deltaY,
-            transform.localScale.z);
+        frame.transform.localScale += new Vector3(deltaX, deltaY, 0f);
+        UpdateControls();
     }
+
+    private void ScaleWithDistance()
+    {
+
+        // Calculate the distance from the camera
+        float distance = Vector3.Distance(frame.transform.position, cameraTransform.position);
+
+        // Calculate the scale factor based on the distance
+        float scaleFactor = distance;
+        float effectiveScaleFactor = scaleFactor / lastDistanceScaleFactor;
+        Vector3 scaleVector = new Vector3(effectiveScaleFactor, effectiveScaleFactor, 1f);
+
+        // Apply the scale factor to the controls
+        controls_move.transform.localScale = Vector3.Scale(controls_move.transform.localScale, scaleVector);
+        controls_left.transform.localScale = Vector3.Scale(controls_left.transform.localScale, scaleVector);
+        controls_right.transform.localScale = Vector3.Scale(controls_right.transform.localScale, scaleVector);
+        controls_close.transform.localScale = Vector3.Scale(controls_close.transform.localScale, scaleVector);
+
+        // Update the last distance scale factor
+        lastDistanceScaleFactor = scaleFactor;
+    }
+
 
     private void UpdateControls()
     {
+
+        // Scale controls with distance
+        ScaleWithDistance();
+
         controls.transform.localPosition = new Vector3(
             0,
             -frame.transform.localScale.y / 2,

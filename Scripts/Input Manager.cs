@@ -74,8 +74,19 @@ public class InputManager : MonoBehaviour
                         {
                             Vector3 deltaPosition = touchData.interactionPosition - lastPosition;
 
-                            // Resize only in the X and Y direction
-                            selectedObject.GetComponent<Window>().ChangeScale(deltaPosition.x, deltaPosition.y);
+                            float deltaX = touchData.targetObject.name == "Resize Right" ? deltaPosition.x : -deltaPosition.x;
+
+                            // // Resize only in the X and Y direction
+                            // selectedObject.GetComponent<Window>().ChangeScale(
+                            //     deltaX, 
+                            //     - deltaPosition.y);
+
+                            // Smooth scaling and account for direction
+                            float diffScale = 
+                                Mathf.Sign(deltaX - deltaPosition.y)
+                                * Mathf.Sqrt(
+                                    Mathf.Pow(deltaX, 2f) + Mathf.Pow(deltaPosition.y, 2f));
+                            selectedObject.GetComponent<Window>().ChangeScale(diffScale, diffScale);
 
                             lastPosition = touchData.interactionPosition;
                         }
