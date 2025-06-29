@@ -10,7 +10,7 @@
 // // INPUT
 // float4 Padding;
 
-// float4 Corner_Radius;
+// float4 Corner_Radius_Adjusted;
 // float Border_Width;
 // bool Size_Reference; // true=width, false=height
 
@@ -20,34 +20,14 @@
 // float End_Offset;
 // bool Offset_Reference; // true=segment, false=circumference
 
+// float4 Edge_Lengths;
+// float4 Corner_Lengths;
 
 // // OUTPUT
 // TODO
 
-// START CODE
 
-float width = 1 - (Padding.x + Padding.y);
-float height = 1 - (Padding.z + Padding.w);
-float sizeReference = Size_Reference ? width : height;
-
-// ensure corner radius to be at least border width
-Corner_Radius = max(Corner_Radius, Border_Width);
-
-// set output parameters
-Corner_Radius_Out = Corner_Radius;
-// Border_Width_Out = Border_Width;
-
-// DERIVE STATIC SEGMENT PROPERTIES
-
-float4 edgeLengths = 
-    Padding.zzxx + Padding.wwyy + Corner_Radius.xzxy + Corner_Radius.ywzw;
-
-edgeLengths = 1 - edgeLengths;
-// ensure that edge lengths are never negative
-// TODO: should this be caught differently somehow?
-edgeLengths = max(edgeLengths, 0.0);
-
-float4 cornerLengths = (Corner_Radius) * 3.14159265359 / 2;
+// calculating cumulative lengths
 
 float4 edgeCumLengths = float4(0, 0, 0, 0);
 float4 cornerCumLengths = float4(0, 0, 0, 0);
@@ -55,60 +35,60 @@ float4 cornerCumLengths = float4(0, 0, 0, 0);
 float sum = 0;
 
 // left
-sum += edgeLengths.x;
+sum += Edge_Lengths.x;
 edgeCumLengths.x = sum;
 
 // left-bottom
-sum += cornerLengths.x;
+sum += Corner_Lengths.x;
 cornerCumLengths.x = sum;
 
 // bottom
-sum += edgeLengths.z;
+sum += Edge_Lengths.z;
 edgeCumLengths.z = sum;
 
 // right-bottom
-sum += cornerLengths.z;
+sum += Corner_Lengths.z;
 cornerCumLengths.z = sum;
 
 // right
-sum += edgeLengths.y;
+sum += Edge_Lengths.y;
 edgeCumLengths.y = sum;
 
 // right-top
-sum += cornerLengths.w;
+sum += Corner_Lengths.w;
 cornerCumLengths.w = sum;
 
 // top
-sum += edgeLengths.w;
+sum += Edge_Lengths.w;
 edgeCumLengths.w = sum;
 
 // left-top
-sum += cornerLengths.y;
+sum += Corner_Lengths.y;
 cornerCumLengths.y = sum;
 
 float circumference = cornerCumLengths.y;
 
 // calculate relative start and end positions
 float startLength = 0.0;
-startLength += (Segment == 0) * (0.0                   + Segment_Position * edgeLengths.x  );
-startLength += (Segment == 1) * (edgeCumLengths.x      + Segment_Position * cornerLengths.x);
-startLength += (Segment == 2) * (cornerCumLengths.x    + Segment_Position * edgeLengths.z  );
-startLength += (Segment == 3) * (edgeCumLengths.z      + Segment_Position * cornerLengths.z);
-startLength += (Segment == 4) * (cornerCumLengths.z    + Segment_Position * edgeLengths.y  );
-startLength += (Segment == 5) * (edgeCumLengths.y      + Segment_Position * cornerLengths.w);
-startLength += (Segment == 6) * (cornerCumLengths.w    + Segment_Position * edgeLengths.w  );
-startLength += (Segment == 7) * (edgeCumLengths.w      + Segment_Position * cornerLengths.y);
+startLength += (Segment == 0) * (0.0                   + Segment_Position * Edge_Lengths.x  );
+startLength += (Segment == 1) * (edgeCumLengths.x      + Segment_Position * Corner_Lengths.x);
+startLength += (Segment == 2) * (cornerCumLengths.x    + Segment_Position * Edge_Lengths.z  );
+startLength += (Segment == 3) * (edgeCumLengths.z      + Segment_Position * Corner_Lengths.z);
+startLength += (Segment == 4) * (cornerCumLengths.z    + Segment_Position * Edge_Lengths.y  );
+startLength += (Segment == 5) * (edgeCumLengths.y      + Segment_Position * Corner_Lengths.w);
+startLength += (Segment == 6) * (cornerCumLengths.w    + Segment_Position * Edge_Lengths.w  );
+startLength += (Segment == 7) * (edgeCumLengths.w      + Segment_Position * Corner_Lengths.y);
 startLength /= circumference;
 
 float segmentLength = 0.0;
-segmentLength += (Segment == 0) * edgeLengths.x;
-segmentLength += (Segment == 1) * cornerLengths.x;
-segmentLength += (Segment == 2) * edgeLengths.z;
-segmentLength += (Segment == 3) * cornerLengths.z;
-segmentLength += (Segment == 4) * edgeLengths.y;
-segmentLength += (Segment == 5) * cornerLengths.w;
-segmentLength += (Segment == 6) * edgeLengths.w;
-segmentLength += (Segment == 7) * cornerLengths.y;
+segmentLength += (Segment == 0) * Edge_Lengths.x;
+segmentLength += (Segment == 1) * Corner_Lengths.x;
+segmentLength += (Segment == 2) * Edge_Lengths.z;
+segmentLength += (Segment == 3) * Corner_Lengths.z;
+segmentLength += (Segment == 4) * Edge_Lengths.y;
+segmentLength += (Segment == 5) * Corner_Lengths.w;
+segmentLength += (Segment == 6) * Edge_Lengths.w;
+segmentLength += (Segment == 7) * Corner_Lengths.y;
 segmentLength /= circumference;
 
 float relativeStart = Offset_Reference ? 
@@ -139,16 +119,16 @@ position = Start;
 pos = position * circumference;
 
 edgeActivation = float4(
-    saturate((pos                     ) / edgeLengths.x),  // left 
-    saturate((pos - cornerCumLengths.z) / edgeLengths.y),  // right
-    saturate((pos - cornerCumLengths.x) / edgeLengths.z),  // bottom
-    saturate((pos - cornerCumLengths.w) / edgeLengths.w)); // top
+    saturate((pos                     ) / Edge_Lengths.x),  // left 
+    saturate((pos - cornerCumLengths.z) / Edge_Lengths.y),  // right
+    saturate((pos - cornerCumLengths.x) / Edge_Lengths.z),  // bottom
+    saturate((pos - cornerCumLengths.w) / Edge_Lengths.w)); // top
 
 cornerActivation = float4(
-    saturate((pos - edgeCumLengths.x) / cornerLengths.x),
-    saturate((pos - edgeCumLengths.w) / cornerLengths.y),
-    saturate((pos - edgeCumLengths.z) / cornerLengths.z),
-    saturate((pos - edgeCumLengths.y) / cornerLengths.w));
+    saturate((pos - edgeCumLengths.x) / Corner_Lengths.x),
+    saturate((pos - edgeCumLengths.w) / Corner_Lengths.y),
+    saturate((pos - edgeCumLengths.z) / Corner_Lengths.z),
+    saturate((pos - edgeCumLengths.y) / Corner_Lengths.w));
 
 float4 startEdgeActivation = edgeActivation;
 float4 startCornerActivation = cornerActivation;
@@ -157,16 +137,16 @@ position = End < Start ? 1 : End;
 pos = position * circumference;
 
 edgeActivation = float4(
-    saturate((pos                     ) / edgeLengths.x),  // left 
-    saturate((pos - cornerCumLengths.z) / edgeLengths.y),  // right
-    saturate((pos - cornerCumLengths.x) / edgeLengths.z),  // bottom
-    saturate((pos - cornerCumLengths.w) / edgeLengths.w)); // top
+    saturate((pos                     ) / Edge_Lengths.x),  // left 
+    saturate((pos - cornerCumLengths.z) / Edge_Lengths.y),  // right
+    saturate((pos - cornerCumLengths.x) / Edge_Lengths.z),  // bottom
+    saturate((pos - cornerCumLengths.w) / Edge_Lengths.w)); // top
 
 cornerActivation = float4(
-    saturate((pos - edgeCumLengths.x) / cornerLengths.x),
-    saturate((pos - edgeCumLengths.w) / cornerLengths.y),
-    saturate((pos - edgeCumLengths.z) / cornerLengths.z),
-    saturate((pos - edgeCumLengths.y) / cornerLengths.w));
+    saturate((pos - edgeCumLengths.x) / Corner_Lengths.x),
+    saturate((pos - edgeCumLengths.w) / Corner_Lengths.y),
+    saturate((pos - edgeCumLengths.z) / Corner_Lengths.z),
+    saturate((pos - edgeCumLengths.y) / Corner_Lengths.w));
 
 float4 endEdgeActivation = 1.0 - edgeActivation;
 float4 endCornerActivation = cornerActivation;
@@ -175,32 +155,32 @@ position = End < Start ? End : 0.0;
 pos = position * circumference;
 
 edgeActivation = float4(
-    saturate((pos                     ) / edgeLengths.x),  // left 
-    saturate((pos - cornerCumLengths.z) / edgeLengths.y),  // right
-    saturate((pos - cornerCumLengths.x) / edgeLengths.z),  // bottom
-    saturate((pos - cornerCumLengths.w) / edgeLengths.w)); // top
+    saturate((pos                     ) / Edge_Lengths.x),  // left 
+    saturate((pos - cornerCumLengths.z) / Edge_Lengths.y),  // right
+    saturate((pos - cornerCumLengths.x) / Edge_Lengths.z),  // bottom
+    saturate((pos - cornerCumLengths.w) / Edge_Lengths.w)); // top
 
 cornerActivation = float4(
-    saturate((pos - edgeCumLengths.x) / cornerLengths.x), // TODO: Here is an issue!
-    saturate((pos - edgeCumLengths.w) / cornerLengths.y),
-    saturate((pos - edgeCumLengths.z) / cornerLengths.z),
-    saturate((pos - edgeCumLengths.y) / cornerLengths.w));
+    saturate((pos - edgeCumLengths.x) / Corner_Lengths.x), // TODO: Here is an issue!
+    saturate((pos - edgeCumLengths.w) / Corner_Lengths.y),
+    saturate((pos - edgeCumLengths.z) / Corner_Lengths.z),
+    saturate((pos - edgeCumLengths.y) / Corner_Lengths.w));
 
 float4 tailEdgeActivation = 1.0 - edgeActivation;
 float4 tailCornerActivation = cornerActivation;
 // float4 tailCornerActivation = float4(0, cornerActivation.y, cornerActivation.z, cornerActivation.w);
 
-Debug = float(edgeLengths.x < 0);
+Debug = float(Edge_Lengths.x < 0);
 
 // calculate offsets
 
-First_Edge_Start_Offset =   startEdgeActivation * edgeLengths;
-First_Edge_End_Offset =     endEdgeActivation * edgeLengths;
+First_Edge_Start_Offset =   startEdgeActivation * Edge_Lengths;
+First_Edge_End_Offset =     endEdgeActivation * Edge_Lengths;
 
 First_Corner_Start_Offset = startCornerActivation * 0.25;
 First_Corner_End_Offset =   endCornerActivation * 0.25;
 
-Second_Edge_End_Offset =   tailEdgeActivation * edgeLengths;
+Second_Edge_End_Offset =   tailEdgeActivation * Edge_Lengths;
 Second_Corner_End_Offset = tailCornerActivation * 0.25;
 
 
@@ -212,10 +192,10 @@ float4 outerCoordinates =
     float4(0.0, 1.0, 0.0, 1.0) 
     + float4(1.0, -1.0, 1.0, -1.0) * Padding;
 
-float4 cornerCenterX = outerCoordinates.xxyy + float4(1.0, 1.0, -1.0, -1.0) * Corner_Radius;
-float4 cornerCenterY = outerCoordinates.zwzw + float4(1.0, -1.0, 1.0, -1.0) * Corner_Radius;
+float4 cornerCenterX = outerCoordinates.xxyy + float4(1.0, 1.0, -1.0, -1.0) * Corner_Radius_Adjusted;
+float4 cornerCenterY = outerCoordinates.zwzw + float4(1.0, -1.0, 1.0, -1.0) * Corner_Radius_Adjusted;
 
-float4 halfRadius = Corner_Radius - 0.5 * Border_Width;
+float4 halfRadius = Corner_Radius_Adjusted - 0.5 * Border_Width;
 
 float4 edgeCoordinatesX;
 float4 edgeCoordinatesY;
@@ -241,12 +221,12 @@ cornerOffset = First_Corner_Start_Offset;
 edgeCoordinatesX = outerCoordinates.xyxy + float4(
       Border_Width / 2.0,
     - Border_Width / 2.0,
-      Corner_Radius.x       + edgeOffset.z,
-    - Corner_Radius.w       - edgeOffset.w
+      Corner_Radius_Adjusted.x       + edgeOffset.z,
+    - Corner_Radius_Adjusted.w       - edgeOffset.w
 );
 edgeCoordinatesY = outerCoordinates.wzzw + float4(
-    - Corner_Radius.y      - edgeOffset.x,
-      Corner_Radius.z      + edgeOffset.y,
+    - Corner_Radius_Adjusted.y      - edgeOffset.x,
+      Corner_Radius_Adjusted.z      + edgeOffset.y,
       Border_Width / 2.0,
     - Border_Width / 2.0
 );
@@ -303,12 +283,12 @@ cornerOffset = End < Start ? Second_Corner_End_Offset : First_Corner_End_Offset;
 edgeCoordinatesX = outerCoordinates.xyyx + float4(
     + Border_Width / 2.0,
     - Border_Width / 2.0,
-    - Corner_Radius.z       - edgeOffset.z,
-    + Corner_Radius.y       + edgeOffset.w
+    - Corner_Radius_Adjusted.z       - edgeOffset.z,
+    + Corner_Radius_Adjusted.y       + edgeOffset.w
 );
 edgeCoordinatesY = outerCoordinates.zwzw + float4(
-    + Corner_Radius.x      + edgeOffset.x,
-    - Corner_Radius.w      - edgeOffset.y,
+    + Corner_Radius_Adjusted.x      + edgeOffset.x,
+    - Corner_Radius_Adjusted.w      - edgeOffset.y,
     + Border_Width / 2.0,
     - Border_Width / 2.0
 );
