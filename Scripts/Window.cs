@@ -54,9 +54,6 @@ public class Window : MonoBehaviour
                 // For some reason quads are facing opposite of the blue arrow, so we have to rotate it
                 transform.Rotate(0, 180f, 0);
             }
-
-            // resize controls
-            float distance = Vector3.Distance(transform.position, cameraTransform.position);
         }
     }
 
@@ -72,33 +69,16 @@ public class Window : MonoBehaviour
         UpdateControls();
     }
 
-    private void ScaleWithDistance()
-    {
-
-        // Calculate the distance from the camera
-        float distance = Vector3.Distance(frame.transform.position, cameraTransform.position);
-
-        // Calculate the scale factor based on the distance
-        float scaleFactor = distance;
-        float effectiveScaleFactor = scaleFactor / lastDistanceScaleFactor;
-        Vector3 scaleVector = new Vector3(effectiveScaleFactor, effectiveScaleFactor, 1f);
-
-        // Apply the scale factor to the controls
-        controls_move.transform.localScale = Vector3.Scale(controls_move.transform.localScale, scaleVector);
-        controls_left.transform.localScale = Vector3.Scale(controls_left.transform.localScale, scaleVector);
-        controls_right.transform.localScale = Vector3.Scale(controls_right.transform.localScale, scaleVector);
-        controls_close.transform.localScale = Vector3.Scale(controls_close.transform.localScale, scaleVector);
-
-        // Update the last distance scale factor
-        lastDistanceScaleFactor = scaleFactor;
-    }
-
 
     private void UpdateControls()
     {
+        ScaleControlsWithDistance();
+        RepositionControls();
+    }
 
-        // Scale controls with distance
-        ScaleWithDistance();
+    
+    private void RepositionControls()
+    {
 
         controls.transform.localPosition = new Vector3(
             0,
@@ -135,6 +115,50 @@ public class Window : MonoBehaviour
             0,
             0
         );
+    } 
+
+
+    private void ScaleControlsWithDistance()
+    {
+
+        // Calculate the distance from the camera
+        float distance = Vector3.Distance(frame.transform.position, cameraTransform.position);
+
+        // Calculate the scale factor based on the distance
+        float scaleFactor = distance;
+        float effectiveScaleFactor = scaleFactor / lastDistanceScaleFactor;
+        Vector3 scaleVector = new Vector3(effectiveScaleFactor, effectiveScaleFactor, 1f);
+
+        // Apply the scale factor to the controls
+        Vector3 moveScale = Vector3.Scale(controls_move.transform.localScale, scaleVector);
+        Vector3 leftScale = Vector3.Scale(controls_left.transform.localScale, scaleVector);
+        Vector3 rightScale = Vector3.Scale(controls_right.transform.localScale, scaleVector);
+        Vector3 closeScale = Vector3.Scale(controls_close.transform.localScale, scaleVector);
+
+        // Scale left/and right separately
+        float resizeSize = frame.transform.localScale.x / 2 
+            - (moveScale.x / 2 + closeScale.x * 1.1f)
+            + moveScale.y;
+
+        // if (resizeSize < Mathf.Pow(move.transform.localScale.y, 2))
+        // {
+        //     resizeSize = Mathf.Pow(move.transform.localScale.y, 2);
+        // }
+        // {
+        //     resizeSize = move.transform.localScale.y;
+        // }
+
+        leftScale = new Vector3(resizeSize, leftScale.y, leftScale.z);
+        rightScale = new Vector3(resizeSize, rightScale.y, rightScale.z);
+
+        // Update the scale of the controls
+        controls_move.transform.localScale = moveScale;
+        controls_left.transform.localScale = leftScale;
+        controls_right.transform.localScale = rightScale;
+        controls_close.transform.localScale = closeScale;
+
+        // Update the last distance scale factor
+        lastDistanceScaleFactor = scaleFactor;
     }
 
 }

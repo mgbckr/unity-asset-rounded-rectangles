@@ -104,17 +104,18 @@
                 - [x] initial version
                 - [x] fix corners
                     - [x] make `Dynamic Frame Fraction Control` relative
-            - [ ] change size of corners when resizing
+            - [x] change size of corners when resizing
                 - [x] allow relative setting of bottom start/end
-                - [ ] implement resizing
-                - [ ] fix weird shader error: 
-                    `Shader error in 'Sub Graphs/Master': undeclared identifier 'Edge_Lengths' at /(193) (on metal)`
+                - [x] implement resizing
             - [ ] fix minimum/maximum (?) size (see what Vision OS Windows do)
             - [ ] make size change similar to Vision OS (there seems to be some scaling)
                 - mhm, this is kind of difficult because they scale the frame funnily
-        - [ ] fix movement distortions when starting very far to the left ... need to scale movement distance based on distance from hand
-        - [ ] scale Z movement based on distance from avatar
-        - [ ] maybe also improve resizing feeling?
+        - [ ] control optimizations
+            - [ ] lock control when selected
+            - [ ] fix movement distortions when starting very far to the left 
+                ... need to scale movement distance based on distance from hand
+            - [ ] scale Z movement based on distance from avatar
+            - [ ] maybe also improve resizing feeling?
 - [ ] Load images from URL?
     - [ ] allow setting any texture image
     - [ ] allow loading from URL
