@@ -107,15 +107,18 @@
             - [x] change size of corners when resizing
                 - [x] allow relative setting of bottom start/end
                 - [x] implement resizing
-            - [ ] fix minimum/maximum (?) size (see what Vision OS Windows do)
-            - [ ] make size change similar to Vision OS (there seems to be some scaling)
-                - mhm, this is kind of difficult because they scale the frame funnily
-        - [ ] control optimizations
-            - [ ] lock control when selected
+            - [x] fix minimum/maximum (?) size (see what Vision OS Windows do)
+                - just fixing minimum for now
+            - [x] lock control when selected
+            - [x] disable non-active controls
+            - [x] scale Z movement based on distance from avatar for fast movement further away
+            - [ ] test and optimize on vision pro
+        - [ ] OPTIONAL: window control optimizations
             - [ ] fix movement distortions when starting very far to the left 
                 ... need to scale movement distance based on distance from hand
-            - [ ] scale Z movement based on distance from avatar
             - [ ] maybe also improve resizing feeling?
+            - [ ] make control size change similar to Vision OS (there seems to be some scaling)
+                - mhm, this is kind of difficult because they scale the frame funnily
 - [ ] Load images from URL?
     - [ ] allow setting any texture image
     - [ ] allow loading from URL

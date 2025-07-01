@@ -6,12 +6,10 @@ using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 using UnityEngine.InputSystem.LowLevel;
 using Unity.PolySpatial;
 
+
 public class InputManager : MonoBehaviour
 {
     public Transform lookAtTarget;
-
-    private GameObject selectedObject;
-    private Vector3 lastPosition;
 
     void OnEnable()
     {
@@ -30,79 +28,16 @@ public class InputManager : MonoBehaviour
             foreach (var touch in Touch.activeTouches)
             {
                 SpatialPointerState touchData = EnhancedSpatialPointerSupport.GetPointerState(touch);
-                if (touchData.targetObject != null && touchData.Kind != SpatialPointerKind.Touch)
+                if (touchData.targetObject != null)
                 {
-                    Debug.Log("Touch interaction with: " + touchData.targetObject.name);
-
-                    // MOVE
-                    if (touchData.targetObject.name == "Move")
+                    SpatialPointerStateListener listener = touchData.targetObject.GetComponent<SpatialPointerStateListener>();
+                    if (listener != null)
                     {
-
-                        if (touch.phase == TouchPhase.Began)
-                        {
-                            Debug.Log("Touch began on Move");
-                            selectedObject = touchData.targetObject.transform.parent.parent.gameObject; // Assuming the object to move is three levels up in the hierarchy
-                            Debug.Log("Selected object: " + selectedObject.name);
-                            lastPosition = touchData.interactionPosition;
-
-                            // Set the lookAtTarget to the selected object
-                            selectedObject.GetComponent<Window>().FollowCamera(true);
-                        }
-                        else if (touch.phase == TouchPhase.Moved && selectedObject != null)
-                        {
-                            Vector3 deltaPosition = touchData.interactionPosition - lastPosition;
-                            selectedObject.transform.position += deltaPosition;
-                            lastPosition = touchData.interactionPosition;
-                        }
-                        else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
-                        {
-                            selectedObject.GetComponent<Window>().FollowCamera(false);
-                            selectedObject = null; // Deselect the object when the touch ends
-                        }
+                        // Notify the listener about the touch event
+                        listener.OnEvent(touch, touchData);
                     }
-
-                    // RESIZE
-                    else if (touchData.targetObject.name == "Resize Right" || touchData.targetObject.name == "Resize Left")
-                    {
-                        if (touch.phase == TouchPhase.Began)
-                        {
-                            Debug.Log("Touch began on Resize");
-                            selectedObject = touchData.targetObject.transform.parent.parent.gameObject;
-                            lastPosition = touchData.interactionPosition;
-                        }
-                        else if (touch.phase == TouchPhase.Moved && selectedObject != null)
-                        {
-                            Vector3 deltaPosition = touchData.interactionPosition - lastPosition;
-
-                            float deltaX = touchData.targetObject.name == "Resize Right" ? deltaPosition.x : -deltaPosition.x;
-
-                            // // Resize only in the X and Y direction
-                            // selectedObject.GetComponent<Window>().ChangeScale(
-                            //     deltaX, 
-                            //     - deltaPosition.y);
-
-                            // Smooth scaling and account for direction
-                            float diffScale = 
-                                Mathf.Sign(deltaX - deltaPosition.y)
-                                * Mathf.Sqrt(
-                                    Mathf.Pow(deltaX, 2f) + Mathf.Pow(deltaPosition.y, 2f));
-                            selectedObject.GetComponent<Window>().ChangeScale(diffScale, diffScale);
-
-                            lastPosition = touchData.interactionPosition;
-                        }
-                        else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
-                        {
-                            selectedObject = null; // Deselect the object when the touch ends
-                        }
-                    }
-
-                }
+                } 
             }
-        }
-        if (Touch.activeTouches.Count == 0 && selectedObject != null)
-        {
-            selectedObject = null; // Deselect the object when no touches are active
-
         }
     }
 }

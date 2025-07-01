@@ -3,6 +3,9 @@ using UnityEngine;
 public class Window : MonoBehaviour
 {
 
+    public float minimumWidth = 0.25f;
+    public float minScaleFactor = 1.0f;
+
     private Transform cameraTransform;
 
     private bool followCamera = false;
@@ -15,6 +18,14 @@ public class Window : MonoBehaviour
     private GameObject controls_close;
 
     private float lastDistanceScaleFactor = 1f;
+
+    public enum Control
+    {
+        Move,
+        ResizeLeft,
+        ResizeRight,
+        Close
+    }
 
     void Start()
     {
@@ -63,9 +74,20 @@ public class Window : MonoBehaviour
     }
 
 
+
     public void ChangeScale(float deltaX, float deltaY)
     {
+
+        Vector3 currentScale = frame.transform.localScale;
         frame.transform.localScale += new Vector3(deltaX, deltaY, 0f);
+        if (frame.transform.localScale.x < minimumWidth)
+        {
+            frame.transform.localScale = new Vector3(minimumWidth, currentScale.y, currentScale.z);
+        }
+        if (frame.transform.localScale.y < 0.1f)
+        {
+            frame.transform.localScale = new Vector3(currentScale.x, 0.1f, currentScale.z);
+        }
         UpdateControls();
     }
 
@@ -135,21 +157,38 @@ public class Window : MonoBehaviour
         Vector3 rightScale = Vector3.Scale(controls_right.transform.localScale, scaleVector);
         Vector3 closeScale = Vector3.Scale(controls_close.transform.localScale, scaleVector);
 
-        // Scale left/and right separately
+        // Calculate scale of left/right resize 
         float resizeSize = frame.transform.localScale.x / 2 
             - (moveScale.x / 2 + closeScale.x * 1.1f)
             + moveScale.y;
 
-        // if (resizeSize < Mathf.Pow(move.transform.localScale.y, 2))
-        // {
-        //     resizeSize = Mathf.Pow(move.transform.localScale.y, 2);
-        // }
-        // {
-        //     resizeSize = move.transform.localScale.y;
-        // }
-
         leftScale = new Vector3(resizeSize, leftScale.y, leftScale.z);
         rightScale = new Vector3(resizeSize, rightScale.y, rightScale.z);
+
+        // Disable resize controls when controls get too big
+        if (resizeSize < controls_move.transform.localScale.y * 2)
+        {
+            controls_left.active = false;
+            controls_right.active = false;
+        }
+        else
+        {
+            controls_left.active = true;
+            controls_right.active = true;
+        }
+
+        // Do not scale controls anymore if they exceed the frame size
+        float centralControlSize = moveScale.x + 2 * closeScale.x * 1.1f;
+        if (centralControlSize > frame.transform.localScale.x)
+        {
+            return;
+        }
+
+        // Stop scaling if the window gets to close
+        if (scaleFactor < 1f)
+        {
+            return;
+        }
 
         // Update the scale of the controls
         controls_move.transform.localScale = moveScale;
@@ -159,6 +198,25 @@ public class Window : MonoBehaviour
 
         // Update the last distance scale factor
         lastDistanceScaleFactor = scaleFactor;
+
+    }
+
+    public void FocusControl(Control? control)
+    {
+        // Set the focus on the specified control
+        controls_move.SetActive(control == Control.Move);
+        controls_left.SetActive(control == Control.ResizeLeft);
+        controls_right.SetActive(control == Control.ResizeRight);
+        controls_close.SetActive(control == Control.Close);
+
+        // If no control is specified, activate all controls
+        if (control == null)
+        {
+            controls_move.SetActive(true);
+            controls_left.SetActive(true);
+            controls_right.SetActive(true);
+            controls_close.SetActive(true);
+        } 
     }
 
 }
