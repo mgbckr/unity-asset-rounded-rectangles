@@ -1,10 +1,17 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Networking; // Required for UnityWebRequest and DownloadHandlerTexture
+
 
 public class Window : MonoBehaviour
 {
 
     public float minimumWidth = 0.25f;
     public float minScaleFactor = 1.0f;
+
+    public Material frameMaterialContent;
+    public Material frameMaterialError;
+    public Material frameMaterialLoading;
 
     private Transform cameraTransform;
 
@@ -17,6 +24,8 @@ public class Window : MonoBehaviour
     private GameObject controls_right;
     private GameObject controls_close;
 
+    private Renderer frameRenderer;
+
     private float lastDistanceScaleFactor = 1f;
 
     public enum Control
@@ -27,7 +36,14 @@ public class Window : MonoBehaviour
         Close
     }
 
-    void Start()
+    public enum WindowState
+    {
+        Loading,
+        Error,
+        Content
+    }
+
+    void Awake()
     {
 
         // Find the camera transform in the scene
@@ -46,6 +62,15 @@ public class Window : MonoBehaviour
         controls_left = controls.transform.Find("Resize Left").gameObject;
         controls_right = controls.transform.Find("Resize Right").gameObject;
         controls_close = controls.transform.Find("Close").gameObject;
+
+        // Get the Renderer component of the frame
+        frameRenderer = frame.GetComponent<Renderer>();
+
+        // Copy content material
+        frameMaterialContent = new Material(frameMaterialContent);
+
+        // Set window state to loading
+        SetWindowState(WindowState.Loading);
 
     }
 
@@ -217,6 +242,60 @@ public class Window : MonoBehaviour
             controls_right.SetActive(true);
             controls_close.SetActive(true);
         } 
+    }
+
+    public void SetWindowState(WindowState state)
+    {
+        switch (state)
+        {
+            case WindowState.Loading:
+                frameRenderer.material = frameMaterialLoading;
+                break;
+            case WindowState.Error:
+                frameRenderer.material = frameMaterialError;
+                break;
+            case WindowState.Content:
+                frameRenderer.material = frameMaterialContent;
+                break;
+        }
+    }
+
+    public void SetFrameContentFromUrl(string url)
+    {
+        SetWindowState(WindowState.Loading);
+        StartCoroutine(DownloadAndSetFrameTextureFromUrl(url));
+    }
+
+    IEnumerator DownloadAndSetFrameTextureFromUrl(string url)
+    {
+        using (UnityWebRequest uwr = UnityWebRequestTexture.GetTexture(url))
+        {
+            yield return uwr.SendWebRequest();
+
+            if (uwr.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogError("Image download failed: " + uwr.error);
+                SetWindowState(WindowState.Error);
+            }
+            else
+            {
+                Texture2D texture = DownloadHandlerTexture.GetContent(uwr);
+
+                // automatically set new size ratio to avoid distortion
+                float ratio = texture.height / (float) texture.width;
+                Debug.Log($"Setting frame content from URL: {url}, ratio: {ratio}={texture.height}/{texture.width}");
+                frame.transform.localScale = new Vector3(
+                    frame.transform.localScale.x,
+                    frame.transform.localScale.x * ratio,
+                    frame.transform.localScale.z
+                );
+
+                // set texture
+                frameMaterialContent.SetTexture("_Texture", texture);
+                frameRenderer.material = frameMaterialContent;
+                SetWindowState(WindowState.Content);
+            }
+        }
     }
 
 }

@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Material - Shaded Triple Framed Texture
-  m_Shader: {fileID: -6465566751694194690, guid: ed213fc6a3adc4755a206c1468e30a21, type: 3}
+  m_Name: Material - Shaded Triple Framed Color Icon - Error
+  m_Shader: {fileID: -6465566751694194690, guid: 0e94cbf71eb4e4252885e36b7ddd8b3f, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -24,10 +24,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _Texture:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -42,14 +38,16 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Icon_Type_cross_circle: 1
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
     - _Background_Color: {r: 0, g: 0, b: 0, a: 0}
     - _Border_Color: {r: 0, g: 0, b: 0, a: 1}
     - _Border_Width_left_right_bottom_top: {r: 0.001, g: 0.001, b: 0.001, a: 0.001}
-    - _Content_Color: {r: 0, g: 0, b: 0, a: 0}
+    - _Content_Color: {r: 0.7924528, g: 0.43734425, b: 0.43734425, a: 1}
     - _Corner_Radius_lb_lt_rb_rt: {r: 0.03, g: 0.03, b: 0.03, a: 0.03}
+    - _Icon_Color: {r: 0.8679245, g: 0.59362763, b: 0.59362763, a: 1}
     - _Inner_Edge_Color: {r: 0, g: 0, b: 0, a: 1}
     - _Inner_Edge_Width_left_right_bottom_top: {r: 0, g: 0, b: 0, a: 0}
     - _Inner_Shadow_Color: {r: 0, g: 0, b: 0, a: 1}
@@ -59,11 +57,9 @@ Material:
     - _Outer_Shadow_Color: {r: 0, g: 0, b: 0, a: 1}
     - _Outer_Shadow_Width_left_right_bottom_top: {r: 0.001, g: 0.001, b: 0.001, a: 0.001}
     - _Padding_left_right_bottom_top: {r: 0, g: 0, b: 0, a: 0}
-    - _Texture_Offset: {r: 0, g: 0, b: 0, a: 0}
-    - _Texture_Size: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &7598092107791388969
+--- !u!114 &7041763750498468891
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

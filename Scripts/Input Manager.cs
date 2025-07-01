@@ -22,7 +22,7 @@ public class InputManager : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("InputManager Update: " + Touch.activeTouches.Count + " active touches");
+        // Debug.Log("InputManager Update: " + Touch.activeTouches.Count + " active touches");
         if (Touch.activeTouches.Count > 0)
         {
             foreach (var touch in Touch.activeTouches)

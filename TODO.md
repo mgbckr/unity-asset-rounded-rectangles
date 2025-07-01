@@ -120,13 +120,17 @@
             - [ ] make control size change similar to Vision OS (there seems to be some scaling)
                 - mhm, this is kind of difficult because they scale the frame funnily
 - [ ] Load images from URL?
-    - [ ] allow setting any texture image
-    - [ ] allow loading from URL
-    - [ ] Set image ratio automatically
-- [ ] allow non 1x1 texture size (should be covered by auto ratio above)
-- [ ] allow non 1x1 objects (quads)
-- [ ] Make three or four windows
+    - [x] allow loading texture from URL
+    - [x] set image ratio automatically
+    - [x] add loading and error placeholders / animations
+    - [ ] OPTIONAL: smoothly animated transitions between loading, error, and main image
+    - [ ] OPTIONAL: animate resizing when image is loaded
+- [x] allow non 1x1 texture size (should be covered by auto ratio above)
+- [x] allow non 1x1 objects (quads)
+- [x] Make three or four windows
 - [ ] Test many borders with images ... oh oh!!
+    - [x] tried on laptop and it works ... very worried about Vision Pro
+    - [ ] try on vision pro
 
 ### Interactive
 
