@@ -10,12 +10,13 @@ using Unity.PolySpatial;
 public class WindowControlResize: WindowControl
 {
 
-    private Renderer renderer;
+    private Renderer controlRenderer;
     private Vector3 lastPosition;
 
-    public void Start()
+    public override void Start()
     {
-        renderer = GetComponent<Renderer>();
+        base.Start();
+        controlRenderer = GetComponent<Renderer>();
     }
 
     public override void OnEvent(Touch touch, SpatialPointerState touchData, Window window)
@@ -24,7 +25,7 @@ public class WindowControlResize: WindowControl
         {
             Debug.Log("Touch began on Resize");
             lastPosition = touchData.interactionPosition;
-            renderer.material.SetInteger("_Hover_Lock", 1);
+            controlRenderer.material.SetInteger("_Hover_Lock", 1);
             window.FocusControl(
                 name == "Resize Right" 
                 ? Window.Control.ResizeRight 
@@ -52,7 +53,7 @@ public class WindowControlResize: WindowControl
         }
         else if (touch.phase == TouchPhase.Ended)
         {
-            renderer.material.SetInteger("_Hover_Lock", 0);
+            controlRenderer.material.SetInteger("_Hover_Lock", 0);
             window.FocusControl(null);
         }
     }

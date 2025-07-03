@@ -43,8 +43,14 @@ public class Window : MonoBehaviour
         Content
     }
 
+    void Start()
+    {
+    }
+
     void Awake()
     {
+        // Doing this here in Awake rather than Start because Awake is called
+        // when a Prefab is instantiated. Start is not.
 
         // Find the camera transform in the scene
         cameraTransform = Camera.main != null ? Camera.main.transform : null;
@@ -71,7 +77,6 @@ public class Window : MonoBehaviour
 
         // Set window state to loading
         SetWindowState(WindowState.Loading);
-
     }
 
     void Update()
@@ -193,13 +198,13 @@ public class Window : MonoBehaviour
         // Disable resize controls when controls get too big
         if (resizeSize < controls_move.transform.localScale.y * 2)
         {
-            controls_left.active = false;
-            controls_right.active = false;
+            controls_left.SetActive(false);
+            controls_right.SetActive(false);
         }
         else
         {
-            controls_left.active = true;
-            controls_right.active = true;
+            controls_left.SetActive(true);
+            controls_right.SetActive(true);
         }
 
         // Do not scale controls anymore if they exceed the frame size
@@ -246,6 +251,11 @@ public class Window : MonoBehaviour
 
     public void SetWindowState(WindowState state)
     {
+        if (frameRenderer == null)
+        {
+            frameRenderer = frame.GetComponent<Renderer>();
+        }
+
         switch (state)
         {
             case WindowState.Loading:

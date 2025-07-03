@@ -13,7 +13,7 @@ public abstract class WindowControl: MonoBehaviour, SpatialPointerStateListener
 
     public abstract void OnEvent(Touch touch, SpatialPointerState touchData, Window window);
 
-    public void Start()
+    public virtual void Start()
     {
         // Find the Window component in the parent hierarchy
         window = FindParentByName(transform, "Window")?.GetComponent<Window>();
@@ -33,7 +33,7 @@ public abstract class WindowControl: MonoBehaviour, SpatialPointerStateListener
         Transform current = child.parent;
         while (current != null)
         {
-            if (current.name == parentName)
+            if (current.name.StartsWith(parentName))
                 return current;
             current = current.parent;
         }

@@ -20,7 +20,7 @@ public class WindowManager : MonoBehaviour
             return;
         }
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 3; i++)
         {
             string name = "" + i;
             Vector3 position = transform.position + new Vector3(0.41f * i, 0, 0);
@@ -28,9 +28,9 @@ public class WindowManager : MonoBehaviour
         }
 
         string basePath = "file://" + Application.dataPath + "/External/Rounded Rectangles/Assets/Test/";
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 1; i++)
         {
-            for (int j = 0; j < 10; j++)
+            for (int j = 0; j < 1; j++)
             {
                 InstantiateWindow(
                     basePath + "test1.png",

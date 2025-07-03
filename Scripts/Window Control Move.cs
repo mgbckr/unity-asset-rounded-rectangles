@@ -9,13 +9,14 @@ using Unity.PolySpatial;
 
 public class WindowControlMove: WindowControl
 {
-    public float distanceScaling = 10f;
-    private Renderer renderer;
+    public float distanceScaling = 1f;
+    private Renderer controlRenderer;
     private Vector3 lastPosition;
 
-    public void Start()
+    public override void Start()
     {
-        renderer = GetComponent<Renderer>();
+        base.Start();
+        controlRenderer = GetComponent<Renderer>();
     }
 
     public override void OnEvent(Touch touch, SpatialPointerState touchData, Window window)
@@ -24,7 +25,7 @@ public class WindowControlMove: WindowControl
         {
             lastPosition = touchData.interactionPosition;
             window.FollowCamera(true);
-            renderer.material.SetInteger("_Hover_Lock", 1);
+            controlRenderer.material.SetInteger("_Hover_Lock", 1);
             window.FocusControl(Window.Control.Move);
         }
         else if (touch.phase == TouchPhase.Moved)
@@ -33,8 +34,8 @@ public class WindowControlMove: WindowControl
             
             // scale delta position based on distance
             // TODO: optimize ...
-            float distance = Vector3.Distance(window.transform.position, Camera.main.transform.position);
-            deltaPosition *= distance / distanceScaling;
+            // float distance = Vector3.Distance(window.transform.position, Camera.main.transform.position);
+            // deltaPosition *= distance / distanceScaling;
 
             window.transform.position += deltaPosition;
             lastPosition = touchData.interactionPosition;
@@ -42,7 +43,7 @@ public class WindowControlMove: WindowControl
         else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
         {
             window.FollowCamera(false);
-            renderer.material.SetInteger("_Hover_Lock", 0);
+            controlRenderer.material.SetInteger("_Hover_Lock", 0);
             window.FocusControl(null);
         }
     }

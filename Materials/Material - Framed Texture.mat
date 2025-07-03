@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Material - Rounded Rectangle - Style Step
-  m_Shader: {fileID: -6465566751694194690, guid: d412d153cde304086889dcdf0f8e6fa4, type: 3}
+  m_Name: Material - Framed Texture
+  m_Shader: {fileID: -6465566751694194690, guid: 1e3290bc15b1448308f0312dfce2e510, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -24,6 +24,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Texture:
+        m_Texture: {fileID: 2800000, guid: a0fc465d6cf04254a2938578735e2383, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -38,16 +42,18 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Border_Width: 0.001
+    - _Corner_Radius: 0.03
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Border_Width_left_right_bottom_top: {r: 0.1, g: 0.1, b: 0.1, a: 0.3}
-    - _Color: {r: 1, g: 0.9345836, b: 0.004716992, a: 0.7294118}
-    - _Corner_Radius_lb_lt_rb_rt: {r: 0.03, g: 0.03, b: 0.03, a: 0.03}
+    - _Border_Color: {r: 0, g: 0, b: 0, a: 0.7294118}
     - _Padding_left_right_bottom_top: {r: 0, g: 0, b: 0, a: 0}
+    - _Texture_Offset: {r: 0, g: 0, b: 0, a: 0}
+    - _Texture_Size: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &3245185395176691565
+--- !u!114 &7480135999817502631
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
