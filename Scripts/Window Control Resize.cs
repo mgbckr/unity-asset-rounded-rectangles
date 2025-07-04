@@ -47,7 +47,7 @@ public class WindowControlResize: WindowControl
                 Mathf.Sign(deltaX - deltaPosition.y)
                 * Mathf.Sqrt(
                     Mathf.Pow(deltaX, 2f) + Mathf.Pow(deltaPosition.y, 2f));
-            window.ChangeScale(diffScale, diffScale);
+            window.ChangeScale(diffScale);
 
             lastPosition = touchData.interactionPosition;
         }

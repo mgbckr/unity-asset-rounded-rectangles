@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.Networking; // Required for UnityWebRequest and DownloadHandlerTexture
 
@@ -103,7 +104,18 @@ public class Window : MonoBehaviour
         followCamera = track;
     }
 
+    public void ChangeScale(float delta)
+    {
+        Vector2 currentScale = new Vector2(
+            frame.transform.localScale.x,
+            frame.transform.localScale.y
+        );
+        currentScale /= currentScale.MaxComponent();
 
+        float deltaX = delta * currentScale.x;
+        float deltaY = delta * currentScale.y;
+        ChangeScale(deltaX, deltaY);        
+    }
 
     public void ChangeScale(float deltaX, float deltaY)
     {
