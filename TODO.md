@@ -135,9 +135,11 @@
         - [x] retrieve current tabs
     - [ ] implement simple flow
         - [x] listen to MQTT trigger for sending all tabs
-        - [x] send all tabs to MQTT topic  
+        - [x] send all tabs to MQTT topic (not possible to send in one go)
         - [ ] receive tabs on Vision Pro
-        - [ ] display everything
+            - [ ] show everything and then add images
+        - [ ] display everything (nicely)
+        - [ ] allow closing windows
     - [ ] implement flow
         - [ ] br: generate short token / topic name
         - [ ] br: start listening on new topic
