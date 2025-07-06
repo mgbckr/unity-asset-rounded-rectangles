@@ -128,7 +128,7 @@
 ### Functionality (browser)
 
 - [ ] sync windows with browser (this is going to be a complicated one)
-    - [ ] information management
+    - [x] information management
         - [x] br: register and check tab/window events
         - [x] br: store all tabs and windows with screen shots locally (only screenshots really)
             - [x] IndexedDB
@@ -137,9 +137,13 @@
         - [x] listen to MQTT trigger for sending all tabs
         - [x] send all tabs to MQTT topic (not possible to send in one go)
         - [ ] receive tabs on Vision Pro
-            - [ ] show everything and then add images
-        - [ ] display everything (nicely)
+            - [ ] receives something from vision pro
+            - [ ] fix type vs. topic
+            - [ ] connect to window manager
+            - [ ] show everything with placeholders
+            - [ ] add images
         - [ ] allow closing windows
+        - [ ] display everything nicely
     - [ ] implement flow
         - [ ] br: generate short token / topic name
         - [ ] br: start listening on new topic
