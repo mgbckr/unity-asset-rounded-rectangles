@@ -95,7 +95,7 @@
                     - note I had to reset the `Camera Offset`'s position as well as the `Camera Y Offset` on the `XR Origin` to zero, otherwise there was an offset in what was tracked
                 - [x] fix turn around of billboard!?
                     - turns out Quads are just facing away from the user with their front UV .. fixed via rotation
-        - [ ] make controls stay the same size
+        - [x] make controls stay the same size
             - [x] move window behavior implementation from `Input Manager` to `Window`
             - [x] test `Window`
             - [x] placement on scaling
@@ -112,34 +112,43 @@
             - [x] lock control when selected
             - [x] disable non-active controls
             - [x] scale Z movement based on distance from avatar for fast movement further away
-            - [ ] test and optimize on vision pro
-        - [ ] OPTIONAL: window control optimizations
-            - [ ] fix movement distortions when starting very far to the left 
-                ... need to scale movement distance based on distance from hand
-            - [ ] maybe also improve resizing feeling?
-            - [ ] make control size change similar to Vision OS (there seems to be some scaling)
-                - mhm, this is kind of difficult because they scale the frame funnily
-- [ ] Load images from URL?
+            - [x] test and optimize on vision pro
+- [x] Load images from URL?
     - [x] allow loading texture from URL
     - [x] set image ratio automatically
     - [x] add loading and error placeholders / animations
-    - [ ] OPTIONAL: smoothly animated transitions between loading, error, and main image
-    - [ ] OPTIONAL: animate resizing when image is loaded
 - [x] allow non 1x1 texture size (should be covered by auto ratio above)
 - [x] allow non 1x1 objects (quads)
 - [x] Make three or four windows
-- [ ] Test many borders with images ... oh oh!!
+- [x] Test many borders with images ... oh oh!!
     - [x] tried on laptop and it works ... very worried about Vision Pro
-    - [ ] try on vision pro
-
-### Interactive
-
-- [ ] Pan / Zooming (this is a bit tricky because I don't know how controls should work)
-
+    - [x] try on vision pro
+        - too many high quality pictures break kill the app
 
 ### Functionality (browser)
 
 - [ ] sync windows with browser (this is going to be a complicated one)
+    - [ ] information management
+        - [x] br: register and check tab/window events
+        - [x] br: store all tabs and windows with screen shots locally (only screenshots really)
+            - [x] IndexedDB
+        - [x] retrieve current tabs
+    - [ ] implement simple flow
+        - [x] listen to MQTT trigger for sending all tabs
+        - [x] send all tabs to MQTT topic  
+        - [ ] receive tabs on Vision Pro
+        - [ ] display everything
+    - [ ] implement flow
+        - [ ] br: generate short token / topic name
+        - [ ] br: start listening on new topic
+        - [ ] br: display token
+        - [ ] vp: ask for user input of token
+        - [ ] vp: send browser request to browser
+        - [ ] br: browser send URLs and images
+        - [ ] vp: display all URLs and images
+        - [ ] vp: let user close tabs
+        - [ ] vp: send closed events to browser
+        - [ ] br: close tabs
 - [ ] sync tab groups
 - [ ] implement closing window
 - [ ] allow undo of closing window
@@ -161,7 +170,6 @@
 - [ ] login etc :( not fun
 - [ ] THIS IS A FINAL PRODUCT!!!
 
-
 ### MVP 2 (mind mapping)
 
 - [ ] Crop and copy!!!
@@ -172,6 +180,24 @@
 - [ ] figure out how to distinguish between crops and actual browser windows
 
 ## Backlog
+
+### OPTIONAL: Window control optimizations
+- [ ] fix movement distortions when starting very far to the left 
+    ... need to scale movement distance based on distance from hand
+- [ ] maybe also improve resizing feeling?
+- [ ] make control size change similar to Vision OS (there seems to be some scaling)
+    - mhm, this is kind of difficult because they scale the frame funnily
+- [ ] fix initial control size
+- [ ] sometimes there is an overlap so resize controls seem to be scaled wrong
+
+### OPTIONAL: Image loading
+- [ ] OPTIONAL: smoothly animated transitions between loading, error, and main image
+- [ ] OPTIONAL: animate resizing when image is loaded
+
+### Interactive
+
+- [ ] Pan / Zooming (this is a bit tricky because I don't know how controls should work)
+
 
 ### Image content
 
