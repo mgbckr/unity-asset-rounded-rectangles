@@ -285,7 +285,34 @@ public class Window : MonoBehaviour
     public void SetFrameContentFromUrl(string url)
     {
         SetWindowState(WindowState.Loading);
-        StartCoroutine(DownloadAndSetFrameTextureFromUrl(url));
+
+        // handle data URLs
+        if (url.StartsWith("data:image/"))
+        {
+            // Extract base64 data from the URL
+            string base64Data = url.Substring(url.IndexOf(",") + 1);
+            byte[] imageData = System.Convert.FromBase64String(base64Data);
+            Texture2D texture = new Texture2D(2, 2);
+            texture.LoadImage(imageData);
+
+            // automatically set new size ratio to avoid distortion
+            float ratio = texture.height / (float)texture.width;
+            Debug.Log($"Setting frame content from data URL, ratio: {ratio}={texture.height}/{texture.width}");
+            frame.transform.localScale = new Vector3(
+                frame.transform.localScale.x,
+                frame.transform.localScale.x * ratio,
+                frame.transform.localScale.z
+            );
+
+            // set texture
+            frameMaterialContent.SetTexture("_Texture", texture);
+            frameRenderer.material = frameMaterialContent;
+            SetWindowState(WindowState.Content);
+        }
+        else
+        {
+            StartCoroutine(DownloadAndSetFrameTextureFromUrl(url));
+        }
     }
 
     IEnumerator DownloadAndSetFrameTextureFromUrl(string url)
