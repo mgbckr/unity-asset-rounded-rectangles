@@ -137,13 +137,36 @@
         - [x] listen to MQTT trigger for sending all tabs
         - [x] send all tabs to MQTT topic (not possible to send in one go)
         - [ ] receive tabs on Vision Pro
-            - [ ] receives something from vision pro
-            - [ ] fix type vs. topic
-            - [ ] connect to window manager
-            - [ ] show everything with placeholders
-            - [ ] add images
+            - [x] receive something 
+            - [x] fix type vs. topic
+            - [x] connect to window manager
+            - [x] show tabs with images
+            - [x] create some interactive menu (float somewhere in view)
+            - [x] send `tab-request` from VR headset on user presence
+            - [ ] improve menu
+                - [x] implement nice icons
+                - [x] hover effect
+                - [ ] test hover effect
+                - [ ] show / hide menu
+                - [ ] locate menu in view relative to the user
+                - [ ] show loading indicator
+            - [ ] load all tabs
+                - [ ] show tabs from overview message
+                - [ ] sort the tabs nicely
+                - [ ] add images gradually
+                - [ ] send request with request id (time)
+                - [ ] only send updated tabs if not otherwise requested
+                - [ ] smooth loading experience (coroutine?)
+            - [ ] detect user presence
+                - [ ] detect user presence
+                - [ ] send tab request automatically
         - [ ] allow closing windows
-        - [ ] display everything nicely
+            - [ ] close window locally
+            - [ ] send closing event
+            - [ ] allow undo of closing window
+        - [ ] implement quick view on images (zoom in / zoom out)
+        - [ ] OPTIONAL: implement tab cache on VR (if necessary)
+        - [ ] nice way to show menu? (explore some other apps)
     - [ ] implement flow
         - [ ] br: generate short token / topic name
         - [ ] br: start listening on new topic
@@ -156,8 +179,6 @@
         - [ ] vp: send closed events to browser
         - [ ] br: close tabs
 - [ ] sync tab groups
-- [ ] implement closing window
-- [ ] allow undo of closing window
 
 ### MVP 1 (transitional browser)
 
