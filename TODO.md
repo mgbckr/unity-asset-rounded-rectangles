@@ -148,6 +148,9 @@
                 - [x] hover effect
                 - [ ] test hover effect
                 - [ ] show / hide menu
+                    - [ ] try other apps and see how they handle menus
+                    - [ ] check new input system
+                    - [ ] try to capture menu button action
                 - [ ] locate menu in view relative to the user
                 - [ ] show loading indicator
             - [ ] load all tabs
