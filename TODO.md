@@ -146,13 +146,10 @@
             - [ ] improve menu
                 - [x] implement nice icons
                 - [x] hover effect
-                - [ ] test hover effect
-                - [ ] show / hide menu
-                    - [ ] try other apps and see how they handle menus
-                    - [ ] check new input system
-                    - [ ] try to capture menu button action
-                - [ ] locate menu in view relative to the user
-                - [ ] show loading indicator
+                - [x] test hover effect
+                - [x] make menu movable
+                - [x] locate menu in view relative to the user
+                - [x] nicer menu
             - [ ] load all tabs
                 - [ ] show tabs from overview message
                 - [ ] sort the tabs nicely
@@ -160,6 +157,8 @@
                 - [ ] send request with request id (time)
                 - [ ] only send updated tabs if not otherwise requested
                 - [ ] smooth loading experience (coroutine?)
+                - [ ] show loading indicator
+                - [ ] fix large image issue if possible
             - [ ] detect user presence
                 - [ ] detect user presence
                 - [ ] send tab request automatically
@@ -168,7 +167,6 @@
             - [ ] send closing event
             - [ ] allow undo of closing window
         - [ ] implement quick view on images (zoom in / zoom out)
-        - [ ] OPTIONAL: implement tab cache on VR (if necessary)
         - [ ] nice way to show menu? (explore some other apps)
     - [ ] implement flow
         - [ ] br: generate short token / topic name
@@ -182,6 +180,11 @@
         - [ ] vp: send closed events to browser
         - [ ] br: close tabs
 - [ ] sync tab groups
+- [ ] OPTIONAL: show / hide menu
+    - [ ] try other apps and see how they handle menus
+    - [ ] check new input system
+    - [ ] try to capture menu button action
+- [ ] OPTIONAL: implement tab cache on VR (if necessary)
 
 ### MVP 1 (transitional browser)
 
