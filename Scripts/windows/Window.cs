@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.Networking; // Required for UnityWebRequest and DownloadHandlerTexture
@@ -10,14 +11,16 @@ public class Window : MonoBehaviour
     public float minimumWidth = 0.25f;
     public float minScaleFactor = 1.0f;
 
+    private Material frameMaterialContentEmpty;
     public Material frameMaterialContent;
     public Material frameMaterialError;
     public Material frameMaterialLoading;
 
-    private Transform cameraTransform;
+    public Transform cameraTransform;
 
     private bool followCamera = false;
 
+    public TextMeshPro title;
     private GameObject frame;
     private GameObject controls;
     private GameObject controls_move;
@@ -41,6 +44,7 @@ public class Window : MonoBehaviour
     {
         Loading,
         Error,
+        Title,
         Content
     }
 
@@ -63,6 +67,10 @@ public class Window : MonoBehaviour
         // Find the frame GameObject in the children of this GameObject
         frame = transform.Find("Frame").gameObject;
 
+        // Find the title TextMeshPro component in the children of this GameObject
+        title = transform.Find("Title").Find("Content").GetComponent<TextMeshPro>();
+        title.text = "";
+
         // Find the controls GameObject iin the children of this GameObject
         controls = transform.Find("Controls").gameObject;
         controls_move = controls.transform.Find("Move").gameObject;
@@ -73,6 +81,8 @@ public class Window : MonoBehaviour
         // Get the Renderer component of the frame
         frameRenderer = frame.GetComponent<Renderer>();
 
+        // save original material
+        frameMaterialContentEmpty = frameRenderer.material;
         // Copy content material
         frameMaterialContent = new Material(frameMaterialContent);
 
@@ -99,9 +109,36 @@ public class Window : MonoBehaviour
         }
     }
 
+    public void SetTitle(string newTitle)
+    {
+        title.text = newTitle;
+    }
+
     public void FollowCamera(bool track)
     {
         followCamera = track;
+    }
+
+    public void SetScale(float x, float y)
+    {
+        Vector2 currentScale = new Vector2(
+            frame.transform.localScale.x,
+            frame.transform.localScale.y
+        );
+        Vector2 newScale = new Vector2(x, y);
+        Debug.Log($"Current scale: {currentScale}");
+        Debug.Log($"New scale: {newScale}");
+
+        var diff = newScale - currentScale;
+        ChangeScale(diff.x, diff.y);
+    }
+
+    public Vector2 GetScale()
+    {
+        return new Vector2(
+            frame.transform.localScale.x,
+            frame.transform.localScale.y
+        );
     }
 
     public void ChangeScale(float delta)
@@ -114,14 +151,16 @@ public class Window : MonoBehaviour
 
         float deltaX = delta * currentScale.x;
         float deltaY = delta * currentScale.y;
-        ChangeScale(deltaX, deltaY);        
+        ChangeScale(deltaX, deltaY);
     }
 
     public void ChangeScale(float deltaX, float deltaY)
     {
 
-        Vector3 currentScale = frame.transform.localScale;
+        Debug.Log($"Changing scale by deltaX: {deltaX}, deltaY: {deltaY}");
+
         frame.transform.localScale += new Vector3(deltaX, deltaY, 0f);
+        Vector3 currentScale = frame.transform.localScale;
         if (frame.transform.localScale.x < minimumWidth)
         {
             frame.transform.localScale = new Vector3(minimumWidth, currentScale.y, currentScale.z);
@@ -130,6 +169,11 @@ public class Window : MonoBehaviour
         {
             frame.transform.localScale = new Vector3(currentScale.x, 0.1f, currentScale.z);
         }
+        title.transform.localScale = new Vector3(
+            frame.transform.localScale.x * 0.8f,
+            frame.transform.localScale.y * 0.8f,
+            1f
+        );
         UpdateControls();
     }
 
@@ -268,6 +312,7 @@ public class Window : MonoBehaviour
             frameRenderer = frame.GetComponent<Renderer>();
         }
 
+        title.gameObject.SetActive(false);
         switch (state)
         {
             case WindowState.Loading:
@@ -279,6 +324,10 @@ public class Window : MonoBehaviour
             case WindowState.Content:
                 frameRenderer.material = frameMaterialContent;
                 break;
+            case WindowState.Title:
+                frameRenderer.material = frameMaterialContentEmpty;
+                title.gameObject.SetActive(true);
+                break;
         }
     }
 
@@ -289,30 +338,37 @@ public class Window : MonoBehaviour
         // handle data URLs
         if (url.StartsWith("data:image/"))
         {
-            // Extract base64 data from the URL
-            string base64Data = url.Substring(url.IndexOf(",") + 1);
-            byte[] imageData = System.Convert.FromBase64String(base64Data);
-            Texture2D texture = new Texture2D(2, 2);
-            texture.LoadImage(imageData);
-
-            // automatically set new size ratio to avoid distortion
-            float ratio = texture.height / (float)texture.width;
-            Debug.Log($"Setting frame content from data URL, ratio: {ratio}={texture.height}/{texture.width}");
-            frame.transform.localScale = new Vector3(
-                frame.transform.localScale.x,
-                frame.transform.localScale.x * ratio,
-                frame.transform.localScale.z
-            );
-
-            // set texture
-            frameMaterialContent.SetTexture("_Texture", texture);
-            frameRenderer.material = frameMaterialContent;
-            SetWindowState(WindowState.Content);
+            StartCoroutine(SetFrameContentFromDataUrl(url));
         }
         else
         {
             StartCoroutine(DownloadAndSetFrameTextureFromUrl(url));
         }
+    }
+
+    IEnumerator SetFrameContentFromDataUrl(string dataUrl)
+    {
+        // Extract base64 data from the URL
+        string base64Data = dataUrl.Substring(dataUrl.IndexOf(",") + 1);
+        byte[] imageData = System.Convert.FromBase64String(base64Data);
+        Texture2D texture = new Texture2D(2, 2);
+        texture.LoadImage(imageData);
+
+        // automatically set new size ratio to avoid distortion
+        float ratio = texture.height / (float)texture.width;
+        Debug.Log($"Setting frame content from data URL, ratio: {ratio}={texture.height}/{texture.width}");
+        frame.transform.localScale = new Vector3(
+            frame.transform.localScale.x,
+            frame.transform.localScale.x * ratio,
+            frame.transform.localScale.z
+        );
+
+        // set texture
+        frameMaterialContent.SetTexture("_Texture", texture);
+        frameRenderer.material = frameMaterialContent;
+        SetWindowState(WindowState.Content);
+
+        yield return null; // Wait for the end of the frame to ensure the texture is applied
     }
 
     IEnumerator DownloadAndSetFrameTextureFromUrl(string url)

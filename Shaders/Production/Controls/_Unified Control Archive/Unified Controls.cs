@@ -4,7 +4,7 @@ public class UnifiedControls : MonoBehaviour
 {
     public Material material;
     private RenderTexture A, B;
-    private bool useA = true; // toggle between A and B
+    // private bool useA = true; // toggle between A and B
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
