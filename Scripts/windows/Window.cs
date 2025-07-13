@@ -28,6 +28,8 @@ public class Window : MonoBehaviour
     private GameObject controls_right;
     private GameObject controls_close;
 
+    private GameObject closingDialog;
+
     private Renderer frameRenderer;
 
     private float lastDistanceScaleFactor = 1f;
@@ -77,6 +79,9 @@ public class Window : MonoBehaviour
         controls_left = controls.transform.Find("Resize Left").gameObject;
         controls_right = controls.transform.Find("Resize Right").gameObject;
         controls_close = controls.transform.Find("Close").gameObject;
+
+        closingDialog = transform.Find("Closing Dialog").gameObject;
+        // closingDialog.SetActive(false);
 
         // Get the Renderer component of the frame
         frameRenderer = frame.GetComponent<Renderer>();
@@ -170,6 +175,11 @@ public class Window : MonoBehaviour
             frame.transform.localScale = new Vector3(currentScale.x, 0.1f, currentScale.z);
         }
         title.transform.localScale = new Vector3(
+            frame.transform.localScale.x * 0.8f,
+            frame.transform.localScale.y * 0.8f,
+            1f
+        );
+        closingDialog.transform.localScale = new Vector3(
             frame.transform.localScale.x * 0.8f,
             frame.transform.localScale.y * 0.8f,
             1f
