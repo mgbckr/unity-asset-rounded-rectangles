@@ -225,6 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minimumWidth: 0.25
   minScaleFactor: 1
+  closingDelay: 3
   frameMaterialContent: {fileID: 2100000, guid: 597d54bcbca314e0eaa9002ded800ec1, type: 2}
   frameMaterialError: {fileID: 2100000, guid: 5e8445dc5d11a4fb2be494cfa450194b, type: 2}
   frameMaterialLoading: {fileID: 2100000, guid: b390b46b2f4414239a10f502f23493b6, type: 2}
@@ -446,7 +447,7 @@ GameObject:
   - component: {fileID: 4841074305138355798}
   - component: {fileID: 1408542134509587171}
   m_Layer: 0
-  m_Name: Countdown
+  m_Name: Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -799,6 +800,7 @@ GameObject:
   - component: {fileID: 6774046184508351826}
   - component: {fileID: 745021602627941869}
   - component: {fileID: 654236854264249334}
+  - component: {fileID: 7428567534111332628}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -914,6 +916,19 @@ MonoBehaviour:
   m_IntensityMultiplier: 1
   m_FadeInDuration: 0
   m_FadeOutDuration: 0
+--- !u!114 &7428567534111332628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3197560595018644500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 828091f88b48c40c88d5671e060c69b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 1
 --- !u!1 &4481330165423314189
 GameObject:
   m_ObjectHideFlags: 0
@@ -1103,6 +1118,7 @@ GameObject:
   - component: {fileID: 1217793328823116206}
   - component: {fileID: 400844352286356620}
   - component: {fileID: 3440221555241488847}
+  - component: {fileID: 4079954794526957446}
   m_Layer: 0
   m_Name: Close
   m_TagString: Untagged
@@ -1217,6 +1233,19 @@ MonoBehaviour:
   m_IntensityMultiplier: 1
   m_FadeInDuration: 0.3
   m_FadeOutDuration: 0.3
+--- !u!114 &4079954794526957446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4731566323267217495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c9a415a80f594b09884e811d2c90b86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 1
 --- !u!1 &5750285455952899565
 GameObject:
   m_ObjectHideFlags: 0

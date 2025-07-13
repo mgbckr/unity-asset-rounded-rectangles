@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using Unity.XR.CoreUtils;
@@ -10,6 +11,9 @@ public class Window : MonoBehaviour
 
     public float minimumWidth = 0.25f;
     public float minScaleFactor = 1.0f;
+    public float closingDelay = 3f;
+    
+    private float closingTime = -1f;
 
     private Material frameMaterialContentEmpty;
     public Material frameMaterialContent;
@@ -29,10 +33,15 @@ public class Window : MonoBehaviour
     private GameObject controls_close;
 
     private GameObject closingDialog;
+    private GameObject closingDialog_timer;
 
     private Renderer frameRenderer;
 
     private float lastDistanceScaleFactor = 1f;
+
+    private bool hasContent = false;
+
+    public Action onClosed; 
 
     public enum Control
     {
@@ -46,8 +55,9 @@ public class Window : MonoBehaviour
     {
         Loading,
         Error,
+        Content,
         Title,
-        Content
+        Closing
     }
 
     void Start()
@@ -81,7 +91,8 @@ public class Window : MonoBehaviour
         controls_close = controls.transform.Find("Close").gameObject;
 
         closingDialog = transform.Find("Closing Dialog").gameObject;
-        // closingDialog.SetActive(false);
+        closingDialog_timer = closingDialog.transform.Find("Timer").gameObject;
+        closingDialog.SetActive(false);
 
         // Get the Renderer component of the frame
         frameRenderer = frame.GetComponent<Renderer>();
@@ -112,6 +123,24 @@ public class Window : MonoBehaviour
                 transform.Rotate(0, 180f, 0);
             }
         }
+
+        if (closingTime > 0)
+        {
+            // Check if the closing time has passed
+            if (Time.time >= closingTime)
+            {
+                // Close the window
+                Debug.Log("Closing window after delay.");
+                onClosed?.Invoke();
+                Destroy(gameObject);
+            }
+            else
+            {
+                // Update the timer text
+                float remainingTime = closingTime - Time.time;
+                closingDialog_timer.GetComponent<TextMeshPro>().text = remainingTime.ToString("F0");
+            }
+        }
     }
 
     public void SetTitle(string newTitle)
@@ -123,6 +152,25 @@ public class Window : MonoBehaviour
     {
         followCamera = track;
     }
+
+    public void StartClosing()
+    {
+        Debug.Log("Closing window...");
+        // Start the closing dialog
+        SetWindowState(WindowState.Closing);
+        closingDialog_timer.GetComponent<TextMeshPro>().text = closingDelay.ToString("F0");
+
+        closingTime = Time.time + closingDelay;
+    }
+
+    public void StopClosing()
+    {
+        Debug.Log("Stopping closing window...");
+        // Stop the closing dialog
+        SetWindowState(WindowState.Content);
+        closingTime = -1f;
+    }
+    
 
     public void SetScale(float x, float y)
     {
@@ -323,6 +371,7 @@ public class Window : MonoBehaviour
         }
 
         title.gameObject.SetActive(false);
+        closingDialog.SetActive(false);
         switch (state)
         {
             case WindowState.Loading:
@@ -332,11 +381,23 @@ public class Window : MonoBehaviour
                 frameRenderer.material = frameMaterialError;
                 break;
             case WindowState.Content:
-                frameRenderer.material = frameMaterialContent;
+                if (hasContent)
+                {
+                    frameRenderer.material = frameMaterialContent;
+                }
+                else
+                {
+                    frameRenderer.material = frameMaterialContentEmpty;
+                    title.gameObject.SetActive(true);
+                }
                 break;
             case WindowState.Title:
                 frameRenderer.material = frameMaterialContentEmpty;
                 title.gameObject.SetActive(true);
+                break;
+            case WindowState.Closing:
+                frameRenderer.material = frameMaterialContentEmpty;
+                closingDialog.gameObject.SetActive(true);
                 break;
         }
     }
