@@ -227,11 +227,9 @@ public class Window : MonoBehaviour
             frame.transform.localScale.y * 0.8f,
             1f
         );
-        closingDialog.transform.localScale = new Vector3(
-            frame.transform.localScale.x * 0.8f,
-            frame.transform.localScale.y * 0.8f,
-            1f
-        );
+
+        float minDim = Mathf.Min(frame.transform.localScale.x, frame.transform.localScale.y) * 0.8f;
+        closingDialog.transform.localScale = new Vector3(minDim, minDim, 1f);
         UpdateControls();
     }
 
@@ -437,6 +435,8 @@ public class Window : MonoBehaviour
         // set texture
         frameMaterialContent.SetTexture("_Texture", texture);
         frameRenderer.material = frameMaterialContent;
+
+        hasContent = true; // Mark that the window has content
         SetWindowState(WindowState.Content);
 
         yield return null; // Wait for the end of the frame to ensure the texture is applied
@@ -458,7 +458,7 @@ public class Window : MonoBehaviour
                 Texture2D texture = DownloadHandlerTexture.GetContent(uwr);
 
                 // automatically set new size ratio to avoid distortion
-                float ratio = texture.height / (float) texture.width;
+                float ratio = texture.height / (float)texture.width;
                 Debug.Log($"Setting frame content from URL: {url}, ratio: {ratio}={texture.height}/{texture.width}");
                 frame.transform.localScale = new Vector3(
                     frame.transform.localScale.x,
@@ -469,7 +469,10 @@ public class Window : MonoBehaviour
                 // set texture
                 frameMaterialContent.SetTexture("_Texture", texture);
                 frameRenderer.material = frameMaterialContent;
+
+                hasContent = true; // Mark that the window has content
                 SetWindowState(WindowState.Content);
+                
             }
         }
     }
