@@ -104,6 +104,7 @@ public class Window : MonoBehaviour
 
         // Set window state to loading
         SetWindowState(WindowState.Loading);
+        ChangeScale(0f);
     }
 
     void Update()
@@ -400,32 +401,17 @@ public class Window : MonoBehaviour
         }
     }
 
-    public void SetFrameContentFromUrl(string url)
+    public void SetFrameContent(Texture2D texture)
     {
-        SetWindowState(WindowState.Loading);
-
-        // handle data URLs
-        if (url.StartsWith("data:image/"))
+        if (texture == null)
         {
-            StartCoroutine(SetFrameContentFromDataUrl(url));
+            Debug.LogError("Texture is null. Cannot set frame content.");
+            return;
         }
-        else
-        {
-            StartCoroutine(DownloadAndSetFrameTextureFromUrl(url));
-        }
-    }
-
-    IEnumerator SetFrameContentFromDataUrl(string dataUrl)
-    {
-        // Extract base64 data from the URL
-        string base64Data = dataUrl.Substring(dataUrl.IndexOf(",") + 1);
-        byte[] imageData = System.Convert.FromBase64String(base64Data);
-        Texture2D texture = new Texture2D(2, 2);
-        texture.LoadImage(imageData);
 
         // automatically set new size ratio to avoid distortion
         float ratio = texture.height / (float)texture.width;
-        Debug.Log($"Setting frame content from data URL, ratio: {ratio}={texture.height}/{texture.width}");
+        Debug.Log($"Setting frame content, ratio: {ratio}={texture.height}/{texture.width}");
         frame.transform.localScale = new Vector3(
             frame.transform.localScale.x,
             frame.transform.localScale.x * ratio,
@@ -433,48 +419,93 @@ public class Window : MonoBehaviour
         );
 
         // set texture
+        Destroy(frameMaterialContent.GetTexture("_Texture"));
         frameMaterialContent.SetTexture("_Texture", texture);
         frameRenderer.material = frameMaterialContent;
 
         hasContent = true; // Mark that the window has content
         SetWindowState(WindowState.Content);
-
-        yield return null; // Wait for the end of the frame to ensure the texture is applied
+        ChangeScale(0f);
     }
 
-    IEnumerator DownloadAndSetFrameTextureFromUrl(string url)
-    {
-        using (UnityWebRequest uwr = UnityWebRequestTexture.GetTexture(url))
-        {
-            yield return uwr.SendWebRequest();
+    // public void SetFrameContentFromUrl(string url)
+    // {
+    //     SetWindowState(WindowState.Loading);
 
-            if (uwr.result != UnityWebRequest.Result.Success)
-            {
-                Debug.LogError("Image download failed: " + uwr.error);
-                SetWindowState(WindowState.Error);
-            }
-            else
-            {
-                Texture2D texture = DownloadHandlerTexture.GetContent(uwr);
+    //     // handle data URLs
+    //     if (url.StartsWith("data:image/"))
+    //     {
+    //         StartCoroutine(SetFrameContentFromDataUrl(url));
+    //     }
+    //     else
+    //     {
+    //         StartCoroutine(DownloadAndSetFrameTextureFromUrl(url));
+    //     }
+    // }
 
-                // automatically set new size ratio to avoid distortion
-                float ratio = texture.height / (float)texture.width;
-                Debug.Log($"Setting frame content from URL: {url}, ratio: {ratio}={texture.height}/{texture.width}");
-                frame.transform.localScale = new Vector3(
-                    frame.transform.localScale.x,
-                    frame.transform.localScale.x * ratio,
-                    frame.transform.localScale.z
-                );
+    // IEnumerator SetFrameContentFromDataUrl(string dataUrl)
+    // {
+    //     // Extract base64 data from the URL
+    //     string base64Data = dataUrl.Substring(dataUrl.IndexOf(",") + 1);
+    //     byte[] imageData = System.Convert.FromBase64String(base64Data);
+    //     Texture2D texture = new Texture2D(2, 2);
+    //     texture.LoadImage(imageData);
 
-                // set texture
-                frameMaterialContent.SetTexture("_Texture", texture);
-                frameRenderer.material = frameMaterialContent;
+    //     // automatically set new size ratio to avoid distortion
+    //     float ratio = texture.height / (float)texture.width;
+    //     Debug.Log($"Setting frame content from data URL, ratio: {ratio}={texture.height}/{texture.width}");
+    //     frame.transform.localScale = new Vector3(
+    //         frame.transform.localScale.x,
+    //         frame.transform.localScale.x * ratio,
+    //         frame.transform.localScale.z
+    //     );
 
-                hasContent = true; // Mark that the window has content
-                SetWindowState(WindowState.Content);
-                
-            }
-        }
-    }
+    //     // set texture
+    //     frameMaterialContent.SetTexture("_Texture", texture);
+    //     frameRenderer.material = frameMaterialContent;
+
+    //     hasContent = true; // Mark that the window has content
+    //     SetWindowState(WindowState.Content);
+    //     ChangeScale(0f);
+
+    //     yield return null; // Wait for the end of the frame to ensure the texture is applied
+    // }
+
+    // IEnumerator DownloadAndSetFrameTextureFromUrl(string url)
+    // {
+    //     using (UnityWebRequest uwr = UnityWebRequestTexture.GetTexture(url))
+    //     {
+    //         yield return uwr.SendWebRequest();
+
+    //         if (uwr.result != UnityWebRequest.Result.Success)
+    //         {
+    //             Debug.LogError("Image download failed: " + uwr.error);
+    //             Debug.LogError("Response: " + uwr.downloadHandler.text); // helpful if it's HTML error
+    //             SetWindowState(WindowState.Error);
+    //         }
+    //         else
+    //         {
+    //             Texture2D texture = DownloadHandlerTexture.GetContent(uwr);
+
+    //             // automatically set new size ratio to avoid distortion
+    //             float ratio = texture.height / (float)texture.width;
+    //             Debug.Log($"Setting frame content from URL: {url}, ratio: {ratio}={texture.height}/{texture.width}");
+    //             frame.transform.localScale = new Vector3(
+    //                 frame.transform.localScale.x,
+    //                 frame.transform.localScale.x * ratio,
+    //                 frame.transform.localScale.z
+    //             );
+
+    //             // set texture
+    //             frameMaterialContent.SetTexture("_Texture", texture);
+    //             frameRenderer.material = frameMaterialContent;
+
+    //             hasContent = true; // Mark that the window has content
+    //             SetWindowState(WindowState.Content);
+    //             ChangeScale(0f);
+
+    //         }
+    //     }
+    // }
 
 }
