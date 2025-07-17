@@ -12,7 +12,7 @@ public class Window : MonoBehaviour
     public float minimumWidth = 0.25f;
     public float minScaleFactor = 1.0f;
     public float closingDelay = 3f;
-    
+
     private float closingTime = -1f;
 
     private Material frameMaterialContentEmpty;
@@ -41,7 +41,9 @@ public class Window : MonoBehaviour
 
     private bool hasContent = false;
 
-    public Action onClosed; 
+    public Action onClosed;
+
+    public Texture2D currentContentTexture;
 
     public enum Control
     {
@@ -171,7 +173,7 @@ public class Window : MonoBehaviour
         SetWindowState(WindowState.Content);
         closingTime = -1f;
     }
-    
+
 
     public void SetScale(float x, float y)
     {
@@ -241,7 +243,7 @@ public class Window : MonoBehaviour
         RepositionControls();
     }
 
-    
+
     private void RepositionControls()
     {
 
@@ -264,23 +266,23 @@ public class Window : MonoBehaviour
         );
 
         controls_left.transform.localPosition = new Vector3(
-            - (
+            -(
                 frame.transform.localScale.x / 2
                 - controls_left.transform.localScale.x / 2
                 + controls_left.transform.localScale.y / 2),
             0,
             0
         );
-        
+
         controls_right.transform.localPosition = new Vector3(
-            + (
+            +(
                 frame.transform.localScale.x / 2
                 - controls_right.transform.localScale.x / 2
                 + controls_right.transform.localScale.y / 2),
             0,
             0
         );
-    } 
+    }
 
 
     private void ScaleControlsWithDistance()
@@ -301,7 +303,7 @@ public class Window : MonoBehaviour
         Vector3 closeScale = Vector3.Scale(controls_close.transform.localScale, scaleVector);
 
         // Calculate scale of left/right resize 
-        float resizeSize = frame.transform.localScale.x / 2 
+        float resizeSize = frame.transform.localScale.x / 2
             - (moveScale.x / 2 + closeScale.x * 1.1f)
             + moveScale.y;
 
@@ -359,7 +361,7 @@ public class Window : MonoBehaviour
             controls_left.SetActive(true);
             controls_right.SetActive(true);
             controls_close.SetActive(true);
-        } 
+        }
     }
 
     public void SetWindowState(WindowState state)
@@ -418,15 +420,23 @@ public class Window : MonoBehaviour
             frame.transform.localScale.z
         );
 
-        // set texture
-        Destroy(frameMaterialContent.GetTexture("_Texture"));
+        // set texture 
         frameMaterialContent.SetTexture("_Texture", texture);
         frameRenderer.material = frameMaterialContent;
 
+        currentContentTexture = texture;
         hasContent = true; // Mark that the window has content
         SetWindowState(WindowState.Content);
         ChangeScale(0f);
     }
+
+    // public void OnDestroy()
+    // {
+    //     if (currentContentTexture != null)
+    //     {
+    //         Destroy(currentContentTexture); // Clean up the texture to avoid memory leaks
+    //     }
+    // }
 
     // public void SetFrameContentFromUrl(string url)
     // {
