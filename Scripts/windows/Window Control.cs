@@ -1,17 +1,15 @@
 using UnityEngine;
-using Unity.PolySpatial.InputDevices;
-using UnityEngine.InputSystem.EnhancedTouch;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 using UnityEngine.InputSystem.LowLevel;
-using Unity.PolySpatial;
 
 
-public abstract class WindowControl: MonoBehaviour, SpatialPointerStateListener
+public class WindowControl: MonoBehaviour, SpatialPointerStateListener
 {
+    public string type = null;
     private Window window;
 
-    public abstract void OnEvent(Touch touch, SpatialPointerState touchData, Window window);
+    public virtual void OnEvent(Touch touch, SpatialPointerState touchData, Window window) {}
 
     public virtual void Start()
     {
@@ -26,6 +24,10 @@ public abstract class WindowControl: MonoBehaviour, SpatialPointerStateListener
     public void OnEvent(Touch touch, SpatialPointerState touchData)
     {
         OnEvent(touch, touchData, window);
+        if (touch.phase == TouchPhase.Ended && type != null && type.Length > 0)
+        {
+            window.OnControlClicked(this);
+        }
     }
 
     public static Transform FindParentByName(Transform child, string parentName)

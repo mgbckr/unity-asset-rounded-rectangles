@@ -41,9 +41,10 @@ public class Window : MonoBehaviour
 
     private bool hasContent = false;
 
-    public Action onClosed;
-
     public Texture2D currentContentTexture;
+
+    public Action onClosed;
+    public Action<WindowControl> onControlClicked;
 
     public enum Control
     {
@@ -428,6 +429,12 @@ public class Window : MonoBehaviour
         hasContent = true; // Mark that the window has content
         SetWindowState(WindowState.Content);
         ChangeScale(0f);
+    }
+
+    public void OnControlClicked(WindowControl control)
+    {
+        Debug.Log($"Control clicked: {control.type}");
+        onControlClicked?.Invoke(control);
     }
 
     // public void OnDestroy()

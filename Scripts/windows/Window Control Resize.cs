@@ -9,7 +9,6 @@ using Unity.PolySpatial;
 
 public class WindowControlResize: WindowControl
 {
-
     private Renderer controlRenderer;
     private Vector3 lastPosition;
 
