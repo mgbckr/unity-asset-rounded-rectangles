@@ -46,13 +46,20 @@ public class WindowControlQuickView: WindowControl
             }
             else
             {
-                originalPosition = window.transform.position;
-                originalRotation = window.transform.rotation;
-                originalScale = window.GetScale();
-                window.transform.position = Camera.main.transform.position + Camera.main.transform.forward * distance;
-                window.transform.LookAt(Camera.main.transform.position);
-                window.transform.Rotate(0, 180, 0); // Adjust rotation to face the camera
-                quickView = true;
+                if (window.cameraTransform != null)
+                {
+                    originalPosition = window.transform.position;
+                    originalRotation = window.transform.rotation;
+                    originalScale = window.GetScale();
+                    window.transform.position = window.cameraTransform.position + window.cameraTransform.forward * distance;
+                    window.transform.LookAt(window.cameraTransform.position);
+                    window.transform.Rotate(0, 180, 0); // Adjust rotation to face the camera
+                    quickView = true;
+                }
+                else
+                {
+                    Debug.LogWarning("WindowControlQuickView: No camera found to align to.");
+                }
             }
 
 

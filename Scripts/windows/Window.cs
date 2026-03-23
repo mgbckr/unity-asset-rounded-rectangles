@@ -73,10 +73,15 @@ public class Window : MonoBehaviour
         // when a Prefab is instantiated. Start is not.
 
         // Find the camera transform in the scene
-        cameraTransform = Camera.main != null ? Camera.main.transform : null;
+        Camera cam = Camera.main;
+        if (cam == null)
+        {
+            cam = FindObjectOfType<Camera>();
+        }
+        cameraTransform = cam != null ? cam.transform : null;
         if (cameraTransform == null)
         {
-            Debug.LogError("No camera found in the scene. Please ensure there is a Camera with the MainCamera tag.");
+            Debug.LogWarning("No camera found in the scene. Please ensure there is a Camera. Control scaling will be disabled.");
         }
 
         // Find the frame GameObject in the children of this GameObject
@@ -288,6 +293,7 @@ public class Window : MonoBehaviour
 
     private void ScaleControlsWithDistance()
     {
+        if (cameraTransform == null) return;
 
         // Calculate the distance from the camera
         float distance = Vector3.Distance(frame.transform.position, cameraTransform.position);
