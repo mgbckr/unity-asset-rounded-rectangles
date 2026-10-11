@@ -13,6 +13,9 @@ public class Window : MonoBehaviour
     public float minScaleFactor = 1.0f;
     public float closingDelay = 3f;
 
+    // Hidden until opening a window's content is implemented
+    public bool showOpenControl = false;
+
     private float closingTime = -1f;
 
     private Material frameMaterialContentEmpty;
@@ -31,6 +34,7 @@ public class Window : MonoBehaviour
     private GameObject controls_left;
     private GameObject controls_right;
     private GameObject controls_close;
+    private GameObject controls_open;
 
     private GameObject closingDialog;
     private GameObject closingDialog_timer;
@@ -51,7 +55,8 @@ public class Window : MonoBehaviour
         Move,
         ResizeLeft,
         ResizeRight,
-        Close
+        Close,
+        Open
     }
 
     public enum WindowState
@@ -97,6 +102,8 @@ public class Window : MonoBehaviour
         controls_left = controls.transform.Find("Resize Left").gameObject;
         controls_right = controls.transform.Find("Resize Right").gameObject;
         controls_close = controls.transform.Find("Close").gameObject;
+        controls_open = controls.transform.Find("Open").gameObject;
+        controls_open.SetActive(showOpenControl);
 
         closingDialog = transform.Find("Closing Dialog").gameObject;
         closingDialog_timer = closingDialog.transform.Find("Timer").gameObject;
@@ -271,6 +278,13 @@ public class Window : MonoBehaviour
             0
         );
 
+        // Mirrors the close control on the other side of the move control
+        controls_open.transform.localPosition = new Vector3(
+            +(controls_move.transform.localScale.x / 2 + controls_open.transform.localScale.x / 2 * 1.1f),
+            -controls_open.transform.localScale.y / 2,
+            0
+        );
+
         controls_left.transform.localPosition = new Vector3(
             -(
                 frame.transform.localScale.x / 2
@@ -308,6 +322,7 @@ public class Window : MonoBehaviour
         Vector3 leftScale = Vector3.Scale(controls_left.transform.localScale, scaleVector);
         Vector3 rightScale = Vector3.Scale(controls_right.transform.localScale, scaleVector);
         Vector3 closeScale = Vector3.Scale(controls_close.transform.localScale, scaleVector);
+        Vector3 openScale = Vector3.Scale(controls_open.transform.localScale, scaleVector);
 
         // Calculate scale of left/right resize 
         float resizeSize = frame.transform.localScale.x / 2
@@ -347,6 +362,7 @@ public class Window : MonoBehaviour
         controls_left.transform.localScale = leftScale;
         controls_right.transform.localScale = rightScale;
         controls_close.transform.localScale = closeScale;
+        controls_open.transform.localScale = openScale;
 
         // Update the last distance scale factor
         lastDistanceScaleFactor = scaleFactor;
@@ -360,6 +376,7 @@ public class Window : MonoBehaviour
         controls_left.SetActive(control == Control.ResizeLeft);
         controls_right.SetActive(control == Control.ResizeRight);
         controls_close.SetActive(control == Control.Close);
+        controls_open.SetActive(showOpenControl && control == Control.Open);
 
         // If no control is specified, activate all controls
         if (control == null)
@@ -368,6 +385,7 @@ public class Window : MonoBehaviour
             controls_left.SetActive(true);
             controls_right.SetActive(true);
             controls_close.SetActive(true);
+            controls_open.SetActive(showOpenControl);
         }
     }
 
