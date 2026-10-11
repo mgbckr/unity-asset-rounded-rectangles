@@ -76,7 +76,7 @@ public class Window : MonoBehaviour
         Camera cam = Camera.main;
         if (cam == null)
         {
-            cam = FindObjectOfType<Camera>();
+            cam = FindFirstObjectByType<Camera>();
         }
         cameraTransform = cam != null ? cam.transform : null;
         if (cameraTransform == null)
