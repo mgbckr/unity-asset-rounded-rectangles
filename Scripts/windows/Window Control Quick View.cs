@@ -43,6 +43,8 @@ public class WindowControlQuickView: WindowControl
                 window.transform.rotation = originalRotation;
                 window.SetScale(originalScale.x, originalScale.y);
                 quickView = false;
+                // if the layout changed meanwhile, the window glides to its new place
+                window.inQuickView = false;
             }
             else
             {
@@ -55,6 +57,7 @@ public class WindowControlQuickView: WindowControl
                     window.transform.LookAt(window.cameraTransform.position);
                     window.transform.Rotate(0, 180, 0); // Adjust rotation to face the camera
                     quickView = true;
+                    window.inQuickView = true;
                 }
                 else
                 {

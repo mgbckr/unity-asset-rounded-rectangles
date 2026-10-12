@@ -47,6 +47,16 @@ public class Window : MonoBehaviour
 
     public Texture2D currentContentTexture;
 
+    // Where the layout wants the window, local to its parent. The window glides there when
+    // the layout changes, unless the user moved it or it is in quick view.
+    private Vector3? layoutPosition;
+    public float layoutGlideSpeed = 8f;
+    [NonSerialized] public bool movedByUser = false;
+    [NonSerialized] public bool inQuickView = false;
+
+    public bool HasContent => hasContent;
+    public bool IsClosing => closingTime > 0;
+
     public Action onClosed;
     public Action<WindowControl> onControlClicked;
 
@@ -126,6 +136,7 @@ public class Window : MonoBehaviour
     {
 
         UpdateControls();
+        GlideToLayoutPosition();
 
         // Check if the lookAtTarget is assigned
         if (cameraTransform != null)
@@ -162,6 +173,33 @@ public class Window : MonoBehaviour
     public void SetTitle(string newTitle)
     {
         title.text = newTitle;
+    }
+
+    public void SetLayoutPosition(Vector3 localPosition)
+    {
+        layoutPosition = localPosition;
+    }
+
+    private void GlideToLayoutPosition()
+    {
+        if (layoutPosition == null || movedByUser || inQuickView)
+        {
+            return;
+        }
+
+        Vector3 target = layoutPosition.Value;
+        if ((transform.localPosition - target).sqrMagnitude < 1e-8f)
+        {
+            return;
+        }
+
+        // Frame-rate independent easing; snaps once it is within a tenth of a millimeter
+        transform.localPosition = Vector3.Lerp(
+            transform.localPosition, target, 1f - Mathf.Exp(-layoutGlideSpeed * Time.deltaTime));
+        if ((transform.localPosition - target).sqrMagnitude < 1e-8f)
+        {
+            transform.localPosition = target;
+        }
     }
 
     public void FollowCamera(bool track)
@@ -451,7 +489,11 @@ public class Window : MonoBehaviour
 
         currentContentTexture = texture;
         hasContent = true; // Mark that the window has content
-        SetWindowState(WindowState.Content);
+        // A new screenshot during the close countdown keeps the closing dialog up
+        if (!IsClosing)
+        {
+            SetWindowState(WindowState.Content);
+        }
         ChangeScale(0f);
     }
 
@@ -461,13 +503,19 @@ public class Window : MonoBehaviour
         onControlClicked?.Invoke(control);
     }
 
-    // public void OnDestroy()
-    // {
-    //     if (currentContentTexture != null)
-    //     {
-    //         Destroy(currentContentTexture); // Clean up the texture to avoid memory leaks
-    //     }
-    // }
+    // The window's own material copies (see Awake) aren't destroyed with it. The content
+    // texture belongs to whoever set it.
+    void OnDestroy()
+    {
+        if (frameMaterialContent != null)
+        {
+            Destroy(frameMaterialContent);
+        }
+        if (frameMaterialContentEmpty != null)
+        {
+            Destroy(frameMaterialContentEmpty);
+        }
+    }
 
     // public void SetFrameContentFromUrl(string url)
     // {

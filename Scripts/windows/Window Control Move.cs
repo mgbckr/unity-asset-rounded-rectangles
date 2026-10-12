@@ -39,6 +39,8 @@ public class WindowControlMove: WindowControl
 
             window.transform.position += deltaPosition;
             lastPosition = touchData.interactionPosition;
+            // the layout leaves the window where the user put it
+            window.movedByUser = true;
         }
         else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
         {
