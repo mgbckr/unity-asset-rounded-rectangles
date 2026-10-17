@@ -10,7 +10,10 @@ using UnityEngine.Networking; // Required for UnityWebRequest and DownloadHandle
 public class Window : MonoBehaviour
 {
 
+    // The smallest frame. A smaller size grows as a whole, keeping its aspect ratio
+    // (see ClampToMinimumSize).
     public float minimumWidth = 0.25f;
+    public float minimumHeight = 0.1f;
     public float minScaleFactor = 1.0f;
     public float closingDelay = 3f;
 
@@ -395,16 +398,11 @@ public class Window : MonoBehaviour
 
         Debug.Log($"Changing scale by deltaX: {deltaX}, deltaY: {deltaY}");
 
-        frame.transform.localScale += new Vector3(deltaX, deltaY, 0f);
-        Vector3 currentScale = frame.transform.localScale;
-        if (frame.transform.localScale.x < minimumWidth)
-        {
-            frame.transform.localScale = new Vector3(minimumWidth, currentScale.y, currentScale.z);
-        }
-        if (frame.transform.localScale.y < 0.1f)
-        {
-            frame.transform.localScale = new Vector3(currentScale.x, 0.1f, currentScale.z);
-        }
+        Vector3 scale = frame.transform.localScale;
+        Vector2 size = ClampToMinimumSize(
+            new Vector2(scale.x + deltaX, scale.y + deltaY),
+            new Vector2(scale.x, scale.y));
+        frame.transform.localScale = new Vector3(size.x, size.y, scale.z);
         title.transform.localScale = new Vector3(
             frame.transform.localScale.x * 0.8f,
             frame.transform.localScale.y * 0.8f,
@@ -415,6 +413,33 @@ public class Window : MonoBehaviour
         closingDialog.transform.localScale = new Vector3(minDim, minDim, 1f);
         UpdateTitleSortBounds();
         UpdateControls();
+    }
+
+    // A requested size under minimumWidth or minimumHeight grows as a whole, by the larger of
+    // the two factors, so that limit is just met and the screenshot keeps its aspect ratio.
+    // Clamping width and height one by one stretched it, and ChangeScale(delta), which
+    // resizes relative to the current size, then kept the wrong ratio. A requested size with
+    // a side at or below zero (one large shrink) has no ratio to keep: it becomes the minimum
+    // size with the ratio from before.
+    private Vector2 ClampToMinimumSize(Vector2 requested, Vector2 before)
+    {
+        if (requested.x >= minimumWidth && requested.y >= minimumHeight)
+        {
+            return requested;
+        }
+
+        Vector2 shape = requested.x > 0f && requested.y > 0f ? requested : before;
+        if (!(shape.x > 0f && shape.y > 0f))
+        {
+            // No ratio before either (a frame scaled to zero)
+            return new Vector2(minimumWidth, minimumHeight);
+        }
+
+        float widthFactor = minimumWidth / shape.x;
+        float heightFactor = minimumHeight / shape.y;
+        return widthFactor >= heightFactor
+            ? new Vector2(minimumWidth, shape.y * widthFactor)
+            : new Vector2(shape.x * heightFactor, minimumHeight);
     }
 
 
