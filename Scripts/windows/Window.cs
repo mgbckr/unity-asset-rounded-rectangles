@@ -103,12 +103,8 @@ public class Window : MonoBehaviour
         // Doing this here in Awake rather than Start because Awake is called
         // when a Prefab is instantiated. Start is not.
 
-        // Find the camera transform in the scene
-        Camera cam = Camera.main;
-        if (cam == null)
-        {
-            cam = FindFirstObjectByType<Camera>();
-        }
+        // The user's head; see HeadCamera for why Camera.main alone is not enough
+        Camera cam = HeadCamera.Find();
         cameraTransform = cam != null ? cam.transform : null;
         if (cameraTransform == null)
         {
