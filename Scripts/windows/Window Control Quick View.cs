@@ -1,7 +1,4 @@
 using UnityEngine;
-using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
-using TouchPhase = UnityEngine.InputSystem.TouchPhase;
-using UnityEngine.InputSystem.LowLevel;
 
 
 public class WindowControlQuickView: WindowControl
@@ -26,15 +23,15 @@ public class WindowControlQuickView: WindowControl
         base.Start();
     }
 
-    public override void OnEvent(Touch touch, SpatialPointerState touchData, Window window)
+    public override void OnPointer(in PointerEvent e, Window window)
     {
-        if (touch.phase == TouchPhase.Began)
+        if (e.Phase == PointerPhase.Began)
         {
         }
-        else if (touch.phase == TouchPhase.Moved)
+        else if (e.Phase == PointerPhase.Moved)
         {
         }
-        else if (touch.phase == TouchPhase.Ended)
+        else if (e.Phase == PointerPhase.Ended)
         {
             if (quickView)
             {

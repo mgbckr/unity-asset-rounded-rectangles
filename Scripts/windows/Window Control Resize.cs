@@ -1,10 +1,4 @@
 using UnityEngine;
-using Unity.PolySpatial.InputDevices;
-using UnityEngine.InputSystem.EnhancedTouch;
-using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
-using TouchPhase = UnityEngine.InputSystem.TouchPhase;
-using UnityEngine.InputSystem.LowLevel;
-using Unity.PolySpatial;
 
 
 public class WindowControlResize: WindowControl
@@ -18,21 +12,21 @@ public class WindowControlResize: WindowControl
         controlRenderer = GetComponent<Renderer>();
     }
 
-    public override void OnEvent(Touch touch, SpatialPointerState touchData, Window window)
+    public override void OnPointer(in PointerEvent e, Window window)
     {
-        if (touch.phase == TouchPhase.Began)
+        if (e.Phase == PointerPhase.Began)
         {
             Debug.Log("Touch began on Resize");
-            lastPosition = touchData.interactionPosition;
+            lastPosition = e.InteractionPosition;
             controlRenderer.material.SetInteger("_Hover_Lock", 1);
             window.FocusControl(
                 name == "Resize Right" 
                 ? Window.Control.ResizeRight 
                 : Window.Control.ResizeLeft);
         }
-        else if (touch.phase == TouchPhase.Moved)
+        else if (e.Phase == PointerPhase.Moved)
         {
-            Vector3 deltaPosition = touchData.interactionPosition - lastPosition;
+            Vector3 deltaPosition = e.InteractionPosition - lastPosition;
 
             float deltaX = name == "Resize Right" ? deltaPosition.x : -deltaPosition.x;
 
@@ -48,9 +42,9 @@ public class WindowControlResize: WindowControl
                     Mathf.Pow(deltaX, 2f) + Mathf.Pow(deltaPosition.y, 2f));
             window.ChangeScale(diffScale);
 
-            lastPosition = touchData.interactionPosition;
+            lastPosition = e.InteractionPosition;
         }
-        else if (touch.phase == TouchPhase.Ended)
+        else if (e.Phase == PointerPhase.Ended || e.Phase == PointerPhase.Canceled)
         {
             controlRenderer.material.SetInteger("_Hover_Lock", 0);
             window.FocusControl(null);

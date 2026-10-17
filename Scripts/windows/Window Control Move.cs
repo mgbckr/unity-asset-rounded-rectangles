@@ -1,10 +1,4 @@
 using UnityEngine;
-using Unity.PolySpatial.InputDevices;
-using UnityEngine.InputSystem.EnhancedTouch;
-using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
-using TouchPhase = UnityEngine.InputSystem.TouchPhase;
-using UnityEngine.InputSystem.LowLevel;
-using Unity.PolySpatial;
 
 
 public class WindowControlMove: WindowControl
@@ -19,18 +13,18 @@ public class WindowControlMove: WindowControl
         controlRenderer = GetComponent<Renderer>();
     }
 
-    public override void OnEvent(Touch touch, SpatialPointerState touchData, Window window)
+    public override void OnPointer(in PointerEvent e, Window window)
     {
-        if (touch.phase == TouchPhase.Began)
+        if (e.Phase == PointerPhase.Began)
         {
-            lastPosition = touchData.interactionPosition;
+            lastPosition = e.InteractionPosition;
             window.FollowCamera(true);
             controlRenderer.material.SetInteger("_Hover_Lock", 1);
             window.FocusControl(Window.Control.Move);
         }
-        else if (touch.phase == TouchPhase.Moved)
+        else if (e.Phase == PointerPhase.Moved)
         {
-            Vector3 deltaPosition = touchData.interactionPosition - lastPosition;
+            Vector3 deltaPosition = e.InteractionPosition - lastPosition;
             
             // scale delta position based on distance
             // TODO: optimize ...
@@ -38,11 +32,11 @@ public class WindowControlMove: WindowControl
             // deltaPosition *= distance / distanceScaling;
 
             window.transform.position += deltaPosition;
-            lastPosition = touchData.interactionPosition;
+            lastPosition = e.InteractionPosition;
             // the layout leaves the window where the user put it
             window.movedByUser = true;
         }
-        else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
+        else if (e.Phase == PointerPhase.Ended || e.Phase == PointerPhase.Canceled)
         {
             window.FollowCamera(false);
             controlRenderer.material.SetInteger("_Hover_Lock", 0);

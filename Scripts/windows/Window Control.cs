@@ -1,15 +1,12 @@
 using UnityEngine;
-using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
-using TouchPhase = UnityEngine.InputSystem.TouchPhase;
-using UnityEngine.InputSystem.LowLevel;
 
 
-public class WindowControl: MonoBehaviour, SpatialPointerStateListener
+public class WindowControl: MonoBehaviour, IPointerListener
 {
     public string type = null;
     private Window window;
 
-    public virtual void OnEvent(Touch touch, SpatialPointerState touchData, Window window) {}
+    public virtual void OnPointer(in PointerEvent e, Window window) {}
 
     public virtual void Start()
     {
@@ -21,10 +18,11 @@ public class WindowControl: MonoBehaviour, SpatialPointerStateListener
         }
     }
 
-    public void OnEvent(Touch touch, SpatialPointerState touchData)
+    public void OnPointer(in PointerEvent e)
     {
-        OnEvent(touch, touchData, window);
-        if (touch.phase == TouchPhase.Ended && type != null && type.Length > 0)
+        OnPointer(e, window);
+        // A click is Began then Ended; Canceled never clicks
+        if (e.Phase == PointerPhase.Ended && type != null && type.Length > 0)
         {
             window.OnControlClicked(this);
         }

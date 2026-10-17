@@ -1,10 +1,4 @@
 using UnityEngine;
-using Unity.PolySpatial.InputDevices;
-using UnityEngine.InputSystem.EnhancedTouch;
-using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
-using TouchPhase = UnityEngine.InputSystem.TouchPhase;
-using UnityEngine.InputSystem.LowLevel;
-using Unity.PolySpatial;
 
 
 public class WindowControlClose: WindowControl
@@ -15,8 +9,13 @@ public class WindowControlClose: WindowControl
         base.Start();
     }
 
-    public override void OnEvent(Touch touch, SpatialPointerState touchData, Window window)
+    // Began only: a Moved arrives every frame and would restart the countdown, and
+    // pinch-down responds before the ray can drift
+    public override void OnPointer(in PointerEvent e, Window window)
     {
-        window.StartClosing();
+        if (e.Phase == PointerPhase.Began)
+        {
+            window.StartClosing();
+        }
     }
 }
