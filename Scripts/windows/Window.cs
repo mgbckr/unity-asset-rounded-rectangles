@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using Unity.XR.CoreUtils;
 using UnityEngine;
@@ -105,6 +106,7 @@ public class Window : MonoBehaviour
         // Find the title TextMeshPro component in the children of this GameObject
         title = transform.Find("Title").Find("Content").GetComponent<TextMeshPro>();
         title.text = "";
+        TMPro_EventManager.TEXT_CHANGED_EVENT.Add(OnTextChanged);
 
         // Find the controls GameObject iin the children of this GameObject
         controls = transform.Find("Controls").gameObject;
@@ -173,6 +175,53 @@ public class Window : MonoBehaviour
     public void SetTitle(string newTitle)
     {
         title.text = newTitle;
+    }
+
+    // URP sorts transparent renderers by the distance to the centre of their bounds, and the
+    // title shares the transparent queue with the frame. The text's centre lies off the frame's
+    // centre in the frame's plane, so from most viewpoints, straight ahead included, the frame
+    // sorted nearer and drew over the title. The title's renderers, with TextMeshPro's
+    // sub-meshes for fallback-font glyphs, get the frame's area as their bounds, centred just in
+    // front of the frame: the title draws after its own frame from every side, and windows still
+    // sort among themselves by distance. A render queue above the frame's would also let the
+    // titles of farther windows draw over nearer ones. visionOS sorts with its sorting groups.
+    private const float TitleSortOffset = 0.001f;
+
+    private readonly List<Renderer> titleRenderers = new List<Renderer>();
+
+    private void UpdateTitleSortBounds()
+    {
+        if (title == null || frameRenderer == null)
+        {
+            return;
+        }
+
+        Transform titleTransform = title.transform;
+        Bounds frameBounds = frameRenderer.localBounds;
+        Vector3 centre = titleTransform.InverseTransformPoint(
+            frame.transform.TransformPoint(frameBounds.center) - transform.forward * TitleSortOffset);
+        Vector3 corner = titleTransform.InverseTransformPoint(
+            frame.transform.TransformPoint(frameBounds.center + frameBounds.extents));
+        var bounds = new Bounds(centre, new Vector3(
+            2f * Mathf.Abs(corner.x - centre.x),
+            2f * Mathf.Abs(corner.y - centre.y),
+            2f * Mathf.Abs(centre.z)));
+
+        // Sub-meshes are children of the text, in its local space
+        title.GetComponentsInChildren(true, titleRenderers);
+        foreach (Renderer titleRenderer in titleRenderers)
+        {
+            titleRenderer.localBounds = bounds;
+        }
+    }
+
+    // After every mesh rebuild of the title, which can add sub-meshes
+    private void OnTextChanged(UnityEngine.Object changed)
+    {
+        if (changed == title)
+        {
+            UpdateTitleSortBounds();
+        }
     }
 
     public void SetLayoutPosition(Vector3 localPosition)
@@ -284,6 +333,7 @@ public class Window : MonoBehaviour
 
         float minDim = Mathf.Min(frame.transform.localScale.x, frame.transform.localScale.y) * 0.8f;
         closingDialog.transform.localScale = new Vector3(minDim, minDim, 1f);
+        UpdateTitleSortBounds();
         UpdateControls();
     }
 
@@ -507,6 +557,7 @@ public class Window : MonoBehaviour
     // texture belongs to whoever set it.
     void OnDestroy()
     {
+        TMPro_EventManager.TEXT_CHANGED_EVENT.Remove(OnTextChanged);
         if (frameMaterialContent != null)
         {
             Destroy(frameMaterialContent);
