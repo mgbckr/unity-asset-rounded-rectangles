@@ -19,7 +19,7 @@ public class WindowControlMove: WindowControl
         {
             lastPosition = e.InteractionPosition;
             window.FollowCamera(true);
-            controlRenderer.material.SetInteger("_Hover_Lock", 1);
+            controlRenderer.material.SetFloat("_Hover_Lock", 1f);
             window.FocusControl(Window.Control.Move);
         }
         else if (e.Phase == PointerPhase.Moved)
@@ -31,15 +31,19 @@ public class WindowControlMove: WindowControl
             // float distance = Vector3.Distance(window.transform.position, Camera.main.transform.position);
             // deltaPosition *= distance / distanceScaling;
 
-            window.transform.position += deltaPosition;
+            // A pinch held still neither moves the window nor counts as moved by the user
+            if (deltaPosition.sqrMagnitude > 0f)
+            {
+                window.transform.position += deltaPosition;
+                // the layout leaves the window where the user put it
+                window.movedByUser = true;
+            }
             lastPosition = e.InteractionPosition;
-            // the layout leaves the window where the user put it
-            window.movedByUser = true;
         }
         else if (e.Phase == PointerPhase.Ended || e.Phase == PointerPhase.Canceled)
         {
             window.FollowCamera(false);
-            controlRenderer.material.SetInteger("_Hover_Lock", 0);
+            controlRenderer.material.SetFloat("_Hover_Lock", 0f);
             window.FocusControl(null);
         }
     }
