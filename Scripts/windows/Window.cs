@@ -36,6 +36,8 @@ public class Window : MonoBehaviour
     private GameObject controls_right;
     private GameObject controls_close;
     private GameObject controls_open;
+    // The controls ScaleControlsWithDistance sizes: move, left, right, close, open
+    private Transform[] distanceScaledControls;
 
     private GameObject closingDialog;
     private GameObject closingDialog_timer;
@@ -53,7 +55,17 @@ public class Window : MonoBehaviour
     private Vector3? layoutPosition;
     public float layoutGlideSpeed = 8f;
     [NonSerialized] public bool movedByUser = false;
+    // Set by EnterQuickView and ExitQuickView
     [NonSerialized] public bool inQuickView = false;
+
+    // What ExitQuickView restores. Position and rotation are local to the parent, the tab
+    // group, so a group moved during quick view (grab bar, recentering) takes them along.
+    private Vector3 quickViewReturnPosition;
+    private Quaternion quickViewReturnRotation;
+    private Vector2 quickViewReturnScale;
+    private bool quickViewReturnMovedByUser;
+    private readonly Vector3[] quickViewReturnControlScales = new Vector3[5];
+    private float quickViewReturnDistanceScaleFactor;
 
     public bool HasContent => hasContent;
     public bool IsClosing => closingTime > 0;
@@ -116,6 +128,11 @@ public class Window : MonoBehaviour
         controls_close = controls.transform.Find("Close").gameObject;
         controls_open = controls.transform.Find("Open").gameObject;
         controls_open.SetActive(showOpenControl);
+        distanceScaledControls = new[]
+        {
+            controls_move.transform, controls_left.transform, controls_right.transform,
+            controls_close.transform, controls_open.transform,
+        };
 
         closingDialog = transform.Find("Closing Dialog").gameObject;
         closingDialog_timer = closingDialog.transform.Find("Timer").gameObject;
@@ -256,6 +273,69 @@ public class Window : MonoBehaviour
         followCamera = track;
     }
 
+    // Brings the window to distance in front of the user, facing them, until ExitQuickView
+    public void EnterQuickView(float distance)
+    {
+        if (inQuickView)
+        {
+            return;
+        }
+        if (cameraTransform == null)
+        {
+            Debug.LogWarning("Window: no camera found to bring the window in front of.");
+            return;
+        }
+
+        quickViewReturnPosition = transform.localPosition;
+        quickViewReturnRotation = transform.localRotation;
+        quickViewReturnScale = GetScale();
+        quickViewReturnMovedByUser = movedByUser;
+        for (int i = 0; i < distanceScaledControls.Length; i++)
+        {
+            quickViewReturnControlScales[i] = distanceScaledControls[i].localScale;
+        }
+        quickViewReturnDistanceScaleFactor = lastDistanceScaleFactor;
+
+        transform.position = cameraTransform.position + cameraTransform.forward * distance;
+        transform.LookAt(cameraTransform.position);
+        transform.Rotate(0, 180, 0); // Adjust rotation to face the camera
+        inQuickView = true;
+
+        // The controls take their size for the new distance now, not a frame later
+        UpdateControls();
+    }
+
+    // Takes the window back, relative to its parent: one the layout places to its place in the
+    // current layout, one the user had moved (or one outside a layout) to where it was. The
+    // group may have moved in the meantime; the window goes along. Size, controls and
+    // movedByUser are as before quick view, so a move during quick view does not detach the
+    // window from the layout.
+    public void ExitQuickView()
+    {
+        if (!inQuickView)
+        {
+            return;
+        }
+
+        inQuickView = false;
+        movedByUser = quickViewReturnMovedByUser;
+        transform.localPosition = !movedByUser && layoutPosition != null
+            ? layoutPosition.Value
+            : quickViewReturnPosition;
+        transform.localRotation = quickViewReturnRotation;
+
+        // The controls as they were before quick view: scaling them back up from their
+        // quick-view size can fail for good (see ScaleControlsWithDistance)
+        for (int i = 0; i < distanceScaledControls.Length; i++)
+        {
+            distanceScaledControls[i].localScale = quickViewReturnControlScales[i];
+        }
+        lastDistanceScaleFactor = quickViewReturnDistanceScaleFactor;
+        SetScale(quickViewReturnScale.x, quickViewReturnScale.y);
+        // Now, not a frame later, and for where the window is now
+        UpdateControls();
+    }
+
     public void StartClosing()
     {
         Debug.Log("Closing window...");
@@ -393,6 +473,11 @@ public class Window : MonoBehaviour
     }
 
 
+    // Sizes the controls with the distance to the camera, relative to their size from the last
+    // call. A step that would make the move and close controls wider than the frame is not
+    // taken at all, so after a jump in distance (e.g. a window created far away) the controls
+    // keep their size until the window comes closer; ExitQuickView therefore restores them
+    // instead of scaling them back up from their quick-view size.
     private void ScaleControlsWithDistance()
     {
         if (cameraTransform == null) return;
@@ -400,8 +485,10 @@ public class Window : MonoBehaviour
         // Calculate the distance from the camera
         float distance = Vector3.Distance(frame.transform.position, cameraTransform.position);
 
-        // Calculate the scale factor based on the distance
-        float scaleFactor = distance;
+        // The scale factor is the distance, but at least 1: closer than a metre the controls
+        // have their base size, also right after a jump closer (quick view brings a window to
+        // a metre, which rounding can put just under it)
+        float scaleFactor = Mathf.Max(1f, distance);
         float effectiveScaleFactor = scaleFactor / lastDistanceScaleFactor;
         Vector3 scaleVector = new Vector3(effectiveScaleFactor, effectiveScaleFactor, 1f);
 
@@ -435,12 +522,6 @@ public class Window : MonoBehaviour
         // Do not scale controls anymore if they exceed the frame size
         float centralControlSize = moveScale.x + 2 * closeScale.x * 1.1f;
         if (centralControlSize > frame.transform.localScale.x)
-        {
-            return;
-        }
-
-        // Stop scaling if the window gets to close
-        if (scaleFactor < 1f)
         {
             return;
         }
