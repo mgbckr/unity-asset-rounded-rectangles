@@ -68,6 +68,14 @@ public class Window : MonoBehaviour
     // Set by EnterQuickView and ExitQuickView
     [NonSerialized] public bool inQuickView = false;
 
+    // How many active windows are in quick view, and an event with the new number whenever it
+    // changes. The Quest renders at a higher resolution while it is above 0 (QuestDisplay);
+    // nothing listens on other platforms.
+    public static int QuickViewCount { get; private set; }
+    public static event Action<int> QuickViewCountChanged;
+    // Whether this window is part of QuickViewCount
+    private bool countedInQuickView;
+
     // What ExitQuickView restores. Position and rotation are local to the parent, the tab
     // group, so a group moved during quick view (grab bar, recentering) takes them along.
     private Vector3 quickViewReturnPosition;
@@ -153,6 +161,37 @@ public class Window : MonoBehaviour
         // Set window state to loading
         SetWindowState(WindowState.Loading);
         ChangeScale(0f);
+    }
+
+    void OnEnable()
+    {
+        UpdateQuickViewCount(inQuickView);
+    }
+
+    // Also when the window is destroyed
+    void OnDisable()
+    {
+        UpdateQuickViewCount(false);
+    }
+
+    // Counts this window in QuickViewCount while it is in quick view and active
+    private void UpdateQuickViewCount(bool counts)
+    {
+        if (counts == countedInQuickView)
+        {
+            return;
+        }
+        countedInQuickView = counts;
+        QuickViewCount += counts ? 1 : -1;
+        QuickViewCountChanged?.Invoke(QuickViewCount);
+    }
+
+    // Statics survive entering Play mode when domain reload is off
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    private static void ResetQuickViewCount()
+    {
+        QuickViewCount = 0;
+        QuickViewCountChanged = null;
     }
 
     void Update()
@@ -299,6 +338,7 @@ public class Window : MonoBehaviour
         transform.LookAt(cameraTransform.position);
         transform.Rotate(0, 180, 0); // Adjust rotation to face the camera
         inQuickView = true;
+        UpdateQuickViewCount(isActiveAndEnabled);
 
         // The controls take their size for the new distance now, not a frame later
         UpdateControls();
@@ -317,6 +357,7 @@ public class Window : MonoBehaviour
         }
 
         inQuickView = false;
+        UpdateQuickViewCount(false);
         movedByUser = quickViewReturnMovedByUser;
         transform.localPosition = !movedByUser && layoutPosition != null
             ? layoutPosition.Value
