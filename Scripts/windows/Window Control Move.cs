@@ -4,13 +4,11 @@ using UnityEngine;
 public class WindowControlMove: WindowControl
 {
     public float distanceScaling = 1f;
-    private Renderer controlRenderer;
     private Vector3 lastPosition;
 
     public override void Start()
     {
         base.Start();
-        controlRenderer = GetComponent<Renderer>();
     }
 
     public override void OnPointer(in PointerEvent e, Window window)
@@ -19,7 +17,7 @@ public class WindowControlMove: WindowControl
         {
             lastPosition = e.InteractionPosition;
             window.FollowCamera(true);
-            controlRenderer.material.SetFloat("_Hover_Lock", 1f);
+            SetHoverLock(true);
             window.FocusControl(Window.Control.Move);
         }
         else if (e.Phase == PointerPhase.Moved)
@@ -43,7 +41,7 @@ public class WindowControlMove: WindowControl
         else if (e.Phase == PointerPhase.Ended || e.Phase == PointerPhase.Canceled)
         {
             window.FollowCamera(false);
-            controlRenderer.material.SetFloat("_Hover_Lock", 0f);
+            SetHoverLock(false);
             window.FocusControl(null);
         }
     }

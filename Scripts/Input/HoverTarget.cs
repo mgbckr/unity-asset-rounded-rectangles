@@ -35,13 +35,23 @@ public static class HoverTarget
     /// <summary>
     /// Sets <c>_Hovered</c> to <paramref name="value"/> on <paramref name="renderer"/>, for a renderer
     /// found with <see cref="FindHoverRenderer"/>. Writes a MaterialPropertyBlock, so no material
-    /// instance is created. Does nothing when the renderer is missing or destroyed.
+    /// instance is created; at 0 (not hovered) it removes the renderer's block instead, because a
+    /// renderer with a block leaves URP's SRP Batcher. That assumes nothing else writes a block to
+    /// a hover renderer (in this project only Vuplex sets blocks, on its own web view renderers),
+    /// and that the material's own <c>_Hovered</c> is 0 (true for all of them). Does nothing when
+    /// the renderer is missing or destroyed.
     /// </summary>
     public static void SetHoverValue(Renderer renderer, float value)
     {
         // Unity's == is also true for a destroyed object
         if (renderer == null)
         {
+            return;
+        }
+
+        if (value <= 0f)
+        {
+            renderer.SetPropertyBlock(null);
             return;
         }
 

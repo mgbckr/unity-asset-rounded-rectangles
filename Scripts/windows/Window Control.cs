@@ -5,6 +5,9 @@ public class WindowControl: MonoBehaviour, IPointerListener
 {
     public string type = null;
     private Window window;
+    // This control's own copy of its material, which renderer.material makes on the first
+    // SetHoverLock. Unity does not destroy such copies with their renderer, so OnDestroy does.
+    private Material hoverLockMaterial;
 
     public virtual void OnPointer(in PointerEvent e, Window window) {}
 
@@ -25,6 +28,24 @@ public class WindowControl: MonoBehaviour, IPointerListener
         if (e.Phase == PointerPhase.Ended && type != null && type.Length > 0)
         {
             window.OnControlClicked(this);
+        }
+    }
+
+    // Keeps the control highlighted while a drag holds it (_Hover_Lock)
+    protected void SetHoverLock(bool locked)
+    {
+        if (hoverLockMaterial == null)
+        {
+            hoverLockMaterial = GetComponent<Renderer>().material;
+        }
+        hoverLockMaterial.SetFloat("_Hover_Lock", locked ? 1f : 0f);
+    }
+
+    protected virtual void OnDestroy()
+    {
+        if (hoverLockMaterial != null)
+        {
+            Destroy(hoverLockMaterial);
         }
     }
 

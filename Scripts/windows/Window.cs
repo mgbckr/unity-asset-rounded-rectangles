@@ -39,15 +39,22 @@ public class Window : MonoBehaviour
     private GameObject controls_right;
     private GameObject controls_close;
     private GameObject controls_open;
-    // The controls ScaleControlsWithDistance sizes: move, left, right, close, open
-    private Transform[] distanceScaledControls;
+    // The controls' sizes in the prefab, which they keep up to a metre from the user (see
+    // ScaleControlsWithDistance)
+    private Vector3 moveBaseScale;
+    private Vector3 leftBaseScale;
+    private Vector3 rightBaseScale;
+    private Vector3 closeBaseScale;
+    private Vector3 openBaseScale;
+    // The control a drag holds (FocusControl), null while none does
+    private Control? focusedControl;
+    // Whether the resize handles fit under the frame (ScaleControlsWithDistance)
+    private bool resizeHandlesFit = true;
 
     private GameObject closingDialog;
     private GameObject closingDialog_timer;
 
     private Renderer frameRenderer;
-
-    private float lastDistanceScaleFactor = 1f;
 
     private bool hasContent = false;
 
@@ -67,8 +74,6 @@ public class Window : MonoBehaviour
     private Quaternion quickViewReturnRotation;
     private Vector2 quickViewReturnScale;
     private bool quickViewReturnMovedByUser;
-    private readonly Vector3[] quickViewReturnControlScales = new Vector3[5];
-    private float quickViewReturnDistanceScaleFactor;
 
     public bool HasContent => hasContent;
     public bool IsClosing => closingTime > 0;
@@ -127,11 +132,11 @@ public class Window : MonoBehaviour
         controls_close = controls.transform.Find("Close").gameObject;
         controls_open = controls.transform.Find("Open").gameObject;
         controls_open.SetActive(showOpenControl);
-        distanceScaledControls = new[]
-        {
-            controls_move.transform, controls_left.transform, controls_right.transform,
-            controls_close.transform, controls_open.transform,
-        };
+        moveBaseScale = controls_move.transform.localScale;
+        leftBaseScale = controls_left.transform.localScale;
+        rightBaseScale = controls_right.transform.localScale;
+        closeBaseScale = controls_close.transform.localScale;
+        openBaseScale = controls_open.transform.localScale;
 
         closingDialog = transform.Find("Closing Dialog").gameObject;
         closingDialog_timer = closingDialog.transform.Find("Timer").gameObject;
@@ -289,11 +294,6 @@ public class Window : MonoBehaviour
         quickViewReturnRotation = transform.localRotation;
         quickViewReturnScale = GetScale();
         quickViewReturnMovedByUser = movedByUser;
-        for (int i = 0; i < distanceScaledControls.Length; i++)
-        {
-            quickViewReturnControlScales[i] = distanceScaledControls[i].localScale;
-        }
-        quickViewReturnDistanceScaleFactor = lastDistanceScaleFactor;
 
         transform.position = cameraTransform.position + cameraTransform.forward * distance;
         transform.LookAt(cameraTransform.position);
@@ -306,9 +306,9 @@ public class Window : MonoBehaviour
 
     // Takes the window back, relative to its parent: one the layout places to its place in the
     // current layout, one the user had moved (or one outside a layout) to where it was. The
-    // group may have moved in the meantime; the window goes along. Size, controls and
-    // movedByUser are as before quick view, so a move during quick view does not detach the
-    // window from the layout.
+    // group may have moved in the meantime; the window goes along. Size and movedByUser are as
+    // before quick view, so a move during quick view does not detach the window from the
+    // layout. The controls get their size for where the window is now.
     public void ExitQuickView()
     {
         if (!inQuickView)
@@ -323,15 +323,9 @@ public class Window : MonoBehaviour
             : quickViewReturnPosition;
         transform.localRotation = quickViewReturnRotation;
 
-        // The controls as they were before quick view: scaling them back up from their
-        // quick-view size can fail for good (see ScaleControlsWithDistance)
-        for (int i = 0; i < distanceScaledControls.Length; i++)
-        {
-            distanceScaledControls[i].localScale = quickViewReturnControlScales[i];
-        }
-        lastDistanceScaleFactor = quickViewReturnDistanceScaleFactor;
         SetScale(quickViewReturnScale.x, quickViewReturnScale.y);
-        // Now, not a frame later, and for where the window is now
+        // Now, not a frame later; they depend only on the distance and the frame's width (see
+        // ScaleControlsWithDistance)
         UpdateControls();
     }
 
@@ -494,88 +488,87 @@ public class Window : MonoBehaviour
     }
 
 
-    // Sizes the controls with the distance to the camera, relative to their size from the last
-    // call. A step that would make the move and close controls wider than the frame is not
-    // taken at all, so after a jump in distance (e.g. a window created far away) the controls
-    // keep their size until the window comes closer; ExitQuickView therefore restores them
-    // instead of scaling them back up from their quick-view size.
+    // Sizes the controls for their distance from the user's head. The size depends only on
+    // that distance and the frame's width, so a window shows the same controls however it got
+    // there: created there, moved there or back from quick view. The prefab sizes are scaled
+    // by the distance in metres, which keeps the controls' angular size, but by at least 1, so
+    // up to a metre they keep their prefab size, and by at most what lets the row under the
+    // frame fit its width: the close, move and open controls in the middle and in each corner
+    // a resize handle at least as long as it is high (ControlScaleFactor). The handles fill the
+    // room between the middle controls and the corners and are shown whenever they fit, which
+    // the cap ensures unless the frame is narrower than the row at factor 1 (0.206 m with the
+    // prefab's controls, below the 0.25 m minimum width).
     private void ScaleControlsWithDistance()
     {
         if (cameraTransform == null) return;
 
-        // Calculate the distance from the camera
         float distance = Vector3.Distance(frame.transform.position, cameraTransform.position);
+        float frameWidth = frame.transform.localScale.x;
+        float factor = ControlScaleFactor(distance, frameWidth);
+        Vector3 scale = new Vector3(factor, factor, 1f);
 
-        // The scale factor is the distance, but at least 1: closer than a metre the controls
-        // have their base size, also right after a jump closer (quick view brings a window to
-        // a metre, which rounding can put just under it)
-        float scaleFactor = Mathf.Max(1f, distance);
-        float effectiveScaleFactor = scaleFactor / lastDistanceScaleFactor;
-        Vector3 scaleVector = new Vector3(effectiveScaleFactor, effectiveScaleFactor, 1f);
+        controls_move.transform.localScale = Vector3.Scale(moveBaseScale, scale);
+        controls_close.transform.localScale = Vector3.Scale(closeBaseScale, scale);
+        controls_open.transform.localScale = Vector3.Scale(openBaseScale, scale);
 
-        // Apply the scale factor to the controls
-        Vector3 moveScale = Vector3.Scale(controls_move.transform.localScale, scaleVector);
-        Vector3 leftScale = Vector3.Scale(controls_left.transform.localScale, scaleVector);
-        Vector3 rightScale = Vector3.Scale(controls_right.transform.localScale, scaleVector);
-        Vector3 closeScale = Vector3.Scale(controls_close.transform.localScale, scaleVector);
-        Vector3 openScale = Vector3.Scale(controls_open.transform.localScale, scaleVector);
+        // Each handle reaches from the middle controls to the frame's side and half its height
+        // beyond, where RepositionControls puts its outer end
+        float middle = MiddleControlsHalfWidth(factor);
+        float leftHeight = leftBaseScale.y * factor;
+        float rightHeight = rightBaseScale.y * factor;
+        float leftLength = frameWidth / 2f - middle + leftHeight / 2f;
+        float rightLength = frameWidth / 2f - middle + rightHeight / 2f;
+        controls_left.transform.localScale = new Vector3(leftLength, leftHeight, leftBaseScale.z);
+        controls_right.transform.localScale = new Vector3(rightLength, rightHeight, rightBaseScale.z);
 
-        // Calculate scale of left/right resize 
-        float resizeSize = frame.transform.localScale.x / 2
-            - (moveScale.x / 2 + closeScale.x * 1.1f)
-            + moveScale.y;
-
-        leftScale = new Vector3(resizeSize, leftScale.y, leftScale.z);
-        rightScale = new Vector3(resizeSize, rightScale.y, rightScale.z);
-
-        // Disable resize controls when controls get too big
-        if (resizeSize < controls_move.transform.localScale.y * 2)
-        {
-            controls_left.SetActive(false);
-            controls_right.SetActive(false);
-        }
-        else
-        {
-            controls_left.SetActive(true);
-            controls_right.SetActive(true);
-        }
-
-        // Do not scale controls anymore if they exceed the frame size
-        float centralControlSize = moveScale.x + 2 * closeScale.x * 1.1f;
-        if (centralControlSize > frame.transform.localScale.x)
-        {
-            return;
-        }
-
-        // Update the scale of the controls
-        controls_move.transform.localScale = moveScale;
-        controls_left.transform.localScale = leftScale;
-        controls_right.transform.localScale = rightScale;
-        controls_close.transform.localScale = closeScale;
-        controls_open.transform.localScale = openScale;
-
-        // Update the last distance scale factor
-        lastDistanceScaleFactor = scaleFactor;
-
+        // The tolerance covers rounding at the cap, where length and height are equal
+        resizeHandlesFit = leftLength >= leftHeight - 1e-5f && rightLength >= rightHeight - 1e-5f;
+        ApplyControlVisibility();
     }
 
+    // The factor on the controls' prefab sizes at the given distance from the head for a
+    // frame of the given width (both in metres): the distance, at least 1, at most the factor
+    // at which the row under the frame just fits (see ScaleControlsWithDistance)
+    private float ControlScaleFactor(float distance, float frameWidth)
+    {
+        // The row at factor 1: the middle controls and, inside the frame, half of a handle as
+        // long as it is high on each side (the other half sticks out beyond the frame's side)
+        float rowWidth = 2f * MiddleControlsHalfWidth(1f) + Mathf.Max(leftBaseScale.y, rightBaseScale.y);
+        return Mathf.Max(1f, Mathf.Min(distance, frameWidth / rowWidth));
+    }
+
+    // Half the width of the close, move and open controls with the gaps between them (see
+    // RepositionControls) at the given factor
+    private float MiddleControlsHalfWidth(float factor)
+    {
+        return factor * (moveBaseScale.x / 2f + Mathf.Max(closeBaseScale.x, openBaseScale.x) * 1.1f);
+    }
+
+    // While a drag holds a control only that control is shown; null (the drag ended) shows
+    // all of them again, the resize handles when they fit
     public void FocusControl(Control? control)
     {
-        // Set the focus on the specified control
-        controls_move.SetActive(control == Control.Move);
-        controls_left.SetActive(control == Control.ResizeLeft);
-        controls_right.SetActive(control == Control.ResizeRight);
-        controls_close.SetActive(control == Control.Close);
-        controls_open.SetActive(showOpenControl && control == Control.Open);
+        focusedControl = control;
+        ApplyControlVisibility();
+    }
 
-        // If no control is specified, activate all controls
-        if (control == null)
+    private void ApplyControlVisibility()
+    {
+        bool none = focusedControl == null;
+        SetActiveIfChanged(controls_move, none || focusedControl == Control.Move);
+        // The handle a drag holds stays, even if it no longer fits
+        SetActiveIfChanged(controls_left, focusedControl == Control.ResizeLeft || (none && resizeHandlesFit));
+        SetActiveIfChanged(controls_right, focusedControl == Control.ResizeRight || (none && resizeHandlesFit));
+        SetActiveIfChanged(controls_close, none || focusedControl == Control.Close);
+        SetActiveIfChanged(controls_open, showOpenControl && (none || focusedControl == Control.Open));
+    }
+
+    // Every change is synced to visionOS, so only actual changes
+    private static void SetActiveIfChanged(GameObject control, bool active)
+    {
+        if (control.activeSelf != active)
         {
-            controls_move.SetActive(true);
-            controls_left.SetActive(true);
-            controls_right.SetActive(true);
-            controls_close.SetActive(true);
-            controls_open.SetActive(showOpenControl);
+            control.SetActive(active);
         }
     }
 
