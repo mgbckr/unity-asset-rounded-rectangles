@@ -50,6 +50,10 @@ public class Window : MonoBehaviour
     private Control? focusedControl;
     // Whether the resize handles fit under the frame (ScaleControlsWithDistance)
     private bool resizeHandlesFit = true;
+    // The resize handles' colliders, two boxes each (FitHandleColliders); none on the test
+    // prefabs, whose handles keep the quad's MeshCollider
+    private BoxCollider[] leftHandleBoxes;
+    private BoxCollider[] rightHandleBoxes;
 
     private GameObject closingDialog;
     private GameObject closingDialog_timer;
@@ -145,6 +149,8 @@ public class Window : MonoBehaviour
         rightBaseScale = controls_right.transform.localScale;
         closeBaseScale = controls_close.transform.localScale;
         openBaseScale = controls_open.transform.localScale;
+        leftHandleBoxes = controls_left.GetComponents<BoxCollider>();
+        rightHandleBoxes = controls_right.GetComponents<BoxCollider>();
 
         closingDialog = transform.Find("Closing Dialog").gameObject;
         closingDialog_timer = closingDialog.transform.Find("Timer").gameObject;
@@ -561,6 +567,8 @@ public class Window : MonoBehaviour
         float rightLength = frameWidth / 2f - middle + rightHeight / 2f;
         controls_left.transform.localScale = new Vector3(leftLength, leftHeight, leftBaseScale.z);
         controls_right.transform.localScale = new Vector3(rightLength, rightHeight, rightBaseScale.z);
+        FitHandleColliders(leftHandleBoxes, leftLength, leftHeight, -1f);
+        FitHandleColliders(rightHandleBoxes, rightLength, rightHeight, 1f);
 
         // The tolerance covers rounding at the cap, where length and height are equal
         resizeHandlesFit = leftLength >= leftHeight - 1e-5f && rightLength >= rightHeight - 1e-5f;
@@ -583,6 +591,49 @@ public class Window : MonoBehaviour
     private float MiddleControlsHalfWidth(float factor)
     {
         return factor * (moveBaseScale.x / 2f + Mathf.Max(closeBaseScale.x, openBaseScale.x) * 1.1f);
+    }
+
+    // How far a resize handle's collider reaches beyond the frame's side, in handle heights. The
+    // arc a hovered handle shows reaches 0.28 heights beyond the side and below the bottom edge,
+    // and 0.30 along each edge; its quad reaches 0.5 beyond the side. In the layout (windows 5 cm
+    // apart, handles 7.3 cm high at 2.5 and 3.5 m) two neighbours' quads overlapped by 2.3 cm.
+    private const float HandleReachBeyondSide = 0.3f;
+
+    // Fits a resize handle's two box colliders, in the handle's local space: its quad spans -0.5
+    // to 0.5, its middle line lies on the frame's bottom edge and its outer end half its height
+    // beyond the frame's side (see RepositionControls); outward is 1 for the right handle, -1 for
+    // the left. One box lies below the frame, from the handle's inner end to HandleReachBeyondSide
+    // heights beyond the side, the other beside the frame, from the side to that reach, up to the
+    // quad's top. So no part lies over the frame, where the quad's collider lay in the frame's
+    // plane (a ray there hit both, and PhysX picked one), and in the layout the boxes stop short
+    // of the neighbour's. They lie just behind the frame's plane, 0.5 to 1.5 mm (local z 1 is
+    // the handle's depth scale, 1 mm), so even on the frame's edge a ray never finds a box at
+    // the frame's distance: where it hits both, the frame is nearer. This runs every frame, so
+    // only changes are applied.
+    private static void FitHandleColliders(BoxCollider[] boxes, float length, float height, float outward)
+    {
+        if (boxes == null || boxes.Length < 2 || length <= 0f || height <= 0f)
+        {
+            return;
+        }
+
+        // Local x of the frame's side and of the reach beyond it, counted outward
+        float side = 0.5f - 0.5f * height / length;
+        float reach = side + HandleReachBeyondSide * height / length;
+        SetBox(boxes[0], new Vector3(outward * (reach - 0.5f) / 2f, -0.25f, 1f), new Vector3(reach + 0.5f, 0.5f, 1f));
+        SetBox(boxes[1], new Vector3(outward * (side + reach) / 2f, 0.25f, 1f), new Vector3(reach - side, 0.5f, 1f));
+    }
+
+    private static void SetBox(BoxCollider box, Vector3 center, Vector3 size)
+    {
+        if (box.center != center)
+        {
+            box.center = center;
+        }
+        if (box.size != size)
+        {
+            box.size = size;
+        }
     }
 
     // While a drag holds a control only that control is shown; null (the drag ended) shows
